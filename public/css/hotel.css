@@ -1,0 +1,54 @@
+
+
+.container #SearchBtn button{
+  height: 4em;
+  width: 15em;
+  background-color: orangered;
+  /* margin-left: px; */
+  outline: none;
+  color:white;
+  font-size: 18px;
+  border: none;
+}
+
+.container #SearchBtn .SearchZoneStyle{
+  width: 100%;
+  height: 10em;
+  background-color: orangered;
+  margin-bottom: 3em;
+  /* display: ; */
+  /* position: absolute; */
+}
+
+/* .SearchZoneStyle{
+  display: block;
+} */
+
+
+.a-col {
+  margin-right: 2em;
+  float: left;
+  padding: 1em;
+  color:white;
+  /* width: 50%; */
+}
+
+.a-col span{
+  color: white;
+}
+
+.a-col .cs-select{
+  width: 15em;
+  /* float: left; */
+}
+
+.alternates{
+  display: block-flex;
+}
+
+.alternate{
+  visibility: hidden;
+}
+.alternate .input-field{
+  display: flex;
+}
