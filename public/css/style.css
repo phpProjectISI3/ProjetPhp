@@ -8789,6 +8789,7 @@ input[type="text"] {
   float: left;
   width: 100%;
   font-size: 16px;
+  margin-top: 7em;
 }
 #footer a {
   color: #FF5722;
@@ -8898,6 +8899,7 @@ input[type="text"] {
 .fh5co-parallax {
   height: 600px;
 }
+
 
 .fh5co-parallax {
   background-color: #555;

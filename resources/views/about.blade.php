@@ -79,10 +79,10 @@
 					<div class="hotel-content">
 						<div class="hotel-grid" style="background-image: url(images/1.jpg);">
 							<div class="price"><small></small><span>$100/nuit</span></div>
-							<a class="book-now text-center" href="#"><i class="ti-calendar"></i> Réservé </a>
+							<a class="book-now text-center" href="{{url('/detailRecherche')}}"><i class="ti-calendar"></i> Réservé </a>
 						</div>
 						<div class="desc">
-							<h3><a href="#">Villa</a></h3>
+							<h3><a href="{{url('/detailRecherche')}}">Villa</a></h3>
 							<p>Villa de luxe se démarque par sa clientèle, qui peut avoir des exigences particulières que chaque Villa ayant
 							obtenu la dénomination « Villa de luxe » se doit de satisfaire</p>
 						</div>
@@ -92,10 +92,10 @@
 					<div class="hotel-content">
 						<div class="hotel-grid" style="background-image: url(images/2.jpg);">
 							<div class="price"><small></small><span>$70/night</span></div>
-							<a class="book-now text-center" href="#"><i class="ti-calendar"></i> Réservé</a>
+							<a class="book-now text-center" href="{{url('/detailRecherche')}}"><i class="ti-calendar"></i> Réservé</a>
 						</div>
 						<div class="desc">
-							<h3><a href="#">Maison</a></h3>
+							<h3><a href="{{url('/detailRecherche')}}">Maison</a></h3>
 							<p>Les Maisons sont décorées dans des tons chauds et raffinés et sont pourvues de la climatisation et
 							d'équipements à la pointe de la technologie.</p>
 						</div>
@@ -105,10 +105,10 @@
 					<div class="hotel-content">
 						<div class="hotel-grid" style="background-image: url(images/3.jpg);">
 							<div class="price"><small></small><span>$200/night</span></div>
-							<a class="book-now text-center" href="#"><i class="ti-calendar"></i> Réservé</a>
+							<a class="book-now text-center" href="{{url('/detailRecherche')}}"><i class="ti-calendar"></i> Réservé</a>
 						</div>
 						<div class="desc">
-							<h3><a href="#">Appartement</a></h3>
+							<h3><a href="{{url('/detailRecherche')}}">Appartement</a></h3>
 							<p>Appartement ne peut être classé 5 étoiles que si des critères précis sont honorés. Ces derniers sont divisés en trois
 							catégories : « équipements », « service au client » et « accessibilité et développement durable ».</p>
 						</div>

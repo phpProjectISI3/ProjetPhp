@@ -15,7 +15,7 @@
 		   						<p><span> Villa</span></p>
 		   						<h2>Réservé votre Villa</h2>
 			   					<p>
-			   						<a href="#" class="btn btn-primary btn-lg">Réservé Maintenant</a>
+			   						<a href="{{url('detailRecherche')}}" class="btn btn-primary btn-lg">Réservé Maintenant</a>
 			   					</p>
 		   					</div>
 		   				</div>
@@ -31,7 +31,7 @@
 		   						<p><span>Maison</span></p>
 		   						<h2>Profiter de votre Vacance  </h2>
 			   					<p>
-			   						<a href="#" class="btn btn-primary btn-lg">Réservé Maintenant</a>
+			   						<a href="{{url('detailRecherche')}}" class="btn btn-primary btn-lg">Réservé Maintenant</a>
 			   					</p>
 		   					</div>
 		   				</div>
@@ -47,7 +47,7 @@
 		   						<p><span>Appartement</span></p>
 		   						<h2>Un meilleur endroit pour s'amuser</h2>
 			   					<p>
-			   						<a href="#" class="btn btn-primary btn-lg">Réservé Maintenant</a>
+			   						<a href="{{url('detailRecherche')}}" class="btn btn-primary btn-lg">Réservé Maintenant</a>
 			   					</p>
 		   					</div>
 		   				</div>
@@ -87,7 +87,7 @@
 							</div>
 						</div>
 						<div class="a-col action">
-							<a href="#">
+							<a href="{{url('about')}}">
 								<span>Vérifier</span>
 								Disponibilté
 							</a>
@@ -143,7 +143,7 @@
 						<h3> Villa </h3>
 						<p>Villa de luxe se démarque par sa clientèle, qui peut avoir des exigences particulières que chaque Villa ayant
 						obtenu la dénomination « Villa de luxe » se doit de satisfaire </p>
-						<p><a href="#" class="btn btn-primary btn-luxe-primary">Réservé Maintenant<i class="ti-angle-right"></i></a></p>
+						<p><a href="{{url('/detailRecherche')}}" class="btn btn-primary btn-luxe-primary">Réservé Maintenant<i class="ti-angle-right"></i></a></p>
 					</div>
 				</div>
 
@@ -160,7 +160,7 @@
 							d'équipements à la pointe de la technologie. <br>
 							
 						 </p>
-							<p><a href="#" class="btn btn-primary btn-luxe-primary">Réservé Maintenant <i class="ti-angle-right"></i></a></p>
+							<p><a href="{{url('/detailRecherche')}}" class="btn btn-primary btn-luxe-primary">Réservé Maintenant <i class="ti-angle-right"></i></a></p>
 						</div>
 					</div>
 					<div class="f-hotel">
@@ -173,7 +173,7 @@
 							<h3>Appartement</h3>
 							<p>Appartement ne peut être classé 5 étoiles que si des critères précis sont honorés. Ces derniers sont divisés en trois
 							catégories : « équipements », « service au client » et « accessibilité et développement durable ».</p>
-							<p><a href="#" class="btn btn-primary btn-luxe-primary">Réservé Maintenant <i class="ti-angle-right"></i></a></p>
+							<p><a href="{{url('/detailRecherche')}}" class="btn btn-primary btn-luxe-primary">Réservé Maintenant <i class="ti-angle-right"></i></a></p>
 						</div>
 					</div>
 				</div>

@@ -1,0 +1,178 @@
+
+#Container #img div{
+    width: 70%;
+    margin: auto;
+    margin-top: -17em;
+    margin-bottom: 5em;
+}
+
+/* #Container #img div img{
+    width: ;
+}  */
+
+#Container #img button{
+    /* position: absolute; */
+    width: 55px;
+    height: 55px;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    opacity: .5;
+    /* background-color: #000; */
+
+}
+
+#Container #img button:first-child{
+    margin-left: 12em;
+    margin-top: 18em;
+    z-index: 999999999;
+}
+#Container #img button:last-child{
+    margin-left: 55em;
+    position: absolute;
+    margin-top: -20em;
+    z-index: 999999999;
+}
+
+#Container #img button:hover{
+    opacity: 1;
+}
+
+.fh5co-parallax, .fh5co-parallax img{
+    height: 600px;
+    width: 100%;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+#fh5co-hotel-section{
+  margin: 0;
+  /* padding: 0; */
+}
+
+#rightside{
+  position: relative;
+  width: 35%;
+  height: 40em;
+  background-color: #f5f5f5;
+  box-shadow: 0 0 7px rgb(207, 207, 207);
+  border-radius: 10px;
+  z-index: 999999999999999999999;
+  padding: 2em;
+  margin-left: 90%;
+  transform: translate(-50%,0);
+}
+
+#rightside h2{
+  font-weight: bold;
+}
+
+#rightside h2 span{
+  font-size: 18px;
+  font-weight: 400;
+}
+#rightside hr{
+  height: 1px;
+  background-color: rgb(161, 161, 161);
+}
+
+#rightside .dates > div{
+  margin-bottom: 2em;
+}
+
+#rightside .dates #showdates{
+  width: 100%;
+  height: 3em;
+  border: 1px solid rgb(194, 192, 192);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: .5em;
+}
+
+#rightside #dates span{
+  font-size: 14px;
+}
+
+#rightside #dates #showdates label{
+  cursor: text;
+}
+
+#rightside #dates #showdates span{
+  /* margin-left: .5em; */
+  padding-top: 3px;
+  text-align: center;
+}
+
+#rightside .dates #guests select{
+  width: 100%;
+  height: 3em;
+  background-color: transparent;
+  /* border: 1px solid rgb(194, 192, 192); */
+  /* display: grid; */
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  /* padding: .5em; */
+}
+
+#rightside .dates span:first-child > #numbernuit{
+  font-size: 14px;
+}
+
+#rightside .dates:nth-child(3) #totalnuit{
+  margin-left: 37%;
+} 
+
+#rightside .dates #totalnuit{
+  position: relative;
+  margin-left: 33%;
+}
+
+#rightside .scndhr{
+  margin-top: -25px;
+}
+
+#rightside .black{
+  font-weight: bold;
+  color:black;
+  font-size: 22px;
+  margin-right: 18%;
+}
+
+#rightside .black:last-child{
+  font-size: 18px;
+  margin-right: 0;
+}
+
+#rightside form input[type="submit"]{
+  width: 100%;
+  height: 3.5em;
+  outline: none;
+  background: orangered;
+  color:white;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgb(107, 99, 92);
+}

@@ -10,7 +10,7 @@
                         <div class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
                             <div class="fh5co-intro fh5co-table-cell">
                                 <h1 class="text-center">Ne ratez pas nos offres &amp; Services !</h1>
-                                <p>Des offres exceptionneles vous attendent à <a href="./hotel.html">Nos offres</a></p>
+                                <p>Des offres exceptionneles vous attendent à <a href="{{url('/about')}}">Nos offres</a></p>
                             </div>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                                 <span><i class="ti-location-pin"></i></span>
                                 <div class="desc">
                                     <h3>Emplacement idéal</h3>
-                                    <p>Que vous soyez accompagné(e) ou seul(e), choisissez par vous m&ecirc;me le prix et l'emplacement qui vous conviennent. Rendez vous dans <a href="./hotel.html">Nos offres</a> et faites votre choix vers votre destination de réves.</p>
+                                    <p>Que vous soyez accompagné(e) ou seul(e), choisissez par vous m&ecirc;me le prix et l'emplacement qui vous conviennent. Rendez vous dans <a href="{{url('/about')}}">Nos offres</a> et faites votre choix vers votre destination de réves.</p>
                                 </div>
                             </div>
                         </div>
