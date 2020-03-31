@@ -196,13 +196,13 @@ create table MESSAGE_CONTACT
 );
 
 -- insert AUTH_ROLE
-INSERT into auth_role (id_role, description_role, libelle_role) 
+INSERT into AUTH_ROLE (id_role, description_role, libelle_role) 
 VALUES 
 (1, N'Votre tache principale est de gerer le sytem et veiller a la securite des donnees clientel.', N'Admin'),
 (2, N'Vous pouvez reserver et profitez de toute nos offres clientele ! en plus vous etes base sur un systeme de points qui vous qualifiera aussitot que possible au moment de la reservation, soyez toujous les merveilleux bienvenues !', N'SimpleUser');
 
 -- insert GRADE
-INSERT into grade (id_grade, libelle_grade) 
+INSERT into GRADE (id_grade, libelle_grade) 
 VALUES 
 (0, N'Administratif') ,
 (1, N'Directeur')	  ,
@@ -210,13 +210,13 @@ VALUES
 (3, N'Retraité')	  ;
 
 -- insert SEXE
-INSERT into sexe (id_sexe, libelle_sexe) 
+INSERT into SEXE (id_sexe, libelle_sexe) 
 VALUES 
 (1, N'Homme'),
 (2, N'Femme');
 
 -- insert PERSONNE
-INSERT into personne (id_client, nom, prenom, sexe_, est_marie, nbr_enfant_scolarise, nbr_enfant_non_scolarise, grade_, date_naissance, point_personne) 
+INSERT into PERSONNE (id_client, nom, prenom, sexe_, est_marie, nbr_enfant_scolarise, nbr_enfant_non_scolarise, grade_, date_naissance, point_personne) 
 VALUES 
 (1000, N'Sqat', N'Amina', 2, FALSE, 0, 0, 2, CAST(N'1998-08-07' AS Date), 0) ,
 (1002, N'Tfaal', N'Omaima', 2, FALSE, 0, 0, 2, CAST(N'1998-12-08' AS Date), 0),
@@ -235,7 +235,7 @@ VALUES
 (1015, N'Yagobi', N'Ahmed', 1, FALSE, 0, 0, 0, CAST(N'1998-06-26' AS Date), 0);
 
 -- insert AUTH_ROLE_PERSONNE
-INSERT into auth_role_personne (personne_role_, auth_role_, username_email, mot_de_passe) 
+INSERT into AUTH_ROLE_PERSONNE (personne_role_, auth_role_, username_email, mot_de_passe) 
 VALUES 
 (1000, 2, N'mail1@gmail.com', N'MotDePasse1') ,
 (1002, 2, N'mail2@gmail.com', N'MotDePasse2') ,
@@ -252,3 +252,29 @@ VALUES
 (1013, 1, N'mail13@gmail.com', N'MotDePasse13'),
 (1014, 1, N'mail14@gmail.com', N'MotDePasse14'),
 (1015, 1, N'mail15@gmail.com', N'MotDePasse15');
+
+-- insert MESSAGE_CONTACT
+INSERT into MESSAGE_CONTACT (id_message, emetteur_, message_ecrit, vu, recepteur_) 
+VALUES 
+(1, 1012, N'Bonjour soyez le bienvenue ', FALSE, 1000),
+(2, 1013, N'Bonjour soyez le bienvenue ', FALSE, 1002),
+(3, 1014, N'Bonjour soyez le bienvenue ', TRUE, 1003),
+(4, 1015, N'Bonjour soyez le bienvenue ', FALSE, 1004),
+(5, 1013, N'Bonjour soyez le bienvenue ', TRUE, 1005),
+(6, 1015, N'Bonjour soyez le bienvenue ', FALSE, 1006),
+(8, 1014, N'Bonjour soyez le bienvenue ', FALSE, 1007),
+(9, 1012, N'Bonjour soyez le bienvenue ', FALSE, 1008),
+(10,1013, N'Bonjour soyez le bienvenue', TRUE, 1009),
+(11,1012, N'Bonjour soyez le bienvenue', FALSE, 1010),
+(12,1014, N'Bonjour soyez le bienvenue', FALSE, 1011);
+
+-- insert TYPE_LOGEMENT
+INSERT into TYPE_LOGEMENT (id_type_logement, libelle_type_logement)
+VALUES 
+(1, N'Villa') 			   ,
+(2, N'Appartement')		   ,
+(3, N'Maison')			   ,
+(4, N'Chambre Hotel Luxe') ,
+(5, N'Chambre Hotel Sympa');
+
+
