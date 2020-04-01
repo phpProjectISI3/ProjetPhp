@@ -87,7 +87,7 @@ create sequence DETAIL_LOGEMENT_seq
 start 1;
 create table DETAIL_LOGEMENT
 (
-    id_categorie int default nextval('DETAIL_LOGEMENT_seq') primary key,
+    id_detail int default nextval('DETAIL_LOGEMENT_seq') primary key,
     est_categorie BOOLEAN default false,
     type_logement_ int,
     foreign key (type_logement_)references TYPE_LOGEMENT(id_type_logement),-- villa/appartement/suite/chambre hotel
@@ -99,9 +99,13 @@ create table DETAIL_LOGEMENT
     description_logement varchar(1500),
     max_reserv int,-- nbr maximum de reservation par saison (Haute/Basse saison)
     tarif_annulation double precision,
-    marge_annulation int
+    marge_annulation int,
+    piscine_disponible BOOLEAN,
+    parking_disponible BOOLEAN,
+    jardin_cours BOOLEAN,
+    massage_disponible BOOLEAN
 );
-
+	
 create sequence LOGEMENT_seq
 start 1;
 create table LOGEMENT
@@ -277,4 +281,9 @@ VALUES
 (4, N'Chambre Hotel Luxe') ,
 (5, N'Chambre Hotel Sympa');
 
-
+--Pour faire backup : pg_dump -U postgres -a -p 5433 -d pgluxedatabase > C:\Users\pc\Desktop\testBackup.sql 
+-- -U : postgres : Username 
+-- -d : pgluxedatabse : database name 
+-- -a : generer que le script insert
+-- -p : port : 5433
+-- > chemin du Ficier Backup (extension .sql/.backup obligatoire).
