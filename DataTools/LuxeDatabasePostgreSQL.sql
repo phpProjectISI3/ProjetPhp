@@ -281,7 +281,49 @@ VALUES
 (4, N'Chambre Hotel Luxe') ,
 (5, N'Chambre Hotel Sympa');
 
---Pour faire backup : pg_dump -U postgres -a -p 5433 -d pgluxedatabase > C:\Users\pc\Desktop\testBackup.sql 
+-- insert DETAIL_LOGEMENT
+INSERT into DETAIL_LOGEMENT (id_detail, est_categorie, type_logement_, superficie_logement, nbr_piece, capacite_personne_max, tarif_par_nuit_hs, tarif_par_nuit_bs, description_logement, max_reserv, tarif_annulation, marge_annulation, piscine_disponible, parking_disponible, jardin_cours, massage_disponible) 
+VALUES 
+ (1, true, 5, 95, 3, 3, 350, 200, 'Des murs lambrissés en chêne, des volets en bois et un parquet chaleureux vous entourent. Faites votre choix parmi des centaines de livres et lisez-les dans une boîte à lit secrète derrière des étagères allant du sol au plafond. Les portraits de famille et les objets de famille cohabitent avec bonheur avec des œuvres d''art moderne.', 20, 150, 10, false, true, false, false);
+ (3, false, 3, 300, 4, 6, 1000, 700, 'Faites une expérience hors du temps, dans cette magnifique maison marocaine traditionnelle avec sa piscine et ses jardins privatifs. Idéale pour une famille ou des amis, elle vous permettra de vous détendre dans un cadre élégant et épuré.', 3, 500, 10, true, true, true, false);
+ (2, true, 1, 200, 4, 5, 1570, 1150, 'Un lieu exceptionnel idéalement situé. Tout se fait facilement à pieds. Une chambre magnifique, une terrasse des plus agréables, une piscine chauffée. La nourriture succulente ! Et quel accueil ! Une équipe aux petits soins qui prend le temps de tout vous expliquer et vous conseiller. Le hammam, un bonheur. Bref, tout était plus que parfait.', 50, 450, 31, true, true, true, true);
+ (4, true, 2, 150, 3, 4, 600, 470, 'Appartement panoramique Medina', 10, 200, 10, false, true, true, true);
+ (5, false, 2, 270, 4, 6, 680, 550, 'Notre maison cosy, colorée et confortable, située dans une très vieille maison traditionnelle de la médina, est disponible pour tous ceux qui souhaitent approfondir la sensation de fraîcheur d’Essaouira et retrouver la tranquillité d’esprit en cette période de forte activité. Vous avez votre espace totalement privé comprenant une chambre avec lit double, un salon, une petite cuisine, une salle de bain et un grand hall ressemblant à un patio, mais nous sommes prêts à socialiser si vous le souhaitez!', 15, 700, 15, true, false, true, false);
+ (6, true, 4, 180, 3, 2, 1100, 980, 'Studio charifa une chambre dans riad diamant blanc au 2 eme étage la chambre a une vue sur mer et le jardin .', 0, 600, 7, true, true, true, true);
+
+-- insert LOGEMENT
+INSERT into LOGEMENT (id_logement, nom_logement, detail_logement_, adress_logement)
+VALUES 
+(2, 'Hotel Tildi', 1, 'Rue Hubert Giraud, Ville Nouvelle - 80000 Agadir');
+(3, 'Hotel Tildi', 1, 'Rue Hubert Giraud, Ville Nouvelle - 80000 Agadir');
+(1, 'Dar Itrane - Superbe maison berbère', 3, 'Tagadirt, Marrakech-Tensift-Al Haouz, Maroc');
+(4, 'Villa Authentique Medina', 2, 'Marrakech, Tensift, Maroc');
+(5, 'Villa Authentique Medina', 2, 'Marrakech, El Haouz, Maroc');
+(6, 'Appartement panoramique', 4, 'Marrakech, entre Tensift et El Haouz, Maroc');
+(7, 'Appartement panoramique', 4, 'Marrakech, entre Tensift et El Haouz, Maroc');
+(8, 'Appartement panoramique', 4, 'Marrakech, entre Tensift et El Haouz, Maroc');
+(9, 'Appartement paisible ', 5, 'Essaouira, Marrakech-Safi, Maroc');
+(11, 'Studio charifa', 6, 'Fes, Boulvard Asslat, Maroc');
+(10, 'Studio charifa double vue mer', 6, 'Fes, environs de quartier El Mouahidine, Maroc');
+
+-- insert REMARQUE_CLIENT
+INSERT into REMARQUE_CLIENT (id_remarque, personne_id, description_remarque) 
+VALUES
+(1, 1000, 'Prend bien soin du logement.');
+(2, 1010, 'lay3merha dar.');
+(3, 1008, 'Il a cassé 2 vase.');
+
+-- insert SAUVEGARDE_LOGEMENT
+INSERT into SAUVEGARDE_LOGEMENT (id_sauvegarde, client_, logement_) 
+VALUES 
+(2, 1000, 5);
+(3, 1000, 2);
+(4, 1005, 3);
+
+
+
+--Pour faire backup : aller dans  => C:\Program Files\PostgreSQL\9.5\bin
+-- commande : pg_dump --column-inserts -U postgres -a -p 5433 -d pgluxedatabase > C:\Users\pc\Desktop\testBackup.sql
 -- -U : postgres : Username 
 -- -d : pgluxedatabse : database name 
 -- -a : generer que le script insert
