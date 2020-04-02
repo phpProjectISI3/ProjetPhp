@@ -321,6 +321,7 @@ VALUES
 (4, 1005, 3);
 
 --insert PHOTO_LOGEMENT
+INSERT
 
 
 
