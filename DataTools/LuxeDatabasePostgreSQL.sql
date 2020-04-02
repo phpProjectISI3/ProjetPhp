@@ -354,8 +354,41 @@ VALUES
 (29, 'https://a0.muscache.com/im/pictures/cbdd4593-ef20-4d5c-acfa-3fb2fb5a6d6a.jpg?aki_policy=xx_large', 6);
 
 
+CREATE OR REPLACE FUNCTION AJOUT_POINTS()
+  RETURNS trigger AS
+$PERSONNE$
+BEGIN
+   NEW.point_personne := (NEW.nbr_enfant_scolarise * 5);
+   NEW.point_personne := NEW.point_personne + (NEW.nbr_Enfant_non_scolarise * 2);
+   raise notice '%',(NEW.point_personne);
+    IF(NEW.est_marie is TRUE) THEN
+        NEW.point_personne := NEW.point_personne + 3;
+    ELSE
+        NEW.point_personne := NEW.point_personne + 1;
+    END IF;
+
+    IF(NEW.grade_ = 1) THEN
+        NEW.point_personne := NEW.point_personne + 4;
+    ELSIF (NEW.grade_ = 2) THEN
+        NEW.point_personne := NEW.point_personne + 3;
+    END IF;
+
+   RETURN NEW;
+END;
+$PERSONNE$ 
+LANGUAGE plpgsql;
+
+-- DROP TRIGGER TRIGGER_AJOUT_POINTS
+-- ON PERSONNE;
+
+CREATE trigger TRIGGER_AJOUT_POINTS
+  BEFORE insert or update
+  ON PERSONNE
+  FOR EACH ROW
+  EXECUTE PROCEDURE AJOUT_POINTS();
+
 ------------------------ TODO :-----------------------------
--- Trigger : Saisie Point_personne
+-- Trigger : Saisie Point_personne : presque fait.
 --insert PLANNING
 --insert DEMANDE
 --insert RESERVATION
