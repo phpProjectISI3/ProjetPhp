@@ -320,6 +320,8 @@ VALUES
 (3, 1000, 2);
 (4, 1005, 3);
 
+--insert PHOTO_LOGEMENT
+
 
 
 --Pour faire backup : aller dans  => C:\Program Files\PostgreSQL\9.5\bin
