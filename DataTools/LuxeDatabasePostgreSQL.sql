@@ -123,8 +123,8 @@ create table PHOTO_LOGEMENT
 (
     id_photo int default nextval ('PHOTO_LOGEMENT_seq') primary key,
     chemin_photo varchar(250),
-    logement_ int,
-    foreign key (logement_) references LOGEMENT(id_logement)
+    detail_logement_ int,
+    foreign key (detail_logement_) references DETAIL_LOGEMENT
 );
 
 create sequence PLANNING_LOGEMENT_seq
@@ -284,51 +284,91 @@ VALUES
 -- insert DETAIL_LOGEMENT
 INSERT into DETAIL_LOGEMENT (id_detail, est_categorie, type_logement_, superficie_logement, nbr_piece, capacite_personne_max, tarif_par_nuit_hs, tarif_par_nuit_bs, description_logement, max_reserv, tarif_annulation, marge_annulation, piscine_disponible, parking_disponible, jardin_cours, massage_disponible) 
 VALUES 
- (1, true, 5, 95, 3, 3, 350, 200, 'Des murs lambrissés en chêne, des volets en bois et un parquet chaleureux vous entourent. Faites votre choix parmi des centaines de livres et lisez-les dans une boîte à lit secrète derrière des étagères allant du sol au plafond. Les portraits de famille et les objets de famille cohabitent avec bonheur avec des œuvres d''art moderne.', 20, 150, 10, false, true, false, false);
- (3, false, 3, 300, 4, 6, 1000, 700, 'Faites une expérience hors du temps, dans cette magnifique maison marocaine traditionnelle avec sa piscine et ses jardins privatifs. Idéale pour une famille ou des amis, elle vous permettra de vous détendre dans un cadre élégant et épuré.', 3, 500, 10, true, true, true, false);
- (2, true, 1, 200, 4, 5, 1570, 1150, 'Un lieu exceptionnel idéalement situé. Tout se fait facilement à pieds. Une chambre magnifique, une terrasse des plus agréables, une piscine chauffée. La nourriture succulente ! Et quel accueil ! Une équipe aux petits soins qui prend le temps de tout vous expliquer et vous conseiller. Le hammam, un bonheur. Bref, tout était plus que parfait.', 50, 450, 31, true, true, true, true);
- (4, true, 2, 150, 3, 4, 600, 470, 'Appartement panoramique Medina', 10, 200, 10, false, true, true, true);
- (5, false, 2, 270, 4, 6, 680, 550, 'Notre maison cosy, colorée et confortable, située dans une très vieille maison traditionnelle de la médina, est disponible pour tous ceux qui souhaitent approfondir la sensation de fraîcheur d’Essaouira et retrouver la tranquillité d’esprit en cette période de forte activité. Vous avez votre espace totalement privé comprenant une chambre avec lit double, un salon, une petite cuisine, une salle de bain et un grand hall ressemblant à un patio, mais nous sommes prêts à socialiser si vous le souhaitez!', 15, 700, 15, true, false, true, false);
+ (1, true, 5, 95, 3, 3, 350, 200, 'Des murs lambrissés en chêne, des volets en bois et un parquet chaleureux vous entourent. Faites votre choix parmi des centaines de livres et lisez-les dans une boîte à lit secrète derrière des étagères allant du sol au plafond. Les portraits de famille et les objets de famille cohabitent avec bonheur avec des œuvres d''art moderne.', 20, 150, 10, false, true, false, false),
+ (3, false, 3, 300, 4, 6, 1000, 700, 'Faites une expérience hors du temps, dans cette magnifique maison marocaine traditionnelle avec sa piscine et ses jardins privatifs. Idéale pour une famille ou des amis, elle vous permettra de vous détendre dans un cadre élégant et épuré.', 3, 500, 10, true, true, true, false),
+ (2, true, 1, 200, 4, 5, 1570, 1150, 'Un lieu exceptionnel idéalement situé. Tout se fait facilement à pieds. Une chambre magnifique, une terrasse des plus agréables, une piscine chauffée. La nourriture succulente ! Et quel accueil ! Une équipe aux petits soins qui prend le temps de tout vous expliquer et vous conseiller. Le hammam, un bonheur. Bref, tout était plus que parfait.', 50, 450, 31, true, true, true, true),
+ (4, true, 2, 150, 3, 4, 600, 470, 'Appartement panoramique Medina', 10, 200, 10, false, true, true, true),
+ (5, false, 2, 270, 4, 6, 680, 550, 'Notre maison cosy, colorée et confortable, située dans une très vieille maison traditionnelle de la médina, est disponible pour tous ceux qui souhaitent approfondir la sensation de fraîcheur d’Essaouira et retrouver la tranquillité d’esprit en cette période de forte activité. Vous avez votre espace totalement privé comprenant une chambre avec lit double, un salon, une petite cuisine, une salle de bain et un grand hall ressemblant à un patio, mais nous sommes prêts à socialiser si vous le souhaitez!', 15, 700, 15, true, false, true, false),
  (6, true, 4, 180, 3, 2, 1100, 980, 'Studio charifa une chambre dans riad diamant blanc au 2 eme étage la chambre a une vue sur mer et le jardin .', 0, 600, 7, true, true, true, true);
 
 -- insert LOGEMENT
 INSERT into LOGEMENT (id_logement, nom_logement, detail_logement_, adress_logement)
 VALUES 
-(2, 'Hotel Tildi', 1, 'Rue Hubert Giraud, Ville Nouvelle - 80000 Agadir');
-(3, 'Hotel Tildi', 1, 'Rue Hubert Giraud, Ville Nouvelle - 80000 Agadir');
-(1, 'Dar Itrane - Superbe maison berbère', 3, 'Tagadirt, Marrakech-Tensift-Al Haouz, Maroc');
-(4, 'Villa Authentique Medina', 2, 'Marrakech, Tensift, Maroc');
-(5, 'Villa Authentique Medina', 2, 'Marrakech, El Haouz, Maroc');
-(6, 'Appartement panoramique', 4, 'Marrakech, entre Tensift et El Haouz, Maroc');
-(7, 'Appartement panoramique', 4, 'Marrakech, entre Tensift et El Haouz, Maroc');
-(8, 'Appartement panoramique', 4, 'Marrakech, entre Tensift et El Haouz, Maroc');
-(9, 'Appartement paisible ', 5, 'Essaouira, Marrakech-Safi, Maroc');
-(11, 'Studio charifa', 6, 'Fes, Boulvard Asslat, Maroc');
+(2, 'Hotel Tildi', 1, 'Rue Hubert Giraud, Ville Nouvelle - 80000 Agadir'),
+(3, 'Hotel Tildi', 1, 'Rue Hubert Giraud, Ville Nouvelle - 80000 Agadir'),
+(1, 'Dar Itrane - Superbe maison berbère', 3, 'Tagadirt, Marrakech-Tensift-Al Haouz, Maroc'),
+(4, 'Villa Authentique Medina', 2, 'Marrakech, Tensift, Maroc'),
+(5, 'Villa Authentique Medina', 2, 'Marrakech, El Haouz, Maroc'),
+(6, 'Appartement panoramique', 4, 'Marrakech, entre Tensift et El Haouz, Maroc'),
+(7, 'Appartement panoramique', 4, 'Marrakech, entre Tensift et El Haouz, Maroc'),
+(8, 'Appartement panoramique', 4, 'Marrakech, entre Tensift et El Haouz, Maroc'),
+(9, 'Appartement paisible ', 5, 'Essaouira, Marrakech-Safi, Maroc'),
+(11, 'Studio charifa', 6, 'Fes, Boulvard Asslat, Maroc'),
 (10, 'Studio charifa double vue mer', 6, 'Fes, environs de quartier El Mouahidine, Maroc');
 
 -- insert REMARQUE_CLIENT
 INSERT into REMARQUE_CLIENT (id_remarque, personne_id, description_remarque) 
 VALUES
-(1, 1000, 'Prend bien soin du logement.');
-(2, 1010, 'lay3merha dar.');
+(1, 1000, 'Prend bien soin du logement.'),
+(2, 1010, 'lay3merha dar.'),
 (3, 1008, 'Il a cassé 2 vase.');
 
 -- insert SAUVEGARDE_LOGEMENT
 INSERT into SAUVEGARDE_LOGEMENT (id_sauvegarde, client_, logement_) 
 VALUES 
-(2, 1000, 5);
-(3, 1000, 2);
+(2, 1000, 5),
+(3, 1000, 2),
 (4, 1005, 3);
 
 --insert PHOTO_LOGEMENT
-INSERT
+INSERT INTO public.photo_logement (id_photo, chemin_photo, detail_logement_) 
+VALUES 
+(1, 'https://media.expedia.com/hotels/2000000/1460000/1452800/1452729/1856a7d1_b.jpg', 1),
+(2, '//www.alibabuy.com/img_hotel/5/3/7/1_240046_1.jpg', 1),
+(3, 'https://a0.muscache.com/4ea/air/v2/pictures/173f07df-c883-4e64-9dec-d166280cf935.jpg?t=r:w2500-h1500-sfit,e:fjpg-c90', 3),
+(4, 'https://a0.muscache.com/4ea/air/v2/pictures/704b3781-d26a-4c4e-a62d-433d8a1dbaf0.jpg?t=r:w2500-h1500-sfit,e:fjpg-c90', 3),
+(5, 'https://a0.muscache.com/4ea/air/v2/pictures/3874656c-63cd-4993-a643-3b144871821a.jpg?t=r:w2500-h1500-sfit,e:fjpg-c90', 3),
+(6, 'https://a0.muscache.com/4ea/air/v2/pictures/296774d1-4de3-4933-ae35-7bdef0840c87.jpg?t=r:w2500-h1500-sfit,e:fjpg-c90', 3),
+(7, 'https://a0.muscache.com/im/pictures/e85d7dbf-ff50-42d6-8e61-dfb242813fd5.jpg?aki_policy=xx_large', 2),
+(8, 'https://a0.muscache.com/im/pictures/9581cd43-cc28-4372-b91f-3805af5e7ba2.jpg?aki_policy=xx_large', 2),
+(9, 'https://a0.muscache.com/im/pictures/5bcf78c7-c516-4179-bdec-95c9e4c1fe7d.jpg?aki_policy=xx_large', 2),
+(10, 'https://a0.muscache.com/im/pictures/40ae82a4-273e-4ac8-909f-b8d5f0d531cd.jpg?aki_policy=xx_large', 2),
+(11, 'https://a0.muscache.com/im/pictures/826c1d2a-eab6-49ce-b69b-3aa6a6405746.jpg?aki_policy=xx_large', 2),
+(12, 'https://a0.muscache.com/im/pictures/d51a9a29-34cf-41d9-b190-4ea2d75be255.jpg?aki_policy=xx_large', 2),
+(13, 'https://a0.muscache.com/im/pictures/89ffe1e9-da75-48ac-b5a1-65dfce0927e2.jpg?aki_policy=xx_large', 2),
+(14, 'https://a0.muscache.com/im/pictures/52495953/2dfd8669_original.jpg?aki_policy=xx_large', 2),
+(15, 'https://a0.muscache.com/im/pictures/fd001e9d-8e9e-4bd7-b000-652215c3b080.jpg?aki_policy=xx_large', 4),
+(16, 'https://a0.muscache.com/im/pictures/d0cac70d-0439-4f18-9eae-7cc4851c9d81.jpg?aki_policy=xx_large', 4),
+(17, 'https://a0.muscache.com/im/pictures/88164979-9ddf-4bc9-bb66-a45dcea2d84f.jpg?aki_policy=xx_large', 4);
+(18, 'https://a0.muscache.com/im/pictures/01842582-baa8-494e-9340-f02acbf2b895.jpg?aki_policy=xx_large', 5),
+(19, 'https://a0.muscache.com/im/pictures/bd2244f3-d622-4439-8d55-67e7020fe09d.jpg?aki_policy=xx_large', 5),
+(20, 'https://a0.muscache.com/im/pictures/8561d349-0617-477f-a744-09e2e8758e76.jpg?aki_policy=xx_large', 5),
+(21, 'https://a0.muscache.com/im/pictures/8dd027a5-4505-4d68-86e3-938b3e0bed2d.jpg?aki_policy=xx_large', 5),
+(22, 'https://a0.muscache.com/im/pictures/a123e39f-7cd9-4feb-9c17-1de850dd7a97.jpg?aki_policy=xx_large', 5),
+(23, 'https://a0.muscache.com/im/pictures/b3208ea0-36f5-4aa3-8681-d848fae1ce66.jpg?aki_policy=xx_large', 5),
+(24, 'https://a0.muscache.com/im/pictures/1ec971bd-22ec-47e8-9fed-0ac02601ae29.jpg?aki_policy=xx_large', 5),
+(25, 'https://a0.muscache.com/im/pictures/6a428bbb-769a-44a8-a559-415e8c1ec733.jpg?aki_policy=xx_large', 6),
+(26, 'https://a0.muscache.com/im/pictures/718adfcf-5676-46fe-9340-2c913fb508cc.jpg?aki_policy=xx_large', 6),
+(27, 'https://a0.muscache.com/im/pictures/be22e103-0ea4-4762-96cb-821cd66685e1.jpg?aki_policy=xx_large', 6),
+(28, 'https://a0.muscache.com/im/pictures/dce3f89f-679e-45bd-ae1b-d0bc9685c9fa.jpg?aki_policy=xx_large', 6),
+(29, 'https://a0.muscache.com/im/pictures/cbdd4593-ef20-4d5c-acfa-3fb2fb5a6d6a.jpg?aki_policy=xx_large', 6);
 
 
+------------------------ TODO :-----------------------------
+-- Trigger : Saisie Point_personne
+--insert PLANNING
+--insert DEMANDE
+--insert RESERVATION
+--insert FACTURATION
+---------------------------------------------------------------------
 
+
+-----------------------Informations---------------------------------------------------------------------
 --Pour faire backup : aller dans  => C:\Program Files\PostgreSQL\9.5\bin
--- commande : pg_dump --column-inserts -U postgres -a -p 5433 -d pgluxedatabase > C:\Users\pc\Desktop\testBackup.sql
+-- commande : pg_dump -U postgres -a -p 5433 -d pgluxedatabase > C:\Users\pc\Desktop\testBackup.sql
 -- -U : postgres : Username 
 -- -d : pgluxedatabse : database name 
--- -a : generer que le script insert
+-- -a : generer que le script INSERT (Copy .. \.)
 -- -p : port : 5433
 -- > chemin du Ficier Backup (extension .sql/.backup obligatoire).
+-----------------------------------------------------------------------------------------------------------
