@@ -29,7 +29,6 @@ create table GRADE
     id_grade int primary key,
     libelle_grade varchar(15)
 );
-
 create sequence PERSONNE_seq
 start 1000;
 create table PERSONNE
