@@ -36,3 +36,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','PagesController@welcome');
 
 Route::get('about','PagesController@about');
+
+Route::get('blog', 'PagesController@blog');
+
+Route::get('service','PagesController@service');
+
+Route::get('detailRecherche', 'PagesController@detailRecherche');
+
+Route::get('contact', 'PagesController@contact');
+
+Route::get('login','PagesController@login');

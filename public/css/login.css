@@ -1,0 +1,64 @@
+#Containers{
+    background-color: rgb(226, 224, 224);
+    width: 60%;
+    height: 70vh;
+    margin: auto;
+    margin-top: 15vh;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(156, 154, 154);
+}
+
+#Containers #imgLeft{
+    /* background-color: #000; */
+    border-top-left-radius: 10px;   
+        border-bottom-left-radius: 10px;   
+    background-image: url(/images/bar.jpg);
+    background-size: cover;
+}
+
+#Containers #containerright{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#Containers #containerright div{
+    margin-bottom: 3em;
+}
+
+#Containers #containerright div:first-child{
+    font-size: 30px;
+    margin-bottom: 2em;
+    color:rgb(82, 82, 82);
+}
+
+#Containers #containerright div input {
+    height: 3em;
+    width: 18em;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    box-shadow: 0 0 5px rgb(128, 128, 128);
+    background: transparent;
+    text-align: center;
+    font-size: 18px;
+}
+
+#Containers #containerright div input::placeholder{
+    text-align: center;
+}
+
+#Containers #containerright input[type="submit"]{
+    height: 3.5em;
+    width: 15em;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    background-color: orangered;
+    color:white;
+    box-shadow: 0 0 5px rgb(133, 131, 131);
+}

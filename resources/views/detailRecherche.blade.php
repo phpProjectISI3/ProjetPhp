@@ -7,10 +7,7 @@
 @endsection
 
 @section('body')
-<div id="fh5co-wrapper">
-	<div id="fh5co-page">
-
-	<div class="fh5co-parallax"   id="mainCover" data-stellar-background-ratio="0.5">
+<div class="fh5co-parallax"   id="mainCover" data-stellar-background-ratio="0.5">
         <img name="slide"  alt="">
         <br />
         <a class="prev" onclick="previous()">&#10094;</a>
@@ -19,14 +16,50 @@
     
 	<div id="fh5co-hotel-section">
 		<div class="container">
-			<div class="row">
-				
-				
+			<div class="row" id="Row">
+				<h1>Villa</h1>
+				<div id="division">
+					<label id="chambres" name="chambrs">2 Chambres</label><span></span>
+					<label id="toilettes" name="toilettes">1 Toilette </label><span></span>
+					<label id="sallemanger" name="sallemanger">1 Salle à manger </label><span></span>
+					<label id="sejour" name="sejour">1 Sejour</label>
+				</div>
+				<hr>
+				<div id="description">
+					<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus praesentium asperiores esse facere libero deserunt dolores hic ipsa? Dolorem nam ratione voluptatibus iusto fugit nostrum recusandae placeat pariatur porro, veritatis facere aliquam nulla corporis iure, repellendus autem ea molestias praesentium. Voluptatibus voluptatum quisquam, modi laudantium unde voluptate dolore aliquid soluta.</p>
+				</div>
+				<hr>
+				<div id="Services">
+					<h3>Services</h3>
+					<ul>
+						<li> Eau Chaude </li>
+						<li> Télévision </li>
+						<li> Climatiseur </li>
+						<li> Wifi </li>
+					</ul>
+				</div>
+				<div id="Interdictions">
+					<h3>Interdictions</h3>
+					<ul>
+						<li> Espace non fumeur </li>
+						<li> Fête ou Partie </li>
+						<li> Chien </li>
+					</ul>
+				</div>
+				<hr>
+				<div id="Adresse">
+					<h3>Adresse</h3>
+					<p><span>Oujda</span> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam, reprehenderit! </p>
+					<iframe class="fh5co-map" id="map"
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.91245062501!2d-1.9006504850806016!3d34.65691389307045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd7864a5817de333%3A0x4365aa956bd4ff1e!2sSupMTI!5e0!3m2!1sfr!2sma!4v1584826832545!5m2!1sfr!2sma"
+					width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+					tabindex="0"></iframe>
+				</div>
 			</div>
-			<div id="rightside">
+			<div id="rightside" style="margin-top: -45em;">
 				<h2>MAD486 <span>/nuit</span></h2>
 				<hr size="30">
-				<form action="">
+				<form action="login.html">
 					
 					<div class="dates">
 						<span>Dates</span>
@@ -75,7 +108,7 @@
 				</div>
 			</div>
 			<div id="reserver">
-				<input type="submit" value="Réserver">	
+				<input type="submit" value="Réserver" >	
 			</div>
 		</form>
 		</div>
