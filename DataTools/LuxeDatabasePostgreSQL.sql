@@ -102,7 +102,8 @@ create table DETAIL_LOGEMENT
     piscine_disponible BOOLEAN,
     parking_disponible BOOLEAN,
     jardin_cours BOOLEAN,
-    massage_disponible BOOLEAN
+    massage_disponible BOOLEAN,
+    localisation_logement varchar(1500)
 );
 	
 create sequence LOGEMENT_seq
