@@ -82,7 +82,7 @@
 							<a class="book-now text-center" href="{{url('/detailRecherche')}}"><i class="ti-calendar"></i> Réservé </a>
 						</div>
 						<div class="desc">
-							<h3><a href="{{url('/detailRecherche')}}">Villa</a></h3>
+							<h3><a href="{{url('/detailRecherche')}}">Villa / Oujda</a></h3>
 							<p>Villa de luxe se démarque par sa clientèle, qui peut avoir des exigences particulières que chaque Villa ayant
 							obtenu la dénomination « Villa de luxe » se doit de satisfaire</p>
 						</div>
@@ -95,7 +95,7 @@
 							<a class="book-now text-center" href="{{url('/detailRecherche')}}"><i class="ti-calendar"></i> Réservé</a>
 						</div>
 						<div class="desc">
-							<h3><a href="{{url('/detailRecherche')}}">Maison</a></h3>
+							<h3><a href="{{url('/detailRecherche')}}">Maison / Meknes</a></h3>
 							<p>Les Maisons sont décorées dans des tons chauds et raffinés et sont pourvues de la climatisation et
 							d'équipements à la pointe de la technologie.</p>
 						</div>

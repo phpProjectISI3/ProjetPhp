@@ -1,12 +1,7 @@
-@extends('app')
+<link rel="stylesheet" href="css/login.css">
 
-@section('title','login')
 
-@section('linkcss')
-        <link rel="stylesheet" href="css/login.css">
-@endsection
 
-@section('body')
 <div id="Containers">
         <div id="imgLeft">
 
@@ -16,6 +11,7 @@
                 <div>
                     ISI3
                 </div>
+
                 <div>
                     <input type="text" name="Username" placeholder="Nom d'utilisateur" id="">
                 </div>
@@ -26,4 +22,3 @@
             </form>
         </div>
     </div>
-@endsection

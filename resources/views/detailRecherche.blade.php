@@ -56,10 +56,10 @@
 					tabindex="0"></iframe>
 				</div>
 			</div>
-			<div id="rightside" style="margin-top: -45em;">
+			<div id="rightside" name="rightside">
 				<h2>MAD486 <span>/nuit</span></h2>
 				<hr size="30">
-				<form action="login.html">
+				<form action="{{url('login')}}">
 					
 					<div class="dates">
 						<span>Dates</span>
@@ -116,5 +116,6 @@
 @endsection
 
 @section('scripts')
-    <script src="js/detailRecherche.js"></script>
+<script src="js/scrolling.js"></script>
+	<script src="js/detailRecherche.js"></script>
 @endsection
