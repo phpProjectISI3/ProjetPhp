@@ -373,7 +373,7 @@ VALUES
 (14, 'https://a0.muscache.com/im/pictures/52495953/2dfd8669_original.jpg?aki_policy=xx_large', 2),
 (15, 'https://a0.muscache.com/im/pictures/fd001e9d-8e9e-4bd7-b000-652215c3b080.jpg?aki_policy=xx_large', 4),
 (16, 'https://a0.muscache.com/im/pictures/d0cac70d-0439-4f18-9eae-7cc4851c9d81.jpg?aki_policy=xx_large', 4),
-(17, 'https://a0.muscache.com/im/pictures/88164979-9ddf-4bc9-bb66-a45dcea2d84f.jpg?aki_policy=xx_large', 4);
+(17, 'https://a0.muscache.com/im/pictures/88164979-9ddf-4bc9-bb66-a45dcea2d84f.jpg?aki_policy=xx_large', 4),
 (18, 'https://a0.muscache.com/im/pictures/01842582-baa8-494e-9340-f02acbf2b895.jpg?aki_policy=xx_large', 5),
 (19, 'https://a0.muscache.com/im/pictures/bd2244f3-d622-4439-8d55-67e7020fe09d.jpg?aki_policy=xx_large', 5),
 (20, 'https://a0.muscache.com/im/pictures/8561d349-0617-477f-a744-09e2e8758e76.jpg?aki_policy=xx_large', 5),
