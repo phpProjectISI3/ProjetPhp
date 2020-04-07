@@ -46,3 +46,6 @@ Route::get('detailRecherche', 'PagesController@detailRecherche');
 Route::get('contact', 'PagesController@contact');
 
 Route::get('login','PagesController@login');
+
+Route::get('GestionLogement','PagesController@GestionLogement');
+Route::get('prototype','PagesController@prototype');

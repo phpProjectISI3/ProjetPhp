@@ -36,4 +36,11 @@ class PagesController extends Controller
         return view('login');
     }
 
+      public function GestionLogement(){
+        return view('GestionLogement');
+    }
+
+    public function prototype(){
+        return view('prototype');
+    }
 }
