@@ -22,13 +22,13 @@ use Illuminate\Support\Facades\Route;
 //     // first methode to send data to a view
 //     // return view('about',['bitfums'=>$bitfumes]);
 
-//     // send methode is 
+//     // send methode is
 //     // return view('about',)->with(['bitfumes'=>$bitfumes]);
 
 //     // the 3rd is with + the name of variable contain data
 //     // return view('about')->withBitfumes($bitfumes);
 
-//     // 4th methode is 
+//     // 4th methode is
 //         return view('about',compact('bitfumes'));
 // });
 
@@ -49,3 +49,5 @@ Route::get('login','PagesController@login');
 
 Route::get('GestionLogement','PagesController@GestionLogement');
 Route::get('prototype','PagesController@prototype');
+
+Route::resource('Logements','LogementController');

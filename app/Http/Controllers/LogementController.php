@@ -13,7 +13,7 @@ class LogementController extends Controller
      */
     public function index()
     {
-        //
+        return view('BackOfficeAdmin.GestionDesLogements.index');
     }
 
     /**

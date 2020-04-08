@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layout.app')
 
 @section('title','100% Luxe et Confort')
 
