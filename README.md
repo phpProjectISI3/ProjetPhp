@@ -9,7 +9,7 @@
 
 ## A propos de Laravel
 
-Laravel est un framework web open-source écrit en PHP1 respectant le principe modèle-vue-contrôleur et entièrement développé en programmation orientée objet. Laravel est distribué sous licence MIT, avec ses sources hébergées sur GitHub.
+Laravel est un framework web open-source écrit en PHP en respectant le principe modèle-vue-contrôleur et entièrement développé en programmation orientée objet. Laravel est distribué sous licence MIT, avec ses sources hébergées sur GitHub.
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
@@ -33,11 +33,11 @@ Projet de Booking sur mesure & réservation réalisé par l'équipe N2 dont les 
   La concepttion de schématisation Base de donnée a été réaliser en Merise et Uml ; pour cela quelque diagram sont déja dans leurs etats final tel que les diagrammes : Use-Case, séquences, class, MLD et MCD. Tous cela afin de garder une bonne organisation au sein de l'équipe  non pas seulement du code mais aussi au niveau de la répartition des taches. Nous déposerons dans ce répository toutes modification du codes directment dans la branche principal `master` du repository.
   
   Les technologie utilisés jusqu'à Maintenant sont :
-  - Langage & Framework : **Laravel Php**.
+  - Langage & Framework : **Laravel 7 -Php-**.
   - Template static : **Luxe** .
-  - Template engine : **Twig**.
-  - Orm : **Eloquent** (plus ou moins optionnel et décisionnel avec l'équipe).
-  - Base de donnée & requétage: **Sql Server en Transact-Sql**.
+  - Template engine : **Blade**.
+  - Orm : **Eloquent**.
+  - Base de donnée & requétage: **Sql Server en Transact-Sql** et ***PostgreSql en PLpgSql*.
   
   
   ***_With_Love_and_Fun_*** 
