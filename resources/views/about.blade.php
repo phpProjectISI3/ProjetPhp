@@ -28,7 +28,7 @@
 					<i class="glyphicon glyphicon-search" style="padding-left:  1em;"></i>
 				</button>
 				<div id="SearchZone">
-					<div class="a-col">
+					<div class="a-col selets">
 						<section>
 							<select class="cs-select cs-skin-border selectManual">
 								<option value="" disabled selected>Type </option>
@@ -38,7 +38,7 @@
 							</select>
 						</section>
 					</div>
-					<div class="a-col">
+					<div class="a-col selets">
 						<section>
 							<select class="cs-select cs-skin-border selectManual">
 								<option value="" disabled selected>Nombre des Chambres </option>
@@ -48,7 +48,7 @@
 							</select>
 						</section>
 					</div>
-					<div class="a-col">
+					<div class="a-col selets">
 						<section>
 							<select class="cs-select cs-skin-border selectManual">
 								<option value="" disabled selected>Nombre des Personnes </option>
@@ -58,14 +58,24 @@
 							</select>
 						</section>
 					</div>
+					<div class="a-col selets">
+						<section>
+							<select class="cs-select cs-skin-border selectManual">
+								<option value="" disabled selected>Ville </option>
+								<option value="Oujda">Oujda</option>
+								<option value="Meknes">Meknes</option>
+								<option value="Rabat">Rabat</option>
+							</select>
+						</section>
+					</div>
 					<div class="alternates">
-						<div class="a-col alternate">
+						<div class="a-col alternate selets">
 							<div class="input-field">
 								<label for="date-start">Date Arrivée</label>
 								<input type="text" class="form-control" id="date-start" />
 							</div>
 						</div>
-						<div class="a-col alternate">
+						<div class="a-col alternate selets">
 							<div class="input-field">
 								<label for="date-end">Date Sortie</label>
 								<input type="text" class="form-control" id="date-end" />

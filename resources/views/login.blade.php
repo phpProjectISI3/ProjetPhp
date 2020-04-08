@@ -7,7 +7,7 @@
 
         </div>
         <div id="containerright">
-            <form action="">
+            <form action="{{url('review')}}">
                 <div>
                     ISI3
                 </div>

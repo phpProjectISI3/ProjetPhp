@@ -36,6 +36,10 @@ class PagesController extends Controller
         return view('login');
     }
 
+    public function review(){
+        return view('review');
+    }
+
       public function GestionLogement(){
         return view('GestionLogement');
     }

@@ -47,6 +47,8 @@ Route::get('contact', 'PagesController@contact');
 
 Route::get('login','PagesController@login');
 
+Route::get('review','PagesController@review');
+
 Route::get('GestionLogement','PagesController@GestionLogement');
 Route::get('prototype','PagesController@prototype');
 
