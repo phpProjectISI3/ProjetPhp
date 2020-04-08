@@ -10882,3 +10882,11 @@ a.text-dark:focus {
   }
 }
 
+.table-buttons {
+  text-align: right;
+}
+
+.table-buttons form {
+  display: contents;
+}
+

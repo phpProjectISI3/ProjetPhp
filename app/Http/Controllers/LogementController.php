@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Logement;
 use Illuminate\Http\Request;
 
 class LogementController extends Controller
@@ -13,7 +13,8 @@ class LogementController extends Controller
      */
     public function index()
     {
-        return view('BackOfficeAdmin.GestionDesLogements.index');
+        $logements = Logement::All();
+        return view('BackOfficeAdmin.GestionDesLogements.index',compact('logements'));
     }
 
     /**
