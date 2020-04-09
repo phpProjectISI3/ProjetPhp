@@ -1,62 +1,75 @@
 @extends('app')
 
-@section('title','Détails')
+@section('title','Informations')
 
 @section('linkcss')
      <link rel="stylesheet" href="css/detailrecherche.css">
      <link rel="stylesheet" href="css/review.css">
+     <link rel="stylesheet" href="css/information.css">
 @endsection
 
 @section('body')
 <div id="fh5co-hotel-section">
                 <div class="container">
                     <div class="row" id="Row">
-                        <h1>La règle de la maison</h1>
+                        <h1>Dire quelques chose ?</h1>
                         <div id="division">
-                            <label id="chambres">5 Nuits</label>
+                            <textarea name="direqlqchose" id="" cols="70" rows="7"></textarea>
                         </div>
                         <hr>
-                        <div id="Entre">
-                            <h3>Entrée</h3>
-                            <ul>
-                                <li>14  Avril</li>
-                                <li><i>Check-In</i>&nbsp; <em>After 3:00 PM</em></li>
-                            </ul>
+                        <div id="information">
+                            <h3>Verifier Numéro de téléphone</h3>
+                            <div >
+                                <p>Ville</p>
+                                <div class="a-col divselect" >
+                                    <section>
+                                        <select class="cs-select cs-skin-border">
+                                            <option value="" disabled selected>Ville </option>
+                                            <option value="oujda">Oujda</option>
+                                            <option value="rabat">rabat</option>
+                                            <option value="casa">Casa</option>
+                                            <option value="meknes">Meknes</option>
+                                        </select>
+                                    </section>
+                                </div>
+                                <div id="Phone">
+                                    <h3>Numéro de téléphone</h3>
+                                    <input type="tel" name="tel" id="" placeholder="Numéro de téléphone">
+                                </div>
+                            </div>
                         </div>
-                        <hr>
-                        <div id="Sortie">
-                            <h3>Sortie</h3>
-                            <ul>
-                                <li> 17 AVril </li>
-                                <li> <i>Check-Out </i> &nbsp; <em>12:00 PM</em> </li>
-                            </ul>
+                        
+                        <div id="continue">
+                            <input type="submit" value="Valider">
                         </div>
-                        <hr>
-                        <div id="Services">
-                            <h3>Services</h3>
-                            <ul>
-                                <li> Eau Chaude </li>
-                                <li> Télévision </li>
-                                <li> Climatiseur </li>
-                                <li> Wifi </li>
-                            </ul>
+
+
+
+                        <!-- start: lors de la vérification du code envoyé  -->
+                            <!-- <h3>Entrez le code de vérification</h3>
+                            <div >
+                                <input type="text" name="verificationCode" placeholder="Entree ici" style="text-align:center;" id="">
+                            </div>
                         </div>
-                        <div id="Interdictions">
-                            <h3>Interdictions</h3>
-                            <ul>
-                                <li> Espace non fumeur </li>
-                                <li> Fête ou Partie </li>
-                                <li> Chien </li>
-                            </ul>
+                        
+                        <div id="continue">
+                            <input type="submit" value="Valider">
+                        </div> -->
+                        <!-- : end -->
+                        
+                        
+
+                        <!-- start: when number verified this will be showed -->
+                            <!-- <h3>Votre Numéro est vérifié</h3>
+                            <p><img src="images/checkmark.png" alt="">+212642833827</p>
                         </div>
-                        <hr>
-                        <div id="Description">
-                            <h3>Description</h3>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium dolorem maiores perferendis unde quaerat et reiciendis, voluptatibus ipsam numquam tempore necessitatibus obcaecati laudantium soluta sed commodi nam recusandae enim, architecto fugit nobis sunt sit nesciunt ducimus pariatur? Quasi vel repudiandae recusandae voluptate voluptatibus sit. Deserunt, odio molestias recusandae provident commodi sapiente expedita enim quia ipsa, quod voluptatem doloribus! Vero eos nisi iure obcaecati at, culpa, ratione praesentium adipisci facere nam pariatur voluptatibus harum tenetur facilis ipsum voluptas laboriosam et dolor doloremque vel, repellat ab quia! Nulla, voluptates, soluta nesciunt quas incidunt itaque quasi, ea blanditiis assumenda natus sapiente odio non?</p>
-                        </div>
+                        
                         <div id="continue">
                             <input type="submit" value="Continue">
-                        </div>
+                        </div>  -->
+                        <!-- : end -->
+
+
                     </div>
                     <div id="rightside">
                         <h2>MAD486 <span>/nuit</span></h2>

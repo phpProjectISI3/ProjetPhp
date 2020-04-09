@@ -5,58 +5,60 @@
 @section('linkcss')
      <link rel="stylesheet" href="css/detailrecherche.css">
      <link rel="stylesheet" href="css/review.css">
+     <link rel="stylesheet" href="css/confirmation.css">
 @endsection
 
 @section('body')
 <div id="fh5co-hotel-section">
                 <div class="container">
                     <div class="row" id="Row">
-                        <h1>La règle de la maison</h1>
+                        <h1>Confirmation de payement</h1>
                         <div id="division">
-                            <label id="chambres">5 Nuits</label>
+                            <div id="firstname">
+                                <h3>Prénom</h3>
+                                <input type="text" name="firstName" id="" placeholder="Entrez votre prénom">
+                            </div>
+                            <div id="lastname">
+                                <h3>Nom</h3>
+                                <input type="text" name="lastName" id="" placeholder="Entrez votre nom">
+                            </div>
                         </div>
                         <hr>
-                        <div id="Entre">
-                            <h3>Entrée</h3>
-                            <ul>
-                                <li>14  Avril</li>
-                                <li><i>Check-In</i>&nbsp; <em>After 3:00 PM</em></li>
-                            </ul>
+                        <div id="acceptedcards">
+                            <h3>Les cartes acceptes </h3>
+                            <div id="cards">
+                                <img src="images/visa.png" alt="">
+                                <img src="images/MasterCard_Logosvg.png" alt="">
+                            </div>
                         </div>
                         <hr>
-                        <div id="Sortie">
-                            <h3>Sortie</h3>
-                            <ul>
-                                <li> 17 AVril </li>
-                                <li> <i>Check-Out </i> &nbsp; <em>12:00 PM</em> </li>
-                            </ul>
+                        <div id="CardInfo">
+                            <h3>Informations de la carte</h3>
+                            <input type="text" name="cardnumber" placeholder="Numéro de la carte" id="cardnumber">
+                            <div >
+                                <input type="text" name="expiration"  placeholder="Date d'expiration" id="expiration">
+                                <input type="text" name="CVV" placeholder="Code CVV" id="CVV">
+                                <input type="text" name="zipCode"  placeholder="Zip Code" id="expiration">
+                            </div>
+                            
                         </div>
                         <hr>
-                        <div id="Services">
-                            <h3>Services</h3>
-                            <ul>
-                                <li> Eau Chaude </li>
-                                <li> Télévision </li>
-                                <li> Climatiseur </li>
-                                <li> Wifi </li>
-                            </ul>
-                        </div>
-                        <div id="Interdictions">
-                            <h3>Interdictions</h3>
-                            <ul>
-                                <li> Espace non fumeur </li>
-                                <li> Fête ou Partie </li>
-                                <li> Chien </li>
-                            </ul>
+                        <div id="cancellationpolicy">
+                            <h3>Politiques d'annulation</h3>
+                            <p>Une annulation 5 jours avant sera gratuite</p>
+                            <p>Une annulation 3 jours avant, vous serez rembourssé de 80%</p>
+                            <p>Une annulation avant moins de 3 jours, vous serez rembourssé que de 10%</p>
                         </div>
                         <hr>
-                        <div id="Description">
-                            <h3>Description</h3>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium dolorem maiores perferendis unde quaerat et reiciendis, voluptatibus ipsam numquam tempore necessitatibus obcaecati laudantium soluta sed commodi nam recusandae enim, architecto fugit nobis sunt sit nesciunt ducimus pariatur? Quasi vel repudiandae recusandae voluptate voluptatibus sit. Deserunt, odio molestias recusandae provident commodi sapiente expedita enim quia ipsa, quod voluptatem doloribus! Vero eos nisi iure obcaecati at, culpa, ratione praesentium adipisci facere nam pariatur voluptatibus harum tenetur facilis ipsum voluptas laboriosam et dolor doloremque vel, repellat ab quia! Nulla, voluptates, soluta nesciunt quas incidunt itaque quasi, ea blanditiis assumenda natus sapiente odio non?</p>
+                        <div id="policy">
+                            <img src="images/privacy-policy.png" alt=""> 
+                            <p id="lastP">
+                            En sélectionnant le bouton en bas, vous acceptez les règles de la maison, la politique d'annulation et la politique de remboursement des clients. vous acceptez également de payer le montant total indiqué, qui comprend les taxes d'occupation et les frais de service. ISI3 perçoit et remet désormais les taxes d'occupation imposées par le gouvernement à cet endroit. </p>
+
                         </div>
-                        <div id="continue">
-                            <input type="submit" value="Continue">
-                        </div>
+                                <div id="continue">
+                                    <input type="submit" value="Confirmer">
+                                </div>
                     </div>
                     <div id="rightside">
                         <h2>MAD486 <span>/nuit</span></h2>

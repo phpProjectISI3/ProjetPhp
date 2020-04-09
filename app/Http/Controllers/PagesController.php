@@ -40,6 +40,17 @@ class PagesController extends Controller
         return view('review');
     }
 
+    public function information(){
+        return view('information');
+    }
+
+    public function confirmation(){
+        return view('confirmation');
+    }
+
+
+    //hicham
+
       public function GestionLogement(){
         return view('GestionLogement');
     }
