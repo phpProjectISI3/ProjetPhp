@@ -1,7 +1,10 @@
-.jumbotron {
+.MonContainer {
+    /*position:;*/
     /*width: 50%;*/
-    margin-left: 20%;
-    margin-top: 15%;
+    /*margin-left: 20%;
+    margin-top: 15%;*/
+    margin-left: 15%;
+    margin-top: 21%;
     /*padding:0px;*/
     display: grid;
     grid-gap: 50px 100px;

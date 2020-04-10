@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Logement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 class LogementController extends Controller
 {
@@ -14,7 +16,15 @@ class LogementController extends Controller
     public function index()
     {
         $logements = Logement::All();
-        return view('BackOfficeAdmin.GestionDesLogements.index',compact('logements'));
+        //$test = DB::table('logement')
+        //    ->join('detail_logement', 'logement.detail_logement_', '=', 'detail_logement.id_detail')
+        //    ->select('detail_logement.description_logement')
+        //    ->where('logement.id_logement',1)
+        //    ->get()[];
+        return view
+                   ('BackOfficeAdmin.GestionDesLogements.index',
+                    compact('logements')
+                   );
     }
 
     /**

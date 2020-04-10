@@ -48,14 +48,4 @@ class PagesController extends Controller
         return view('confirmation');
     }
 
-
-    //hicham
-
-      public function GestionLogement(){
-        return view('GestionLogement');
-    }
-
-    public function prototype(){
-        return view('prototype');
-    }
 }
