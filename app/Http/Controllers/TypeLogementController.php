@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use app\Type_logement;
 
 class TypeLogementController extends Controller
 {

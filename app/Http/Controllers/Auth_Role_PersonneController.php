@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Auth_role_personne;
 
 class Auth_Role_PersonneController extends Controller
 {

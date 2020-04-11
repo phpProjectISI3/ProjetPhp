@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use app\Photo_logement;
 
 class PhotoLogementController extends Controller
 {

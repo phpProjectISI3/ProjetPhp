@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use app\Remarque_client;
 
 class Remarque_ClientController extends Controller
 {
