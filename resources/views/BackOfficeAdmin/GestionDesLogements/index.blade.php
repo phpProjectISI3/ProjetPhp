@@ -54,7 +54,7 @@
 					<input class="input--style-1 quantity" type="text" name="guests" value="2 Persn" />
 				</div>
 			</div>
-			<button class="btn-submit" type="submit">search</button>
+			<button class="btn-submit" type="submit">Rechercher !</button>
 		</form>
 	</div>
 </div>

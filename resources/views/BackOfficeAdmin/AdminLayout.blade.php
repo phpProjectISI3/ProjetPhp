@@ -4,6 +4,8 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+	<link rel="stylesheet" href="css/styleSidebarAdmin.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
 	<!--    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         rel="stylesheet"
         integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
@@ -11,50 +13,80 @@
 	<title>@yield('title')</title>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-success mb-4">
-		<div class="container">
-			<a class="navbar-brand" href="#">Navbar</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="#">
-							Home
-							<span class="sr-only">(current)</span>
+	<div class="container d-flex align-items-stretch">
+		<nav id="sidebar" class="img"
+			style="position: fixed;left: 0px;background-image: url(images/bg_1.jpg);height: 100%;">
+			<div class="p-4">
+				<h1>
+					<a href="index.html" class="logo">
+						<img src="images/logoTravel.png" alt="Agence de réservations" style="width: 200px;" />
+						<!--						<span>Travel Agency</span>
+-->
+					</a>
+				</h1>
+				<ul class="list-unstyled components mb-5">
+					<li class="active">
+						<a href="#">
+							<span class="fas fa-house-user mr-3"></span> Accueil
 						</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{route('Logements.index')}}">Logements</a>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Dropdown
+					<li>
+						<a href="#">
+							<span class="fas fa-building mr-3"></span> Logements
 						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">Action</a>
-							<a class="dropdown-item" href="#">Another action</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Something else here</a>
-						</div>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+					<li>
+						<a href="#">
+							<span class="fas fa-users mr-3"></span> Clients
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="fas fa-scroll mr-3"></span> Demandes
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="fas fa-edit mr-3"></span> Réservations
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="fas fa-file-invoice-dollar mr-3"></span> Facturations
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="fas fa-chart-line mr-3"></span> Statistiques
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span class="fas fa-history mr-3"></span> Historique
+						</a>
 					</li>
 				</ul>
-				<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-				</form>
-			</div>
-		</div>
-	</nav>
 
-	<div class="container">
+				<div class="footer" style="position: absolute; bottom: 0px;">
+					<p>
+						Isi3
+						<a href="#" target="_blank">Grp N&ordm;2</a>.
+						<br />Copyright &copy;
+						<script>document.write(new Date().getFullYear());</script> All rights reserved
+					</p>
+				</div>
+			</div>
+		</nav>
+	</div>
+
+	<div class="container" style="margin-left:23%;">
 		@yield('content')
 	</div>
 	<script src="{{ asset('js/app.js') }}"></script>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/mainSidebarAdmin.js"></script>
 </body>
 </html>
