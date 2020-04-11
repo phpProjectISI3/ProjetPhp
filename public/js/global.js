@@ -53,8 +53,8 @@
         });
     
         function refineString(s) {
-            if(parseInt(s) <= 1) return parseInt(s) + " Guest";
-            else return parseInt(s) + " Guests";
+            if(parseInt(s) <= 1) return parseInt(s) + " Persn";
+            else return parseInt(s) + " Persn";
         }
     
     }catch (e) {

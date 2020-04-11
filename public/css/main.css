@@ -45,22 +45,22 @@
  * More sensible default box-sizing:
  * css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
  */
-/*html {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 * {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
-*, *:before, *:after {
-  -webkit-box-sizing: inherit;
-  -moz-box-sizing: inherit;
-  box-sizing: inherit;
-}*/
+    *, *:before, *:after {
+        -webkit-box-sizing: inherit;
+        -moz-box-sizing: inherit;
+        box-sizing: inherit;
+    }
 
 /* ==========================================================================
    #RESET
@@ -221,7 +221,7 @@ a {
 
 @media (max-width: 767px) {
     .p-t-395 {
-        /*padding-top: 120px;*/
+        padding-top: 120px;
     }
 }
 
@@ -298,7 +298,7 @@ a {
 /* ==========================================================================
    #WRAPPER
    ========================================================================== */
-.wrapper {
+/*.wrapper {
     margin: 0 auto;
 }
 
@@ -320,7 +320,7 @@ a {
 
 .wrapper--w1226 {
     max-width: 1226px;
-}
+}*/
 
 /* ==========================================================================
    #BUTTON
@@ -656,7 +656,7 @@ button {
     background: #00ad5f;
 }
 
-.input-group {
+.input-groupCodePen {
     position: relative;
     margin-bottom: 23px;
     -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
@@ -670,6 +670,7 @@ button {
     border-radius: 10px;
     float: left;
     margin-right: 10px;
+    width: 0px;
 }
 
 .form::after {
@@ -699,7 +700,7 @@ button {
         transition: all 0.4s ease;
     }
 
-.label {
+.labelCodePen {
     font-size: 12px;
     color: #999;
     text-transform: uppercase;
