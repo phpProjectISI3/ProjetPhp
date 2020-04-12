@@ -6,16 +6,16 @@
 	<link rel="stylesheet" href="{{ asset('../css/app.css') }}" />
 	<link rel="stylesheet" href="../css/styleSidebarAdmin.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
-	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+<!--	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 		rel="stylesheet"
 		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-		crossorigin="anonymous" />
+		crossorigin="anonymous" />-->
 	<title>@yield('title')</title>
 </head>
 <body>
 	<div class="container d-flex align-items-stretch">
 		<nav id="sidebar" class="img"
-			style="position: fixed;left: 0px;background-image: url(../images/bg_1.jpg);height: 100%;">
+			style="top: 0px;position: fixed;left: 0px;background-image: url(../images/bg_1.jpg);height: 100%;">
 			<div class="p-4">
 				<h1>
 					<a href="index.html" class="logo">
@@ -67,7 +67,7 @@
 
 				<div class="footer" style="position: absolute; bottom: 0px;">
 					<p>
-						&nbsp;&nbsp;&nbsp;Isi3 
+						&nbsp;&nbsp;&nbsp;Isi3
 						<a href="#" target="_blank">Grp N&ordm;2</a>.
 						<br />Copyright &copy;
 						<script>document.write(new Date().getFullYear());</script> All rights reserved
