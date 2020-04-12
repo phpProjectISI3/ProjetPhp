@@ -103,9 +103,8 @@ create table DETAIL_LOGEMENT
     parking_disponible BOOLEAN,
     jardin_cours BOOLEAN,
     massage_disponible BOOLEAN,
-    localisation_logement varchar(1500)
 );
-	
+
 create sequence LOGEMENT_seq
 start 1;
 create table LOGEMENT
@@ -114,7 +113,8 @@ create table LOGEMENT
     nom_logement varchar(50),
     detail_logement_ int,
     foreign key (detail_logement_) references DETAIL_LOGEMENT,
-    adress_logement varchar(100)
+    adress_logement varchar(100),
+    localisation_logement varchar(1500)
 );
 
 create sequence PHOTO_LOGEMENT_seq

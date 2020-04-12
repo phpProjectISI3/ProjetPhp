@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8" />
@@ -67,7 +67,7 @@
 
 				<div class="footer" style="position: absolute; bottom: 0px;">
 					<p>
-						Isi3
+						&nbsp;&nbsp;&nbsp;Isi3 
 						<a href="#" target="_blank">Grp N&ordm;2</a>.
 						<br />Copyright &copy;
 						<script>document.write(new Date().getFullYear());</script> All rights reserved
