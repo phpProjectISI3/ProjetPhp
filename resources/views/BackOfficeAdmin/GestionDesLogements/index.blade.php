@@ -19,17 +19,19 @@
 
 <script src="https://kit.fontawesome.com/4f2d779e50.js" crossorigin="anonymous"></script>
 
-@section('title','Accueil')
+@section('title','Logements')
 
 @section('content')
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
 
-<a href="{{route('Logements.create')}}" class="btn btn-success">
-	<i class="fa fa-plus" aria-hidden="true"></i>
-	Nouveau Logement
+<a href="{{route('Logements.create')}}" style="color: white;margin-left: 2%;">
+	<button class=" monbtn">
+		<i class="fa fa-plus" aria-hidden="true"></i>
+		<strong>Nouveau Logement</strong>
+	</button>
 </a>
 
-<div class="cardCodePen cardCodePen-7 ">
+<div class="cardCodePen cardCodePen-7 " style="margin-top:50px;">
 	<div class="cardCodePen-body">
 		<form class="form" method="POST" action="#">
 			<div class="input-groupCodePen input--large">
@@ -73,7 +75,7 @@
 		</div>
 		<div class="carte__body">
 			<h2 class="carte__title">
-				<a href="#">{{$logement->nom_logement}}</a>
+				<a href="{{route('Logements.show',$logement->id_logement)}}" style="text-decoration:underline">{{$logement->nom_logement}}</a>
 			</h2>
 
 			<div class="carte__subtitle">{{$logement->adress_logement}}</div>
@@ -95,8 +97,6 @@
 		var divs = document.getElementsByClassName('carte__description');
 		for (i = 0; i < divs.length; i++) {
 			divs[i].innerHTML = divs[i].innerHTML.substring(0, 300) + '....<a href="#" style="color: blue;">plus de détail !</a>';
-			console.log('test !');
-
 		}
 	</script>
 

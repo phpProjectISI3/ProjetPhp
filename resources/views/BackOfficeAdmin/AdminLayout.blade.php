@@ -3,34 +3,32 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="{{ asset('css/app.css') }}" />
-	<link rel="stylesheet" href="css/styleSidebarAdmin.css" />
+	<link rel="stylesheet" href="{{ asset('../css/app.css') }}" />
+	<link rel="stylesheet" href="../css/styleSidebarAdmin.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
-	<!--    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-        rel="stylesheet"
-        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-        crossorigin="anonymous" />-->
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+		rel="stylesheet"
+		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+		crossorigin="anonymous" />
 	<title>@yield('title')</title>
 </head>
 <body>
 	<div class="container d-flex align-items-stretch">
 		<nav id="sidebar" class="img"
-			style="position: fixed;left: 0px;background-image: url(images/bg_1.jpg);height: 100%;">
+			style="position: fixed;left: 0px;background-image: url(../images/bg_1.jpg);height: 100%;">
 			<div class="p-4">
 				<h1>
 					<a href="index.html" class="logo">
-						<img src="images/logoTravel.png" alt="Agence de réservations" style="width: 200px;" />
-						<!--						<span>Travel Agency</span>
--->
+						<img src="../images/LogoIliass.png" alt="Agence de réservations" style="width: 150px;margin-left:30px;" />
 					</a>
 				</h1>
 				<ul class="list-unstyled components mb-5">
-					<li class="active">
+					<li>
 						<a href="#">
 							<span class="fas fa-house-user mr-3"></span> Accueil
 						</a>
 					</li>
-					<li>
+					<li class="active">
 						<a href="#">
 							<span class="fas fa-building mr-3"></span> Logements
 						</a>
@@ -82,11 +80,13 @@
 	<div class="container" style="margin-left:23%;">
 		@yield('content')
 	</div>
-	<script src="{{ asset('js/app.js') }}"></script>
+	<script src="{{ asset('../js/app.js') }}"></script>
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/popper.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/mainSidebarAdmin.js"></script>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/popper.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/mainSidebarAdmin.js"></script>
+
+
 </body>
 </html>

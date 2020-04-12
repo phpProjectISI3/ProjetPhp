@@ -57,7 +57,6 @@ Route::get('confirmation','PagesController@confirmation');
 
 //hicham
 
-Route::get('GestionLogement','LogementController@GestionLogement');
 Route::get('prototype',function()
                        {
                            return view('BackOfficeAdmin.GestionDesLogements.prototype');
