@@ -29,6 +29,10 @@
 .actions {
 margin-bottom:8%;
 }
+.form-label{
+font-size:15px;
+text-decoration:underline;
+}
 </style>
        <div class="MultiStep" style="height: 80%;margin-top: 6%;">
             <h2 style="text-transform:inherit">Cr&eacute;ation d'un nouveau logement</h2>
@@ -39,24 +43,16 @@ margin-bottom:8%;
                 <fieldset>
                     <div class="fieldset-content">
                         <div class="form-group">
-                            <label for="username" class="form-label">Username</label>
-                            <input type="text" name="username" id="username" placeholder="User Name" />
+                            <label for="nom" class="form-label">Nom du Logement</label>
+                            <input type="text" name="nom" id="nom" placeholder="Superbe appartement panoramique" />
                         </div>
                         <div class="form-group">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" name="email" id="email" placeholder="Your Email" />
+                            <label for="adresse" class="form-label">Adresse</label>
+                            <input type="text" name="adresse" id="adresse" placeholder="Fes, environs de quartier El Mouahidine, Maroc" />
                         </div>
                         <div class="form-group form-password">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" name="password" id="password" data-indicator="pwindicator" />
-                            <div id="pwindicator">
-                                <div class="bar-strength">
-                                    <div class="bar-process">
-                                        <div class="bar"></div>
-                                    </div>
-                                </div>
-                                <div class="label"></div>
-                            </div>
                         </div>
                         <div class="form-group">
                             <label for="your_avatar" class="form-label">Select avatar</label>
