@@ -57,7 +57,6 @@ width:20%;
  width: 750px;
  }
 
- 
 </style>
 @section('content')
  <div class="MultiStep" style="height: 80%;margin-top: 6%;">
@@ -77,8 +76,9 @@ width:20%;
                             <input type="text" class="MonInput nbrInput" name="adresse" id="adresse" placeholder="Fes, environs de quartier El Mouahidine, Maroc" />
                             <span class="input-group-text fas fa-map-marked-alt" style="line-height: inherit;"></span>
                         </div>
-
-                        <div class="form-group" >
+                        <br />
+                        <br />
+                        <div class="form-group" style="padding-left: 6%;">
                             <label for="categorie" class="form-label">Categorie</label>
                             <select class="MonInput" name="categorie">
                                 <option value="value">text</option>
@@ -174,34 +174,42 @@ width:20%;
                                 <input type="checkbox" id="parking" class="oval" style="margin-left: -50%;" />
                                 <label class="toggler orange" for="parking"></label>
                          </div>
-                            
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="credit_card" class="form-label">Credit Card</label>
-                                <input type="text" name="credit_card" id="credit_card" />
-                            </div>
-                            <div class="form-group">
-                                <label for="cvc" class="form-label">CVC</label>
-                                <input type="text" name="cvc" id="cvc" />
-                            </div>
+                           <br />
+                           <br />
+                         <div class="form-select" style="padding-left: 9%;">
+                             <div class="form-group" >
+                                <label class="form-label" for="margeAnnulation">Marge d'annulation</label>
+                                <input type="number" class="MonInput nbrInput" style="width:20%;" id="margeAnnulation" name="margeAnnulation" placeholder="10 jours"/>
+                                 <span class="input-group-text fas fa-calendar-alt" style="line-height: inherit;"></span>
+                             </div>
+
+                             <div class="form-group">
+                                <label for="prixAnnulation" class="form-label">Prix d'annulation</label>
+                                <input type="number" class="MonInput nbrInput" style="width:20%;" name="prixAnnulation" id="prixAnnulation" placeholder="4" />
+                                 <span class="input-group-text" style="line-height: inherit;">Dhs</span>
+                                <i class="fas fa-minus-circle"></i>
+                             </div>
                         </div>
-                        <div class="form-date">
-                            <label for="expiry_date">Expiration Date</label>
-                            <div class="form-flex">
-                                <div class="form-date-item">
-                                    <select id="expiry_date" name="expiry_date"></select>
-                                    <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
-                                </div>
-                                <div class="form-date-item">
-                                    <select id="expiry_year" name="expiry_year"></select>
-                                    <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
-                                </div>
-                            </div>
+
+                        <div class="form-select" style="padding-left: 9%;">
+                             <div class="form-group" >
+                                <label class="form-label" for="prixHS">Haute saison</label>
+                                <input type="number" class="MonInput nbrInput" style="width:20%;" id="prixHS" name="prixHS" placeholder="157"/>
+                                 <span class="input-group-text">Dhs</span>
+                                <i class="fas fa-umbrella-beach"></i>
+                             </div>
+
+                             <div class="form-group">
+                                <label for="prixBS" class="form-label">Basse saison</label>
+                                <input type="number" class="MonInput nbrInput" style="width:20%;" name="prixBS" id="prixBS" placeholder="4" />
+                                 <span class="input-group-text" style="line-height: inherit;">Dhs</span>
+                                <i class="fas fa-snowflake"></i>
+                             </div>
                         </div>
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <label for="name_of_card" class="form-label">Name of card</label>
                             <input type="text" name="name_of_card" id="name_of_card" />
-                        </div>
+                        </div>-->
 
                     </div>
                 </fieldset>
