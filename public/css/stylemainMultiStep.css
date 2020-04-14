@@ -52,7 +52,7 @@ textarea {
   outline: none;
   appearance: unset !important;
   -moz-appearance: unset !important;
-  -webkit-appearance: unset !important;
+  /*-webkit-appearance: unset !important;*/
   -o-appearance: unset !important;
   -ms-appearance: unset !important; }
 
@@ -273,7 +273,7 @@ select {
   height: 0;
   position: absolute;
   left: -9999px; }
-.form-radio-flex input + label {
+/*.form-radio-flex input + label {
   margin: 0px;
   padding: 12px 10px;
   width: 86px;
@@ -291,7 +291,7 @@ select {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
-  -ms-border-radius: 5px; }
+  -ms-border-radius: 5px; }*/
 .form-radio-flex input:checked + label {
   border: 1px solid #1abc9c;
   z-index: 1; }

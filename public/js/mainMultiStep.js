@@ -28,9 +28,9 @@
         bodyTag: "fieldset",
         transitionEffect: "slideLeft",
         labels: {
-            previous: 'Previous',
-            next: 'Next',
-            finish: 'Submit',
+            previous: 'Retour',
+            next: 'Suivant',
+            finish: 'Valider !',
             current: ''
         },
         titleTemplate: '<div class="title"><span class="number">#index#</span>#title#</div>',
