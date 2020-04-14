@@ -23,6 +23,8 @@ class CreateLogementTable extends Migration
                 ->on('detail_logements');
 
             $table->string('adress_logement', 100);
+	    $table->text('localisation_logement', 1500);
+
             $table->timestamps();
         });
     }
