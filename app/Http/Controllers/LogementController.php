@@ -34,8 +34,34 @@ class LogementController extends Controller
 	 */
     public function create()
     {
-        return view('BackOfficeAdmin.GestionDesLogements.create');
+        $listeCategories = DB::select("select concat(type_logement.libelle_type_logement,' ',detail_logement.id_detail) as libelle
+                                       from  detail_logement inner join type_logement on detail_logement.type_logement_ = type_logement.id_type_logement
+                                       where detail_logement.est_categorie = true;
+                                       ");
+
+        return view('BackOfficeAdmin.GestionDesLogements.create')->with('listeCategories',$listeCategories);
     }
+
+    public function import_categories(Request $request){
+		if($request->ajax()){
+			$html_output = '';
+			$requete = $request->get('query');
+			$data = DB::table('detail_logement')->find(6);
+			//->select('detail_logement.superficie_logement')
+			//->Where('detail_logement.id_detail', '=', '6')
+			//->value('detail_logement.superficie_logement');
+
+			if($data != null)
+				$html_output .= $data;
+			else
+				$html_output .= 'Pas de donnée disponible';
+
+			$data = array(
+			    'LesDonnee'=> $html_output
+			    );
+			echo json_encode($data);
+		}
+	}
 
     /**
 	 * Store a newly created resource in storage.

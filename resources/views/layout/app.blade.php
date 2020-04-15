@@ -74,14 +74,16 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-	<style>
-			.PernalisedLink{
-			/*background-color: #f7b42c;*/
-			 color: #FF5722;
-			 text-decoration: solid;
+
+
+<!--	<style>
+			#PernalisedLink{
+					 color: #98C0E3;
+					 text-decoration: solid;
+					 font-weight: bold;
 			}
 	</style>
-
+-->
 </head>
 <body>
 	<div id="fh5co-wrapper">
@@ -100,19 +102,23 @@
 							<nav id="fh5co-menu-wrap" role="navigation">
 								<ul class="sf-menu" id="fh5co-primary-menu">
 									<li>
-										<a class="PernalisedLink" href="{{url('/')}}">Accueil</a>
+										<strong>
+											<a id="PernalisedLink" href="{{url('/')}}">
+												Accueil
+											</a>
+										</strong>
 									</li>
 									<li>
-										<a class="PernalisedLink" href="{{url('/about') }}" class="fh5co-sub-ddown">Nos Offres</a>
+										<a id="PernalisedLink" href="{{url('/about') }}">Nos Offres</a>
 									</li>
 									<li>
-										<a class="PernalisedLink" href="{{url('/service')}}">Nos services</a>
+										<a id="PernalisedLink" href="{{url('/service')}}">Nos services</a>
 									</li>
 									<li>
-										<a class="PernalisedLink" href="{{url('/blog')}}">Blog</a>
+										<a id="PernalisedLink" href="{{url('/blog')}}">Blog</a>
 									</li>
 									<li>
-										<a class="PernalisedLink" href="{{url('/contact')}}">Contactez nous !</a>
+										<a id="PernalisedLink" href="{{url('/contact')}}">Contactez nous !</a>
 									</li>
 								</ul>
 							</nav>

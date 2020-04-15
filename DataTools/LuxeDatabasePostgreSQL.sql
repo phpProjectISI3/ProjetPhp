@@ -47,7 +47,6 @@ create table PERSONNE
     foreign key (grade_)references GRADE(id_grade),
     date_naissance date,
     point_personne int
-    -- TODO : necessite un trigger.
 );
 
 create sequence REMARQUE_CLIENT_seq

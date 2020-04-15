@@ -15,6 +15,9 @@
 <!-- Vendor CSS-->
 <link href="../vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all" />
 
+<!--Ajax-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
 <link href="../css/styleTogleIos.css" rel="stylesheet" media="all" />
 
 <!-- Main CSS-->
@@ -80,10 +83,10 @@ width:20%;
                         <br />
                         <div class="form-group" style="padding-left: 6%;">
                             <label for="categorie" class="form-label">Categorie</label>
-                            <select class="MonInput" name="categorie">
-                                <option value="value">text</option>
-                                <option value="value">text</option>
-                                <option value="value" selected>text</option>
+                            <select class="MonInput" id="MonSelectCategorie" name="categorie">
+                               @foreach($listeCategories as $item)
+                               <option value="">{{ $item->libelle }}</option>
+                               @endforeach
                             </select>
                          <small style="color:forestgreen; left:10px;margin-left: 10px;text-decoration: underline;">
                             Si ce logement ne fait partie d'aucune catégorie :<br />selectionnez -Aucune Catégories-
@@ -126,7 +129,7 @@ width:20%;
                         <div class="form-select">
                              <div class="form-group">
                                 <label class="form-label" for="superficie">Superficie</label>
-                                <input type="number" class="MonInput nbrInput" id="superficie" name="superficie" placeholder="157"/>
+                                <input type="number"style="padding:5px 15px;" class="MonInput nbrInput" id="superficie" name="superficie" placeholder="157" />
                                  <span class="input-group-text">m&sup2;</span>
                              </div>
 
@@ -213,11 +216,12 @@ width:20%;
 
                     </div>
                 </fieldset>
-
+				{{ csrf_field() }}
             </form>
 </div>
 <!-- Jquery JS-->
-<script src="../vendor/jquery/jquery.min.js"></script>
+<!--<script src="../vendor/jquery/jquery.min.js"></script>
+-->
 
 <!-- Vendor JS-->
 <script src="../vendor/select2/select2.min.js"></script>
@@ -234,5 +238,39 @@ width:20%;
 <script src="../js/global.js"></script>
 <script src="../vendor/minimalist-picker/dobpicker.js"></script>
 <script src="../js/mainMultiStep.js"></script>
+<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+--><script src="../js/jquery.js"></script>
+<script type="text/javascript">
+    $.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
+
+	$(document).ready(
+		function () {
+			import_nom();
+
+        $(document).on('change', '#MonSelectCategorie', function () {
+			var info = this.value;
+				import_nom(info);
+		});
+
+        function import_nom(query = '') {
+			$.ajax({
+				url: "{{ route('LogementController.import_categories') }}",
+				method: 'GET',
+				data: { query: query },
+				dataType: 'json',
+				success: function (data) {
+					$('#superficie').val(data.LesDonnee);
+                    $( "#superficie" ).prop( "disabled", true );
+                    $( "#superficie" ).css( 'background', 'darkgray');
+				},
+			});
+		}
+
+		});
+</script>
 
 @endsection

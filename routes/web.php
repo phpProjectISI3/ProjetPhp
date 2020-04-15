@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
  */
 
 // test
-// test hicham 
+// test hicham
 
 
 // Route::get('about', function(){
@@ -60,4 +60,6 @@ Route::get('confirmation', 'PagesController@confirmation');
 Route::get('prototype', function () {
     return view('BackOfficeAdmin.GestionDesLogements.prototype');
 });
+Route::get('/Logements/import_categories', 'LogementController@import_categories')->name('LogementController.import_categories');
+
 Route::resource('Logements', 'LogementController');
