@@ -15,7 +15,7 @@
 	<title>@yield('title')</title>
 </head>
 <body>
-	<div class="container d-flex align-items-stretch">
+	<div class="container d-flex align-items-stretch" >
 		<nav id="sidebar" class="img"
 			style="top: 0px;position: fixed;left: 0px;background-image: url(../images/bg_1.jpg);height: 100%;">
 			<div class="p-4">
@@ -67,7 +67,10 @@
 					</li>
 				</ul>
 
-				<div class="footer" style="position: absolute; bottom: 0px;">
+				
+			
+				
+				<div class="footer" style="position: absolute;  bottom: 0px;">
 					<p>
 						&nbsp;&nbsp;&nbsp;Isi3
 						<a href="#" target="_blank">Grp N&ordm;2</a>.
