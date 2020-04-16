@@ -84,8 +84,9 @@ width:20%;
                         <div class="form-group" style="padding-left: 6%;">
                             <label for="categorie" class="form-label">Categorie</label>
                             <select class="MonInput" id="MonSelectCategorie" name="categorie">
+                            <option selected>-Aucune Catégories-</option>
                                @foreach($listeCategories as $item)
-                               <option value="">{{ $item->libelle }}</option>
+                               <option value="{{$item->id}}">{{ $item->libelle }}</option>
                                @endforeach
                             </select>
                          <small style="color:forestgreen; left:10px;margin-left: 10px;text-decoration: underline;">
@@ -111,7 +112,7 @@ width:20%;
                     <div class="fieldset-content">
                         <div class="form-group" style="padding-left: 4%;">
                             <label for="type" class="form-label">Type</label>
-                             <select class="MonInput" name="type" style="width: 250px;">
+                             <select class="MonInput" name="type" id="typeLogement" style="width: 250px;">
                                 <option value="value">text</option>
                                 <option value="value">text</option>
                                 <option value="value" selected>text</option>
@@ -249,27 +250,84 @@ width:20%;
 
 	$(document).ready(
 		function () {
-			import_nom();
 
         $(document).on('change', '#MonSelectCategorie', function () {
 			var info = this.value;
-				import_nom(info);
+			alert(info);
+			import_data(info);
+
 		});
 
-        function import_nom(query = '') {
-			$.ajax({
-				url: "{{ route('LogementController.import_categories') }}",
-				method: 'GET',
-				data: { query: query },
-				dataType: 'json',
-				success: function (data) {
-					$('#superficie').val(data.LesDonnee);
-                    $( "#superficie" ).prop( "disabled", true );
-                    $( "#superficie" ).css( 'background', 'darkgray');
-				},
-			});
-		}
+			function import_data(valeurSelectionne = '') {
+				if (valeurSelectionne !== '-Aucune Catégories-') {
+					let phrase = valeurSelectionne.split(' ');
+					let numero = phrase[phrase.length - 1];
+					$.ajax({
+						url: "{{ route('LogementController.import_categories') }}",
+						method: 'GET',
+						data:
+							{ ID: numero },
+						dataType: 'json',
+						success: function (MesDonneesJson) {
+							$('#superficie').val(MesDonneesJson.Superficie);
+							$("#superficie").prop("disabled", true);
+							$("#superficie").css('background', 'darkgray');
 
+							$('#nbrPiece').val(MesDonneesJson.NombrePiece);
+							$("#nbrPiece").prop("disabled", true);
+							$("#nbrPiece").css('background', 'darkgray');
+
+							$('#NbrPersonne').val(MesDonneesJson.MaxPersonne);
+							$("#NbrPersonne").prop("disabled", true);
+							$("#NbrPersonne").css('background', 'darkgray');
+
+							$('#NbrReserv').val(MesDonneesJson.MaxReservation);
+							$("#NbrReserv").prop("disabled", true);
+							$("#NbrReserv").css('background', 'darkgray');
+
+							$('#description').val(MesDonneesJson.Description);
+							$("#description").prop("disabled", true);
+							$("#description").css('background', 'darkgray');
+
+							$('#margeAnnulation').val(MesDonneesJson.MargeAnnulation);
+							$("#margeAnnulation").prop("disabled", true);
+							$("#margeAnnulation").css('background', 'darkgray');
+
+							$('#prixAnnulation').val(MesDonneesJson.PrixAnnulation);
+							$("#prixAnnulation").prop("disabled", true);
+							$("#prixAnnulation").css('background', 'darkgray');
+
+							$('#prixHS').val(MesDonneesJson.PrixHS);
+							$("#prixHS").prop("disabled", true);
+							$("#prixHS").css('background', 'darkgray');
+
+							$('#prixBS').val(MesDonneesJson.PrixBS);
+							$("#prixBS").prop("disabled", true);
+							$("#prixBS").css('background', 'darkgray');
+
+							$("#massage").prop("disabled", true);
+							$("#massage").prop("checked", MesDonneesJson.Massage);
+							$("#massage").css('background', 'darkgray');
+
+							$("#piscine").prop("disabled", true);
+							$("#piscine").prop("checked", MesDonneesJson.Piscine);
+							$("#piscine").css('background', 'darkgray');
+
+							$("#jardin").prop("disabled", true);
+							$("#jardin").prop("checked", MesDonneesJson.Jardin);
+							$("#jardin").css('background', 'darkgray');
+
+							$("#parking").prop("disabled", true);
+							$("#parking").prop("checked", MesDonneesJson.Parking);
+							$("#parking").css('background', 'darkgray');
+
+                            $('#typeLogement option[value="' + MesDonneesJson.TypeLogement + '"]').prop('selected', true);
+                            $("#typeLogement").prop("disabled", true);
+							$("#typeLogement").css('background', 'darkgray');
+						}
+					});
+				}
+			}
 		});
 </script>
 

@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Logement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
+use App\Logement;
+use App\TypeLogement;
 
 class LogementController extends Controller
 {
@@ -34,32 +35,46 @@ class LogementController extends Controller
 	 */
     public function create()
     {
-        $listeCategories = DB::select("select concat(type_logement.libelle_type_logement,' ',detail_logement.id_detail) as libelle
+        $listeCategories = DB::select("select detail_logement.id_detail as id , concat(type_logement.libelle_type_logement,' ',detail_logement.id_detail) as libelle
                                        from  detail_logement inner join type_logement on detail_logement.type_logement_ = type_logement.id_type_logement
                                        where detail_logement.est_categorie = true;
                                        ");
-
-        return view('BackOfficeAdmin.GestionDesLogements.create')->with('listeCategories',$listeCategories);
+		$listeTypes = TypeLogement::all();
+			//libelle_type_logement
+        return view('BackOfficeAdmin.GestionDesLogements.create')
+			   ->with('listeCategories',$listeCategories)
+			   ->with('listeTypes',$listeTypes);
     }
 
     public function import_categories(Request $request){
 		if($request->ajax()){
 			$html_output = '';
-			$requete = $request->get('query');
-			$data = DB::table('detail_logement')->find(6);
-			//->select('detail_logement.superficie_logement')
-			//->Where('detail_logement.id_detail', '=', '6')
-			//->value('detail_logement.superficie_logement');
+			$ID_DETAIL= $request->get('ID');
+			$data = DB::table('detail_logement')
+					->Where('detail_logement.id_detail', '=', $ID_DETAIL)
+					->first();
 
 			if($data != null)
-				$html_output .= $data;
-			else
-				$html_output .= 'Pas de donnée disponible';
+			{
+				$MesDonneesJson= array(
+					'MaxReservation'=> $data->max_reserv,
+					'Superficie'=> $data->superficie_logement,
+					'NombrePiece'=>$data->nbr_piece,
+					'MaxPersonne'=>$data->capacite_personne_max,
+					'Description'=>$data->description_logement,
+					'Massage'=>$data->massage_disponible,
+					'Piscine'=>$data->piscine_disponible,
+					'Jardin'=>$data->jardin_cours,
+					'Parking'=>$data->parking_disponible,
+					'MargeAnnulation'=>$data->marge_annulation,
+					'PrixAnnulation'=>$data->tarif_annulation,
+					'PrixHS'=>$data->tarif_par_nuit_hs,
+					'PrixBS'=>$data->tarif_par_nuit_bs,
+					'TypeLogement'=> $data->type_logement_
+					);
+			}
 
-			$data = array(
-			    'LesDonnee'=> $html_output
-			    );
-			echo json_encode($data);
+			echo json_encode($MesDonneesJson);
 		}
 	}
 
