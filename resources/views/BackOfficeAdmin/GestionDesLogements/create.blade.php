@@ -252,6 +252,12 @@ width:20%;
 	$(document).ready(
 		function () {
 
+			var divParent = document.getElementsByClassName('actions clearfix');
+			var ulNode = $(divParent).children('ul')[0];
+			var liNode = $(ulNode).children('li')[2];
+			$(liNode).empty();
+			liNode.innerHTML = '<a href="#finish" role="menuitem"><button style="z-index:1200;">Valider !</button></a>';
+
         $(document).on('change', '#MonSelectCategorie', function () {
 			$("#MonSelectCategorie").css('font-weight','bold');
 			$("#MonSelectCategorie").css('color','black');

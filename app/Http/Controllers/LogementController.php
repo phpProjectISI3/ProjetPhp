@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
 use App\Logement;
 use App\TypeLogement;
+use App\Detail_logement;
 
 class LogementController extends Controller
 {
@@ -83,10 +84,23 @@ class LogementController extends Controller
 	 */
     public function store(Request $request)
     {
-        $logement = new Logement;
+		if(true){
+			$detail_logement = new Detail_logement;
+			$detail_logement->type_logement_ = $request->get('');
+			$detail_logement->superficie_logement = $request->get('');
+			$detail_logement->nbr_piece = $request->get('');
+			$detail_logement->capacite_personne_max = $request->get('');
+			$detail_logement->tarif_par_nuit_HS = $request->get('');
+			$detail_logement->tarif_par_nuit_BS = $request->get('');
+			$detail_logement->type_logement_ = $request->get('');
+			$detail_logement->type_logement_ = $request->get('');
+		}
 
+        $logement = new Logement;
         $logement->nom_logement = $request->get('nom');
-        $logement->id_logement = 7000;
+		$logement->adress_logement = $request->get('adresse');
+		//$logement->localisation_logement = $request->get(''); ******TODO******
+		$logement->detail_logement_ = $request->get('categorie');
 
         $logement->save();
     }

@@ -30,7 +30,7 @@
         labels: {
             previous: 'Retour',
             next: 'Suivant',
-            finish: '<button type="submit" style="z-index:7000;">Valider !</button>',
+            finish: 'Valider !',
             current: ''
         },
         titleTemplate: '<div class="title"><span class="number">#index#</span>#title#</div>',
