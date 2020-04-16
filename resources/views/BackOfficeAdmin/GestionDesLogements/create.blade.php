@@ -64,7 +64,7 @@ width:20%;
 @section('content')
  <div class="MultiStep" style="height: 80%;margin-top: 6%;">
             <h2 style="text-transform:inherit">Cr&eacute;ation d'un nouveau logement</h2>
-            <form method="POST" id="signup-form" class="signup-form">
+            <form method="POST" id="signup-form" class="signup-form" action="{{route('Logements.store') }}">
                 <h3>
                     <span class="title_text">Informations de base</span>
                 </h3>
@@ -84,13 +84,13 @@ width:20%;
                         <div class="form-group" style="padding-left: 6%;">
                             <label for="categorie" class="form-label">Categorie</label>
                             <select class="MonInput" id="MonSelectCategorie" name="categorie">
-                            <option selected>-Aucune Catégories-</option>
-                               @foreach($listeCategories as $item)
-                               <option value="{{$item->id}}">{{ $item->libelle }}</option>
+                            <option selected>- Aucune Catégorie -</option>
+                               @foreach($listeCategories as $categorie)
+                               <option value="{{$categorie->id}}">{{ $categorie->libelle }}</option>
                                @endforeach
                             </select>
                          <small style="color:forestgreen; left:10px;margin-left: 10px;text-decoration: underline;">
-                            Si ce logement ne fait partie d'aucune catégorie :<br />selectionnez -Aucune Catégories-
+                            Les autres champs se rempliront automatiquement<br />et deviendront non modifiables ..
                          </small>
                        </div>
                         <div class="form-group">
@@ -113,9 +113,10 @@ width:20%;
                         <div class="form-group" style="padding-left: 4%;">
                             <label for="type" class="form-label">Type</label>
                              <select class="MonInput" name="type" id="typeLogement" style="width: 250px;">
-                                <option value="value">text</option>
-                                <option value="value">text</option>
-                                <option value="value" selected>text</option>
+                                <option disabled selected>-Choisissez un type-</option>
+                                @foreach($listeTypes as $type)
+                                <option value="{{ $type->id_type_logement }}">{{ $type->libelle_type_logement }}</option>
+                                @endforeach
                             </select>
                                 <span class="input-group-text far fa-building" style="line-height: inherit;"></span>
                                 <span class="input-group-text fas fa-warehouse" style="line-height: inherit;"></span>
@@ -214,8 +215,8 @@ width:20%;
                             <label for="name_of_card" class="form-label">Name of card</label>
                             <input type="text" name="name_of_card" id="name_of_card" />
                         </div>-->
-
-                    </div>
+<!--                        <button type="submit" style="z-index:7000;">Valider !</button>
+-->                    </div>
                 </fieldset>
 				{{ csrf_field() }}
             </form>
@@ -232,8 +233,8 @@ width:20%;
 <script src="../vendor/jquery-validate/additional-methods.min.js"></script>
 <script src="../vendor/jquery-steps/jquery.steps.min.js"></script>
 <script src="../vendor/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
-<script src="../vendor/jquery.pwstrength/jquery.pwstrength.js"></script>
-
+<!--<script src="../vendor/jquery.pwstrength/jquery.pwstrength.js"></script>
+-->
 <script src="../vendor/datepicker/moment.min.js"></script>
 <script src="../vendor/datepicker/daterangepicker.js"></script>
 <script src="../js/global.js"></script>
@@ -252,14 +253,13 @@ width:20%;
 		function () {
 
         $(document).on('change', '#MonSelectCategorie', function () {
-			var info = this.value;
-			alert(info);
-			import_data(info);
-
+			$("#MonSelectCategorie").css('font-weight','bold');
+			$("#MonSelectCategorie").css('color','black');
+			import_data(this.value);
 		});
 
 			function import_data(valeurSelectionne = '') {
-				if (valeurSelectionne !== '-Aucune Catégories-') {
+				if (valeurSelectionne !== '- Aucune Catégorie -') {
 					let phrase = valeurSelectionne.split(' ');
 					let numero = phrase[phrase.length - 1];
 					$.ajax({
@@ -324,6 +324,8 @@ width:20%;
                             $('#typeLogement option[value="' + MesDonneesJson.TypeLogement + '"]').prop('selected', true);
                             $("#typeLogement").prop("disabled", true);
 							$("#typeLogement").css('background', 'darkgray');
+                            $("#typeLogement").css('font-weight','bold');
+			                $("#typeLogement").css('color','black');
 						}
 					});
 				}

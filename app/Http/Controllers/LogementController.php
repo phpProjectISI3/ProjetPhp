@@ -17,11 +17,6 @@ class LogementController extends Controller
     public function index()
     {
         $logements = Logement::All();
-        //$test = DB::table('logement')
-        //    ->join('detail_logement', 'logement.detail_logement_', '=', 'detail_logement.id_detail')
-        //    ->select('detail_logement.description_logement')
-        //    ->where('logement.id_logement',1)
-        //    ->get()[];
         return view
                    ('BackOfficeAdmin.GestionDesLogements.index',
                     compact('logements')
@@ -39,8 +34,10 @@ class LogementController extends Controller
                                        from  detail_logement inner join type_logement on detail_logement.type_logement_ = type_logement.id_type_logement
                                        where detail_logement.est_categorie = true;
                                        ");
-		$listeTypes = TypeLogement::all();
-			//libelle_type_logement
+
+		$listeTypes = TypeLogement::select('id_type_logement','libelle_type_logement')
+									->get();
+
         return view('BackOfficeAdmin.GestionDesLogements.create')
 			   ->with('listeCategories',$listeCategories)
 			   ->with('listeTypes',$listeTypes);
@@ -86,7 +83,12 @@ class LogementController extends Controller
 	 */
     public function store(Request $request)
     {
-        //
+        $logement = new Logement;
+
+        $logement->nom_logement = $request->get('nom');
+        $logement->id_logement = 7000;
+
+        $logement->save();
     }
 
     /**

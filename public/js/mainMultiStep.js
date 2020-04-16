@@ -30,13 +30,13 @@
         labels: {
             previous: 'Retour',
             next: 'Suivant',
-            finish: 'Valider !',
+            finish: '<button type="submit" style="z-index:7000;">Valider !</button>',
             current: ''
         },
         titleTemplate: '<div class="title"><span class="number">#index#</span>#title#</div>',
         onStepChanging: function(event, currentIndex, newIndex) {
             form.validate().settings.ignore = ":disabled,:hidden";
-            // console.log(form.steps("getCurrentIndex"));
+             //console.log(form.steps("getCurrentIndex"));
             return form.valid();
         },
         onFinishing: function(event, currentIndex) {
@@ -75,7 +75,7 @@
         maximumAge: 120
     });
 
-    $('#password').pwstrength();
+    //$('#password').pwstrength();
 
     $('#button').click(function () {
         $("input[type='file']").trigger('click');
