@@ -15,11 +15,12 @@ class LogementController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-    public function index()
+    public function index($var = false)
     {
         $logements = Logement::All();
         return view
                    ('BackOfficeAdmin.GestionDesLogements.index',
+				   ['var'=>$var],
                     compact('logements')
                    );
     }
@@ -39,9 +40,11 @@ class LogementController extends Controller
 		$listeTypes = TypeLogement::select('id_type_logement','libelle_type_logement')
 									->get();
 
+		$success ='ajouté avec succé !';
         return view('BackOfficeAdmin.GestionDesLogements.create')
 			   ->with('listeCategories',$listeCategories)
 			   ->with('listeTypes',$listeTypes);
+
     }
 
     public function import_categories(Request $request){
@@ -84,25 +87,37 @@ class LogementController extends Controller
 	 */
     public function store(Request $request)
     {
-		if(true){
-			$detail_logement = new Detail_logement;
-			$detail_logement->type_logement_ = $request->get('');
-			$detail_logement->superficie_logement = $request->get('');
-			$detail_logement->nbr_piece = $request->get('');
-			$detail_logement->capacite_personne_max = $request->get('');
-			$detail_logement->tarif_par_nuit_HS = $request->get('');
-			$detail_logement->tarif_par_nuit_BS = $request->get('');
-			$detail_logement->type_logement_ = $request->get('');
-			$detail_logement->type_logement_ = $request->get('');
-		}
+		//$valeur_selectione = $request->get('categorie');
+		//if($valeur_selectione == null || $valeur_selectione == -1){
+		//    $detail_logement = new Detail_logement;
+		//    $detail_logement->type_logement_ = $request->get('typeLogement');
+		//    $detail_logement->superficie_logement = $request->get('superficie');
+		//    $detail_logement->nbr_piece = $request->get('nbrPiece');
+		//    $detail_logement->capacite_personne_max = $request->get('NbrPersonne');
+		//    $detail_logement->tarif_par_nuit_hs = $request->get('prixHS');
+		//    $detail_logement->tarif_par_nuit_bs = $request->get('prixBS');
+		//    $detail_logement->description_logement = $request->get('description');
+		//    $detail_logement->max_reserv = $request->get('NbrReserv');
+		//    $detail_logement->marge_annulation = $request->get('margeAnnulation');
+		//    $detail_logement->piscine_disponible = $request->get('piscine') == 'on' ? true : false;
+		//    $detail_logement->parking_disponible = $request->get('parking') == 'on' ? true : false;
+		//    $detail_logement->jardin_cours = $request->get('jardin') == 'on' ? true : false;
+		//    $detail_logement->massage_disponible = $request->get('massage') == 'on' ? true : false;
+		//    $detail_logement->tarif_annulation = $request->get('prixAnnulation');
+		//    $detail_logement->est_categorie = $request->get('estCategorie') == 'on' ? 'true' : 'false';
 
-        $logement = new Logement;
-        $logement->nom_logement = $request->get('nom');
-		$logement->adress_logement = $request->get('adresse');
-		//$logement->localisation_logement = $request->get(''); ******TODO******
-		$logement->detail_logement_ = $request->get('categorie');
+		//    $detail_logement->save();
+		//    $valeur_selectione = $detail_logement->id_detail;
+		//}
 
-        $logement->save();
+		//$logement = new Logement;
+		//$logement->nom_logement = $request->get('nom');
+		//$logement->adress_logement = $request->get('adresse');
+		////$logement->localisation_logement = $request->get(''); ******TODO******
+		//$logement->detail_logement_ = $valeur_selectione;
+		//$logement->save();
+
+		return $this->index(true);
     }
 
     /**

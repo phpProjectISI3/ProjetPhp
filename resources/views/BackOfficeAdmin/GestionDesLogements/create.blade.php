@@ -61,9 +61,20 @@ width:20%;
  }
 
 </style>
+<script src="../js/notification/notify.min.js"></script>
 @section('content')
- <div class="MultiStep" style="height: 80%;margin-top: 6%;">
-            <h2 style="text-transform:inherit">Cr&eacute;ation d'un nouveau logement</h2>
+	<script>
+		$.notify("Vous étes sur le point de créer un nouveau logement.", {
+			className: "info",
+			showDuration: 800,
+			hideDuration: 800,
+			autoHideDelay: 8000,
+			position: "top center",
+			arrowShow: true,
+		});
+	</script>
+ <div class="MultiStep" style="height: 80%;margin-top: 3%;">
+            <h2 class="H2Creation" style="text-transform:inherit">Cr&eacute;ation d'un nouveau logement</h2>
             <form method="POST" id="signup-form" class="signup-form" action="{{route('Logements.store') }}">
                 <h3>
                     <span class="title_text">Informations de base</span>
@@ -84,7 +95,7 @@ width:20%;
                         <div class="form-group" style="padding-left: 6%;">
                             <label for="categorie" class="form-label">Categorie</label>
                             <select class="MonInput" id="MonSelectCategorie" name="categorie">
-                            <option selected>- Aucune Catégorie -</option>
+                            <option value="-1" selected>- Aucune Catégorie -</option>
                                @foreach($listeCategories as $categorie)
                                <option value="{{$categorie->id}}">{{ $categorie->libelle }}</option>
                                @endforeach
@@ -92,6 +103,10 @@ width:20%;
                          <small style="color:forestgreen; left:10px;margin-left: 10px;text-decoration: underline;">
                             Les autres champs se rempliront automatiquement<br />et deviendront non modifiables ..
                          </small>
+                       </div>
+                        <div class="form-group">
+                           <input type="checkbox" name="estCategorie" id="estCategorie" class="form-check-input" style="margin-left: -30%;" />
+                           <i id="itemEnregistrement" style="margin-top: 10px; margin-left: 21%;">Enregistrer en tant que catégorie de logement.</i> 
                        </div>
                         <div class="form-group">
                             <label for="images"  class="form-label">images</label>
@@ -112,7 +127,7 @@ width:20%;
                     <div class="fieldset-content">
                         <div class="form-group" style="padding-left: 4%;">
                             <label for="type" class="form-label">Type</label>
-                             <select class="MonInput" name="type" id="typeLogement" style="width: 250px;">
+                             <select class="MonInput" name="typeLogement" id="typeLogement" style="width: 250px;">
                                 <option disabled selected>-Choisissez un type-</option>
                                 @foreach($listeTypes as $type)
                                 <option value="{{ $type->id_type_logement }}">{{ $type->libelle_type_logement }}</option>
@@ -164,19 +179,19 @@ width:20%;
                     <div class="fieldset-content">
                         <div class="form-group" style="padding-left: 4%;">
                                 <label class="form-label" for="massage">Massage/SPA</label>
-                                <input type="checkbox" id="massage" class="oval" style="margin-left: -50%;"/>
+                                <input type="checkbox" id="massage" name="massage" class="oval" style="margin-left: -50%;"/>
                                 <label class="toggler orange" for="massage"></label>
 
                                  <label class="form-label" for="piscine">Piscine</label>
-                                <input type="checkbox" id="piscine" class="oval" style="margin-left: -50%;"  />
+                                <input type="checkbox" id="piscine" name="piscine" class="oval" style="margin-left: -50%;"  />
                                 <label class="toggler orange" for="piscine"></label>
 
                                 <label class="form-label" for="jardin">Jardins/Cours</label>
-                                <input type="checkbox" id="jardin" class="oval" style="margin-left: -50%;" />
+                                <input type="checkbox" id="jardin" name="jardin" class="oval" style="margin-left: -50%;" />
                                 <label class="toggler orange" for="jardin"></label>
 
                                  <label class="form-label" for="parking">Parking</label>
-                                <input type="checkbox" id="parking" class="oval" style="margin-left: -50%;" />
+                                <input type="checkbox" id="parking" name="parking" class="oval" style="margin-left: -50%;" />
                                 <label class="toggler orange" for="parking"></label>
                          </div>
                            <br />
@@ -211,19 +226,13 @@ width:20%;
                                 <i class="fas fa-snowflake"></i>
                              </div>
                         </div>
-                        <!--<div class="form-group">
-                            <label for="name_of_card" class="form-label">Name of card</label>
-                            <input type="text" name="name_of_card" id="name_of_card" />
-                        </div>-->
-<!--                        <button type="submit" style="z-index:7000;">Valider !</button>
--->                    </div>
+                   </div>
                 </fieldset>
 				{{ csrf_field() }}
             </form>
 </div>
 <!-- Jquery JS-->
-<!--<script src="../vendor/jquery/jquery.min.js"></script>
--->
+
 
 <!-- Vendor JS-->
 <script src="../vendor/select2/select2.min.js"></script>
@@ -233,15 +242,14 @@ width:20%;
 <script src="../vendor/jquery-validate/additional-methods.min.js"></script>
 <script src="../vendor/jquery-steps/jquery.steps.min.js"></script>
 <script src="../vendor/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
-<!--<script src="../vendor/jquery.pwstrength/jquery.pwstrength.js"></script>
--->
+
 <script src="../vendor/datepicker/moment.min.js"></script>
 <script src="../vendor/datepicker/daterangepicker.js"></script>
 <script src="../js/global.js"></script>
 <script src="../vendor/minimalist-picker/dobpicker.js"></script>
 <script src="../js/mainMultiStep.js"></script>
-<!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
---><script src="../js/jquery.js"></script>
+<script src="../js/jquery.js"></script>
+
 <script type="text/javascript">
     $.ajaxSetup({
 		headers: {
@@ -258,14 +266,18 @@ width:20%;
 			$(liNode).empty();
 			liNode.innerHTML = '<a href="#finish" role="menuitem"><button style="z-index:1200;">Valider !</button></a>';
 
-        $(document).on('change', '#MonSelectCategorie', function () {
+			$(document).on('change', '#MonSelectCategorie', function () {
 			$("#MonSelectCategorie").css('font-weight','bold');
 			$("#MonSelectCategorie").css('color','black');
 			import_data(this.value);
 		});
 
 			function import_data(valeurSelectionne = '') {
-				if (valeurSelectionne !== '- Aucune Catégorie -') {
+				if (valeurSelectionne != -1) {
+					$('#itemEnregistrement').css('text-decoration', 'line-through');
+					$('#estCategorie').prop('disabled', true);
+					$("#estCategorie").css('background', 'darkgray');
+
 					let phrase = valeurSelectionne.split(' ');
 					let numero = phrase[phrase.length - 1];
 					$.ajax({
@@ -327,14 +339,21 @@ width:20%;
 							$("#parking").prop("checked", MesDonneesJson.Parking);
 							$("#parking").css('background', 'darkgray');
 
-                            $('#typeLogement option[value="' + MesDonneesJson.TypeLogement + '"]').prop('selected', true);
-                            $("#typeLogement").prop("disabled", true);
+							//$('#typeLogement option[value="' + MesDonneesJson.TypeLogement + '"]').prop('selected', true);
+							$("#typeLogement").val("" + MesDonneesJson.TypeLogement + "").change();
+							$("#typeLogement").prop("disabled", true);
 							$("#typeLogement").css('background', 'darkgray');
-                            $("#typeLogement").css('font-weight','bold');
-			                $("#typeLogement").css('color','black');
+							$("#typeLogement").css('font-weight', 'bold');
+							$("#typeLogement").css('color', 'black');
 						}
 					});
 				}
+				else {
+			        $('#itemEnregistrement').css('text-decoration', 'underline');
+                    $('#estCategorie').prop('disabled', false);
+					$("#estCategorie").css('background', 'transparent');
+				}
+
 			}
 		});
 </script>

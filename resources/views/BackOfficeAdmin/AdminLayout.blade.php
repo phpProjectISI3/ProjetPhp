@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8" />
@@ -31,7 +31,7 @@
 						</a>
 					</li>
 					<li class="active">
-						<a href="#">
+						<a href="{{route('Logements.index')}}">
 							<span class="fas fa-building mr-3"></span> Logements
 						</a>
 					</li>

@@ -24,7 +24,7 @@
 @section('content')
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
 
-<a href="{{route('Logements.create')}}" style="color: white;margin-left: 2%;">
+<a href="{{route('Logements.create')}}" style="color: white;margin-left: 2%;" class="testt">
 	<button class=" monbtn">
 		<i class="fa fa-plus" aria-hidden="true"></i>
 		<strong>Nouveau Logement</strong>
@@ -112,5 +112,20 @@
 
 	<!-- Main JS-->
 	<script src="js/global.js"></script>
+	<script src="../js/notification/notify.min.js"></script>
+	@if($var)
+	<script>
+		$.notify("Logement ajouté avec succés ...", {
+			className: "success",
+			showDuration: 800,
+			hideDuration: 800,
+			autoHideDelay: 8000,
+			position: "top center",
+			arrowShow: true,
+			color: "#fff",
+			background: "#D44950"
+		});
+	</script>
+	@endif
 </div>
 @endsection
