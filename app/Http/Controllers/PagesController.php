@@ -14,14 +14,21 @@ class PagesController extends Controller
     }
 
     // about page
-    public function about(){
-        $logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail');
+    public function about($id){
+        if($id == -1){
+            $logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail ');
+        }
+        else{
+            $logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail where detail_logement.type_logement_ = ' . $id);
+        }
+
         return view('about', ['logements'=>$logements]);
     }
 
     public function blog(){
         return view('blog');
     }
+
 
     public function contact(){
         return view('contact');

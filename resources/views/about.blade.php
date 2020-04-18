@@ -3,11 +3,11 @@
 @section('title','Nos Offres')
 
 @section('linkcss')
-		<link rel="stylesheet" href="css/hotel.css">
+		<link rel="stylesheet" href="../css/hotel.css">
 
 @endsection
 @section('body')
-<div class="fh5co-parallax" style="background-image: url(images/1.jpg);" data-stellar-background-ratio="0.5">
+<div class="fh5co-parallax" style="background-image: url(/images/1.jpg);" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
@@ -88,11 +88,11 @@
 				@foreach($logements as $logement)
 				<div class="col-md-4" >
 					<div class="hotel-content" >
-						<div class="hotel-grid"  style="background-image: url(images/1.jpg);">
+						<div class="hotel-grid"  style="background-image: url({{ DB::table('photo_logement')->join('logement','photo_logement.logement_','=','logement.id_logement')->select('photo_logement.chemin_photo')->where('logement.id_logement',$logement->id_logement)->value('chemin_photo')}});">
 							<div class="price" ><small></small><span>{{$logement->tarif_par_nuit_hs}}/nuit</span></div>
-							<a class="book-now text-center" href="detailRecherche/{{$logement->id_logement}}"><i class="ti-calendar"></i> Réservé </a>
+							<a class="book-now text-center" href="/detailRecherche/{{$logement->id_logement}}"><i class="ti-calendar"></i> Réservé </a>
 						</div>
-						<div class="desc" id="carte">
+						<div class="desc sameHeight" id="carte">
 							<h3><a href="{{url('/detailRecherche')}}">{{$logement->nom_logement}} </a></h3>
 							<p class="carte__description">{{$logement->description_logement}}</p>
 						</div>
@@ -176,5 +176,5 @@
 @endsection
 
 @section('scripts')
-	<script src="js/search.js"></script>
+	<script src="/js/search.js"></script>
 @endsection
