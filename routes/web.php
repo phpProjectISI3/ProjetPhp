@@ -41,7 +41,8 @@ Route::get('blog', 'PagesController@blog');
 
 Route::get('service', 'PagesController@service');
 
-Route::get('detailRecherche', 'PagesController@detailRecherche');
+//Route::get('detailRecherche', 'PagesController@detailRecherche');
+Route::get('detailRecherche/{id}', 'PagesController@detailRecherche');
 
 Route::get('contact', 'PagesController@contact');
 

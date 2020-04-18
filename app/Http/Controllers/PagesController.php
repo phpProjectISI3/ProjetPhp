@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-
+use App\Logement;
 
 class PagesController extends Controller
 {
@@ -15,7 +15,7 @@ class PagesController extends Controller
 
     // about page
     public function about(){
-        $logements = DB::select('select logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail');
+        $logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail');
         return view('about', ['logements'=>$logements]);
     }
 
@@ -27,8 +27,14 @@ class PagesController extends Controller
         return view('contact');
     }
 
-    public function detailRecherche(){
-        return view('detailRecherche');
+    public function detailRecherche($id){
+        $logement = DB::table('logement')
+                    ->join('detail_logement', 'logement.detail_logement_', '=', 'detail_logement.id_detail')
+                    ->select('*')
+                    ->where('logement.id_logement',$id)
+                    ->first();
+
+		return view('detailRecherche',compact('logement'));
     }
 
     public function service(){

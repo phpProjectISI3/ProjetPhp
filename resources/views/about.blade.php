@@ -90,7 +90,7 @@
 					<div class="hotel-content" >
 						<div class="hotel-grid"  style="background-image: url(images/1.jpg);">
 							<div class="price" ><small></small><span>{{$logement->tarif_par_nuit_hs}}/nuit</span></div>
-							<a class="book-now text-center" href="{{url('/detailRecherche')}}"><i class="ti-calendar"></i> Réservé </a>
+							<a class="book-now text-center" href="detailRecherche/{{$logement->id_logement}}"><i class="ti-calendar"></i> Réservé </a>
 						</div>
 						<div class="desc" id="carte">
 							<h3><a href="{{url('/detailRecherche')}}">{{$logement->nom_logement}} </a></h3>

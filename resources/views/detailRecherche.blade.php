@@ -3,7 +3,19 @@
 @section('title','Détails')
 
 @section('linkcss')
-     <link rel="stylesheet" href="css/detailrecherche.css">
+     <link rel="stylesheet" href="../css/detailrecherche.css"/>
+	 <script src="https://kit.fontawesome.com/4f2d779e50.js" crossorigin="anonymous"></script>
+	 <link rel="stylesheet" href="../css/designRadioBtn.css" />
+	 <style>
+	 #valeurRadioBtn{
+	 position: absolute;
+    margin-left: 30px;
+    margin-top: 3%;
+    padding: 0px;
+    display: inline;
+    width: 300px;
+	 }
+	 </style>
 @endsection
 
 @section('body')
@@ -17,28 +29,53 @@
 	<div id="fh5co-hotel-section">
 		<div class="container">
 			<div class="row" id="Row">
-				<h1>Villa</h1>
+				<h1>-{{$logement->nom_logement}}-</h1>
 				<div id="division">
-					<label id="chambres" name="chambrs">2 Chambres</label><span></span>
-					<label id="toilettes" name="toilettes">1 Toilette </label><span></span>
+					<label id="chambres" name="chambrs">{{DB::table('logement')->join('detail_logement', 'logement.detail_logement_', '=', 'detail_logement.id_detail')->join('type_logement','detail_logement.type_logement_','=','type_logement.id_type_logement')->select('type_logement.libelle_type_logement')->where('logement.id_logement',$logement->id_logement)->value('libelle_type_logement') }} avec <i class="fas fa-door-open"></i> {{$logement->nbr_piece}} piéces (en total {{$logement->superficie_logement}} m&sup2;) pour <i class="fas fa-users"></i> {{$logement->capacite_personne_max}} personnes </label>
+					<!--<label id="toilettes" name="toilettes">1 Toilette </label><span></span>
 					<label id="sallemanger" name="sallemanger">1 Salle à manger </label><span></span>
-					<label id="sejour" name="sejour">1 Sejour</label>
+					<label id="sejour" name="sejour">1 Sejour</label>-->
 				</div>
 				<hr>
 				<div id="description">
-					<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus praesentium asperiores esse facere libero deserunt dolores hic ipsa? Dolorem nam ratione voluptatibus iusto fugit nostrum recusandae placeat pariatur porro, veritatis facere aliquam nulla corporis iure, repellendus autem ea molestias praesentium. Voluptatibus voluptatum quisquam, modi laudantium unde voluptate dolore aliquid soluta.</p>
+					<p>{{$logement->description_logement}}</p>
 				</div>
 				<hr>
 				<div id="Services">
 					<h3>Services</h3>
-					<ul>
-						<li> Eau Chaude </li>
-						<li> Télévision </li>
-						<li> Climatiseur </li>
-						<li> Wifi </li>
-					</ul>
-				</div>
-				<div id="Interdictions">
+				       @if($logement->piscine_disponible)
+						    <div class="roundedTwo">
+							  <input type="checkbox" value="None" id="roundedTwo" name="check" disabled checked />
+							  <label for="roundedTwo"></label>
+							  <p id="valeurRadioBtn" >Piscine.</p>
+							</div>
+						@endif
+						<br />
+						@if($logement->parking_disponible)
+						    <div class="roundedTwo">
+							  <input type="checkbox" value="None" id="roundedTwo" name="check" disabled checked />
+							  <label for="roundedTwo"></label>
+							  <p id="valeurRadioBtn" >Parking securisé.</p>
+							 </div>
+						@endif
+						<br />
+						@if($logement->jardin_cours)
+						    <div class="roundedTwo">
+							  <input type="checkbox" value="None" id="roundedTwo" name="check" disabled checked />
+							  <label for="roundedTwo"></label>
+							  <p id="valeurRadioBtn" >petit jardin/cours pour mieu select détendre.</p>
+							</div>
+						@endif
+						<br />
+						@if($logement->massage_disponible)
+						    <div class="roundedTwo">
+							  <input type="checkbox" value="None" id="roundedTwo" name="check" disabled checked />
+							  <label for="roundedTwo"></label>
+							  <p id="valeurRadioBtn">Massage/Spa par des profesionnels.</p>
+							</div>
+						@endif
+			</div>
+<!--				<div id="Interdictions">
 					<h3>Interdictions</h3>
 					<ul>
 						<li> Espace non fumeur </li>
@@ -46,10 +83,10 @@
 						<li> Chien </li>
 					</ul>
 				</div>
-				<hr>
+-->				<hr>
 				<div id="Adresse">
 					<h3>Adresse</h3>
-					<p><span>Oujda</span> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam, reprehenderit! </p>
+					<p>{{ $logement->adress_logement}} </p>
 					<iframe class="fh5co-map" id="map"
 					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.91245062501!2d-1.9006504850806016!3d34.65691389307045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd7864a5817de333%3A0x4365aa956bd4ff1e!2sSupMTI!5e0!3m2!1sfr!2sma!4v1584826832545!5m2!1sfr!2sma"
 					width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
@@ -57,7 +94,14 @@
 				</div>
 			</div>
 			<div id="rightside" name="rightside">
-				<h2>MAD486 <span>/nuit</span></h2>
+				<h2>
+				@if((int)Carbon\Carbon::now()->format('m') < 6)
+				{{$logement->tarif_par_nuit_bs}}
+				@else
+				{{$logement->tarif_par_nuit_hs}}
+				@endif
+				<span>/nuit</span>
+				</h2>
 				<hr size="30">
 				<form action="{{url('login')}}">
 					
@@ -113,9 +157,10 @@
 		</form>
 		</div>
 	</div>
+	</div>
 @endsection
 
 @section('scripts')
-<script src="js/scrolling.js"></script>
-	<script src="js/detailRecherche.js"></script>
+<script src="../js/scrolling.js"></script>
+<script src="../js/detailRecherche.js"></script>
 @endsection
