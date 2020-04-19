@@ -32,9 +32,6 @@
 				<h1>-{{$logement->nom_logement}}-</h1>
 				<div id="division">
 					<label id="chambres" name="chambrs">{{DB::table('logement')->join('detail_logement', 'logement.detail_logement_', '=', 'detail_logement.id_detail')->join('type_logement','detail_logement.type_logement_','=','type_logement.id_type_logement')->select('type_logement.libelle_type_logement')->where('logement.id_logement',$logement->id_logement)->value('libelle_type_logement') }} avec <i class="fas fa-door-open"></i> {{$logement->nbr_piece}} piéces (en total {{$logement->superficie_logement}} m&sup2;) pour <i class="fas fa-users"></i> {{$logement->capacite_personne_max}} personnes </label>
-					<!--<label id="toilettes" name="toilettes">1 Toilette </label><span></span>
-					<label id="sallemanger" name="sallemanger">1 Salle à manger </label><span></span>
-					<label id="sejour" name="sejour">1 Sejour</label>-->
 				</div>
 				<hr>
 				<div id="description">
@@ -75,15 +72,7 @@
 							</div>
 						@endif
 			</div>
-<!--				<div id="Interdictions">
-					<h3>Interdictions</h3>
-					<ul>
-						<li> Espace non fumeur </li>
-						<li> Fête ou Partie </li>
-						<li> Chien </li>
-					</ul>
-				</div>
--->				<hr>
+			<hr>
 				<div id="Adresse">
 					<h3>Adresse</h3>
 					<p>{{ $logement->adress_logement}} </p>
@@ -161,8 +150,7 @@
 @endsection
 
 @section('scripts')
-<!--<script src="../js/scrolling.js"></script>
-<script src="../js/detailRecherche.js"></script>
+<!--<script src="../js/detailRecherche.js"></script>
 -->
 <script type="text/javascript">
 var i = 0;

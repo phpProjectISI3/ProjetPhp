@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-// test
-// test hicham
-
 
 // Route::get('about', function(){
 //     $bitfumes = ['this', 'is', 'Bitfumes'];
