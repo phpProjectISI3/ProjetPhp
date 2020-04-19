@@ -17,10 +17,10 @@ class CreatePhotoLogementTable extends Migration
             $table->id('id_photo');
             $table->string('chemin_photo');
 
-            $table->unsignedBigInteger('detail_logement_id');
-            $table->foreign('detail_logement_id')
-                ->references('id_detail')
-                ->on('detail_logements');
+            $table->unsignedBigInteger('logement_id');
+            $table->foreign('logement_id')
+                ->references('id_logement')
+                ->on('logement');
             $table->timestamps();
         });
     }
