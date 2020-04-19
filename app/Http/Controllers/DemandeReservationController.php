@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Demande_reservation;
+use App\Demandereservation;
 
 class DemandeReservationController extends Controller
 {
@@ -14,7 +14,8 @@ class DemandeReservationController extends Controller
      */
     public function index()
     {
-        //
+        $demande_reservation = DemandeReservation::all()->toArray();
+        return view('demandereservation', compact('demande_reservation'));
     }
 
     /**

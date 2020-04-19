@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DemandeReservationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,6 +61,8 @@ Route::get('confirmation', 'PagesController@confirmation');
 Route::get('prototype', function () {
     return view('BackOfficeAdmin.GestionDesLogements.prototype');
 });
-Route::get('/Logements/import_categories', 'LogementController@import_categories')->name('LogementController.import_categories');
+Route::get('/Logements/import_categories', 'LogementController@import_categories')
+    ->name('LogementController.import_categories');
 
 Route::resource('Logements', 'LogementController');
+Route::resource('/demandereservation', 'DemandeReservationController')->only('index');

@@ -17,7 +17,8 @@ class CreateRemarqueClientTable extends Migration
             $table->id('id_remarque');
 
             $table->unsignedBigInteger('personne_id');
-            $table->foreign('personne_id')->references('id_client')->on('personnes');
+            $table->foreign('personne_id')
+                ->references('id_personne')->on('personnes');
 
             $table->text('description_remarque', 100);
             $table->timestamps();

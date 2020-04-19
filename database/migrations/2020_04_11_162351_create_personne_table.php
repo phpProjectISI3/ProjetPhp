@@ -20,7 +20,8 @@ class CreatePersonneTable extends Migration
 
             $table->unsignedBigInteger('sexe_id');
             $table->foreign('sexe_id')
-                ->references('id_sexe')->on('sexes');
+                ->references('id_sexe')
+                ->on('sexes');
 
             $table->boolean('est_marie');
             $table->integer('nbr_Enfant_scolarise');

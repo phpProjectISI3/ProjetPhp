@@ -14,11 +14,17 @@ class CreateAuthRolePersonneTable extends Migration
     public function up()
     {
         Schema::create('auth_role_personnes', function (Blueprint $table) {
-            $table->unsignedBigInteger('personne_id');
-            $table->foreign('personne_id')->references('id_client')->on('personnes');
+            $table->unsignedBigInteger('personne_role_');
+            $table->foreign('personne_role_')
+                ->references('id_client')
+                ->on('personnes')->onDelete('cascade');
 
-            $table->unsignedBigInteger('auth_role_id');
-            $table->foreign('auth_role_id')->references('id_role')->on('auth_roles');
+            $table->unsignedBigInteger('auth_role_');
+            $table->foreign('auth_role_')
+                ->references('id_role')
+                ->on('auth_roles')->onDelete('cascade');
+
+            $table->primary(['personne_role_', 'auth_role_']);
 
             $table->string('username_email', 50);
             $table->string('mot_de_passe', 100);
