@@ -41,7 +41,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#">
+						<a href="{{url('/demandereservation')}}">
 							<span class="fas fa-scroll mr-3"></span> Demandes
 						</a>
 					</li>
