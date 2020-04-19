@@ -401,7 +401,7 @@ VALUES
 
 -----------------------Informations---------------------------------------------------------------------
 --Pour faire backup : aller dans  => C:\Program Files\PostgreSQL\9.5\bin
--- commande : pg_dump -U postgres -a -p 5433 -d pgluxedatabase > C:\Users\pc\Desktop\testBackup.sql
+-- commande : pg_dump -U postgres --column-inserts -p 5433 -d pgluxedatabase > C:\Users\pc\Desktop\testBackup.sql
 -- -U : postgres : Username 
 -- -d : pgluxedatabse : database name 
 -- -a : generer que le script INSERT (Copy .. \.)

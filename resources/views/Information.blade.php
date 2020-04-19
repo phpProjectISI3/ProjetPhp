@@ -20,18 +20,6 @@
                         <div id="information">
                             <h3>Verifier Numéro de téléphone</h3>
                             <div >
-<!--                                <p>Ville</p>
-                                <div class="a-col divselect" >
-                                    <section>
-                                        <select class="cs-select cs-skin-border">
-                                            <option value="" disabled selected>Ville </option>
-                                            <option value="oujda">Oujda</option>
-                                            <option value="rabat">rabat</option>
-                                            <option value="casa">Casa</option>
-                                            <option value="meknes">Meknes</option>
-                                        </select>
-                                    </section>
-                                </div>-->
                                 <div id="Phone">
                                     <h3>Numéro de téléphone</h3>
                                     <input type="tel" name="tel" id="" placeholder="Numéro de téléphone">
