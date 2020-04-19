@@ -20,7 +20,7 @@
 
 @section('body')
 <div class="fh5co-parallax"   id="mainCover" data-stellar-background-ratio="0.5">
-        <img name="slide"  alt="">
+        <img name="slide"  alt="image">
         <br />
         <a class="prev" onclick="previous()">&#10094;</a>
         <a class="next" onclick="next()">&#10095;</a>
@@ -63,7 +63,7 @@
 						    <div class="roundedTwo">
 							  <input type="checkbox" value="None" id="roundedTwo" name="check" disabled checked />
 							  <label for="roundedTwo"></label>
-							  <p id="valeurRadioBtn" >petit jardin/cours pour mieu select détendre.</p>
+							  <p id="valeurRadioBtn" >petit jardin/cours pour mieu se détendre.</p>
 							</div>
 						@endif
 						<br />
@@ -161,6 +161,58 @@
 @endsection
 
 @section('scripts')
-<script src="../js/scrolling.js"></script>
+<!--<script src="../js/scrolling.js"></script>
 <script src="../js/detailRecherche.js"></script>
+-->
+<script type="text/javascript">
+var i = 0;
+var images = [];
+
+images[0] = "../images/1.jpg";
+images[1] = "../images/2.jpg";
+images[2] = "../images/3.jpg";
+
+function next () {
+
+    if (i < images.length - 1) {
+        i++;
+    }
+    else {
+        i = 0;
+    }
+    
+    document.slide.src = images[i];
+}
+
+function previous () {
+    if (i > 0)
+        i--;
+
+    else {
+        i = images.length - 1;
+    }
+    document.slide.src = images[i];
+}
+
+document.slide.src = images[0];
+    //$.ajaxSetup({
+	//	headers: {
+	//		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	//	}
+	//});
+	//
+	//$(document).ready(
+	//	function () {
+	//		$.ajax({
+	//			url: "{{ route('PagesController.import_photos') }}",
+	//			method: 'GET',
+	//			data: { ID: id_logement },
+	//			dataType: 'json',
+	//			success: function(Photos){
+	//				
+    //            }
+	//		});
+    //    }
+	//);
+</script>
 @endsection

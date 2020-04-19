@@ -88,7 +88,7 @@
 				@foreach($logements as $logement)
 				<div class="col-md-4" >
 					<div class="hotel-content" >
-						<div class="hotel-grid"  style="background-image: url(images/1.jpg);">
+						<div class="hotel-grid"  style="background-image: url({{ DB::table('photo_logement')->join('logement','photo_logement.logement_','=','logement.id_logement')->select('photo_logement.chemin_photo')->where('logement.id_logement',$logement->id_logement)->value('chemin_photo')  }});">
 							<div class="price" ><small></small><span>{{$logement->tarif_par_nuit_hs}}/nuit</span></div>
 							<a class="book-now text-center" href="detailRecherche/{{$logement->id_logement}}"><i class="ti-calendar"></i> Réservé </a>
 						</div>

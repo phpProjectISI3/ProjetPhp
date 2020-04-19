@@ -1,9 +1,9 @@
 var i = 0;
 var images = [];
 
-images[0] = "images/1.jpg";
-images[1] = "images/2.jpg";
-images[2] = "images/3.jpg";
+images[0] = "../images/1.jpg";
+images[1] = "../images/2.jpg";
+images[2] = "../images/3.jpg";
 
 function next () {
 

@@ -13,6 +13,50 @@ class PagesController extends Controller
         return view('welcome');
     }
 
+    public function import_photos(Request $request){
+        if($request->ajax()){
+			$data = DB::select('select photo_logement.chemin_photo
+                                from logement  inner join photo_logement on logement.id_logement = photo_logement.logement_
+                                where logement.id_logement = 4;
+                                ');
+            if($data != null){
+				echo json_encode($data);
+
+			}
+		}
+	}
+	public function import_categories(Request $request){
+		if($request->ajax()){
+			$html_output = '';
+			$ID_DETAIL= $request->get('ID');
+			$data = DB::table('detail_logement')
+					->Where('detail_logement.id_detail', '=', $ID_DETAIL)
+					->first();
+
+			if($data != null)
+			{
+				$MesDonneesJson= array(
+					'MaxReservation'=> $data->max_reserv,
+					'Superficie'=> $data->superficie_logement,
+					'NombrePiece'=>$data->nbr_piece,
+					'MaxPersonne'=>$data->capacite_personne_max,
+					'Description'=>$data->description_logement,
+					'Massage'=>$data->massage_disponible,
+					'Piscine'=>$data->piscine_disponible,
+					'Jardin'=>$data->jardin_cours,
+					'Parking'=>$data->parking_disponible,
+					'MargeAnnulation'=>$data->marge_annulation,
+					'PrixAnnulation'=>$data->tarif_annulation,
+					'PrixHS'=>$data->tarif_par_nuit_hs,
+					'PrixBS'=>$data->tarif_par_nuit_bs,
+					'TypeLogement'=> $data->type_logement_
+					);
+			}
+
+			echo json_encode($MesDonneesJson);
+		}
+	}
+
     // about page
     public function about(){
         $logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail');

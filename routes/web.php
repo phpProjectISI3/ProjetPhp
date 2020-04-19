@@ -63,4 +63,6 @@ Route::get('prototype', function () {
 });
 Route::get('/Logements/import_categories', 'LogementController@import_categories')->name('LogementController.import_categories');
 
+Route::get('/detailRecherche/import_photos', 'PagesController@import_photos')->name('PagesController.import_photos');
+
 Route::resource('Logements', 'LogementController');
