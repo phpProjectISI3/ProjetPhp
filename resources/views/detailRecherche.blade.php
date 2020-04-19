@@ -13,7 +13,7 @@
     margin-top: 3%;
     padding: 0px;
     display: inline;
-    width: 300px;
+    width: 600px;
 	 }
 	 </style>
 @endsection
