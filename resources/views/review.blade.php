@@ -3,121 +3,197 @@
 @section('title','Détails')
 
 @section('linkcss')
-     <link rel="stylesheet" href="css/detailrecherche.css">
-     <link rel="stylesheet" href="css/review.css">
+<link rel="stylesheet" href="../css/detailrecherche.css" />
+<link rel="stylesheet" href="../css/review.css" />
+<script src="https://kit.fontawesome.com/4f2d779e50.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="../css/designRadioBtn.css" />
+<style>
+	 #valeurRadioBtn{
+	 position: absolute;
+    margin-left: 30px;
+    margin-top: 3%;
+    padding: 0px;
+    display: inline;
+    width: 600px;
+	 }
+	#rightside {
+    position: fixed;
+    width: 25%;
+    height: 32em;
+    background-color: #f5f5f5;
+    box-shadow: 0 0 7px rgb(207, 207, 207);
+    border-radius: 10px;
+    z-index: 999999999999999999999;
+    padding: 2em;
+    top: 11em;
+    right: -7%;
+    transform: translate(-50%,0);
+    /* z-index: -11111;
+    }
+</style>
 @endsection
 
 @section('body')
 <div id="fh5co-hotel-section">
-                <div class="container">
-                    <div class="row" id="Row">
-                        <h1>La règle de la maison</h1>
-                        <div id="division">
-                            <label id="chambres">5 Nuits</label>
-                        </div>
-                        <hr>
-                        <div id="Entre">
-                            <h3>Entrée</h3>
-                            <ul>
-                                <li>14  Avril</li>
-                                <li><i>Check-In</i>&nbsp; <em>After 3:00 PM</em></li>
-                            </ul>
-                        </div>
-                        <hr>
-                        <div id="Sortie">
-                            <h3>Sortie</h3>
-                            <ul>
-                                <li> 17 AVril </li>
-                                <li> <i>Check-Out </i> &nbsp; <em>12:00 PM</em> </li>
-                            </ul>
-                        </div>
-                        <hr>
-                        <div id="Services">
-                            <h3>Services</h3>
-                            <ul>
-                                <li> Eau Chaude </li>
-                                <li> Télévision </li>
-                                <li> Climatiseur </li>
-                                <li> Wifi </li>
-                            </ul>
-                        </div>
-                        <div id="Interdictions">
-                            <h3>Interdictions</h3>
-                            <ul>
-                                <li> Espace non fumeur </li>
-                                <li> Fête ou Partie </li>
-                                <li> Chien </li>
-                            </ul>
-                        </div>
-                        <hr>
-                        <div id="Description">
-                            <h3>Description</h3>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium dolorem maiores perferendis unde quaerat et reiciendis, voluptatibus ipsam numquam tempore necessitatibus obcaecati laudantium soluta sed commodi nam recusandae enim, architecto fugit nobis sunt sit nesciunt ducimus pariatur? Quasi vel repudiandae recusandae voluptate voluptatibus sit. Deserunt, odio molestias recusandae provident commodi sapiente expedita enim quia ipsa, quod voluptatem doloribus! Vero eos nisi iure obcaecati at, culpa, ratione praesentium adipisci facere nam pariatur voluptatibus harum tenetur facilis ipsum voluptas laboriosam et dolor doloremque vel, repellat ab quia! Nulla, voluptates, soluta nesciunt quas incidunt itaque quasi, ea blanditiis assumenda natus sapiente odio non?</p>
-                        </div>
-                        <div id="continue">
-                            <input type="submit" value="Continue">
-                        </div>
-                    </div>
-                    <div id="rightside">
-                        <h2>MAD486 <span>/nuit</span></h2>
-                        <hr size="30">
-                        <form action="login.html">
+	<div class="container">
+		<div class="row" id="Row">
+			<h1>
+				<i class="fas fa-scroll mr-3"></i> Quelque régles de base
+			</h1>
+			<hr />
+			<div id="Entre">
+				<h3>Rappel des caractéristiques.</h3>
+				<ul>
+					<b>
+						<i class="fas fa-house-user mr-3"></i> -{{ $logement->nom_logement }}-
+					</b>
+					<br />
+					<i class="input-group-text fas fa-map-marked-alt"></i>
+					<em>{{ $logement->adress_logement }}</em>
+					<br />
+					<i class="input-group-text fas fa-map-marked-alt"></i>
+					<em>une superficie de {{ $logement->superficie_logement }} m&sup2;</em>
+					<br />
+					<i class="input-group-text fas fa-door-open"></i>
+					<em>{{ $logement->nbr_piece }} piéces.</em>
 
-                            <div class="dates">
-                                <span>Dates</span>
-                                <div id="showdates">
-                                    <Label id="DateEntree">2020-04-14</Label>
-                                    <span><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
-                                            viewBox="0 0 172 172" style=" fill:#000000;">
-                                            <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1"
-                                                stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
-                                                stroke-dasharray="" stroke-dashoffset="0" font-family="none"
-                                                font-weight="none" font-size="none" text-anchor="none"
-                                                style="mix-blend-mode: normal">
-                                                <path d="M0,172v-172h172v172z" fill="none"></path>
-                                                <g fill="#a5a5a5">
-                                                    <path
-                                                        d="M91.15104,9.18229l-10.30208,10.30208l59.34896,59.34896h-140.19792v14.33333h140.19792l-59.34896,59.34896l10.30208,10.30208l71.66667,-71.66667l4.92708,-5.15104l-4.92708,-5.15104z">
-                                                    </path>
-                                                </g>
-                                            </g>
-                                        </svg></span>
-                                    <Label id="DateSortie">2020-04-17</Label>
-                                </div>
-                            </div>
-                            <div class="dates">
-                                <span>Dates</span>
-                                <div id="guests">
-                                    <select class="count" name="" id="">
-                                        <option value="" selected disabled>Choisir le nombre de personnes</option>
-                                        <option value="1">- 2</option>
-                                        <option value="2">2 - 4</option>
-                                        <option value="3">4 - 8</option>
-                                        <option value="4">8 +</option>
-                                    </select>
-                                </div>
-                                <div class="dates">
-                                    <span>MAD486 <span id="numbernuit"> x 3 nuits</span></span>
-                                    <span id="totalnuit">MAD 1,458</span>
-                                </div>
-                                <hr class="scndhr">
-                                <div class="dates">
-                                    <span>MAD 1.458 <span id="numbernuit"> x 2 pers</span></span>
-                                    <span id="totalnuit">MAD 2.916</span>
-                                </div>
-                                <hr class="scndhr">
-                                <div class="dates">
-                                    <span id="total" class="black">Total  </span>
-                                    <span id="totalnuit" class="black">MAD 2.916</span>
-                                </div>
-                            </div>
-                            <!-- <div id="reserver">
-                                <input type="submit" value="Réserver">
-                            </div> -->
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <!-- END fh5co-page -->
+				</ul>
+			</div>
+			<hr />
+			<div id="Description">
+				<h3>Description</h3>
+				<ul>
+					<p>{{ $logement->description_logement }}</p>
+				</ul>
+			</div>
+			<hr />
+			<div id="Sortie">
+				<h3>Les services et conforts.</h3>
+				<ul>
+					@if($logement->piscine_disponible)
+					<div class="roundedTwo">
+						<input type="checkbox" value="None" id="roundedTwo" name="check" disabled checked />
+						<label for="roundedTwo"></label>
+						<p id="valeurRadioBtn">Piscine.</p>
+					</div>
+					<br />
+					@endif
+						@if($logement->parking_disponible)
+					<div class="roundedTwo">
+						<input type="checkbox" value="None" id="roundedTwo" name="check" disabled checked />
+						<label for="roundedTwo"></label>
+						<p id="valeurRadioBtn">Parking securisé.</p>
+					</div>
+					<br />
+					@endif
+						@if($logement->jardin_cours)
+					<div class="roundedTwo">
+						<input type="checkbox" value="None" id="roundedTwo" name="check" disabled checked />
+						<label for="roundedTwo"></label>
+						<p id="valeurRadioBtn">petit jardin/cours pour mieu se détendre.</p>
+					</div>
+					<br />
+					@endif
+						@if($logement->massage_disponible)
+					<div class="roundedTwo">
+						<input type="checkbox" value="None" id="roundedTwo" name="check" disabled checked />
+						<label for="roundedTwo"></label>
+						<p id="valeurRadioBtn">Massage/Spa par des profesionnels.</p>
+					</div>
+					@endif
+				</ul>
+			</div>
+			<hr />
+			<div id="Services">
+				<h3>Regles &aacute; respecter.</h3>
+				<ul>
+					<p>
+						Ces conditions, politiques et normes s'appliquent dans le cadre de votre accès et de votre utilisation de la plate-forme
+						<a href="#" style="text-decoration:underline">Luxe Booking</a> en complément de nos Conditions générales et de nos Conditions de service relatives aux paiements.
+					</p>
+					<ul>
+						<li> Respecter le temps impartie et choisit lors de votre réservation.</li>
+						<li>Bien etre au rendez vous et respectez le dernier delais de sortie.</li>
+						<li>Ne pas depasser les 7jours par reservation </li>
+						<li>Prendre soin du logement ainsi que toute l'électro-menager disponible</li>
+						<li>Ne pas deranger les autres locataires/voisins du lieu destiné.</li>
+					</ul>
+				</ul>
+			</div>
+			<hr />
+			<div id="Interdictions">
+				<h3>En cas d'annulation</h3>
+				<ul>
+					Marge d&acute;annulation : &nbsp;
+					<b style="color:red; text-decoration:underline ">{{ $logement->marge_annulation }} jours</b>
+					<br />
+					Tarif/sanction d&acute;annulation : &nbsp;
+					<b style="color:red; text-decoration:underline ">{{ $logement->tarif_annulation }} Dhs</b>
+					<br />
+					<br />
+					<p style="text-align: center;border:dashed">
+						Il est fortement recommander de jeter un coup d'oeil sur
+						<a href="#" style=" text-decoration:underline;">notre politique d'annulation</a> afin que vous soyez remboursée en cas vous auriez changer d'avis ou de destination ..
+Ainsi eviter tout mal entendu/conflit car il est tout a fait possible d'etre sanctionné si vous integrer la marge d'annulation (qui dépend de chaque logement).
+					</p>
+				</ul>
+			</div>
+		</div>
+		<div id="rightside">
+			<h2>
+				@if((int)Carbon\Carbon::now()->format('m')< 6)
+					{{$logement->tarif_par_nuit_bs}}
+				 @else
+				    {{$logement->tarif_par_nuit_hs}}
+				 @endif
+				<span> Dhs/nuit</span>
+			</h2>
+			<hr size="30" />
+			<div>
+				<div class="dates">
+					<span>Dates</span>
+					<div id="showdates">
+						<label id="DateEntree">{{$datedebut}}</label>
+						<span>
+							<i class="fas fa-angle-double-right"></i>					
+						</span>
+						<label id="DateSortie">{{$datefin}}</label>
+					</div>
+				</div>
+				<div class="dates">
+					<div class="dates">
+						<span>
+							Séjour :
+						</span>
+						<span id="totalnuit">5 nuits</span>
+					</div>
+					<hr class="scndhr" />
+					<div class="dates">
+						<span>
+							Tarif :
+						</span>
+						<span id="totalnuit">
+							@if((int)Carbon\Carbon::now()->format('m')< 6)
+								{{$logement->tarif_par_nuit_bs}}
+							 @else
+								{{$logement->tarif_par_nuit_hs}}
+							 @endif
+							 Dhs (TTC)
+						</span>
+					</div>
+					<hr class="scndhr" />
+					<div class="dates">
+						<span id="total" class="black">Total  </span>
+						<span id="totalnuit" class="black">MAD 2.916</span>
+					</div>
+				</div>
+				<div id="reserver">
+					<input type="submit" value="Réserver" />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- END fh5co-page -->
 
 @endsection

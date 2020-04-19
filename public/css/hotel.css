@@ -60,3 +60,7 @@
 .alternate .input-field:first-child{
   margin-left: 10em;
 }
+
+.sameHeight{
+  height: 15em;
+}

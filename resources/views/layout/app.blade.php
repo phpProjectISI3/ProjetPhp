@@ -109,7 +109,7 @@
 										</strong>
 									</li>
 									<li>
-										<a id="PernalisedLink" href="{{url('/about') }}">Nos Offres</a>
+										<a id="PernalisedLink" href="{{url('/about/-1') }}">Nos Offres</a>
 									</li>
 									<li>
 										<a id="PernalisedLink" href="{{url('/service')}}">Nos services</a>

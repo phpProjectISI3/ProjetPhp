@@ -10,11 +10,6 @@ use App\Detail_logement;
 
 class LogementController extends Controller
 {
-    /**
-	 * Display a listing of the resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
     public function index($var = false)
     {
         $logements = Logement::All();
@@ -25,11 +20,6 @@ class LogementController extends Controller
                    );
     }
 
-    /**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return \Illuminate\Http\Response
-	 */
     public function create()
     {
         $listeCategories = DB::select("select detail_logement.id_detail as id , concat(type_logement.libelle_type_logement,' ',detail_logement.id_detail) as libelle
@@ -40,7 +30,7 @@ class LogementController extends Controller
 		$listeTypes = TypeLogement::select('id_type_logement','libelle_type_logement')
 									->get();
 
-		$success ='ajouté avec succé !';
+		$success ='ajoutÃ© avec succÃ© !';
         return view('BackOfficeAdmin.GestionDesLogements.create')
 			   ->with('listeCategories',$listeCategories)
 			   ->with('listeTypes',$listeTypes);
@@ -79,47 +69,41 @@ class LogementController extends Controller
 		}
 	}
 
-    /**
-	 * Store a newly created resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @return \Illuminate\Http\Response
-	 */
     public function store(Request $request)
     {
-		//$valeur_selectione = $request->get('categorie');
-		//if($valeur_selectione == null || $valeur_selectione == -1){
-		//    $detail_logement = new Detail_logement;
-		//    $detail_logement->type_logement_ = $request->get('typeLogement');
-		//    $detail_logement->superficie_logement = $request->get('superficie');
-		//    $detail_logement->nbr_piece = $request->get('nbrPiece');
-		//    $detail_logement->capacite_personne_max = $request->get('NbrPersonne');
-		//    $detail_logement->tarif_par_nuit_hs = $request->get('prixHS');
-		//    $detail_logement->tarif_par_nuit_bs = $request->get('prixBS');
-		//    $detail_logement->description_logement = $request->get('description');
-		//    $detail_logement->max_reserv = $request->get('NbrReserv');
-		//    $detail_logement->marge_annulation = $request->get('margeAnnulation');
-		//    $detail_logement->piscine_disponible = $request->get('piscine') == 'on' ? true : false;
-		//    $detail_logement->parking_disponible = $request->get('parking') == 'on' ? true : false;
-		//    $detail_logement->jardin_cours = $request->get('jardin') == 'on' ? true : false;
-		//    $detail_logement->massage_disponible = $request->get('massage') == 'on' ? true : false;
-		//    $detail_logement->tarif_annulation = $request->get('prixAnnulation');
-		//    $detail_logement->est_categorie = $request->get('estCategorie') == 'on' ? 'true' : 'false';
+		$valeur_selectione = $request->get('categorie');
+		if($valeur_selectione == null || $valeur_selectione == -1){
+		    $detail_logement = new Detail_logement;
+		    $detail_logement->type_logement_ = $request->get('typeLogement');
+		    $detail_logement->superficie_logement = $request->get('superficie');
+		    $detail_logement->nbr_piece = $request->get('nbrPiece');
+		    $detail_logement->capacite_personne_max = $request->get('NbrPersonne');
+		    $detail_logement->tarif_par_nuit_hs = $request->get('prixHS');
+		    $detail_logement->tarif_par_nuit_bs = $request->get('prixBS');
+		    $detail_logement->description_logement = $request->get('description');
+		    $detail_logement->max_reserv = $request->get('NbrReserv');
+		    $detail_logement->marge_annulation = $request->get('margeAnnulation');
+		    $detail_logement->piscine_disponible = $request->get('piscine') == 'on' ? true : false;
+		    $detail_logement->parking_disponible = $request->get('parking') == 'on' ? true : false;
+		    $detail_logement->jardin_cours = $request->get('jardin') == 'on' ? true : false;
+		    $detail_logement->massage_disponible = $request->get('massage') == 'on' ? true : false;
+		    $detail_logement->tarif_annulation = $request->get('prixAnnulation');
+		    $detail_logement->est_categorie = $request->get('estCategorie') == 'on' ? 'true' : 'false';
 
-		//    $detail_logement->save();
-		//    $valeur_selectione = $detail_logement->id_detail;
-		//}
+		    $detail_logement->save();
+		    $valeur_selectione = $detail_logement->id_detail;
+		}
 
-		//$logement = new Logement;
-		//$logement->nom_logement = $request->get('nom');
-		//$logement->adress_logement = $request->get('adresse');
-		////$logement->localisation_logement = $request->get(''); ******TODO******
-		//$logement->detail_logement_ = $valeur_selectione;
-		//$logement->save();
+		$logement = new Logement;
+		$logement->nom_logement = $request->get('nom');
+		$logement->adress_logement = $request->get('adresse');
+		//$logement->localisation_logement = $request->get(''); ******TODO******
+		$logement->detail_logement_ = $valeur_selectione;
+		$logement->save();
 
 		return $this->index(true);
     }
-
+	/******************************************************************************************************************************************/
     /**
 	 * Display the specified resource.
 	 *
