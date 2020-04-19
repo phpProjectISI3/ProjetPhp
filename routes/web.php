@@ -45,7 +45,7 @@ Route::get('contact', 'PagesController@contact');
 
 Route::get('login', 'PagesController@login');
 
-Route::get('review', 'PagesController@review');
+Route::get('review/{id}-{datedebut}-{datefin}', 'PagesController@review');
 
 Route::get('information', 'PagesController@information');
 

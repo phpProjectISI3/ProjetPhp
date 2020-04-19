@@ -63,8 +63,16 @@ class PagesController extends Controller
         return view('login');
     }
 
-    public function review(){
-        return view('review');
+    public function review($id_logement, $datedebut, $datefin){
+       $logement = DB::table('logement')
+                    ->join('detail_logement', 'logement.detail_logement_', '=', 'detail_logement.id_detail')
+                    ->select('*')
+                    ->where('logement.id_logement',$id_logement)
+                    ->first();
+	   return view('review')
+			   ->with('logement',$logement)
+			   ->with('datedebut',$datedebut)
+			   ->with('datefin',$datefin);
     }
 
     public function information(){
