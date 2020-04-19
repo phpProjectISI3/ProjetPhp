@@ -66,7 +66,7 @@
 	<article class="carte">
 		<header class="carte__thumb">
 			<a href="#">
-				<img id="imgLogement" src="https://a0.muscache.com/im/pictures/e85d7dbf-ff50-42d6-8e61-dfb242813fd5.jpg?aki_policy=xx_large" />
+				<img id="imgLogement" src="{{DB::table('photo_logement')->join('logement','photo_logement.logement_','=','logement.id_logement')->select('photo_logement.chemin_photo')->where('logement.id_logement',$logement->id_logement)->value('chemin_photo')}}" />
 			</a>
 		</header>
 		<div class="carte__date">
