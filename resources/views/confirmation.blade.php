@@ -12,6 +12,48 @@
 <div id="fh5co-hotel-section">
                 <div class="container">
                     <div class="row" id="Row">
+                      <div class="row" id="Row">
+                     <h1>Dire quelques chose ?</h1>
+                        <div id="division">
+                            <textarea name="direqlqchose" id="" cols="70" rows="7"></textarea>
+                        </div>
+                        <hr>
+                        <div id="information">
+                            <h3>Verifier Numéro de téléphone</h3>
+                            <div >
+                                <div id="Phone">
+                                    <h3>Numéro de téléphone</h3>
+                                    <input type="tel" name="tel" id="" placeholder="Numéro de téléphone">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="continue">
+                            <input type="submit" value="Valider">
+                        </div>
+
+                        <!-- start: lors de la vérification du code envoyé  -->
+                           <h3>Entrez le code de vérification</h3>
+                            <div >
+                                <input type="text" name="verificationCode" placeholder="Entree ici" style="text-align:center;" id="">
+                            </div>
+                     </div>
+                </div>
+                        <div id="continue">
+                            <input type="submit" value="Valider">
+                        </div> 
+                        <!-- : end -->
+                        
+                        <!-- start: when number verified this will be showed -->
+                            <h3>Votre Numéro est vérifié</h3>
+                            <p><img src="images/checkmark.png" alt="">+212642833827</p>
+                        </div>
+                        
+                        <div id="continue">
+                            <input type="submit" value="Continue">
+                        </div> 
+                        <!-- : end -->
+                    </div>
                         <h1>Confirmation de payement</h1>
                         <div id="division">
                             <div id="firstname">

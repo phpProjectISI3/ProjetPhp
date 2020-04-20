@@ -3,6 +3,15 @@
 @section('title','100% Luxe et Confort')
 
 @section('body')
+<style>
+#MonBtnSubmit{
+    margin-left: 20px;
+    left: 17px;
+    border: none;
+    z-index: 1000;
+    background: #3c4146;
+}
+</style>
 <aside id="fh5co-hero" class="js-fullheight">
     <div class="flexslider js-fullheight">
 			<ul class="slides">
@@ -62,7 +71,7 @@
 		<div class="container">
 			<div class="row">
 				<div id="availability">
-					<form action="#">
+					<form action="hna sifet l functionTest lli kayna f controller .. tma testé wcha rah msaisit w filtré w red view w ['les données dyalk']">
 
 						<div class="a-col">
 							<section>
@@ -87,9 +96,11 @@
 							</div>
 						</div>
 						<div class="a-col action">
-							<a href="{{url('about')}}">
-								<span>Vérifier</span>
-								Disponibilté
+							<a>
+							<button type="submit" id="MonBtnSubmit">
+									<span>Vérifier</span>
+									Disponibilté
+							</button>
 							</a>
 						</div>
 					</form>
