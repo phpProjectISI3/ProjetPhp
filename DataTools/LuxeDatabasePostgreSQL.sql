@@ -327,19 +327,29 @@ VALUES
  (true, 4, 180, 3, 2, 1100, 980, 'Studio charifa une chambre dans riad diamant blanc au 2 eme étage la chambre a une vue sur mer et le jardin .', 0, 600, 7, true, true, true, true);
 
 -- insert LOGEMENT
-INSERT into LOGEMENT (nom_logement, detail_logement_, adress_logement)
+
+INSERT INTO logement (id_logement, nom_logement, detail_logement_, adress_logement, localisation_logement) 
 VALUES 
-('Hotel Tildi', 1, 'Rue Hubert Giraud, Ville Nouvelle - 80000 Agadir'),
-('Hotel Tildi', 1, 'Rue Hubert Giraud, Ville Nouvelle - 80000 Agadir'),
-('Dar Itrane - Superbe maison berbère', 3, 'Tagadirt, Marrakech-Tensift-Al Haouz, Maroc'),
-('Villa Authentique Medina', 2, 'Marrakech, Tensift, Maroc'),
-('Villa Authentique Medina', 2, 'Marrakech, El Haouz, Maroc'),
-('Appartement panoramique', 4, 'Marrakech, entre Tensift et El Haouz, Maroc'),
-('Appartement panoramique', 4, 'Marrakech, entre Tensift et El Haouz, Maroc'),
-('Appartement panoramique', 4, 'Marrakech, entre Tensift et El Haouz, Maroc'),
-('Appartement paisible ', 5, 'Essaouira, Marrakech-Safi, Maroc'),
-( 'Studio charifa', 6, 'Fes, Boulvard Asslat, Maroc'),
-( 'Studio charifa double vue mer', 6, 'Fes, environs de quartier El Mouahidine, Maroc');
+(1, 'Hotel Tildi', 1, 'Rue Hubert Giraud, Ville Nouvelle - 80000 Agadir', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3440.4389929673735!2d-9.608750185015307!3d30.423655007513922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b6eb8109e6bf%3A0xad42a94b990584be!2sTildi%20H%C3%B4tel%20Agadir%20%26%20SPA!5e0!3m2!1sfr!2sma!4v1587334240445!5m2!1sfr!2sma" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'),
+(2, 'Hotel Tildi', 1, 'Rue Hubert Giraud, Ville Nouvelle - 80000 Agadir', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3440.4389929673735!2d-9.608750185015307!3d30.423655007513922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b6eb8109e6bf%3A0xad42a94b990584be!2sTildi%20H%C3%B4tel%20Agadir%20%26%20SPA!5e0!3m2!1sfr!2sma!4v1587334240445!5m2!1sfr!2sma" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'),
+(3, 'Dar Itrane - Superbe maison berbère', 3, 'Tagadirt, Marrakech-Tensift-Al Haouz, Maroc', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3413.5001445159774!2d-8.926176984999138!3d31.179143021031695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb1e67f9cf6de1f%3A0x11e05a07f71d7a98!2sTagadirt!5e0!3m2!1sfr!2sma!4v1587334309771!5m2!1sfr!2sma" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'),
+(4, 'Villa Authentique Medina', 2, 'Marrakech, Tensift, Maroc', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3413.5001445159774!2d-8.926176984999138!3d31.179143021031695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb1e67f9cf6de1f%3A0x11e05a07f71d7a98!2sTagadirt!5e0!3m2!1sfr!2sma!4v1587334309771!5m2!1sfr!2sma" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'),
+(5, 'Villa Authentique Medina', 2, 'Marrakech, El Haouz, Maroc', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3413.5001445159774!2d-8.926176984999138!3d31.179143021031695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb1e67f9cf6de1f%3A0x11e05a07f71d7a98!2sTagadirt!5e0!3m2!1sfr!2sma!4v1587334309771!5m2!1sfr!2sma" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'),
+(6, 'Appartement panoramique', 4, 'Marrakech, entre Tensift et El Haouz, Maroc', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1736306.2546897426!2d-9.53658258776723!3d31.79166768479669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafb63e1068fa4d%3A0xb8db0d2bbe8e616!2sMarrakech-Tensift-Al%20Haouz!5e0!3m2!1sfr!2sma!4v1587334666432!5m2!1sfr!2sma" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'),
+(7, 'Appartement panoramique', 4, 'Marrakech, entre Tensift et El Haouz, Maroc', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1736306.2546897426!2d-9.53658258776723!3d31.79166768479669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafb63e1068fa4d%3A0xb8db0d2bbe8e616!2sMarrakech-Tensift-Al%20Haouz!5e0!3m2!1sfr!2sma!4v1587334666432!5m2!1sfr!2sma" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'),
+(8, 'Appartement panoramique', 4, 'Marrakech, entre Tensift et El Haouz, Maroc', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1736306.2546897426!2d-9.53658258776723!3d31.79166768479669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafb63e1068fa4d%3A0xb8db0d2bbe8e616!2sMarrakech-Tensift-Al%20Haouz!5e0!3m2!1sfr!2sma!4v1587334666432!5m2!1sfr!2sma" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'),
+(9, 'Appartement paisible ', 5, 'Essaouira, Marrakech-Safi, Maroc', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27211.838586174523!2d-9.780051766383684!3d31.510978945210496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdad9a4e9f588ccf%3A0x57421a176d5d7d30!2sEssaouira!5e0!3m2!1sfr!2sma!4v1587334695072!5m2!1sfr!2sma" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'),
+(10, 'Studio charifa', 6, 'Fes, Boulvard Asslat, Maroc', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1704327.2032885654!2d-5.2656814032804915!3d33.45545279192627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd9fa4608762a383%3A0xb32d64f9c27479c7!2sF%C3%A8s-Boulemane!5e0!3m2!1sfr!2sma!4v1587334715834!5m2!1sfr!2sma" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'),
+(11, 'Studio charifa double vue mer', 6, 'Fes, environs de quartier El Mouahidine, Maroc', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1704327.2032885654!2d-5.2656814032804915!3d33.45545279192627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd9fa4608762a383%3A0xb32d64f9c27479c7!2sF%C3%A8s-Boulemane!5e0!3m2!1sfr!2sma!4v1587334715834!5m2!1sfr!2sma" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>');
+
+
+--insert planning_logement
+INSERT INTO planning_logement (id_planing, logement_, est_disponible, date_debut, date_fin) 
+VALUES 
+(1, 1, NULL, '2020-01-05', '2020-01-06'),
+(2, 1, NULL, '2020-07-15', '2020-07-24'),
+(3, 1, NULL, '2020-07-30', '2020-07-08');
+
 
 -- insert REMARQUE_CLIENT
 INSERT into REMARQUE_CLIENT (id_remarque, personne_id, description_remarque) 
