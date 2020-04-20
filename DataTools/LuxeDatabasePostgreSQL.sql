@@ -157,6 +157,15 @@ create table DEMANDE_RESERVATION
     date_annulation date
 );
 
+    select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement 
+    from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail 
+    join planning_logement on logement.id_logement = planning_logement.logement_ 
+    where detail_logement.type_logement_ = 5 
+    and planning_logement.date_debut <= ' 2020-04-30 ' 
+    and planning_logement.date_fin >= ' 2020-06-02'
+
+    select * from planning_logement
+
 create sequence RESERVATION_LOGEMENT_seq
 start 1;
 create table RESERVATION_LOGEMENT
@@ -346,7 +355,7 @@ VALUES
 --insert planning_logement
 INSERT INTO planning_logement (id_planing, logement_, est_disponible, date_debut, date_fin) 
 VALUES 
-(1, 1, NULL, '2020-01-05', '2020-01-06'),
+(1, 1, NULL, '2020-05-01', '2020-06-01'),
 (2, 1, NULL, '2020-07-15', '2020-07-24'),
 (3, 1, NULL, '2020-07-30', '2020-07-08');
 
