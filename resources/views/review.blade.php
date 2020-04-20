@@ -28,8 +28,11 @@
     top: 11em;
     right: -7%;
     transform: translate(-50%,0);
-    /* z-index: -11111;
     }
+	#fh5co-header-section{
+		background-image: url("https://66.media.tumblr.com/tumblr_lkq5myCkTD1qdgprmo1_640.jpg");
+		/*background-position: 0px 0px;*/
+	}
 </style>
 @endsection
 
