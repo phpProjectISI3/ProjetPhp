@@ -77,7 +77,8 @@
 						<div class="a-col alternate">
 							<div class="input-field">
 								<label for="date-start">Date Arrivée</label>
-								<input type="text" class="form-control" id="date-start" />
+								<input type="text" class="form-control" value="" id="date-start" />
+							
 							</div>
 						</div>
 						<div class="a-col alternate">
