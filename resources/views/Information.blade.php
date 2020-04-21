@@ -11,7 +11,7 @@
 @section('body')
 <div id="fh5co-hotel-section">
                 <div class="container">
-                    <div class="row" id="Row">
+                    <!--<div class="row" id="Row">
                         <h1>Dire quelques chose ?</h1>
                         <div id="division">
                             <textarea name="direqlqchose" id="" cols="70" rows="7"></textarea>
@@ -58,7 +58,7 @@
                         <!-- : end -->
 
 
-                    </div>
+                    </div>-->
                     <div id="rightside">
                         <h2>MAD486 <span>/nuit</span></h2>
                         <hr size="30">

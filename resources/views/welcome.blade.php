@@ -4,7 +4,7 @@
 
 @section('body')
 <aside id="fh5co-hero" class="js-fullheight">
-    <div class="flexslider js-fullheight">
+    <div class="flexslider  js-fullheight">
 			<ul class="slides">
 		   	<li style="background-image: url(/images/1.jpg);">
 		   		<div class="overlay-gradient"></div>
@@ -15,7 +15,7 @@
 		   						<p><span> Villa</span></p>
 		   						<h2>Réservé votre Villa</h2>
 			   					<p>
-			   						<a href="{{url('detailRecherche')}}" class="btn btn-primary btn-lg">Réservé Maintenant</a>
+			   						<a href="{{url('about/1')}}" class="btn btn-primary btn-lg">Réservé Maintenant</a>
 			   					</p>
 		   					</div>
 		   				</div>
@@ -31,7 +31,7 @@
 		   						<p><span>Maison</span></p>
 		   						<h2>Profiter de votre Vacance  </h2>
 			   					<p>
-			   						<a href="{{url('detailRecherche')}}" class="btn btn-primary btn-lg">Réservé Maintenant</a>
+			   						<a href="{{url('about/3')}}" class="btn btn-primary btn-lg">Réservé Maintenant</a>
 			   					</p>
 		   					</div>
 		   				</div>
@@ -47,14 +47,14 @@
 		   						<p><span>Appartement</span></p>
 		   						<h2>Un meilleur endroit pour s'amuser</h2>
 			   					<p>
-			   						<a href="{{url('detailRecherche')}}" class="btn btn-primary btn-lg">Réservé Maintenant</a>
+			   						<a href="{{url('about/2')}}" class="btn btn-primary btn-lg">Réservé Maintenant</a>
 			   					</p>
 		   					</div>
 		   				</div>
 		   			</div>
 		   		</div>
 		   	</li>
-		   	
+
 		  	</ul>
 	  	</div>
 	</aside>
@@ -62,46 +62,55 @@
 		<div class="container">
 			<div class="row">
 				<div id="availability">
-					<form action="#">
-
+					<form action="multipleabout" method="GET">
+					<!-- @csrf -->
 						<div class="a-col">
 							<section>
-								<select class="cs-select cs-skin-border">
-									<option value="" disabled selected>Type </option>
-									<option value="email">Villa</option>
-									<option value="twitter">Maison</option>
-									<option value="linkedin">Appartement</option>
+								<select name="type" id="type" class="cs-select cs-skin-border">
+										<option value="-1" disabled selected>Type </option>
+									@foreach($types as $type)
+										<option value="{{ $type->id_type_logement }}">{{ $type->libelle_type_logement }}</option>
+									@endforeach
+									<!-- <option value="1">Villa</option>
+									<option value="3">Maison</option>
+									<option value="2">Appartement</option>
+									<option value="4">Chambre Hotel Luxe</option>
+									<option value="5">Chambre Hotel Sympa</option> -->
 								</select>
+
 							</section>
 						</div>
 						<div class="a-col alternate">
 							<div class="input-field">
 								<label for="date-start">Date Arrivée</label>
-								<input type="text" class="form-control" value="" id="date-start" />
-							
+								<input type="text" name="date-start" value="2000-01-01" class="form-control" id="date-start" />
 							</div>
 						</div>
 						<div class="a-col alternate">
 							<div class="input-field">
 								<label for="date-end">Date Sortie</label>
-								<input type="text" class="form-control" id="date-end" />
+								<input type="text" name="date-end" value="2000-01-01" class="form-control" id="date-end" />
 							</div>
 						</div>
 						<div class="a-col action">
-							<a href="{{url('about')}}">
+							<!-- <a href="{{url('about')}}">
 								<span>Vérifier</span>
 								Disponibilté
-							</a>
+							</a> -->
+							<button class="sameAsa" type="submit">
+								<span>Vérifier</span>
+								Disponibilté
+							</button>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	<div id="fh5co-counter-section" class="fh5co-counters" style="padding: 1%;">
+
+	<div id="fh5co-counter-section" class="fh5co-counters">
 		<div class="container">
-			<div class="row" style="margin-left: 13%;">
+			<div class="row">
 				<div class="col-md-3 text-center">
 					<span class="fh5co-counter js-counter" data-from="0" data-to="20356" data-speed="5000" data-refresh-interval="50"></span>
 					<span class="fh5co-counter-label">Nombre Utilisateur</span>
@@ -124,7 +133,7 @@
 
 	<div id="featured-hotel" class="fh5co-bg-color">
 		<div class="container">
-			
+
 			<div class="row">
 				<div class="col-md-12">
 					<div class="section-title text-center">
@@ -159,7 +168,7 @@
 							<h3>Maison</h3>
 							<p>Les Maisons sont décorées dans des tons chauds et raffinés et sont pourvues de la climatisation et
 							d'équipements à la pointe de la technologie. <br>
-							
+
 						 </p>
 							<p><a href="{{url('/detailRecherche')}}" class="btn btn-primary btn-luxe-primary">Réservé Maintenant <i class="ti-angle-right"></i></a></p>
 						</div>
@@ -204,22 +213,22 @@
 						<span>Bar</span>
 					</a>
 					<a href="#" data-tab="tab3">
-					
+
 						<i class="flaticon-car icon"></i>
 						<span>Service de ramassage</span>
 					</a>
 					<a href="#" data-tab="tab4">
-						
+
 						<i class="flaticon-swimming icon"></i>
 						<span>Piscine</span>
 					</a>
 					<a href="#" data-tab="tab5">
-						
+
 						<i class="flaticon-massage icon"></i>
 						<span>Spa</span>
 					</a>
 					<a href="#" data-tab="tab6">
-						
+
 						<i class="flaticon-bicycle icon"></i>
 						<span>Gym</span>
 					</a>
@@ -238,7 +247,7 @@
 									Une étoile signifie: une très bonne cuisine dans sa catégorie.
 									Deux étoiles signifient: une cuisine excellente et une table méritant un détour.
 									Trois étoiles signifient: une cuisine remarquable et une table valant le voyage.</p>
-									
+
 									<p class="service-hour">
 										<span>Heures de service</span>
 										<strong>7:30 AM - 8:00 PM</strong>
@@ -438,3 +447,17 @@
     </div>
 @endsection
 
+@section('scripts')
+	<script type="text/javascript">
+		var now = new Date();
+
+		var day = 01;
+		var month = 01;
+
+		var today = 2000 + month + day;
+
+	$('#date-start').val(today);
+	$('#date-end').val(today);
+</script>
+
+@endsection

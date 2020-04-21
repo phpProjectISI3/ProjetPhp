@@ -6,12 +6,52 @@
      <link rel="stylesheet" href="css/detailrecherche.css">
      <link rel="stylesheet" href="css/review.css">
      <link rel="stylesheet" href="css/confirmation.css">
+     <link rel="stylesheet" href="css/information.css">
 @endsection
 
 @section('body')
 <div id="fh5co-hotel-section">
                 <div class="container">
                     <div class="row" id="Row">
+                      <div id="information">
+                            <div >
+                                <div id="Phone">
+                                    <h3  style="margin: 7px 0px 20px 0px;" > &nbsp;Numéro de téléphone </h3>
+                                    <input type="tel" name="tel" id="" placeholder="+212 06 98 42 17 20" required>
+                                </div>
+                            </div>
+                        </div>
+                     <h3 style="margin:5px;">Avez-vous des questions ?</h3>
+                        <div id="division">
+                            <textarea name="direqlqchose" id="" cols="70" rows="4" placeholder="Facultatif ..."></textarea>
+                        </div>
+                        
+                        <div id="continue">
+                            <input type="submit" value="Valider">
+                        </div>
+
+                        <!-- start: lors de la vérification du code envoyé  -->
+                           <h3>Entrez le code de vérification</h3>
+                            <div >
+                                <input type="text" name="verificationCode" placeholder="Entree ici" style="text-align:center;" id="">
+                            </div>
+                      </div>
+                        <div id="continue">
+                            <input type="submit" value="Valider">
+                        </div> 
+                        <!-- : end -->
+                        
+                        <!-- start: when number verified this will be showed -->
+                            <h3>Votre Numéro est vérifié</h3>
+                            <p><img src="images/checkmark.png" alt="">+212642833827</p>
+                        </div>
+                        
+                        <div id="continue">
+                            <input type="submit" value="Continue">
+                        </div> 
+                        <!-- : end -->
+                     </div>
+
                         <h1>Confirmation de payement</h1>
                         <div id="division">
                             <div id="firstname">
@@ -59,7 +99,6 @@
                                 <div id="continue">
                                     <input type="submit" value="Confirmer">
                                 </div>
-                    </div>
                     <div id="rightside">
                         <h2>MAD486 <span>/nuit</span></h2>
                         <hr size="30">
@@ -118,8 +157,12 @@
                             </div> -->
                         </form>
                     </div>
-                </div>
-            </div>
             <!-- END fh5co-page -->
-
+<script src="../js/jquery.js"></script>
+<script>
+	$(document).ready(function () {
+		$('#fh5co-header-section').css('background-image', 'url("/images/2.jpg")');
+		$("a.active").removeClass();
+	});
+</script>
 @endsection

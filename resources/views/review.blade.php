@@ -28,7 +28,6 @@
     top: 11em;
     right: -7%;
     transform: translate(-50%,0);
-    /* z-index: -11111;
     }
 </style>
 @endsection
@@ -194,6 +193,14 @@ Ainsi eviter tout mal entendu/conflit car il est tout a fait possible d'etre san
 		</div>
 	</div>
 </div>
+<script src="../js/jquery.js"></script>
+
+<script>
+	$(document).ready(function () {
+		$('#fh5co-header-section').css('background-image', 'url("/images/2.jpg")');
+		$("a.active").removeClass();
+	});
+</script>
 <!-- END fh5co-page -->
 
 @endsection
