@@ -108,8 +108,8 @@
 		</div>
 	</div>
 
-	<div id="fh5co-counter-section" class="fh5co-counters">
-		<div class="container">
+	<div id="fh5co-counter-section" style="padding:2em 0;" class="fh5co-counters">
+		<div class="container" style="padding-left: 13%;">
 			<div class="row">
 				<div class="col-md-3 text-center">
 					<span class="fh5co-counter js-counter" data-from="0" data-to="20356" data-speed="5000" data-refresh-interval="50"></span>

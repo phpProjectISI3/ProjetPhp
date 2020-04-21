@@ -6,6 +6,7 @@
      <link rel="stylesheet" href="../css/detailrecherche.css"/>
 	 <script src="https://kit.fontawesome.com/4f2d779e50.js" crossorigin="anonymous"></script>
 	 <link rel="stylesheet" href="../css/designRadioBtn.css" />
+	 <link rel="stylesheet" href="../css/modalLogin.css" />
 	 <style>
 	 #valeurRadioBtn{
 	 position: absolute;
@@ -15,6 +16,19 @@
     display: inline;
     width: 600px;
 	 }
+	 #rightside {
+    position: fixed;
+    width: 25%;
+    height: 32em;
+    background-color: #f5f5f5;
+    box-shadow: 0 0 7px rgb(207, 207, 207);
+    border-radius: 10px;
+    z-index: 50;
+    padding: 2em;
+    top: 11em;
+    right: -7%;
+    transform: translate(-50%,0);
+    }
 	 </style>
 @endsection
 
@@ -82,26 +96,28 @@
 					tabindex="0"></iframe>
 				</div>
 			</div>
-			<div id="rightside" name="rightside">
+			<div id="rightside">
 				<h2>
-				@if((int)Carbon\Carbon::now()->format('m') < 6)
-				{{$logement->tarif_par_nuit_bs}}
-				@else
-				{{$logement->tarif_par_nuit_hs}}
-				@endif
-				<span>/nuit</span>
+					@if((int)Carbon\Carbon::now()->format('m')
+					< 6)
+						{{$logement->tarif_par_nuit_bs}}
+				 @else
+				    {{$logement->tarif_par_nuit_hs}}
+				 @endif
+					<span> Dhs/nuit</span>
 				</h2>
-				<hr size="30">
-				<form action="{{url('login')}}">
-					
+				<hr size="30" />
+				<!--			<form action="">
+-->
+				<div>
 					<div class="dates">
 						<span>Dates</span>
 						<div id="showdates">
-							<label id="DateEntree">{{$datedebut ?? 'Debut'}}</label>
+							<label id="DateEntree">{{$datedebut ??''}}</label>
 							<span>
-								<i class="fas fa-angle-double-right"></i>					
+								<i class="fas fa-angle-double-right"></i>
 							</span>
-							<label id="DateSortie">{{$datefin ?? 'Fin'}}</label>
+							<label id="DateSortie">{{$datefin ?? ''}}</label>
 						</div>
 					</div>
 					<div class="dates">
@@ -117,12 +133,13 @@
 								Tarif :
 							</span>
 							<span id="totalnuit">
-								@if((int)Carbon\Carbon::now()->format('m')< 6)
+								@if((int)Carbon\Carbon::now()->format('m')
+								< 6)
 									{{$logement->tarif_par_nuit_bs}}
-								 @else
-									{{$logement->tarif_par_nuit_hs}}
-								 @endif
-								 Dhs (TTC)
+							 @else
+								{{$logement->tarif_par_nuit_hs}}
+							 @endif
+							 Dhs (TTC)
 							</span>
 						</div>
 						<hr class="scndhr" />
@@ -131,13 +148,33 @@
 							<span id="totalnuit" class="black">MAD 2.916</span>
 						</div>
 					</div>
-			<div id="reserver">
-				<input type="submit" value="Réserver" >	
+					<div id="reserver">
+						<input type="submit" data-toggle="modal" data-target="#login-modal" value="Confirmer !" />
+					</div>
+				</div>
+				<!--			</form>
+-->
 			</div>
-		</form>
+	</div>
+	</div>
+
+	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+	<div class="modal-dialog">
+		<div class="loginmodal-container">
+			<h1>Se connecter pour réserver</h1>
+			<br />
+			<form action="/Finalisation">
+				<input type="text" name="user" placeholder="Pseudo" />
+				<input type="password" name="pass" placeholder="Mot de passe" />
+				<input type="submit" name="login" class="login loginmodal-submit" value="Login" />
+			</form>
+
+			<div class="login-help">
+				<a href="#">Mot de passe oublié ?</a>
+			</div>
 		</div>
 	</div>
-	</div>
+</div>
 @endsection
 
 @section('scripts')
