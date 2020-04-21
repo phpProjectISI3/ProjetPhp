@@ -9237,3 +9237,15 @@ input[type="text"] {
 }
 
 /*# sourceMappingURL=style.css.map */
+.sameAsa{
+  width: 100%;
+  background-color:rgb(65, 59, 59);
+  border: none;
+  color:white;
+  text-align: left;
+  padding-left: 20%;
+}
+
+.sameAsa span{
+  display: block;
+}
