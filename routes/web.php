@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\DemandeReservationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
  */
+
+// test
+// test hicham
 
 
 // Route::get('about', function(){
@@ -32,8 +34,13 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', 'PagesController@welcome');
+// Route::get('/{id}','PagesController@')
 
-Route::get('about/{id}', 'PagesController@about');
+Route::get('about/{id}', 'PagesController@about')->name('about');
+
+Route::get('multipleabout','PagesController@multipleabout');
+
+// Route::get('functiontest','PagesController@functiontest');
 
 Route::get('blog', 'PagesController@blog');
 
@@ -46,7 +53,7 @@ Route::get('contact', 'PagesController@contact');
 
 Route::get('login', 'PagesController@login');
 
-Route::get('review/{id}-{datedebut}-{datefin}', 'PagesController@review');
+Route::get('review', 'PagesController@review');
 
 Route::get('information', 'PagesController@information');
 
@@ -59,10 +66,6 @@ Route::get('confirmation', 'PagesController@confirmation');
 Route::get('prototype', function () {
     return view('BackOfficeAdmin.GestionDesLogements.prototype');
 });
-Route::get('/Logements/import_categories', 'LogementController@import_categories')
-    ->name('LogementController.import_categories');
-
-Route::get('/detailRecherche/import_photos', 'PagesController@import_photos')->name('PagesController.import_photos');
+Route::get('/Logements/import_categories', 'LogementController@import_categories')->name('LogementController.import_categories');
 
 Route::resource('Logements', 'LogementController');
-Route::resource('/demandereservation', 'DemandeReservationController')->only('index');

@@ -341,10 +341,11 @@ VALUES
 ( 'Studio charifa', 6, 'Fes, Boulvard Asslat, Maroc'),
 ( 'Studio charifa double vue mer', 6, 'Fes, environs de quartier El Mouahidine, Maroc');
 
+
 --insert planning_logement
-INSERT INTO planning_logement (id_planing, logement_, est_disponible, date_debut, date_fin) 
+INSERT INTO planning_logement (logement_, est_disponible, date_debut, date_fin) 
 VALUES 
-(1, NULL, '2020-01-05', '2020-01-06'),
+(1, NULL, '2020-05-01', '2020-06-01'),
 (1, NULL, '2020-07-15', '2020-07-24'),
 (1, NULL, '2020-07-30', '2020-07-08');
 
