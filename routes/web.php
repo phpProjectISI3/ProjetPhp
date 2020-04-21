@@ -38,7 +38,7 @@ Route::get('/', 'PagesController@welcome');
 
 Route::get('about/{id}', 'PagesController@about')->name('about');
 
-Route::get('multipleabout','PagesController@multipleabout');
+Route::get('multipleabout', 'PagesController@multipleabout');
 
 // Route::get('functiontest','PagesController@functiontest');
 
@@ -69,3 +69,5 @@ Route::get('prototype', function () {
 Route::get('/Logements/import_categories', 'LogementController@import_categories')->name('LogementController.import_categories');
 
 Route::resource('Logements', 'LogementController');
+
+Route::resource('demandereservation', 'DemandeReservationController')->only('index');
