@@ -35,6 +35,43 @@
 @section('body')
 <div class="fh5co-parallax"   id="mainCover" data-stellar-background-ratio="0.5">
         <img name="slide"  alt="image">
+		<!-- <script>
+			var url = window.location.pathname;
+			var pathIndex = url.substring(url.lastIndexOf('/') + 1);
+			// alert(id);
+			{{ $array = DB::table('photo_logement')->join('logement','photo_logement.logement_','=','logement.id_logement')->select('photo_logement.chemin_photo')->where('logement.id_logement',$logement->id_logement)->get() }}
+			
+			var i =0;
+			var images = [];
+
+			images = json_encode({{$array}});
+			// images = json_encode({{$array}});
+
+			
+			function next () {
+
+				if (i < images.length - 1) {
+					i++;
+				}
+				else {
+					i = 0;
+				}
+				
+				document.slide.src = images[i];
+			}
+
+			function previous () {
+				if (i > 0)
+					i--;
+
+				else {
+					i = images.length - 1;
+				}
+				document.slide.src = images[i];
+			}
+
+			document.slide.src = images[0];
+		</script> -->
         <br />
         <a class="prev" onclick="previous()">&#10094;</a>
         <a class="next" onclick="next()">&#10095;</a>
@@ -91,7 +128,7 @@
 					<h3>Adresse</h3>
 					<p>{{ $logement->adress_logement}} </p>
 					<iframe class="fh5co-map" id="map"
-					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.91245062501!2d-1.9006504850806016!3d34.65691389307045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd7864a5817de333%3A0x4365aa956bd4ff1e!2sSupMTI!5e0!3m2!1sfr!2sma!4v1584826832545!5m2!1sfr!2sma"
+					src="{{$logement->localisation_logement}}"
 					width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
 					tabindex="0"></iframe>
 				</div>
@@ -113,11 +150,11 @@
 					<div class="dates">
 						<span>Dates</span>
 						<div id="showdates">
-							<label id="DateEntree">{{$datedebut ??''}}</label>
+							<label id="DateEntree">{{$datedebut}}</label>
 							<span>
 								<i class="fas fa-angle-double-right"></i>
 							</span>
-							<label id="DateSortie">{{$datefin ?? ''}}</label>
+							<label id="DateSortie">{{$datefin}}</label>
 						</div>
 					</div>
 					<div class="dates">
@@ -125,7 +162,7 @@
 							<span>
 								Séjour :
 							</span>
-							<span id="totalnuit">5 nuits</span>
+							<span id="totalnuit">{{ $interval }} jours</span>
 						</div>
 						<hr class="scndhr" />
 						<div class="dates">
@@ -135,9 +172,9 @@
 							<span id="totalnuit">
 								@if((int)Carbon\Carbon::now()->format('m')
 								< 6)
-									{{$logement->tarif_par_nuit_bs}}
+									{{$tarif_bs}}
 							 @else
-								{{$logement->tarif_par_nuit_hs}}
+								{{$tarif_hs}}
 							 @endif
 							 Dhs (TTC)
 							</span>
@@ -145,7 +182,15 @@
 						<hr class="scndhr" />
 						<div class="dates">
 							<span id="total" class="black">Total  </span>
-							<span id="totalnuit" class="black">MAD 2.916</span>
+							<span id="totalnuit" class="black">
+							@if((int)Carbon\Carbon::now()->format('m')
+								< 6)
+									{{$tarif_bs}}
+							 @else
+								{{$tarif_hs}}
+							 @endif
+							MAD 
+							</span>
 						</div>
 					</div>
 					<div id="reserver">
@@ -178,9 +223,9 @@
 @endsection
 
 @section('scripts')
-<!--<script src="../js/detailRecherche.js"></script>
--->
-<script type="text/javascript">
+<script src="../js/detailRecherche.js"></script>
+
+<!-- <script type="text/javascript">
 var i = 0;
 var images = [];
 
@@ -212,5 +257,5 @@ function previous () {
 
 document.slide.src = images[0];
 
-</script>
+</script> -->
 @endsection

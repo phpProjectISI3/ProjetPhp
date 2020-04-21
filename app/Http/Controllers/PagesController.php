@@ -13,7 +13,7 @@ class PagesController extends Controller
 {
     //welcome page
     public function welcome(){
-        // $types = DB::select('select * from type_logement');
+        // Select tous les éléments de la table Type Logement
         $types = TypeLogement::All();
 
         return view('welcome',compact('types'));
@@ -21,31 +21,36 @@ class PagesController extends Controller
 
 
 
-    // , $id = null,
-    // about page
+    // methode pour multicritère page
     public function multipleabout(Request $request){
-        // $datedebut = getdate();
-        // $datefin = '';
+        // retourne l'id selectionner par select
         $optionValue = $request->input('type', -1);
 
-        $datedebut = Carbon::parse($request->input('date-start'))->format('Y-m-d');
-        $datefin = Carbon::parse($request->input('date-end'))->format('Y-m-d');
+        // creer une varibale de session contien la date_debut saisi par le client
+        $request->session()->put('datedebut',Carbon::parse($request->input('date-start'))->format('Y-m-d'));
+        // variable pour stocker la date_debut
+        $datedebut = $request->session()->get('datedebut');
+        
+        // creer une varibale de session contien la date_fin saisi par le client
+        $request->session()->put('datefin',Carbon::parse($request->input('date-end'))->format('Y-m-d'));
+        // variable pour stocker la date_fin
+        $datefin = $request->session()->get('datefin');
 
+        // test si l'option n'est pas selectionner
         if($optionValue == -1){
             $logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail ');
         }
         else{
+            // test pour verifier si le client a saisi des dates
             if($datedebut == '' && $datefin == ''){
 
                 $logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail where detail_logement.type_logement_ = ' . $optionValue);
             }else{
                 $logements = DB::select(DB::raw("select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail
                 join planning_logement on logement.id_logement = planning_logement.logement_ where detail_logement.type_logement_ = $optionValue and planning_logement.date_debut <= ' $datedebut ' and planning_logement.date_fin >= ' $datefin'"));
-                // $logements = DB::table('logement')->select('logement.id_logement, logement.adress_logement, logement.nom_logement')->join('detail_logement','logement.detail_logement_','=','detail_logement.id_detail')->select('detail_logement.tarif_par_nuit_hs, detail_logement.description_logement ')->join('planning_logement','logement.id_logement','=','planning_logement.logement_')->where(' detail_logement.type_logement_','=',$optionValue)->whereDate('planning_logement.date_debut','=',$datedebut)->whereDate('planning_logement.date_fin','=',$datefin);
             }
 
         }
-            // dd ($optionValue . ' ' . $datedebut . ' ' . $datefin);
         return view('about', ['logements'=>$logements]);
     }
 
@@ -55,13 +60,10 @@ class PagesController extends Controller
             $logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail ');
         }
         else{
-            // if($date_debut == '' && $date_fin == ''){
                 $logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail where detail_logement.type_logement_ = ' . $id);
-            // }else{
 
-            // }
 
-        }
+            }
         return view('about', ['logements'=>$logements]);
     }
 
@@ -74,16 +76,32 @@ class PagesController extends Controller
         return view('contact');
     }
 
-    public function detailRecherche($id){
+    public function detailRecherche(Request $request,$id){
         $logement = DB::table('logement')
                     ->join('detail_logement', 'logement.detail_logement_', '=', 'detail_logement.id_detail')
                     ->select('*')
                     ->where('logement.id_logement',$id)
                     ->first();
 
+        // stocke la valeur de la variable de session(datedebut)
+        $datedebut = Carbon::parse($request->session()->get('datedebut'))->format('Y-m-d');
+        // stocke la valeur de la variable de session(datefin)
+        $datefin = Carbon::parse($request->session()->get('datefin'))->format('Y-m-d');
+        // calcule l'interval entre les dates (nombre de jours)
+        $interval = (strtotime($datefin) - strtotime($datedebut))/(60*60*24);
+        
+        // calcule tarif par saison
+        $tarif_bs = $logement->tarif_par_nuit_bs * $interval;
+        $tarif_hs = $logement->tarif_par_nuit_hs * $interval;
+
+        
+
 		return view('detailRecherche',compact('logement'))
-               ->with('datedebut','debut')
-               ->with('datefin','fin');
+               ->with('datedebut',$datedebut)
+               ->with('datefin',$datefin)
+               ->with('interval',$interval)
+               ->with('tarif_bs',$tarif_bs)
+               ->with('tarif_hs',$tarif_hs);
     }
 
     public function service(){

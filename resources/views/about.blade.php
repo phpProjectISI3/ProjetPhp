@@ -21,7 +21,7 @@
 		</div>
 	</div>
 
-	<!--<div id="fh5co-hotel-section">
+	<div id="fh5co-hotel-section">
 		<div class="container">
 			<div id="SearchBtn">
 				<button id="Search"> Search 
@@ -83,56 +83,7 @@
 						</div>
 					</div>
 				</div>
-			</div>-->
-		<div class="wrap">
-		<div class="container">
-			<div class="row">
-				<div id="availability">
-					<form action="multipleabout" method="GET">
-					<!-- @csrf -->
-						<div class="a-col">
-							<section>
-								<select name="type" id="type" class="cs-select cs-skin-border">
-										<option value="-1" disabled selected>Type </option>
-									@foreach($types ?? '' as $type)
-										<option value="{{ $type->id_type_logement }}">{{ $type->libelle_type_logement }}</option>
-									@endforeach
-									<!-- <option value="1">Villa</option>
-									<option value="3">Maison</option>
-									<option value="2">Appartement</option>
-									<option value="4">Chambre Hotel Luxe</option>
-									<option value="5">Chambre Hotel Sympa</option> -->
-								</select>
-
-							</section>
-						</div>
-						<div class="a-col alternate">
-							<div class="input-field">
-								<label for="date-start">Date Arrivée</label>
-								<input type="text" name="date-start" value="2000-01-01" class="form-control" id="date-start" />
-							</div>
-						</div>
-						<div class="a-col alternate">
-							<div class="input-field">
-								<label for="date-end">Date Sortie</label>
-								<input type="text" name="date-end" value="2000-01-01" class="form-control" id="date-end" />
-							</div>
-						</div>
-						<div class="a-col action">
-							<!-- <a href="{{url('about')}}">
-								<span>Vérifier</span>
-								Disponibilté
-							</a> -->
-							<button class="sameAsa" type="submit">
-								<span>Vérifier</span>
-								Disponibilté
-							</button>
-						</div>
-					</form>
-				</div>
 			</div>
-		</div>
-	</div>
 			<div class="row">
 				@foreach($logements as $logement)
 				<div class="col-md-4" >
