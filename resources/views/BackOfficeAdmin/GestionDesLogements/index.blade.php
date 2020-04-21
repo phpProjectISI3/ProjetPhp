@@ -128,4 +128,11 @@
 	</script>
 	@endif
 </div>
+<script>
+    $(document).ready(function () {
+        $("#sidebar ul li.active").removeClass();
+        $("#logementLink").addClass('active');
+    }
+    );
+</script>
 @endsection

@@ -59,6 +59,14 @@ table thead {
              @endforeach
             </tbody>
          </table>
-    
  </div>
+<script src="../js/jquery.js"></script>
+ <script>
+     $(document).ready(function () {
+         $("#sidebar ul li.active").removeClass();
+         $("#demandeLink").addClass('active');
+     }
+     );
+</script>
+
 @endsection

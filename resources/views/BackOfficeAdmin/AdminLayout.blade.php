@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8" />
@@ -30,7 +30,7 @@
 							<span class="fas fa-house-user mr-3"></span> Accueil
 						</a>
 					</li>
-					<li class="active">
+					<li id="logementLink" class="active">
 						<a href="{{route('Logements.index')}}">
 							<span class="fas fa-building mr-3"></span> Logements
 						</a>
@@ -40,7 +40,7 @@
 							<span class="fas fa-users mr-3"></span> Clients
 						</a>
 					</li>
-					<li>
+					<li id="demandeLink">
 						<a href="{{url('/demandereservation')}}">
 							<span class="fas fa-scroll mr-3"></span> Demandes
 						</a>
