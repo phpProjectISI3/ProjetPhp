@@ -1,33 +1,42 @@
-@extends('layout.app')
-
+@extends('BackOfficeAdmin.AdminLayout')
+{{--@extends('layout.app')--}}
 
 @section('linkcss')
-     <link rel="stylesheet" href="css/detailrecherche.css">
+    <link rel="stylesheet" href="css/detailrecherche.css">
      <link rel="stylesheet" href="css/review.css">
      <link rel="stylesheet" href="css/information.css">
      <link rel="stylesheet" href="css/pagedemandeR.css">
-     <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 @endsection
-@section('body')
-<div class="fh5co-parallax" style="background-image: url(images/1.jpg);" data-stellar-background-ratio="0.5">
+
+@section('content')
+<div  class="fh5co-parallax"   data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
                 <div class="fh5co-intro fh5co-table-cell">
-                    <h1 class="text-center">Demandes Reservation</h1>
+                    <h1 class="text-center"  style="margin-top: 5%;background-color:aqua;">Demandes Reservations</h1>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<style>
 
- <div class='table-responsive' >   
-     <div class='table'>
-         <table class='table table-bordered' >
-            <thead> <tr>
+      
+table thead {
+    background-color: aqua;
+}
+   
+</style>
+    
+ <div class='table-responsive'style="margin-top: 10%;">   
+         <table class='table table-bordered'> 
+            <thead>
+             <tr>
                  <th>Id demande</th>
                  <th>Date demande</th>
                  <th>Client Id</th>
@@ -50,6 +59,6 @@
              @endforeach
             </tbody>
          </table>
-     </div>
+    
  </div>
 @endsection
