@@ -183,24 +183,6 @@ function previous () {
 }
 
 document.slide.src = images[0];
-    //$.ajaxSetup({
-	//	headers: {
-	//		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-	//	}
-	//});
-	//
-	//$(document).ready(
-	//	function () {
-	//		$.ajax({
-	//			url: "{{ route('PagesController.import_photos') }}",
-	//			method: 'GET',
-	//			data: { ID: id_logement },
-	//			dataType: 'json',
-	//			success: function(Photos){
-	//				
-    //            }
-	//		});
-    //    }
-	//);
+
 </script>
 @endsection
