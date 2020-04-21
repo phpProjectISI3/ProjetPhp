@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -30,8 +30,8 @@
     height: 18em;
     background-color: #f5f5f5;
     box-shadow: 0 0 7px rgb(207, 207, 207);
-    border-radius: 10px;
-    z-index: 999999999999999999999;
+    border-radius: 31px;
+    z-index: 50;
     padding: 2em;
     top: 19em;
     right: -7%;
@@ -50,7 +50,7 @@
 			-o-border-radius: 10px;
 			-ms-border-radius: 10px;
 			-moz-border-radius: 10px;
-			-webkit-border-radius: 10px;
+			-webkit-border-radius: 31px;
 			margin-bottom: 20px;
 			font-family: 'Open Sans', sans-serif;
 			position: relative;
