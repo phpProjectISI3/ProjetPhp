@@ -19,6 +19,7 @@ class PagesController extends Controller
         return view('welcome',compact('types'));
     }
     
+    
 
     // , $id = null, 
     // about page
