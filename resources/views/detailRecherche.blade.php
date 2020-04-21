@@ -97,49 +97,40 @@
 					<div class="dates">
 						<span>Dates</span>
 						<div id="showdates">
-							<Label id="DateEntree">2020-04-14</Label>
-							<span><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172"
-								style=" fill:#000000;">
-								<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
-								stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
-								font-size="none" text-anchor="none" style="mix-blend-mode: normal">
-								<path d="M0,172v-172h172v172z" fill="none"></path>
-								<g fill="#a5a5a5">
-									<path
-									d="M91.15104,9.18229l-10.30208,10.30208l59.34896,59.34896h-140.19792v14.33333h140.19792l-59.34896,59.34896l10.30208,10.30208l71.66667,-71.66667l4.92708,-5.15104l-4.92708,-5.15104z">
-								</path>
-								</g>
-							</g>
-						</svg></span>
-						<Label id="DateSortie">2020-04-17</Label>
-					</div>
-				</div>
-				<div class="dates">
-					<span>Dates</span>
-					<div id="guests">
-						<select class="count" name="" id="">
-							<option value="" selected disabled>Choisir le nombre de personnes</option>
-							<option value="1">- 2</option>
-							<option value="2">2 - 4</option>
-							<option value="3">4 - 8</option>
-							<option value="4">8 +</option>
-						</select>
+							<label id="DateEntree">{{$datedebut ?? 'Debut'}}</label>
+							<span>
+								<i class="fas fa-angle-double-right"></i>					
+							</span>
+							<label id="DateSortie">{{$datefin ?? 'Fin'}}</label>
+						</div>
 					</div>
 					<div class="dates">
-						<span>MAD486 <span id="numbernuit"> x 3 nuits</span></span>
-					<span id="totalnuit">MAD 1,458</span>
-				</div>
-				<hr class="scndhr">
-				<div class="dates">
-					<span>MAD 1.458 <span id="numbernuit"> x 2 pers</span></span>
-					<span id="totalnuit">MAD 2.916</span>
-				</div>
-				<hr class="scndhr">
-				<div class="dates">
-					<span id="total" class="black">Total : </span>
-					<span id="totalnuit" class="black">MAD 2.916</span>
-				</div>
-			</div>
+						<div class="dates">
+							<span>
+								Séjour :
+							</span>
+							<span id="totalnuit">5 nuits</span>
+						</div>
+						<hr class="scndhr" />
+						<div class="dates">
+							<span>
+								Tarif :
+							</span>
+							<span id="totalnuit">
+								@if((int)Carbon\Carbon::now()->format('m')< 6)
+									{{$logement->tarif_par_nuit_bs}}
+								 @else
+									{{$logement->tarif_par_nuit_hs}}
+								 @endif
+								 Dhs (TTC)
+							</span>
+						</div>
+						<hr class="scndhr" />
+						<div class="dates">
+							<span id="total" class="black">Total  </span>
+							<span id="totalnuit" class="black">MAD 2.916</span>
+						</div>
+					</div>
 			<div id="reserver">
 				<input type="submit" value="Réserver" >	
 			</div>
