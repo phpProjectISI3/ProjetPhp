@@ -6,6 +6,7 @@
      <link rel="stylesheet" href="../css/detailrecherche.css"/>
 	 <script src="https://kit.fontawesome.com/4f2d779e50.js" crossorigin="anonymous"></script>
 	 <link rel="stylesheet" href="../css/designRadioBtn.css" />
+	 <link rel="stylesheet" href="../css/modalLogin.css" />
 	 <style>
 	 #valeurRadioBtn{
 	 position: absolute;
@@ -15,6 +16,19 @@
     display: inline;
     width: 600px;
 	 }
+	 #rightside {
+    position: fixed;
+    width: 25%;
+    height: 32em;
+    background-color: #f5f5f5;
+    box-shadow: 0 0 7px rgb(207, 207, 207);
+    border-radius: 10px;
+    z-index: 50;
+    padding: 2em;
+    top: 11em;
+    right: -7%;
+    transform: translate(-50%,0);
+    }
 	 </style>
 @endsection
 
@@ -82,71 +96,85 @@
 					tabindex="0"></iframe>
 				</div>
 			</div>
-			<div id="rightside" name="rightside">
+			<div id="rightside">
 				<h2>
-				@if((int)Carbon\Carbon::now()->format('m') < 6)
-				{{$logement->tarif_par_nuit_bs}}
-				@else
-				{{$logement->tarif_par_nuit_hs}}
-				@endif
-				<span>/nuit</span>
+					@if((int)Carbon\Carbon::now()->format('m')
+					< 6)
+						{{$logement->tarif_par_nuit_bs}}
+				 @else
+				    {{$logement->tarif_par_nuit_hs}}
+				 @endif
+					<span> Dhs/nuit</span>
 				</h2>
-				<hr size="30">
-				<form action="{{url('login')}}">
-					
+				<hr size="30" />
+				<!--			<form action="">
+-->
+				<div>
 					<div class="dates">
 						<span>Dates</span>
 						<div id="showdates">
-							<Label id="DateEntree">2020-04-14</Label>
-							<span><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24" viewBox="0 0 172 172"
-								style=" fill:#000000;">
-								<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
-								stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
-								font-size="none" text-anchor="none" style="mix-blend-mode: normal">
-								<path d="M0,172v-172h172v172z" fill="none"></path>
-								<g fill="#a5a5a5">
-									<path
-									d="M91.15104,9.18229l-10.30208,10.30208l59.34896,59.34896h-140.19792v14.33333h140.19792l-59.34896,59.34896l10.30208,10.30208l71.66667,-71.66667l4.92708,-5.15104l-4.92708,-5.15104z">
-								</path>
-								</g>
-							</g>
-						</svg></span>
-						<Label id="DateSortie">2020-04-17</Label>
-					</div>
-				</div>
-				<div class="dates">
-					<span>Dates</span>
-					<div id="guests">
-						<select class="count" name="" id="">
-							<option value="" selected disabled>Choisir le nombre de personnes</option>
-							<option value="1">- 2</option>
-							<option value="2">2 - 4</option>
-							<option value="3">4 - 8</option>
-							<option value="4">8 +</option>
-						</select>
+							<label id="DateEntree">{{$datedebut}}</label>
+							<span>
+								<i class="fas fa-angle-double-right"></i>
+							</span>
+							<label id="DateSortie">{{$datefin}}</label>
+						</div>
 					</div>
 					<div class="dates">
-						<span>MAD486 <span id="numbernuit"> x 3 nuits</span></span>
-					<span id="totalnuit">MAD 1,458</span>
+						<div class="dates">
+							<span>
+								Séjour :
+							</span>
+							<span id="totalnuit">5 nuits</span>
+						</div>
+						<hr class="scndhr" />
+						<div class="dates">
+							<span>
+								Tarif :
+							</span>
+							<span id="totalnuit">
+								@if((int)Carbon\Carbon::now()->format('m')
+								< 6)
+									{{$logement->tarif_par_nuit_bs}}
+							 @else
+								{{$logement->tarif_par_nuit_hs}}
+							 @endif
+							 Dhs (TTC)
+							</span>
+						</div>
+						<hr class="scndhr" />
+						<div class="dates">
+							<span id="total" class="black">Total  </span>
+							<span id="totalnuit" class="black">MAD 2.916</span>
+						</div>
+					</div>
+					<div id="reserver">
+						<input type="submit" data-toggle="modal" data-target="#login-modal" value="Confirmer !" />
+					</div>
 				</div>
-				<hr class="scndhr">
-				<div class="dates">
-					<span>MAD 1.458 <span id="numbernuit"> x 2 pers</span></span>
-					<span id="totalnuit">MAD 2.916</span>
-				</div>
-				<hr class="scndhr">
-				<div class="dates">
-					<span id="total" class="black">Total : </span>
-					<span id="totalnuit" class="black">MAD 2.916</span>
-				</div>
+				<!--			</form>
+-->
 			</div>
-			<div id="reserver">
-				<input type="submit" value="Réserver" >	
+	</div>
+	</div>
+
+	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+	<div class="modal-dialog">
+		<div class="loginmodal-container">
+			<h1>Se connecter pour réserver</h1>
+			<br />
+			<form action="/Finalisation">
+				<input type="text" name="user" placeholder="Pseudo" />
+				<input type="password" name="pass" placeholder="Mot de passe" />
+				<input type="submit" name="login" class="login loginmodal-submit" value="Login" />
+			</form>
+
+			<div class="login-help">
+				<a href="#">Mot de passe oublié ?</a>
 			</div>
-		</form>
 		</div>
 	</div>
-	</div>
+</div>
 @endsection
 
 @section('scripts')

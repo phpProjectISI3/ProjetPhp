@@ -81,7 +81,9 @@ class PagesController extends Controller
                     ->where('logement.id_logement',$id)
                     ->first();
 
-		return view('detailRecherche',compact('logement'));
+		return view('detailRecherche',compact('logement'))
+               ->with('datedebut','debut')
+               ->with('datefin','fin');
     }
 
     public function service(){
@@ -103,6 +105,19 @@ class PagesController extends Controller
 				->with('datedebut',$datedebut)
 				->with('datefin',$datefin);
     }
+
+    public function finalisation()
+	{
+		$logement = DB::table('logement')
+			 ->join('detail_logement', 'logement.detail_logement_', '=', 'detail_logement.id_detail')
+			 ->select('*')
+			 ->where('logement.id_logement',1)
+			 ->first();
+		return view('finalisation')
+				->with('logement',$logement)
+				->with('datedebut','debut')
+				->with('datefin','fin');
+	}
 
 
     public function information(){

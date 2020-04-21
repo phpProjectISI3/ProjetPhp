@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="../css/review.css" />
 <script src="https://kit.fontawesome.com/4f2d779e50.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="../css/designRadioBtn.css" />
+
 <style>
 	 #valeurRadioBtn{
 	 position: absolute;
@@ -23,7 +24,7 @@
     background-color: #f5f5f5;
     box-shadow: 0 0 7px rgb(207, 207, 207);
     border-radius: 10px;
-    z-index: 999999999999999999999;
+    z-index: 50;
     padding: 2em;
     top: 11em;
     right: -7%;
@@ -140,7 +141,8 @@ Ainsi eviter tout mal entendu/conflit car il est tout a fait possible d'etre san
 		</div>
 		<div id="rightside">
 			<h2>
-				@if((int)Carbon\Carbon::now()->format('m')< 6)
+				@if((int)Carbon\Carbon::now()->format('m')
+				< 6)
 					{{$logement->tarif_par_nuit_bs}}
 				 @else
 				    {{$logement->tarif_par_nuit_hs}}
@@ -148,57 +150,61 @@ Ainsi eviter tout mal entendu/conflit car il est tout a fait possible d'etre san
 				<span> Dhs/nuit</span>
 			</h2>
 			<hr size="30" />
-			<div>
-				<div class="dates">
-					<span>Dates</span>
-					<div id="showdates">
-						<label id="DateEntree">{{$datedebut}}</label>
-						<span>
-							<i class="fas fa-angle-double-right"></i>					
-						</span>
-						<label id="DateSortie">{{$datefin}}</label>
-					</div>
-				</div>
-				<div class="dates">
+<!--			<form action="">
+-->				<div>
 					<div class="dates">
-						<span>
-							Séjour :
-						</span>
-						<span id="totalnuit">5 nuits</span>
+						<span>Dates</span>
+						<div id="showdates">
+							<label id="DateEntree">{{$datedebut}}</label>
+							<span>
+								<i class="fas fa-angle-double-right"></i>
+							</span>
+							<label id="DateSortie">{{$datefin}}</label>
+						</div>
 					</div>
-					<hr class="scndhr" />
 					<div class="dates">
-						<span>
-							Tarif :
-						</span>
-						<span id="totalnuit">
-							@if((int)Carbon\Carbon::now()->format('m')< 6)
-								{{$logement->tarif_par_nuit_bs}}
+						<div class="dates">
+							<span>
+								Séjour :
+							</span>
+							<span id="totalnuit">5 nuits</span>
+						</div>
+						<hr class="scndhr" />
+						<div class="dates">
+							<span>
+								Tarif :
+							</span>
+							<span id="totalnuit">
+								@if((int)Carbon\Carbon::now()->format('m')
+								< 6)
+									{{$logement->tarif_par_nuit_bs}}
 							 @else
 								{{$logement->tarif_par_nuit_hs}}
 							 @endif
 							 Dhs (TTC)
-						</span>
+							</span>
+						</div>
+						<hr class="scndhr" />
+						<div class="dates">
+							<span id="total" class="black">Total  </span>
+							<span id="totalnuit" class="black">MAD 2.916</span>
+						</div>
 					</div>
-					<hr class="scndhr" />
-					<div class="dates">
-						<span id="total" class="black">Total  </span>
-						<span id="totalnuit" class="black">MAD 2.916</span>
+					<div id="reserver">
+						<input type="submit" value="Confirmer !" />
 					</div>
 				</div>
-				<div id="reserver">
-					<input type="submit" value="Réserver" />
-				</div>
-			</div>
-		</div>
+<!--			</form>
+-->		</div>
 	</div>
 </div>
+
 <script src="../js/jquery.js"></script>
 
 <script>
-	$(document).ready(function () {
-		$('#fh5co-header-section').css('background-image', 'url("/images/2.jpg")');
-		$("a.active").removeClass();
+    $(document).ready(function () {
+        $('#fh5co-header-section').css('background-image', 'url("/images/2.jpg")');
+        $("a.active").removeClass();
 	});
 </script>
 <!-- END fh5co-page -->

@@ -40,14 +40,13 @@ Route::get('about/{id}', 'PagesController@about')->name('about');
 
 Route::get('multipleabout','PagesController@multipleabout');
 
-// Route::get('functiontest','PagesController@functiontest');
-
 Route::get('blog', 'PagesController@blog');
 
 Route::get('service', 'PagesController@service');
 
-//Route::get('detailRecherche', 'PagesController@detailRecherche');
 Route::get('detailRecherche/{id}', 'PagesController@detailRecherche');
+
+Route::get('Finalisation', 'PagesController@finalisation');
 
 Route::get('contact', 'PagesController@contact');
 
