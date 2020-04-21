@@ -40,7 +40,7 @@
 	<meta name="twitter:card" content="" />
 
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<link rel="shortcut icon" href="favicon.ico" />
+	<link rel="shortcut icon" href="../favicon.ico" />
 	<!-- <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700italic,900,700,900italic' rel='stylesheet' type='text/css'> -->
 
 	<!-- Stylesheets -->
@@ -74,16 +74,6 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
-
-<!--	<style>
-			#PernalisedLink{
-					 color: #98C0E3;
-					 text-decoration: solid;
-					 font-weight: bold;
-			}
-	</style>
--->
 </head>
 <body>
 	<div id="fh5co-wrapper">
@@ -109,16 +99,16 @@
 										</strong>
 									</li>
 									<li>
-										<a id="PernalisedLink" href="{{url('/about/-1') }}">Nos Offres</a>
+										<a href="{{url('/about/-1') }}">Nos Offres</a>
 									</li>
 									<li>
-										<a id="PernalisedLink" href="{{url('/service')}}">Nos services</a>
+										<a href="{{url('/service')}}">Nos services</a>
 									</li>
 									<li>
-										<a id="PernalisedLink" href="{{url('/blog')}}">Blog</a>
+										<a href="{{url('/blog')}}">Blog</a>
 									</li>
 									<li>
-										<a id="PernalisedLink" href="{{url('/contact')}}">Contactez nous !</a>
+										<a href="{{url('/contact')}}">Contactez nous !</a>
 									</li>
 								</ul>
 							</nav>

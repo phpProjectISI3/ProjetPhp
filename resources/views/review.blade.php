@@ -29,10 +29,6 @@
     right: -7%;
     transform: translate(-50%,0);
     }
-	#fh5co-header-section{
-		background-image: url("https://66.media.tumblr.com/tumblr_lkq5myCkTD1qdgprmo1_640.jpg");
-		/*background-position: 0px 0px;*/
-	}
 </style>
 @endsection
 
@@ -197,6 +193,14 @@ Ainsi eviter tout mal entendu/conflit car il est tout a fait possible d'etre san
 		</div>
 	</div>
 </div>
+<script src="../js/jquery.js"></script>
+
+<script>
+	$(document).ready(function () {
+		$('#fh5co-header-section').css('background-image', 'url("/images/2.jpg")');
+		$("a.active").removeClass();
+	});
+</script>
 <!-- END fh5co-page -->
 
 @endsection

@@ -54,7 +54,7 @@
 		   			</div>
 		   		</div>
 		   	</li>
-		   	
+
 		  	</ul>
 	  	</div>
 	</aside>
@@ -77,7 +77,7 @@
 									<option value="4">Chambre Hotel Luxe</option>
 									<option value="5">Chambre Hotel Sympa</option> -->
 								</select>
-								
+
 							</section>
 						</div>
 						<div class="a-col alternate">
@@ -107,7 +107,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div id="fh5co-counter-section" class="fh5co-counters">
 		<div class="container">
 			<div class="row">
@@ -133,7 +133,7 @@
 
 	<div id="featured-hotel" class="fh5co-bg-color">
 		<div class="container">
-			
+
 			<div class="row">
 				<div class="col-md-12">
 					<div class="section-title text-center">
@@ -168,7 +168,7 @@
 							<h3>Maison</h3>
 							<p>Les Maisons sont décorées dans des tons chauds et raffinés et sont pourvues de la climatisation et
 							d'équipements à la pointe de la technologie. <br>
-							
+
 						 </p>
 							<p><a href="{{url('/detailRecherche')}}" class="btn btn-primary btn-luxe-primary">Réservé Maintenant <i class="ti-angle-right"></i></a></p>
 						</div>
@@ -213,22 +213,22 @@
 						<span>Bar</span>
 					</a>
 					<a href="#" data-tab="tab3">
-					
+
 						<i class="flaticon-car icon"></i>
 						<span>Service de ramassage</span>
 					</a>
 					<a href="#" data-tab="tab4">
-						
+
 						<i class="flaticon-swimming icon"></i>
 						<span>Piscine</span>
 					</a>
 					<a href="#" data-tab="tab5">
-						
+
 						<i class="flaticon-massage icon"></i>
 						<span>Spa</span>
 					</a>
 					<a href="#" data-tab="tab6">
-						
+
 						<i class="flaticon-bicycle icon"></i>
 						<span>Gym</span>
 					</a>
@@ -247,7 +247,7 @@
 									Une étoile signifie: une très bonne cuisine dans sa catégorie.
 									Deux étoiles signifient: une cuisine excellente et une table méritant un détour.
 									Trois étoiles signifient: une cuisine remarquable et une table valant le voyage.</p>
-									
+
 									<p class="service-hour">
 										<span>Heures de service</span>
 										<strong>7:30 AM - 8:00 PM</strong>
