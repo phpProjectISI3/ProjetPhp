@@ -8,77 +8,20 @@
 	 <link rel="stylesheet" href="../css/designRadioBtn.css" />
 	 <link rel="stylesheet" href="../css/modalLogin.css" />
 	 <style>
-	 #valeurRadioBtn{
-	 position: absolute;
-    margin-left: 30px;
-    margin-top: 3%;
-    padding: 0px;
-    display: inline;
-    width: 600px;
-	 }
-	 #rightside {
-    position: fixed;
-    width: 25%;
-    height: 32em;
-    background-color: #f5f5f5;
-    box-shadow: 0 0 7px rgb(207, 207, 207);
-    border-radius: 10px;
-    z-index: 50;
-    padding: 2em;
-    top: 11em;
-    right: -7%;
-    transform: translate(-50%,0);
-    }
+	 
 	 </style>
 @endsection
 
 @section('body')
 <div class="fh5co-parallax"   id="mainCover" data-stellar-background-ratio="0.5">
         <img name="slide"  alt="image">
-		<!-- <script>
-			var url = window.location.pathname;
-			var pathIndex = url.substring(url.lastIndexOf('/') + 1);
-			// alert(id);
-			{{ $array = DB::table('photo_logement')->join('logement','photo_logement.logement_','=','logement.id_logement')->select('photo_logement.chemin_photo')->where('logement.id_logement',$logement->id_logement)->get() }}
-			
-			var i =0;
-			var images = [];
-
-			images = json_encode({{$array}});
-			// images = json_encode({{$array}});
-
-			
-			function next () {
-
-				if (i < images.length - 1) {
-					i++;
-				}
-				else {
-					i = 0;
-				}
-				
-				document.slide.src = images[i];
-			}
-
-			function previous () {
-				if (i > 0)
-					i--;
-
-				else {
-					i = images.length - 1;
-				}
-				document.slide.src = images[i];
-			}
-
-			document.slide.src = images[0];
-		</script> -->
         <br />
         <a class="prev" onclick="previous()">&#10094;</a>
         <a class="next" onclick="next()">&#10095;</a>
     </div>
     
 	<div id="fh5co-hotel-section">
-		<div class="container">
+		<div class="container containers">
 			<div class="row" id="Row">
 				<h1>-{{$logement->nom_logement}}-</h1>
 				<div id="division">
@@ -133,7 +76,7 @@
 					tabindex="0"></iframe>
 				</div>
 			</div>
-			<div id="rightside">
+			<div id="rightside" class="rightside">
 				<h2>
 					@if((int)Carbon\Carbon::now()->format('m')
 					< 6)
@@ -171,12 +114,12 @@
 							</span>
 							<span id="totalnuit">
 								@if((int)Carbon\Carbon::now()->format('m')
-								< 6)
-									{{$tarif_bs}}
-							 @else
-								{{$tarif_hs}}
-							 @endif
-							 Dhs (TTC)
+									< 6)
+										{{$logement->tarif_par_nuit_bs}}
+								@else
+									{{$logement->tarif_par_nuit_hs}}
+								@endif
+								Dhs
 							</span>
 						</div>
 						<hr class="scndhr" />
@@ -224,38 +167,37 @@
 
 @section('scripts')
 <script src="../js/detailRecherche.js"></script>
+<script>
+			var i,j =0;
+			var images = [];
 
-<!-- <script type="text/javascript">
-var i = 0;
-var images = [];
-
-images[0] = "../images/1.jpg";
-images[1] = "../images/2.jpg";
-images[2] = "../images/3.jpg";
-
-function next () {
-
-    if (i < images.length - 1) {
-        i++;
-    }
-    else {
-        i = 0;
-    }
-    
-    document.slide.src = images[i];
-}
-
-function previous () {
-    if (i > 0)
-        i--;
-
-    else {
-        i = images.length - 1;
-    }
-    document.slide.src = images[i];
-}
-
-document.slide.src = images[0];
-
-</script> -->
+			images = <?php echo json_encode($photo_logement); ?>;
+			// console.log(images);
+			
+			
+			function next () {
+				
+				if (i < images.length - 1) {
+					i++;
+				}
+				else {
+					i = 0;
+				}
+				
+				document.slide.src = images[i].chemin_photo;
+			}
+			
+			function previous () {
+				if (i > 0)
+					i--;
+					
+					else {
+						i = images.length - 1;
+					}
+					document.slide.src = images[i].chemin_photo;
+			}
+			
+			document.slide.src = images[0].chemin_photo;
+			// console.log(chemin_photos);
+		</script>
 @endsection
