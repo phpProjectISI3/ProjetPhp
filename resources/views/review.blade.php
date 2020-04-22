@@ -150,8 +150,8 @@ Ainsi eviter tout mal entendu/conflit car il est tout a fait possible d'etre san
 				<span> Dhs/nuit</span>
 			</h2>
 			<hr size="30" />
-<!--			<form action="">
--->				<div>
+			<form action="/Finalisation">
+			<div>
 					<div class="dates">
 						<span>Dates</span>
 						<div id="showdates">
@@ -191,11 +191,11 @@ Ainsi eviter tout mal entendu/conflit car il est tout a fait possible d'etre san
 						</div>
 					</div>
 					<div id="reserver">
-						<input type="submit" value="Confirmer !" />
+						<input type="submit" value="Parvenir au paiement !" />
 					</div>
 				</div>
-<!--			</form>
--->		</div>
+			</form>
+	</div>
 	</div>
 </div>
 

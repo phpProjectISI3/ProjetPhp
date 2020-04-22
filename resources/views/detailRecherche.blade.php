@@ -151,7 +151,7 @@
 		<div class="loginmodal-container">
 			<h1>Se connecter pour réserver</h1>
 			<br />
-			<form action="/Finalisation">
+			<form action="/review/5-DateDebut-DateFin">
 				<input type="text" name="user" placeholder="Pseudo" />
 				<input type="password" name="pass" placeholder="Mot de passe" />
 				<input type="submit" name="login" class="login loginmodal-submit" value="Login" />
