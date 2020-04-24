@@ -94,6 +94,11 @@ class PagesController extends Controller
                     ->where('logement.id_logement',$id)
                     ->first();
 
+        $photo_logement = DB::table('photo_logement')
+                            ->select('photo_logement.chemin_photo')
+                            ->where('photo_logement.logement_',$id)
+                            ->get();
+
         // stocke la valeur de la variable de session(datedebut)
         $datedebut = Carbon::parse($request->session()->get('datedebut'))->format('Y-m-d');
         // stocke la valeur de la variable de session(datefin)
@@ -107,7 +112,7 @@ class PagesController extends Controller
 
 
 
-		return view('detailRecherche',compact('logement'))
+		return view('detailRecherche',compact('logement','photo_logement'))
                ->with('datedebut',$datedebut)
                ->with('datefin',$datefin)
                ->with('interval',$interval)
