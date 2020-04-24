@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-// test
-// test hicham
-
-
 // Route::get('about', function(){
 //     $bitfumes = ['this', 'is', 'Bitfumes'];
 //     // first methode to send data to a view
@@ -49,6 +45,9 @@ Route::get('detailRecherche/{id}', 'PagesController@detailRecherche');
 Route::get('Finalisation', 'PagesController@finalisation');
 
 Route::get('contact', 'PagesController@contact');
+Route::post('contact', 'PagesController@EnvoyerMessage');
+
+Route::get('Envoyercontact', 'PagesController@Envoyercontact')->name('PagesController.Envoyercontact');
 
 Route::get('login', 'PagesController@login');
 
@@ -59,14 +58,7 @@ Route::get('information', 'PagesController@information');
 Route::get('confirmation', 'PagesController@confirmation');
 
 
-
 //hicham
-
-Route::get('prototype', function () {
-    return view('BackOfficeAdmin.GestionDesLogements.prototype');
-});
 Route::get('/Logements/import_categories', 'LogementController@import_categories')->name('LogementController.import_categories');
-
 Route::resource('Logements', 'LogementController');
-
 Route::resource('demandereservation', 'DemandeReservationController')->only('index');

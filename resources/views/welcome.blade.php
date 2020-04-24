@@ -3,6 +3,8 @@
 @section('title','100% Luxe et Confort')
 
 @section('body')
+<script src="https://kit.fontawesome.com/4f2d779e50.js" crossorigin="anonymous"></script>
+
 <aside id="fh5co-hero" class="js-fullheight">
     <div class="flexslider  js-fullheight">
 			<ul class="slides">
@@ -13,9 +15,9 @@
 		   				<div class="slider-text-inner js-fullheight">
 		   					<div class="desc">
 		   						<p><span> Villa</span></p>
-		   						<h2>Réservé votre Villa</h2>
+		   						<h2>Réserver votre Villa</h2>
 			   					<p>
-			   						<a href="{{url('about/1')}}" class="btn btn-primary btn-lg">Réservé Maintenant</a>
+			   						<a href="{{url('about/1')}}" class="btn btn-primary btn-lg">Réserver Maintenant</a>
 			   					</p>
 		   					</div>
 		   				</div>
@@ -31,7 +33,7 @@
 		   						<p><span>Maison</span></p>
 		   						<h2>Profiter de votre Vacance  </h2>
 			   					<p>
-			   						<a href="{{url('about/3')}}" class="btn btn-primary btn-lg">Réservé Maintenant</a>
+			   						<a href="{{url('about/3')}}" class="btn btn-primary btn-lg">Réserver Maintenant</a>
 			   					</p>
 		   					</div>
 		   				</div>
@@ -47,7 +49,7 @@
 		   						<p><span>Appartement</span></p>
 		   						<h2>Un meilleur endroit pour s'amuser</h2>
 			   					<p>
-			   						<a href="{{url('about/2')}}" class="btn btn-primary btn-lg">Réservé Maintenant</a>
+			   						<a href="{{url('about/2')}}" class="btn btn-primary btn-lg">Réserver Maintenant</a>
 			   					</p>
 		   					</div>
 		   				</div>
@@ -137,7 +139,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="section-title text-center">
-						<h2>Offres recommandés</h2>
+						<h2>Offres&nbsp; spéciales !</h2>
 					</div>
 				</div>
 			</div>
@@ -146,14 +148,14 @@
 				<div class="feature-full-1col">
 					<div class="image" style="background-image: url(/images/imgFruit.jpg);">
 						<div class="descrip text-center">
-							<p><small>Pour aussi peu que</small><span>$100/night</span></p>
+							<p><small>Pour aussi peu que</small><span>600 Dhs/nuit</span></p>
 						</div>
 					</div>
 					<div class="desc">
 						<h3> Villa </h3>
 						<p>Villa de luxe se démarque par sa clientèle, qui peut avoir des exigences particulières que chaque Villa ayant
 						obtenu la dénomination « Villa de luxe » se doit de satisfaire </p>
-						<p><a href="{{url('/detailRecherche')}}" class="btn btn-primary btn-luxe-primary">Réservé Maintenant<i class="ti-angle-right"></i></a></p>
+						<p><a href="{{url('about/-1')}}" class="btn btn-primary btn-luxe-primary">Réserver Maintenant<i class="ti-angle-right"></i></a></p>
 					</div>
 				</div>
 
@@ -161,7 +163,7 @@
 					<div class="f-hotel">
 						<div class="image" style="background-image: url(/images/imgFun.jpg);">
 							<div class="descrip text-center">
-								<p><small>Pour aussi peu que</small><span>$99/nuit</span></p>
+								<p><small>Pour aussi peu que</small><span>450 Dhs/nuit</span></p>
 							</div>
 						</div>
 						<div class="desc">
@@ -170,20 +172,20 @@
 							d'équipements à la pointe de la technologie. <br>
 
 						 </p>
-							<p><a href="{{url('/detailRecherche')}}" class="btn btn-primary btn-luxe-primary">Réservé Maintenant <i class="ti-angle-right"></i></a></p>
+							<p><a href="{{url('about/-1')}}" class="btn btn-primary btn-luxe-primary">Réserver Maintenant <i class="ti-angle-right"></i></a></p>
 						</div>
 					</div>
 					<div class="f-hotel">
 						<div class="image" style="background-image: url(/images/1.jpg);">
 							<div class="descrip text-center">
-								<p><small>Pour aussi peu que</small><span>$99/nuit</span></p>
+								<p><small>Pour aussi peu que</small><span>370 Dhs/nuit</span></p>
 							</div>
 						</div>
 						<div class="desc">
 							<h3>Appartement</h3>
 							<p>Appartement ne peut être classé 5 étoiles que si des critères précis sont honorés. Ces derniers sont divisés en trois
 							catégories : « équipements », « service au client » et « accessibilité et développement durable ».</p>
-							<p><a href="{{url('/detailRecherche')}}" class="btn btn-primary btn-luxe-primary">Réservé Maintenant <i class="ti-angle-right"></i></a></p>
+							<p><a href="{{url('about/-1')}}" class="btn btn-primary btn-luxe-primary">Réserver Maintenant <i class="ti-angle-right"></i></a></p>
 						</div>
 					</div>
 				</div>
@@ -206,16 +208,17 @@
 				<nav class="tabs-nav">
 					<a href="#" class="active" data-tab="tab1">
 						<i class="flaticon-restaurant icon"></i>
-						<span>Restaurant</span>
+						<span>Restauration</span>
 					</a>
 					<a href="#" data-tab="tab2">
-						<i class="flaticon-cup icon"></i>
-						<span>Bar</span>
+
+						<i class="fas fa-umbrella-beach icon" style="line-height: unset;"></i>
+						<span>Confort</span>
 					</a>
 					<a href="#" data-tab="tab3">
 
 						<i class="flaticon-car icon"></i>
-						<span>Service de ramassage</span>
+						<span>Transport</span>
 					</a>
 					<a href="#" data-tab="tab4">
 
@@ -229,8 +232,8 @@
 					</a>
 					<a href="#" data-tab="tab6">
 
-						<i class="flaticon-bicycle icon"></i>
-						<span>Gym</span>
+						<i class="fas fa-tree icon" style="line-height: unset;"></i>
+						<span>Nature</span>
 					</a>
 				</nav>
 				<div class="tab-content-container">
@@ -260,15 +263,15 @@
 						<div class="container">
 							<div class="row">
 								<div class="col-md-6">
-									<img src="/images/bar.jpg" class="img-responsive" alt="Image">
+									<img src="/images/confort.webp" class="img-responsive"  alt="Image">
 								</div>
 								<div class="col-md-6">
 									<span class="super-heading-sm">World Class</span>
-									<h3 class="heading">Bars</h3>
-									<p>L’accueil dans un bar se matérialise par un personnage qui doit être l’emblème du lieu. Ensuite certain vont vous
-									accueillir avec un sous verre et/ou une serviette pour signifier la prise en charge pour le client ainsi que pour
-									l’équipe. Quelques établissements vous souhaitent la bienvenue avec un verre d’eau ou encore un cocktail du jour
-									miniature qui a pour objectif de comprendre le comportement du client.</p>
+									<h3 class="heading">Confort</h3>
+									<p>Profitez d’une sublime décoration de style marocain, vous allez surement apprécier pleinement le confort et l'élégance des lieux.
+APPARTEMENT DESTINÉ UNIQUEMENT À UNE CLIENTELE OU COUPLE.
+Les couples doivent être mariés.  Les couples étrangers pas nécessairement.
+ Les groupes d amis sont acceptés uniquement s’ils disposent tous de passeport étranger.</p>
 									<p class="service-hour">
 										<span>Heures de service</span>
 										<strong>7:30 AM - 8:00 PM</strong>
@@ -285,7 +288,7 @@
 								</div>
 								<div class="col-md-6">
 									<span class="super-heading-sm">World Class</span>
-									<h3 class="heading">Service de ramassage</h3>
+									<h3 class="heading">Transport</h3>
 									<p>L'organisation du room service varie selon les hôtels, leur catégorie et le nombre de chambres. Obligatoire à partir des hôtels 3 étoiles sur la journée, et 24h sur 24 dans les hôtels 4 étoiles et 4 étoiles luxe, il s'agit d'une activité indépendante ou partagée avec le service de restauration de l'hôtel. Selon les établissements, le room service dispose d'un emplacement défini dans la cuisine ou dans l'office du restaurant ou d'un local indépendant.</p>
 									<p class="service-hour">
 										<span>Heures de service</span>
@@ -303,7 +306,7 @@
 								</div>
 								<div class="col-md-6">
 									<span class="super-heading-sm">World Class</span>
-									<h3 class="heading">Piscine</h3>
+									<h3 class="heading">Piscine Haute Gamme</h3>
 									<p>“Propre, spacieux, spacieux avec un personnel très agréable, une piscine magnifique et une grande terrasse, et les
 									chambres avec balcon donnant sur la piscine étaient parfaites.”</p>
 									<p class="service-hour">
@@ -337,12 +340,12 @@
 						<div class="container">
 							<div class="row">
 								<div class="col-md-6">
-									<img src="/images/gym.jpg" class="img-responsive" alt="Image">
+									<img src="/images/nature.webp" class="img-responsive" alt="Image">
 								</div>
 								<div class="col-md-6">
 									<span class="super-heading-sm">World Class</span>
-									<h3 class="heading">Gym</h3>
-									<p>Pour répondre aux besoins de cette clientèle nomade et pressée, les clubs de sport se font de plus en plus modulables.
+									<h3 class="heading">Nature exceptionnel !</h3>
+									<p>Pour répondre aux besoins de cette clientèle nomade et pressée, les Jardin details les cours se font de plus en plus modulables.
 									On n'y court plus ventre à terre à la sortie de son bureau pour se donner bonne conscience. On s'y arrête. Sur son site, Montgolfière, un nouveau club branché de la capitale, se définit en toute modestie comme "un Social Club dédié au sport, à la culture et à toute forme de créativité. Bienvenue dans votre seconde maison de près de 2000 m2 fondée sur un nouvel art de vivre alliant convivialité, bien-être et ouverture d'esprit."</p>
 									<p class="service-hour">
 										<span>Heures de service</span>
@@ -373,7 +376,7 @@
 							&ldquo;Si vous cherchez un hôtel de qualité, ne cherchez pas plus loin. Nous avons été surclassés gratuitement dans la Suite
 							Premium, merci beaucoup&rdquo;
 						</blockquote>
-						<p class="author"><cite>John Doe</cite></p>
+						<p class="author"><cite>Nisrine Sqat</cite></p>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -382,16 +385,15 @@
 							&ldquo;Ma femme et moi avons passé un week-end agréable pour s'évader ici, le personnel était très sympathique et attentionné.
 							Hautement recommandé&rdquo;
 						</blockquote>
-						<p class="author"><cite>Rob Smith</cite></p>
+						<p class="author"><cite>Hicham O-Sfh</cite></p>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="testimony">
 						<blockquote>
-							&ldquo;Si vous cherchez un hôtel de qualité, ne cherchez pas plus loin. Nous avons été surclassés gratuitement dans la Suite
-							Premium, merci beaucoup&rdquo;
+							&ldquo;Les logements correspondent tout à fait à l’annonce, les quartiers sont très sûr, les riad étaientt extrêmement propres, très bonne qualité et communication avec le personnel…&rdquo;
 						</blockquote>
-						<p class="author"><cite>Jane Doe</cite></p>
+						<p class="author"><cite>Anonyme</cite></p>
 					</div>
 				</div>
 			</div>
@@ -412,7 +414,7 @@
 				<div class="col-md-4">
 					<div class="blog-grid" style="background-image: url(/images/expensive.jpg);">
 						<div class="date text-center">
-							<span>09</span>
+							<span>19</span>
 							<small>Aout</small>
 						</div>
 					</div>
@@ -423,8 +425,8 @@
 				<div class="col-md-4">
 					<div class="blog-grid" style="background-image: url(/images/birthday.jpg);">
 						<div class="date text-center">
-							<span>09</span>
-							<small>Aout</small>
+							<span>05</span>
+							<small>Juillet</small>
 						</div>
 					</div>
 					<div class="desc">
@@ -434,12 +436,12 @@
 				<div class="col-md-4">
 					<div class="blog-grid" style="background-image: url(/images/aventure.jpg);">
 						<div class="date text-center">
-							<span>09</span>
-							<small>Aout</small>
+							<span>28</span>
+							<small>Mai</small>
 						</div>
 					</div>
 					<div class="desc">
-						<h3><a href="#">Découvrire une nouvelle Aventure</a></h3>
+						<h3><a href="#">Découvrir une nouvelle Aventure</a></h3>
 					</div>
 				</div>
 			</div>

@@ -339,7 +339,6 @@ width:20%;
 							$("#parking").prop("checked", MesDonneesJson.Parking);
 							$("#parking").css('background', 'darkgray');
 
-							//$('#typeLogement option[value="' + MesDonneesJson.TypeLogement + '"]').prop('selected', true);
 							$("#typeLogement").val("" + MesDonneesJson.TypeLogement + "").change();
 							$("#typeLogement").prop("disabled", true);
 							$("#typeLogement").css('background', 'darkgray');
@@ -353,7 +352,6 @@ width:20%;
                     $('#estCategorie').prop('disabled', false);
 					$("#estCategorie").css('background', 'transparent');
 				}
-
 			}
 		});
 </script>

@@ -93,22 +93,20 @@
 								<ul class="sf-menu" id="fh5co-primary-menu">
 									<li>
 										<strong>
-											<a id="PernalisedLink" href="{{url('/')}}">
-												Accueil
-											</a>
+											<a id="linkAccueil" href="{{url('/')}}">Accueil</a>
 										</strong>
 									</li>
 									<li>
-										<a href="{{url('/about/-1') }}">Nos Offres</a>
+										<a id="linkNosOffres" href="{{url('/about/-1') }}">Nos Offres</a>
 									</li>
 									<li>
-										<a href="{{url('/service')}}">Nos services</a>
+										<a id="linkService" href="{{url('/service')}}">Nos services</a>
 									</li>
 									<li>
-										<a href="{{url('/blog')}}">Blog</a>
+										<a id="linkBlog" href="{{url('/blog')}}">Blog</a>
 									</li>
 									<li>
-										<a href="{{url('/contact')}}">Contactez nous !</a>
+										<a id="linkContact" href="{{url('/contact')}}">Contactez nous !</a>
 									</li>
 								</ul>
 							</nav>

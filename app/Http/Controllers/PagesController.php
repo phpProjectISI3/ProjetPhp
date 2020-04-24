@@ -8,6 +8,7 @@ use DB;
 use App\Logement;
 use App\TypeLogement;
 use App\Detail_logement;
+use App\Message_contact;
 
 class PagesController extends Controller
 {
@@ -30,7 +31,7 @@ class PagesController extends Controller
         $request->session()->put('datedebut',Carbon::parse($request->input('date-start'))->format('Y-m-d'));
         // variable pour stocker la date_debut
         $datedebut = $request->session()->get('datedebut');
-        
+
         // creer une varibale de session contien la date_fin saisi par le client
         $request->session()->put('datefin',Carbon::parse($request->input('date-end'))->format('Y-m-d'));
         // variable pour stocker la date_fin
@@ -60,10 +61,10 @@ class PagesController extends Controller
             $logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail ');
         }
         else{
-                $logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail where detail_logement.type_logement_ = ' . $id);
+			$logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail where detail_logement.type_logement_ = ' . $id);
 
 
-            }
+		}
         return view('about', ['logements'=>$logements]);
     }
 
@@ -74,6 +75,16 @@ class PagesController extends Controller
 
     public function contact(){
         return view('contact');
+    }
+
+    public function EnvoyerMessage(Request $request){
+        $message = new Message_contact();
+        $message->emetteur_ = $request->emeteur;
+		$message->message_ecrit = $request->message;
+		$message->recepteur_ = 1013;
+		$message->save();
+
+		return response()->json(['success'=>'Form is successfully submitted!']);
     }
 
     public function detailRecherche(Request $request,$id){
@@ -89,12 +100,12 @@ class PagesController extends Controller
         $datefin = Carbon::parse($request->session()->get('datefin'))->format('Y-m-d');
         // calcule l'interval entre les dates (nombre de jours)
         $interval = (strtotime($datefin) - strtotime($datedebut))/(60*60*24);
-        
+
         // calcule tarif par saison
         $tarif_bs = $logement->tarif_par_nuit_bs * $interval;
         $tarif_hs = $logement->tarif_par_nuit_hs * $interval;
 
-        
+
 
 		return view('detailRecherche',compact('logement'))
                ->with('datedebut',$datedebut)
@@ -113,11 +124,11 @@ class PagesController extends Controller
     }
 
     public function review($id_logement, $datedebut, $datefin){
-       $logement = DB::table('logement')
-                    ->join('detail_logement', 'logement.detail_logement_', '=', 'detail_logement.id_detail')
-                    ->select('*')
-                    ->where('logement.id_logement',$id_logement)
-                    ->first();
+		$logement = DB::table('logement')
+					 ->join('detail_logement', 'logement.detail_logement_', '=', 'detail_logement.id_detail')
+					 ->select('*')
+					 ->where('logement.id_logement',$id_logement)
+					 ->first();
 		return view('review')
 				->with('logement',$logement)
 				->with('datedebut',$datedebut)

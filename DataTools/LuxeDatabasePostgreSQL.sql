@@ -294,19 +294,19 @@ VALUES
 (1015, 1, N'mail15@gmail.com', N'MotDePasse15');
 
 -- insert MESSAGE_CONTACT
-INSERT into MESSAGE_CONTACT (id_message, emetteur_, message_ecrit, vu, recepteur_) 
+INSERT into MESSAGE_CONTACT (emetteur_, message_ecrit, vu, recepteur_) 
 VALUES 
-(1, 1012, N'Bonjour soyez le bienvenue ', FALSE, 1000),
-(2, 1013, N'Bonjour soyez le bienvenue ', FALSE, 1002),
-(3, 1014, N'Bonjour soyez le bienvenue ', TRUE, 1003),
-(4, 1015, N'Bonjour soyez le bienvenue ', FALSE, 1004),
-(5, 1013, N'Bonjour soyez le bienvenue ', TRUE, 1005),
-(6, 1015, N'Bonjour soyez le bienvenue ', FALSE, 1006),
-(8, 1014, N'Bonjour soyez le bienvenue ', FALSE, 1007),
-(9, 1012, N'Bonjour soyez le bienvenue ', FALSE, 1008),
-(10,1013, N'Bonjour soyez le bienvenue', TRUE, 1009),
-(11,1012, N'Bonjour soyez le bienvenue', FALSE, 1010),
-(12,1014, N'Bonjour soyez le bienvenue', FALSE, 1011);
+(1012, N'Bonjour soyez le bienvenue ', FALSE, 1000),
+(1013, N'Bonjour soyez le bienvenue ', FALSE, 1002),
+(1014, N'Bonjour soyez le bienvenue ', TRUE, 1003),
+(1015, N'Bonjour soyez le bienvenue ', FALSE, 1004),
+(1013, N'Bonjour soyez le bienvenue ', TRUE, 1005),
+(1015, N'Bonjour soyez le bienvenue ', FALSE, 1006),
+(1014, N'Bonjour soyez le bienvenue ', FALSE, 1007),
+(1012, N'Bonjour soyez le bienvenue ', FALSE, 1008),
+(1013, N'Bonjour soyez le bienvenue', TRUE, 1009),
+(1012, N'Bonjour soyez le bienvenue', FALSE, 1010),
+(1014, N'Bonjour soyez le bienvenue', FALSE, 1011);
 
 -- insert TYPE_LOGEMENT
 INSERT into TYPE_LOGEMENT (id_type_logement, libelle_type_logement)
