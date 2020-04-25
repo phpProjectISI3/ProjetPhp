@@ -68,7 +68,8 @@
     @show
     <!-- Style -->
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="../css/modalLogin.css" />
+    <link rel="stylesheet" href="/css/modalLogin.css" />
+    <link rel="stylesheet" href="../css/detailrecherche.css" />
 
 
     <!-- Modernizr JS -->
@@ -90,6 +91,21 @@
                 opacity: 0;
             }
         }
+
+        .modal-backdrop {
+            z-index: 81;
+        }
+
+        /* input[type="submit"] {
+            width: 100%;
+            height: 3.5em;
+            outline: none;
+            background: orangered;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgb(107, 99, 92);
+        } */
 
     </style>
 </head>
