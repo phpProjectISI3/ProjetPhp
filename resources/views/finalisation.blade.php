@@ -68,7 +68,7 @@
 			border: 2.2px solid orangered;
 			margin-bottom: 24px;
 			font-weight: bold;
-			text-decoration: underline;
+			/*text-decoration: underline;*/
 			color: black;
 			font-size:15px;
 			border-radius: 12px;
