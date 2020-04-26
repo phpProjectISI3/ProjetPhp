@@ -100,10 +100,6 @@
                         </div>
                     </div>
                     <div class="a-col action">
-                        <!-- <a href="{{url('about')}}">
-								<span>Vérifier</span>
-								Disponibilté
-							</a> -->
                         <button class="sameAsa" type="submit">
                             <span>Vérifier</span>
                             Disponibilté

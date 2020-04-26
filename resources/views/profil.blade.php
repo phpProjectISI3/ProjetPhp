@@ -9,7 +9,11 @@
 </head>
 
 <body>
-    <h1> user profil</h1>
+    <h1>Salut {{ $user->prenom }}</h1>
+    <a href="/">
+        <h1> Retourner à l&apos;accueil</h1>
+    </a>
+
 </body>
 
 </html>

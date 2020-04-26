@@ -29,9 +29,12 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-// Login
-Route::post('login','Auth_Role_PersonneController@login');
-Route::get('profile','Auth_Role_PersonneController@profil');
+// Login & Auth
+Route::post('login','Auth_Role_PersonneController@VerifyCredentials')->name('login');
+
+Route::get('logout', 'Auth_Role_PersonneController@LogOut')->name("logout");
+
+Route::get('profilUser','Auth_Role_PersonneController@Profil')->name("profil");
 
 //Front Office
 Route::get('/', 'PagesController@welcome');

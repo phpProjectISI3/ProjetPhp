@@ -134,23 +134,27 @@
                                         <a id="linkContact" href="{{url('/contact')}}">Contactez nous !</a>
                                     </li>
                                     <li>
-                                        @if (true) {{-- si authentifié  --}}
-                                        <strong>
-                                            <a class="fh5co-sub-ddown" id="linkLogin" data-toggle="modal"
-                                                data-target="#login-modal">Login &nbsp;</a>
-                                        </strong>
-                                        @else {{-- non authentifié  --}}
+
+                                        @if(App\Http\Controllers\Auth_Role_PersonneController::IsAuthentificated())
+                                        {{-- si authentifié  --}}
                                         <strong>
                                             <a class="" style="cursor: default;" id="mesInfos">Mes infos &nbsp;</a>
                                         </strong>
                                         <ul class="fh5co-sub-menu" style="margin-top: -20px;min-width: 0px;">
-                                            <li><a href="#"><i class="far fa-user"></i> &nbsp; Profile</a></li>
+                                            <li><a href="{{ route('profil') }}"><i class="far fa-user"></i> &nbsp;
+                                                    Profil</a></li>
                                             <li><a href="#"><i class="fas fa-umbrella-beach"></i> &nbsp; Séjours</a>
                                             </li>
                                             <li><a href="#"><i class="far fa-heart"></i> &nbsp; Favoris</a></li>
-                                            <li><a href="#"><i class="fas fa-power-off"></i> &nbsp; Se déconncter</a>
+                                            <li><a href="{{route('logout')}}"><i class="fas fa-power-off"></i> &nbsp; Se
+                                                    déconncter</a>
                                             </li>
                                         </ul>
+                                        @else {{-- non authentifié  --}}
+                                        <strong>
+                                            <a class="fh5co-sub-ddown" id="linkLogin" data-toggle="modal"
+                                                data-target="#login-modal">Login &nbsp;</a>
+                                        </strong>
                                         @endif
                                     </li>
                                 </ul>
@@ -164,10 +168,11 @@
                         <div class="loginmodal-container">
                             <h1>Se connecter pour réserver</h1>
                             <br />
-                            <form action="login" method="POST">
+                            <form action="{{route('login')}}" method="POST">
                                 @csrf
-                                <input type="text" name="user" placeholder="Pseudo" value="hicham" />
-                                <input type="password" name="pass" placeholder="Mot de passe" value="test" />
+                                <input type="text" name="email" placeholder="Pseudo" value="mail1@gmail.com" />
+                                <input type="password" name="motdepasse" placeholder="Mot de passe"
+                                    value="MotDePasse1" />
                                 <input type="submit" class="login loginmodal-submit" value="Login" />
                             </form>
                             <div class="login-help">
