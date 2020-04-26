@@ -29,16 +29,16 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
+// Login
+Route::post('login','Auth_Role_PersonneController@login');
+Route::get('profile','Auth_Role_PersonneController@profil');
+
+//Front Office
 Route::get('/', 'PagesController@welcome');
-// Route::get('/{id}','PagesController@')
 
 Route::get('about/{id}', 'PagesController@about')->name('about');
 
 Route::get('multipleabout', 'PagesController@multipleabout');
-
-Route::get('blog', 'PagesController@blog');
-
-Route::get('service', 'PagesController@service');
 
 Route::get('detailRecherche/{id}', 'PagesController@detailRecherche');
 
@@ -47,18 +47,16 @@ Route::get('Finalisation', 'PagesController@finalisation');
 Route::get('contact', 'PagesController@contact');
 Route::post('contact', 'PagesController@EnvoyerMessage');
 
-Route::get('Envoyercontact', 'PagesController@Envoyercontact')->name('PagesController.Envoyercontact');
-
-Route::get('login', 'PagesController@login');
-
 Route::get('review/{id}-{datedebut}-{datefin}', 'PagesController@review');
 
-Route::get('information', 'PagesController@information');
+// static
+Route::get('blog', 'PagesController@blog');
+Route::get('service', 'PagesController@service');
 
-Route::get('confirmation', 'PagesController@confirmation');
 
-
-//hicham
-Route::get('/Logements/import_categories', 'LogementController@import_categories')->name('LogementController.import_categories');
+// Back Office
 Route::resource('Logements', 'LogementController');
+Route::get('/Logements/import_categories', 'LogementController@import_categories')->name('LogementController.import_categories');
+
 Route::resource('demandereservation', 'DemandeReservationController')->only('index');
+

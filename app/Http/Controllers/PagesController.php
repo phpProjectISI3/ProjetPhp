@@ -12,7 +12,6 @@ use App\Message_contact;
 
 class PagesController extends Controller
 {
-    //welcome page
     public function welcome(){
         // Select tous les éléments de la table Type Logement
         $types = TypeLogement::All();
@@ -20,9 +19,7 @@ class PagesController extends Controller
         return view('welcome',compact('types'));
     }
 
-
-
-    // methode pour multicritère page
+    // methode pour multicritère : Accueil ==> About
     public function multipleabout(Request $request){
         // retourne l'id selectionner par select
         $optionValue = $request->input('type', -1);
@@ -56,19 +53,14 @@ class PagesController extends Controller
     }
 
     public function about($id){
-
-        if($id == -1){
+        if($id == -1)
             $logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail ');
-        }
-        else{
+        else
 			$logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail where detail_logement.type_logement_ = ' . $id);
-
-
-		}
         return view('about', ['logements'=>$logements]);
     }
 
-    public function blog(){
+    public function blog(){ // reparer les gifs
         return view('blog');
     }
 
@@ -124,10 +116,6 @@ class PagesController extends Controller
         return view('service');
     }
 
-    public function login(){
-        return view('login');
-    }
-
     public function review($id_logement, $datedebut, $datefin){
 		$logement = DB::table('logement')
 					 ->join('detail_logement', 'logement.detail_logement_', '=', 'detail_logement.id_detail')
@@ -152,14 +140,4 @@ class PagesController extends Controller
 				->with('datedebut','debut')
 				->with('datefin','fin');
 	}
-
-
-    public function information(){
-        return view('information');
-    }
-
-    public function confirmation(){
-        return view('confirmation');
-    }
-
 }

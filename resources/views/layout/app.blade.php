@@ -70,6 +70,7 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/modalLogin.css" />
     <link rel="stylesheet" href="../css/detailrecherche.css" />
+    <script src="https://kit.fontawesome.com/4f2d779e50.js" crossorigin="anonymous"></script>
 
 
     <!-- Modernizr JS -->
@@ -95,17 +96,6 @@
         .modal-backdrop {
             z-index: 81;
         }
-
-        /* input[type="submit"] {
-            width: 100%;
-            height: 3.5em;
-            outline: none;
-            background: orangered;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            box-shadow: 0 0 5px rgb(107, 99, 92);
-        } */
 
     </style>
 </head>
@@ -174,12 +164,12 @@
                         <div class="loginmodal-container">
                             <h1>Se connecter pour réserver</h1>
                             <br />
-                            <form action="/review/5-DateDebut-DateFin">
-                                <input type="text" name="user" placeholder="Pseudo" />
-                                <input type="password" name="pass" placeholder="Mot de passe" />
-                                <input type="submit" name="login" class="login loginmodal-submit" value="Login" />
+                            <form action="login" method="POST">
+                                @csrf
+                                <input type="text" name="user" placeholder="Pseudo" value="hicham" />
+                                <input type="password" name="pass" placeholder="Mot de passe" value="test" />
+                                <input type="submit" class="login loginmodal-submit" value="Login" />
                             </form>
-
                             <div class="login-help">
                                 <a href="#">Mot de passe oublié ?</a>
                             </div>

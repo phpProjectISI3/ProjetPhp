@@ -4,7 +4,6 @@
 
 @section('linkcss')
 <link rel="stylesheet" href="../css/detailrecherche.css" />
-<script src="https://kit.fontawesome.com/4f2d779e50.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="../css/designRadioBtn.css" />
 <link rel="stylesheet" href="../css/modalLogin.css" />
 @endsection
@@ -148,7 +147,14 @@
         @endsection
 
         @section('scripts')
+        <script src="/js/jquery-2.1.4.min.js"></script>
         <script src="../js/detailRecherche.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("a.active").removeClass();
+            });
+
+        </script>
         <script>
             var i, j = 0;
             var images = [];
