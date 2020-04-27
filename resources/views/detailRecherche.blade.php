@@ -116,7 +116,7 @@
                                     @if((int)Carbon\Carbon::now()->format('m')
                                     < 6) {{$tarif_bs}} @else {{$tarif_hs}} @endif MAD </span> </div> </div> <div
                                         id="reserver">
-                                        <input type="submit" data-toggle="modal" data-target="#login-modal"
+                                        <input type="submit" data-toggle="modal" data-target="#login-modal-redirect"
                                             value="Confirmer !" />
                             </div>
                     </div>
@@ -125,25 +125,25 @@
                 </div>
             </div>
         </div>
-
-        {{-- <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        <div class="modal fade" id="login-modal-redirect" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
             aria-hidden="true" style="display: none;">
             <div class="modal-dialog">
                 <div class="loginmodal-container">
                     <h1>Se connecter pour réserver</h1>
                     <br />
-                    <form action="/review/5-DateDebut-DateFin">
-                        <input type="text" name="user" placeholder="Pseudo" />
-                        <input type="password" name="pass" placeholder="Mot de passe" />
-                        <input type="submit" name="login" class="login loginmodal-submit" value="Login" />
+                    <form action="{{route('loginAndRedirectReview')}}" method="POST">
+                        @csrf
+                        <input type="text" name="email" placeholder="Pseudo" value="mail1@gmail.com" />
+                        <input type="password" name="motdepasse" placeholder="Mot de passe" value="MotDePasse1" />
+                        <input type="text" id="PageActuel" name="PageActuel" hidden />
+                        <input type="submit" class="login loginmodal-submit" value="Login" />
                     </form>
-
                     <div class="login-help">
                         <a href="#">Mot de passe oublié ?</a>
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
         @endsection
 
         @section('scripts')
@@ -152,6 +152,8 @@
         <script>
             $(document).ready(function () {
                 $("a.active").removeClass();
+                $("#PageActuel").val(window.location);
+                // alert($("#PageActuel").val());
             });
 
         </script>

@@ -69,7 +69,7 @@
     <!-- Style -->
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/modalLogin.css" />
-    <link rel="stylesheet" href="../css/detailrecherche.css" />
+    {{-- <link rel="stylesheet" href="../css/detailrecherche.css" /> --}}
     <script src="https://kit.fontawesome.com/4f2d779e50.js" crossorigin="anonymous"></script>
 
 
@@ -95,6 +95,17 @@
 
         .modal-backdrop {
             z-index: 81;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            height: 3.5em;
+            outline: none;
+            background: orangered;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgb(107, 99, 92);
         }
 
     </style>
@@ -168,7 +179,7 @@
                         <div class="loginmodal-container">
                             <h1>Se connecter pour réserver</h1>
                             <br />
-                            <form action="{{route('login')}}" method="POST">
+                            <form action="/loginAndRedirectProfil" method="POST">
                                 @csrf
                                 <input type="text" name="email" placeholder="Pseudo" value="mail1@gmail.com" />
                                 <input type="password" name="motdepasse" placeholder="Mot de passe"

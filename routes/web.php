@@ -36,6 +36,10 @@ Route::get('logout', 'Auth_Role_PersonneController@LogOut')->name("logout");
 
 Route::get('profilUser','Auth_Role_PersonneController@Profil')->name("profil");
 
+Route::post('loginAndRedirectReview','Auth_Role_PersonneController@loginAndRedirectReview')->name("loginAndRedirectReview");
+
+Route::post('loginAndRedirectProfil','Auth_Role_PersonneController@loginAndRedirectProfil')->name("loginAndRedirectProfil");
+
 //Front Office
 Route::get('/', 'PagesController@welcome');
 
@@ -50,7 +54,7 @@ Route::get('Finalisation', 'PagesController@finalisation');
 Route::get('contact', 'PagesController@contact');
 Route::post('contact', 'PagesController@EnvoyerMessage');
 
-Route::get('review/{id}-{datedebut}-{datefin}', 'PagesController@review');
+Route::get('review/{id}', 'PagesController@review');
 
 // static
 Route::get('blog', 'PagesController@blog');

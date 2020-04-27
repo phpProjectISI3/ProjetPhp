@@ -116,7 +116,7 @@ class PagesController extends Controller
         return view('service');
     }
 
-    public function review($id_logement, $datedebut, $datefin){
+    public function review($id_logement){
 		$logement = DB::table('logement')
 					 ->join('detail_logement', 'logement.detail_logement_', '=', 'detail_logement.id_detail')
 					 ->select('*')
@@ -124,8 +124,8 @@ class PagesController extends Controller
 					 ->first();
 		return view('review')
 				->with('logement',$logement)
-				->with('datedebut',$datedebut)
-				->with('datefin',$datefin);
+				->with('datedebut',Carbon::parse(Session()->get('datedebut'))->format('Y-m-d'))
+				->with('datefin', Carbon::parse(Session()->get('datefin'))->format('Y-m-d'));
     }
 
     public function finalisation()
@@ -137,7 +137,7 @@ class PagesController extends Controller
 			 ->first();
 		return view('finalisation')
 				->with('logement',$logement)
-				->with('datedebut','debut')
-				->with('datefin','fin');
+				->with('datedebut',Carbon::parse(Session()->get('datedebut'))->format('Y-m-d'))
+				->with('datefin',Carbon::parse(Session()->get('datefin'))->format('Y-m-d'));
 	}
 }

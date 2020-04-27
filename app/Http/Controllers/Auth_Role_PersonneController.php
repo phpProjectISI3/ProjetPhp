@@ -14,9 +14,11 @@ class Auth_Role_PersonneController extends Controller
                 ->first();
         if(isset($user) == true){
             $request->session()->put('userObject',$user);
+            return true;
         }
         // return Auth_Role_PersonneController::AuthentificatedGoingToPage("profilUser");
-        return $this->Profil();
+        //return $this->Profil();
+        return false;
     }   
 
     public static function AuthentificatedGoingToPage($MyUrl)
@@ -46,5 +48,22 @@ class Auth_Role_PersonneController extends Controller
         \Auth::logout();
         \Session::flush();
         return \redirect("/");
+    }
+
+    public function loginAndRedirectReview(Request $request){
+       if($this->VerifyCredentials($request))
+       {
+         $id_logement = explode("/",$request->get("PageActuel"))[4]; 
+         return Auth_Role_PersonneController::AuthentificatedGoingToPage("review/".$id_logement);
+        }
+        else
+            return \redirect($request->get("PageActuel"));
+    }
+
+    public function loginAndRedirectProfil(Request $request){
+        if($this->VerifyCredentials($request))
+            return Auth_Role_PersonneController::AuthentificatedGoingToPage("profilUser");
+        else
+            return \redirect("/");
     }
 }
