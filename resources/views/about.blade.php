@@ -100,9 +100,11 @@
                         <h3><a href="/detailRecherche/{{$logement->id_logement}}">{{$logement->nom_logement}} </a></h3>
                         <p class="carte__description">{{$logement->description_logement}}</p>
                     </div>
-                </div>
-				<input id="heart" type="checkbox" />
-				<label for="heart">❤</label>
+				</div>
+            <div style="margin-top: -19%;" >
+				<input id="heart{{$logement->id_logement}}" class="heart" type="checkbox" onclick="myFunction()" />
+				<label for="heart{{$logement->id_logement}}" class="label_heart">❤</label>
+       		 </div>
             </div>
             @endforeach
             <script>
@@ -111,7 +113,14 @@
                 for (i = 0; i < divs.length; i++) {
                     divs[i].innerHTML = divs[i].innerHTML.substring(0, 110) + '....<a href="{{url('detailRecherche ')}}" style="color: orangered;">plus de détail !</a>';
                 }
-
+				function myFunction(){
+					var checkBox = document.getElementById("heart1");
+					if (checkBox.checked == true){
+						alert("cheched ! ");
+					} else {
+						alert("no cheched ! ");
+					}
+				}
             </script>
         </div>
 

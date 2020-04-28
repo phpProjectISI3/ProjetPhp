@@ -6,12 +6,12 @@
 } */
 
 
-[id="heart"] {
+[class="heart"] {
     position: absolute;
     left: -100vw;
 }
 
-[for="heart"] {
+.label_heart , [for="heart"] {
     color: #aab8c2;
     cursor: pointer;
     font-size: 2em;
@@ -19,23 +19,24 @@
     transition: color 0.2s ease-in-out;
     margin-left: 90%;
     margin-top: -11%;
+    margin-bottom: 10%;
 }
 
-[for="heart"]:hover {
+/* .label_heart , [for="heart"]:hover {
     color: grey;
-}
+} */
 
-[for="heart"]::selection {
+.label_heart ,[for="heart"]::selection {
     color: none;
     background: transparent;
 }
 
-[for="heart"]::moz-selection {
+.label_heart ,[for="heart"]::moz-selection {
     color: none;
     background: transparent;
 }
 
-[id="heart"]:checked+label {
+[class="heart"]:checked+label {
     color: #e2264d;
     will-change: font-size;
     animation: heart 0.5s cubic-bezier(.17, .89, .32, 1.49);
