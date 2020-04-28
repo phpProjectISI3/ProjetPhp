@@ -66,4 +66,10 @@ class Auth_Role_PersonneController extends Controller
         else
             return \redirect("/");
     }
+
+    // public function CurrentUser(){
+    //     if(Auth_Role_PersonneController::IsAuthentificated()){
+    //         return session()->get('userObject');
+    //     }
+    // }
 }

@@ -56,6 +56,8 @@ Route::post('contact', 'PagesController@EnvoyerMessage');
 
 Route::get('review/{id}', 'PagesController@review');
 
+Route::post('store', 'DemandeReservationClientController@store')->name('saveDemande');
+
 // static
 Route::get('blog', 'PagesController@blog');
 Route::get('service', 'PagesController@service');

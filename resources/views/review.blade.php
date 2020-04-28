@@ -152,16 +152,21 @@
                     Dhs/nuit</span>
             </h2>
             <hr size="30" />
-            <form action="/Finalisation">
+            <form action="{{route('saveDemande')}}" method="POST">
+                @csrf
                 <div>
                     <div class="dates">
                         <span>Dates</span>
                         <div id="showdates">
-                            <label id="DateEntree">{{$datedebut}}</label>
+                            <label id="DateEntree" name="DateEntree">{{$datedebut}}</label>
                             <span>
                                 <i class="fas fa-angle-double-right"></i>
                             </span>
                             <label id="DateSortie">{{$datefin}}</label>
+
+                            <input type="text" id="InDateEntree" name="InDateEntree" hidden />
+                            <input type="text" id="InDateSortie" name="InDateSortie" hidden />
+                            <input type="text" id="PageActuel" name="PageActuel" hidden />
                         </div>
                     </div>
                     <div class="dates">
@@ -200,6 +205,9 @@
     $(document).ready(function () {
         $('#fh5co-header-section').css('background-image', 'url("/images/2.jpg")');
         $("a.active").removeClass();
+        $("#PageActuel").val(window.location);
+        $("#InDateEntree").val($("#DateEntree").text());
+        $("#InDateSortie").val($("#DateSortie").text());
     });
 
 </script>

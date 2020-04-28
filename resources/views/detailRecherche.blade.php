@@ -81,8 +81,8 @@
                     Dhs/nuit</span>
             </h2>
             <hr size="30" />
-            <!--			<form action="">
--->
+            {{-- <form id="MyForm" action=""> --}}
+
             <div>
                 <div class="dates">
                     <span>Dates</span>
@@ -116,12 +116,18 @@
                                     @if((int)Carbon\Carbon::now()->format('m')
                                     < 6) {{$tarif_bs}} @else {{$tarif_hs}} @endif MAD </span> </div> </div> <div
                                         id="reserver">
+                                        @if(!App\Http\Controllers\Auth_Role_PersonneController::IsAuthentificated())
                                         <input type="submit" data-toggle="modal" data-target="#login-modal-redirect"
                                             value="Confirmer !" />
+                                        @else
+                                        <a href="/review/{{ $logement->id_logement}}">
+                                            <input type="submit" value="Confirmer !" />
+                                        </a>
+                                        @endif
                             </div>
                     </div>
-                    <!--			</form>
--->
+                    {{-- </form> --}}
+
                 </div>
             </div>
         </div>
@@ -135,8 +141,9 @@
                         @csrf
                         <input type="text" name="email" placeholder="Pseudo" value="mail1@gmail.com" />
                         <input type="password" name="motdepasse" placeholder="Mot de passe" value="MotDePasse1" />
-                        <input type="text" id="PageActuel" name="PageActuel" hidden />
                         <input type="submit" class="login loginmodal-submit" value="Login" />
+
+                        <input type="text" id="PageActuel" name="PageActuel" hidden />
                     </form>
                     <div class="login-help">
                         <a href="#">Mot de passe oublié ?</a>
@@ -153,7 +160,8 @@
             $(document).ready(function () {
                 $("a.active").removeClass();
                 $("#PageActuel").val(window.location);
-                // alert($("#PageActuel").val());
+                // var id = < ? php echo $logement - > id_logement ? > ;
+                // $('#MyForm').attr('action', 'review/'+id);
             });
 
         </script>
