@@ -119,16 +119,17 @@ class PagesController extends Controller
 
     public function favorit(Request $request){
 		if($request->ajax()){
-
         $sauvegarde = new Sauvegarde_logement;
         $sauvegarde->client_ = session()->get('userObject')->id_client;
         $sauvegarde->logement_ = $request->get("ID");
         $sauvegarde->save();
 
+        $nomLogement = Logement::find($request->get("ID"))->nom_logement;
+
         $success = array(
-            'nomLogement' => Logement::find($request->get("ID"))->nom_logement
+            'nomLogement' => $nomLogement,
         );
-			echo json_encode($success);
+		echo json_encode($success);
         }
     }
 
@@ -139,11 +140,16 @@ class PagesController extends Controller
                           ->where('sauvegarde_logement.logement_',$request->get("ID"));
             // $obj = $sauvegarde->first();
             $sauvegarde->delete();
+            
+            $nomLogement = Logement::find($request->get("ID"))->nom_logement;
+            // $exist = DB::table('sauvegarde_logement')
+            //         ->where('sauvegarde_logement.client_',session()->get('userObject')->id_client)
+            //         ->where('sauvegarde_logement.logement_',$request->get("ID"))->exists();
 
             $suprime = array(
-                'nomLogement' => Logement::find($request->get("ID"))->nom_logement
+                'nomLogement' => $nomLogement,
             );
-                echo json_encode($suprime);
+            echo json_encode($suprime);
         }
     }
 
