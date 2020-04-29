@@ -111,7 +111,8 @@
             color: orangered;
         }
 
-        #BtnIntegre {
+        #BtnIntegre,
+        #premierBtnNext {
             background: transparent;
             width: 140px;
             z-index: 1200;
@@ -177,7 +178,7 @@
                         </h2>
                         <section>
                             <h3 style="margin: 7px 0px 5px 182px;"> &nbsp;Numéro de téléphone </h3>
-                            <input type="tel" name="tel" id="Phone" placeholder="+212 06 98 42 17 20" required />
+                            <input type="tel" name="tel" id="Phone" placeholder="+212 06 98 42 17 20" />
 
                             <h3 style="margin: 7px 0px 5px 178px;">Avez-vous des questions ?</h3>
                             <div id="division">
@@ -332,7 +333,7 @@
                         < 6) {{$logement->tarif_par_nuit_bs}} @else {{$logement->tarif_par_nuit_hs}} @endif Dhs </span>
                             </div> <hr class="scndhr" />
                         <div class="dates">
-                            <span id="total" class="black">Total </span>
+                            <span id="total" class="black">Total :</span>
                             <span id="totalnuit" class="labelDate" style="color: forestgreen;margin-left: 15%;">
                                 @if((int)Carbon\Carbon::now()->format('m') < 6) {{$tarif_bs}} @else {{$tarif_hs}} @endif
                                     Dhs (TTC)</span> </div> </div> </div> </div> </div> <script
@@ -349,9 +350,9 @@
 
                                                 var divParent = document.getElementsByClassName('actions clearfix');
                                                 var ulNode = $(divParent).children('ul')[0];
-                                                var liNode = $(ulNode).children('li')[2];
-                                                //  $(liNode).empty();
-                                                liNode.innerHTML =
+                                                var finalLiNode = $(ulNode).children('li')[2];
+                                                //  $(finalLiNode).empty();
+                                                finalLiNode.innerHTML =
                                                     '<a href="#finish" role="menuitem"><button id="BtnIntegre">Valider !</button></a>';
                                                 $("#BtnIntegre").click(
                                                     function notification() {
@@ -367,8 +368,14 @@
                                                             window.location.href = "/";
                                                         }, 3000);
 
-													});
-													
+                                                    });
+
+												var firstNextLiNode = $(ulNode).children('li')[1];
+                                                //  $(firstNextLiNode).empty();
+                                                // firstNextLiNode.innerHTML =
+												// '<a href="#next" >Suivant</a>';
+                                                var anode = $(firstNextLiNode).children()[1];
+                                                console.log(anode);
 
                                             }
                                         );
