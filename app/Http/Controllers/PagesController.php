@@ -170,10 +170,17 @@ class PagesController extends Controller
 		$logement = DB::table('logement')
 			 ->join('detail_logement', 'logement.detail_logement_', '=', 'detail_logement.id_detail')
 			 ->select('*')
-			 ->where('logement.id_logement',1)
-			 ->first();
+			 ->where('logement.id_logement',1)// todo :id logement doit etre parametrable
+             ->first();
+        $interval = (strtotime(Carbon::parse(Session()->get('datedebut'))->format('Y-m-d')) - strtotime(Carbon::parse(Session()->get('datefin'))->format('Y-m-d')))/(60*60*24);
+        $tarif_bs = $logement->tarif_par_nuit_bs * $interval;
+        $tarif_hs = $logement->tarif_par_nuit_hs * $interval;
+
 		return view('finalisation')
-				->with('logement',$logement)
+                ->with('logement',$logement)
+                ->with('interval',$interval)
+                ->with('tarif_bs',$tarif_bs)
+                ->with('tarif_hs',$tarif_hs)
 				->with('datedebut',Carbon::parse(Session()->get('datedebut'))->format('Y-m-d'))
 				->with('datefin',Carbon::parse(Session()->get('datefin'))->format('Y-m-d'));
 	}
