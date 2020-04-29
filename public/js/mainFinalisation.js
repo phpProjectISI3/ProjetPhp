@@ -9,7 +9,7 @@ $(function(){
         titleTemplate : '<div class="title">#title#</div>',
         labels: {
             previous : 'Retour',
-            next : 'Suivant',
+            next : '<a href="#next" role="menuitem"><button id="premierBtnNext">Valider !</button></a>',
             finish : '',
             current : ''
         },
