@@ -299,7 +299,9 @@
     @section('scripts')
     @show
     <script src="/js/main.js"></script>
+    @if(Route::current()->getName() != 'about')
     <script src="/js/jquery-2.1.4.min.js"></script>
+    @endif
     <!-- Dropdown Menu -->
     <script src="/js/hoverIntent.js"></script>
     <script src="/js/superfish.js"></script>

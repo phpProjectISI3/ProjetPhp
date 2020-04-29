@@ -169,7 +169,7 @@
             var i, j = 0;
             var images = [];
 
-            images = < ? php echo json_encode($photo_logement); ? > ;
+            images = <?php echo json_encode($photo_logement); ?> ;
             // console.log(images);
 
 

@@ -9,6 +9,7 @@ use App\Logement;
 use App\TypeLogement;
 use App\Detail_logement;
 use App\Message_contact;
+use App\Sauvegarde_logement;
 
 class PagesController extends Controller
 {
@@ -114,6 +115,36 @@ class PagesController extends Controller
 
     public function service(){
         return view('service');
+    }
+
+    public function favorit(Request $request){
+		if($request->ajax()){
+
+        $sauvegarde = new Sauvegarde_logement;
+        $sauvegarde->client_ = session()->get('userObject')->id_client;
+        $sauvegarde->logement_ = $request->get("ID");
+        $sauvegarde->save();
+
+        $success = array(
+            'nomLogement' => Logement::find($request->get("ID"))->nom_logement
+        );
+			echo json_encode($success);
+        }
+    }
+
+    public function NonFavorit(Request $request){
+		if($request->ajax()){
+            $sauvegarde = DB::table('sauvegarde_logement')
+                          ->where('sauvegarde_logement.client_',session()->get('userObject')->id_client)
+                          ->where('sauvegarde_logement.logement_',$request->get("ID"));
+            // $obj = $sauvegarde->first();
+            $sauvegarde->delete();
+
+            $suprime = array(
+                'nomLogement' => Logement::find($request->get("ID"))->nom_logement
+            );
+                echo json_encode($suprime);
+        }
     }
 
     public function review($id_logement){

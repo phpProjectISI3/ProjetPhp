@@ -39,7 +39,6 @@ class LogementController extends Controller
 
     public function import_categories(Request $request){
 		if($request->ajax()){
-			$html_output = '';
 			$ID_DETAIL= $request->get('ID');
 			$data = DB::table('detail_logement')
 					->Where('detail_logement.id_detail', '=', $ID_DETAIL)

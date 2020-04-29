@@ -100,28 +100,17 @@
                         <h3><a href="/detailRecherche/{{$logement->id_logement}}">{{$logement->nom_logement}} </a></h3>
                         <p class="carte__description">{{$logement->description_logement}}</p>
                     </div>
-				</div>
-            <div style="margin-top: -19%;" >
-				<input id="heart{{$logement->id_logement}}" class="heart" type="checkbox" onclick="myFunction()" />
-				<label for="heart{{$logement->id_logement}}" class="label_heart">❤</label>
-       		 </div>
+                </div>
+                <div style="margin-top: -19%;">
+                    <input id="heart{{$logement->id_logement}}" class="heart" type="checkbox"
+                        onclick="AddToFavorite({{$logement->id_logement}})" />
+                    <label for="heart{{$logement->id_logement}}" class="label_heart">❤</label>
+                </div>
             </div>
             @endforeach
-            <script>
-                var i;
-                var divs = document.getElementsByClassName('carte__description');
-                for (i = 0; i < divs.length; i++) {
-                    divs[i].innerHTML = divs[i].innerHTML.substring(0, 110) + '....<a href="{{url('detailRecherche ')}}" style="color: orangered;">plus de détail !</a>';
-                }
-				function myFunction(){
-					var checkBox = document.getElementById("heart1");
-					if (checkBox.checked == true){
-						alert("cheched ! ");
-					} else {
-						alert("no cheched ! ");
-					}
-				}
-            </script>
+			
+            {{-- <script src="../js/jquery.js"></script> --}}
+          
         </div>
 
     </div>
@@ -133,7 +122,64 @@
 @section('scripts')
 <script src="/js/search.js"></script>
 <script src="../js/jquery.js"></script>
+<script src="../js/notification/notify.min.js"></script>
+<script>
+	var i;
+	var divs = document.getElementsByClassName('carte__description');
+	for (i = 0; i < divs.length; i++) {
+		divs[i].innerHTML = divs[i].innerHTML.substring(0, 110) + '....<a href="{{url('detailRecherche ')}}" style="color: orangered;">plus de détail !</a>';
+	}
+	
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
 
+	function AddToFavorite(id_logement) {
+		var checkBox = document.getElementById("heart"+id_logement);
+		if (checkBox.checked == true)
+		$.ajax({
+			url: "{{route('PagesController.favorit')}}",
+			method: "GET",
+			data: {
+				ID: id_logement
+			},
+			dataType: 'json',
+			success: function (text) {
+				$.notify(text.nomLogement+" : au favoris !", {
+					className: "success",
+					showDuration: 800,
+					hideDuration: 800,
+					autoHideDelay: 8000,
+					position: "top right",
+					arrowShow: true,
+				});
+			}
+		});
+		else{
+			$.ajax({
+			url: "{{route('PagesController.NonFavorit')}}",
+			method: "GET",
+			data: {
+				ID: id_logement
+			},
+			dataType: 'json',
+			success: function (text) {
+				$.notify(text.nomLogement+" : suprimé des favoris !", {
+					className: "error",
+					showDuration: 800,
+					hideDuration: 800,
+					autoHideDelay: 8000,
+					position: "top right",
+					arrowShow: true,
+				});
+			}
+		});
+		}
+	}
+
+</script>
 <script>
     $(document).ready(function () {
         $("a.active").removeClass();

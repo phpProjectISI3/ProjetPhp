@@ -24,6 +24,8 @@
 <link href="../css/main.css" rel="stylesheet" media="all" />
 
 <script src="https://kit.fontawesome.com/4f2d779e50.js" crossorigin="anonymous"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+
 
 @section('title','Création')
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet" />

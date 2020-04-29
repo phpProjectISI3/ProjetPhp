@@ -357,11 +357,11 @@ VALUES
 (3, 1008, 'Il a cassé 2 vase.');
 
 -- insert SAUVEGARDE_LOGEMENT
-INSERT into SAUVEGARDE_LOGEMENT (id_sauvegarde, client_, logement_) 
+INSERT into SAUVEGARDE_LOGEMENT (client_, logement_) 
 VALUES 
-(2, 1000, 5),
-(3, 1000, 2),
-(4, 1005, 3);
+(1000, 5),
+(1000, 2),
+(1005, 3);
 
 --insert PHOTO_LOGEMENT
 INSERT INTO public.photo_logement (id_photo, chemin_photo, logement_) 
