@@ -214,16 +214,6 @@
 										</div>
 									</div>
 									<div class="form-group row">
-										<label class="col-sm-3 col-form-label font-weight-bolder">Grade</label>
-										<div class="col-sm-9">
-											<select class="form-control" id="exampleFormControlSelect1">
-												<option>Selectionner votre Grade</option>
-												<option>Directeur</option>
-												<option >Employé</option>
-											</select>
-										</div>
-									</div>
-									<div class="form-group row">
 										<label class="col-sm-3 col-form-label"></label>
 										<div class="col-sm-9">
 											<button type="submit" class="btn btn-primary">Save</button>
