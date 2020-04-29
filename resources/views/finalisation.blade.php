@@ -127,6 +127,32 @@
             font-weight: bold;
             color: #848484;
             max-width: 100%;
+            padding-top: 13%;
+        }
+
+        #spanFleche {
+            padding-left: 30%;
+            padding-top: 15%;
+        }
+
+        #rightside .dates:nth-child(3) #totalnuit {
+            margin-left: 30%;
+            color: forestgreen;
+        }
+
+        #rightside .dates #showdates {
+            width: 94%;
+            height: 3em;
+            border: 2px solid rgb(194, 192, 192);
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: .5em;
+        }
+
+        #rightside h2 {
+            font-weight: bold;
+            color: forestgreen;
+            font-family: "Open Sans", Arial, serif;
         }
 
     </style>
@@ -272,7 +298,7 @@
             </div>
         </div>
     </div>
-    <div id="rightside">
+    <div id="rightside" style="padding-top: 0em;">
         <h2>
             @if((int)Carbon\Carbon::now()->format('m')< 6) {{$logement->tarif_par_nuit_bs}} @else
                 {{$logement->tarif_par_nuit_hs}} @endif <span> Dhs/nuit</span>
@@ -283,7 +309,7 @@
                 <span>Dates</span>
                 <div id="showdates">
                     <label id="DateEntree" class="labelDate">{{$datedebut}}</label>
-                    <span>
+                    <span id="spanFleche">
                         <i class="fas fa-angle-double-right"></i>
                     </span>
                     <label id="DateSortie" class="labelDate">{{$datefin}}</label>
@@ -294,61 +320,60 @@
                     <span>
                         Séjour :
                     </span>
-                    <span id="totalnuit">{{$interval}} nuits</span>
+                    <span id="totalnuit" class="labelDate">{{$interval}} nuits</span>
                 </div>
                 <hr class="scndhr" />
                 <div class="dates">
                     <span>
                         Tarif :
                     </span>
-                    <span id="totalnuit">
+                    <span id="totalnuit" class="labelDate">
                         @if((int)Carbon\Carbon::now()->format('m')
-                        < 6) {{$logement->tarif_par_nuit_bs}} @else {{$logement->tarif_par_nuit_hs}} @endif Dhs (TTC)
-                            </span> </div> <hr class="scndhr" />
+                        < 6) {{$logement->tarif_par_nuit_bs}} @else {{$logement->tarif_par_nuit_hs}} @endif Dhs </span>
+                            </div> <hr class="scndhr" />
                         <div class="dates">
                             <span id="total" class="black">Total </span>
-                            <span id="totalnuit" class="black">
+                            <span id="totalnuit" class="labelDate" style="color: forestgreen;margin-left: 15%;">
                                 @if((int)Carbon\Carbon::now()->format('m') < 6) {{$tarif_bs}} @else {{$tarif_hs}} @endif
-                                    Dhs </span> </div> </div> <div id="reserver">
-                        </div>
-                </div>
-            </div>
-        </div>
-        <script src="js/jquery-3.3.1.min.js"></script>
-        <script src="js/jquery.steps.js"></script>
-        <script src="js/jquery-ui.min.js"></script>
-        <script src="js/mainFinalisation.js"></script>
-        <script src="../js/notification/notify.min.js"></script>
+                                    Dhs (TTC)</span> </div> </div> </div> </div> </div> <script
+                                    src="js/jquery-3.3.1.min.js">
+                                    </script>
+                                    <script src="js/jquery.steps.js"></script>
+                                    <script src="js/jquery-ui.min.js"></script>
+                                    <script src="js/mainFinalisation.js"></script>
+                                    <script src="../js/notification/notify.min.js"></script>
 
-        <script>
-            $(document).ready(
-                function myfunction() {
+                                    <script>
+                                        $(document).ready(
+                                            function myfunction() {
 
-                    var divParent = document.getElementsByClassName('actions clearfix');
-                    var ulNode = $(divParent).children('ul')[0];
-                    var liNode = $(ulNode).children('li')[2];
-                    //  $(liNode).empty();
-                    liNode.innerHTML =
-                        '<a href="#finish" role="menuitem"><button id="BtnIntegre">Valider !</button></a>';
-                    $("#BtnIntegre").click(
-                        function notification() {
-                            $.notify(" Payement effectué avec succés !", {
-                                className: "success",
-                                showDuration: 800,
-                                hideDuration: 800,
-                                autoHideDelay: 8000,
-                                position: "top right",
-                                arrowShow: false,
-                            });
-                            setTimeout(function () {
-                                window.location.href = "/";
-                            }, 3000);
+                                                var divParent = document.getElementsByClassName('actions clearfix');
+                                                var ulNode = $(divParent).children('ul')[0];
+                                                var liNode = $(ulNode).children('li')[2];
+                                                //  $(liNode).empty();
+                                                liNode.innerHTML =
+                                                    '<a href="#finish" role="menuitem"><button id="BtnIntegre">Valider !</button></a>';
+                                                $("#BtnIntegre").click(
+                                                    function notification() {
+                                                        $.notify(" Payement effectué avec succés !", {
+                                                            className: "success",
+                                                            showDuration: 800,
+                                                            hideDuration: 800,
+                                                            autoHideDelay: 8000,
+                                                            position: "top right",
+                                                            arrowShow: false,
+                                                        });
+                                                        setTimeout(function () {
+                                                            window.location.href = "/";
+                                                        }, 3000);
 
-                        })
-                }
-            );
+													});
+													
 
-        </script>
+                                            }
+                                        );
+
+                                    </script>
 </body>
 
 </html>
