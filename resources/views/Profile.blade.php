@@ -50,7 +50,7 @@
 					<div class="row">
 						<div class="col-md-4 text-center mt-n5" id="nameProfil">
 							<h5 class="mb-1">{{$personnes[0]->nom . ' ' . $personnes[0]->prenom}}</h5>
-							<p class="mb-2 text-muted">Grade</p>
+							<p class="mb-2 text-muted">{{$personnes[0]->libelle_grade}}</p>
 						</div>
 						<div class="col-md-8 mt-md-4">
 	
@@ -84,31 +84,36 @@
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label font-weight-bolder">ID</label>
 										<div class="col-sm-9">
-											15000
+											{{$personnes[0]->id_client}}
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label font-weight-bolder">Nom Complet</label>
 										<div class="col-sm-9">
-											Noureddine Yaagoubi
+											{{$personnes[0]->nom . ' ' . $personnes[0]->prenom}}
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label font-weight-bolder">Sexe</label>
 										<div class="col-sm-9">
-											Male
+											{{$personnes[0]->libelle_sexe}}
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label font-weight-bolder">Date de Naissance</label>
 										<div class="col-sm-9">
-											16-12-1994
+											{{$personnes[0]->date_naissance}}
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label font-weight-bolder">Statut familiale</label>
 										<div class="col-sm-9">
-											Célibataire
+											@if($personnes[0]->est_marie === 'true')
+												Marié
+											@else 
+												Célibataire
+												
+											@endif
 										</div>
 									</div>
 								</form>
@@ -171,25 +176,25 @@
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label font-weight-bolder">Nombre d'enfant scholarisé</label>
 										<div class="col-sm-9">
-											2
+											{{$personnes[0]->nbr_enfant_scolarise}}
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label font-weight-bolder">Nombre d'enfant non scholarisé</label>
 										<div class="col-sm-9">
-											1
+											{{$personnes[0]->nbr_enfant_non_scolarise}}
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label font-weight-bolder">Grade</label>
 										<div class="col-sm-9">
-											Directeur
+											{{$personnes[0]->libelle_grade}}
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label font-weight-bolder">Point</label>
 										<div class="col-sm-9">
-											5
+											{{$personnes[0]->point_personne}}
 										</div>
 									</div>
 								</form>
@@ -239,7 +244,7 @@
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label font-weight-bolder">Username</label>
 										<div class="col-sm-9">
-											Noureddine123
+											{{$personnes[0]->username_email}}
 										</div>
 									</div>
 								</form>
@@ -249,13 +254,13 @@
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label font-weight-bolder">Username</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" placeholder="Username" value="Noureddine123">
+											<input type="text" class="form-control" placeholder="Username" value="{{$personnes[0]->username_email}}">
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label font-weight-bolder">Mot de passe</label>
 										<div class="col-sm-9">
-											<input type="password" class="form-control" placeholder="Mot de passe" value="Noureddine123">
+											<input type="password" class="form-control" placeholder="Mot de passe" value="{{$personnes[0]->mot_de_passe}}">
 										</div>
 									</div>
 									<div class="form-group row">

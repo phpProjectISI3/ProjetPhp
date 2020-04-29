@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Auth_role_personne;
 use App\Personne;
 
+
 class Auth_Role_PersonneController extends Controller
 {
     public function VerifyCredentials(Request $request)
@@ -37,11 +38,16 @@ class Auth_Role_PersonneController extends Controller
         return false;
     }
 
-    public function Profil(){
+    public function Profil(Request $request){
         if(Auth_Role_PersonneController::IsAuthentificated())
         {
-
-            $personnes = Personne::All();
+            $userId = $request->session()->get('userObject')->id_client;
+            $personnes = DB::select('select personne.*,sexe.libelle_sexe, grade.libelle_grade, auth_role_personne.username_email,auth_role_personne.mot_de_passe from personne 
+            join grade on personne.grade_ = grade.id_grade 
+            join sexe on personne.sexe_ = sexe.id_sexe
+            join auth_role_personne on auth_role_personne.personne_role_ = personne.id_client
+            where personne.id_client = ' . $userId);
+            // $authentification = DB::table('auth_role_personne')->selectRaw('auth_role_personne.username_email, auth_role_personne.mot_de_passe')->where('auth_role_personne',$userId)->get();
             return \view("Profile",compact('personnes'))->withUser(session()->get('userObject'));
         }
         else
