@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Auth_role_personne;
+use App\Personne;
 
 class Auth_Role_PersonneController extends Controller
 {
@@ -38,7 +39,11 @@ class Auth_Role_PersonneController extends Controller
 
     public function Profil(){
         if(Auth_Role_PersonneController::IsAuthentificated())
-            return \view("profil")->withUser(session()->get('userObject'));
+        {
+
+            $personnes = Personne::All();
+            return \view("Profile",compact('personnes'))->withUser(session()->get('userObject'));
+        }
         else
             return \redirect("/");
     }

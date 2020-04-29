@@ -58,9 +58,6 @@ Route::get('review/{id}', 'PagesController@review');
 
 Route::post('store', 'DemandeReservationClientController@store')->name('saveDemande');
 
-Route::get('favorit', 'PagesController@favorit')->name('PagesController.favorit');
-Route::get('NonFavorit', 'PagesController@NonFavorit')->name('PagesController.NonFavorit');
-
 // static
 Route::get('blog', 'PagesController@blog');
 Route::get('service', 'PagesController@service');
