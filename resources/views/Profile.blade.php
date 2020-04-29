@@ -82,7 +82,7 @@
 								<form>
 
 									<div class="form-group row">
-										<label class="col-sm-3 col-form-label font-weight-bolder">ID</label>
+										<label class="col-sm-3 col-form-label font-weight-bolder">Référent Client</label>
 										<div class="col-sm-9">
 											{{$personnes[0]->id_client}}
 										</div>
