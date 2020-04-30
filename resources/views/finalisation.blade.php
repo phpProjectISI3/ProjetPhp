@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <title>Finalisation</title>
     <!-- Mobile Specific Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="csrf-token" content="{{ csrf_token() }}" />
+	
     <!-- Font-->
     <link rel="stylesheet" type="text/css" href="css/opensans-font.css">
     <link rel="stylesheet" type="text/css" href="css/roboto-font.css">
@@ -112,7 +114,8 @@
         }
 
         #BtnIntegre,
-        #premierBtnNext {
+        #premierBtnNext,
+        #BtnRetour {
             background: transparent;
             width: 140px;
             z-index: 1200;
@@ -178,7 +181,7 @@
                         </h2>
                         <section>
                             <h3 style="margin: 7px 0px 5px 182px;"> &nbsp;Numéro de téléphone </h3>
-                            <input type="tel" name="tel" id="Phone" placeholder="+212 06 98 42 17 20" />
+                            <input type="tel" name="tel" id="Phone" placeholder="+212 06 98 42 17 20" required />
 
                             <h3 style="margin: 7px 0px 5px 178px;">Avez-vous des questions ?</h3>
                             <div id="division">
@@ -345,6 +348,11 @@
                                     <script src="../js/notification/notify.min.js"></script>
 
                                     <script>
+                                        $.ajaxSetup({
+                                            headers: {
+                                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                            }
+                                        });
                                         $(document).ready(
                                             function myfunction() {
 
@@ -370,15 +378,53 @@
 
                                                     });
 
-												var firstNextLiNode = $(ulNode).children('li')[1];
-                                                //  $(firstNextLiNode).empty();
-                                                // firstNextLiNode.innerHTML =
-												// '<a href="#next" >Suivant</a>';
-                                                var anode = $(firstNextLiNode).children()[1];
-                                                console.log(anode);
+                                                var etape = 1;
+                                                var phone, securite, payement;
+                                                phone = securite = payement = false;
+                                                $("#BtnRetour").click(
+                                                    function decremental() {
+                                                        etape--;
+                                                    });
+                                                $("#premierBtnNext").click(
+                                                    function incremental() {
+                                                        switch (etape) {
+                                                            case 1:
+                                                                if (!phone) {
+																	
 
-                                            }
-                                        );
+
+
+                                                                    phone = true;
+                                                                }
+                                                                break;
+                                                            case 2:
+                                                                if (!securite) {
+                                                                    text = "securite";
+                                                                    alert(text);
+                                                                    securite = true;
+                                                                }
+                                                                break;
+                                                            case 3:
+                                                                if (!payement) {
+                                                                    text = "Payement";
+                                                                    alert(text);
+                                                                    payement = true;
+                                                                }
+                                                                break;
+                                                        }
+                                                        etape++;
+                                                    }
+                                                );
+
+
+                                                // var firstNextLiNode = $(ulNode).children('li')[1];
+                                                // //  $(firstNextLiNode).empty();
+                                                // // firstNextLiNode.innerHTML =
+                                                // // '<a href="#next" >Suivant</a>';
+                                                // var anode = $(firstNextLiNode).children()[1];
+                                                // console.log(anode);
+
+                                            });
 
                                     </script>
 </body>

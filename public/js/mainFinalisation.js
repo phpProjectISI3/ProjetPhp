@@ -8,8 +8,8 @@ $(function(){
         transitionEffectSpeed: 700,
         titleTemplate : '<div class="title">#title#</div>',
         labels: {
-            previous : 'Retour',
-            next : '<a href="#next" role="menuitem"><button id="premierBtnNext">Valider !</button></a>',
+            previous : '<a href="#previous" role="menuitem" style="padding: 0px;"><button id="BtnRetour">Retour</button></a>',
+            next : '<a href="#next" role="menuitem" style="padding: 0px;"><button id="premierBtnNext">Suivant</button></a>',
             finish : '',
             current : ''
         },

@@ -416,7 +416,7 @@ body {
 .actions ul li a {
 	color: #fff;
 	text-decoration: none;
-    padding: 13px 34px;
+    /* padding: 13px 34px; */
 }
 
 /* Responsive */
