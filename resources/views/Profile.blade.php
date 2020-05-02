@@ -65,7 +65,9 @@
 			</div>
 		</div>
 		<!-- profile header end -->
-
+	@if(Session::has('message'))
+       <p >{{ Session::get('message') }}</p>
+     @endif
 		<!-- profile body start -->
 		<div class="row">
 			<div class="col-md-8 order-md-2">
@@ -108,33 +110,33 @@
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label font-weight-bolder">Statut familiale</label>
 										<div class="col-sm-9">
-											@if($personnes[0]->est_marie === 'true')
+											@if($personnes[0]->est_marie === true)
 												Marié
 											@else 
 												Célibataire
-												
 											@endif
 										</div>
 									</div>
 								</form>
 							</div>
 							<div class="card-body border-top pro-det-edit collapse " id="pro-det-edit-2">
-								<form>
+								<form action="/editPerrsonnal" method="POST">
+								@csrf
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label font-weight-bolder">Nom Complet</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" placeholder="Full Name">
+											<input type="text" name="fullname" class="form-control" placeholder="Nom et Prenom" value="{{ $personnes[0]->nom . ' ' . $personnes[0]->prenom}}">
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label font-weight-bolder">Sexe</label>
 										<div class="col-sm-9">
 											<div class="custom-control custom-radio custom-control-inline">
-												<input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" checked>
+												<input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" value="1"  {{ $personnes[0]->sexe_ == 1 ? 'checked' : '' }}>
 												<label class="custom-control-label" for="customRadioInline1">Homme</label>
 											</div>
 											<div class="custom-control custom-radio custom-control-inline">
-												<input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+												<input type="radio" id="customRadioInline2" name="customRadioInline1" value="2" class="custom-control-input"  {{ $personnes[0]->sexe_ == 2 ? 'checked' : '' }}>
 												<label class="custom-control-label" for="customRadioInline2">Femme</label>
 											</div>
 										</div>
@@ -142,23 +144,23 @@
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label font-weight-bolder">Date de Naissance</label>
 										<div class="col-sm-9">
-											<input type="date" class="form-control" value="1994-12-16">
+											<input type="date" class="form-control" value="{{$personnes[0]->date_naissance}}" name="birthDate">
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label font-weight-bolder">Statut familiale</label>
 										<div class="col-sm-9">
-											<select class="form-control" id="exampleFormControlSelect1">
+											<select name="familaleStatu" class="form-control" id="exampleFormControlSelect1">
 												<option>Selectionner votre statut familiale</option>
-												<option>Marié</option>
-												<option selected>Célibataire</option>
+												<option value="true"  {{ $personnes[0]->est_marie == true ? 'selected' : '' }}>Marié</option>
+												<option value="false" {{ $personnes[0]->est_marie == false ? 'selected' : '' }}>Célibataire</option>
 											</select>
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label"></label>
 										<div class="col-sm-9">
-											<button type="submit" class="btn btn-primary">Save</button>
+											<button type="submit" class="btn btn-primary" name="personnalInformation">Save</button>
 										</div>
 									</div>
 								</form>
@@ -200,23 +202,24 @@
 								</form>
 							</div>
 							<div class="card-body border-top pro-dont-edit collapse " id="pro-dont-edit-2">
-								<form>
+								<form action="/editPerrsonnal" method="POST">
+								@csrf
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label font-weight-bolder">Nombre d'enfant Scholarisé</label>
 										<div class="col-sm-9">
-											<input type="number" class="form-control" placeholder="Nombre d'enfant scholarisé" value="+1 9999-999-999">
+											<input type="number" class="form-control" placeholder="Nombre d'enfant scholarisé" name="nbreEnfantScholarise" value="{{$personnes[0]->nbr_enfant_scolarise}}">
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label font-weight-bolder">Nombre d'enfant non scholarisé</label>
 										<div class="col-sm-9">
-											<input type="number" class="form-control" placeholder="Nombre enfant non scholarisé" >
+											<input type="number" class="form-control" placeholder="Nombre enfant non scholarisé" name="nbreEnfantNonScholarise" value="{{$personnes[0]->nbr_enfant_non_scolarise}}">
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label"></label>
 										<div class="col-sm-9">
-											<button type="submit" class="btn btn-primary">Save</button>
+											<button type="submit" class="btn btn-primary" name="calculSubmit">Save</button>
 										</div>
 									</div>
 								</form>
@@ -240,23 +243,24 @@
 								</form>
 							</div>
 							<div class="card-body border-top pro-wrk-edit collapse " id="pro-wrk-edit-2">
-								<form>
+								<form action="/editPerrsonnal" method="POST">
+								@csrf
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label font-weight-bolder">Username</label>
 										<div class="col-sm-9">
-											<input type="text" class="form-control" placeholder="Username" value="{{$personnes[0]->username_email}}">
+											<input type="text" class="form-control" placeholder="Username" value="{{$personnes[0]->username_email}}" name="username">
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label font-weight-bolder">Mot de passe</label>
 										<div class="col-sm-9">
-											<input type="password" class="form-control" placeholder="Mot de passe" value="{{$personnes[0]->mot_de_passe}}">
+											<input type="password" class="form-control" placeholder="Mot de passe" value="{{$personnes[0]->mot_de_passe}}" name="password">
 										</div>
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-3 col-form-label"></label>
 										<div class="col-sm-9">
-											<button type="submit" class="btn btn-primary">Save</button>
+											<button type="submit" class="btn btn-primary" name="loginButon">Save</button>
 										</div>
 									</div>
 								</form>
