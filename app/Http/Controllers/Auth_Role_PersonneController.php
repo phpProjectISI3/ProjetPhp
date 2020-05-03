@@ -74,7 +74,7 @@ class Auth_Role_PersonneController extends Controller
             $userId = $request->session()->get('userObject')->id_client;
             $emetteur = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.emetteur_ = $userId ");
 
-            $firstLetter = $emetteur[0]->nom[0];
+            $firstLetter =session()->get('userObject')->prenom[0];
 
             $recepteur = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId ");
 

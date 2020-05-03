@@ -51,7 +51,7 @@
                                         <div class="b-bg">
                                             {{$firstLetter}}
                                         </div>
-                                        <span class="b-title text-muted">{{$emetteur[0]->nom . ' ' . $emetteur[0]->prenom}}</span>
+                                        <span class="b-title text-muted">{{session()->get('userObject')->nom . ' ' . session()->get('userObject')->prenom}}</span>
                                     </a>
                                 </div>
                                 <!-- [ inbox-left section ] end -->

@@ -65,7 +65,7 @@ Route::get('NonFavorit', 'PagesController@NonFavorit')->name('PagesController.No
 
 Route::get('verifieNum','FacturationController@verifierNumero')->name('FacturationController.verifierNumero');
 Route::get('verifieCode','FacturationController@verifierCode')->name('FacturationController.verifierCode');
-Route::get('verifiePaiyement','FacturationController@infoPaiyement')->name('FacturationController.infoPaiyement');
+Route::get('verifiePaiyement','FacturationController@verifiePaiyement')->name('FacturationController.verifiePaiyement');
 
 Route::get('favories','Auth_Role_PersonneController@favories')->name('favories');
 
