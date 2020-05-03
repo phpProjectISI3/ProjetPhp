@@ -188,8 +188,7 @@ create table SAUVEGARDE_LOGEMENT
     foreign key (logement_)references LOGEMENT(id_logement)
 );
 
-select * from AUTH_ROLE_PERSONNE
-
+select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.emetteur_ = 1000
 select logement.*
 from logement 
 where id_logement in (select SAUVEGARDE_LOGEMENT.logement_ from SAUVEGARDE_LOGEMENT join personne on SAUVEGARDE_LOGEMENT.client_ = personne.id_client where personne.id_client = 1013)
