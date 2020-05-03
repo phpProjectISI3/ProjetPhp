@@ -4,6 +4,8 @@
 
 @section('linkcss')
 <link rel="stylesheet" href="../css/hotel.css">
+<link rel="stylesheet" href="../css/btnHeart.css">
+
 
 <style>
     #valeurRadioBtn {
@@ -52,6 +54,18 @@
                         <p class="carte__description">{{$logement->description_logement}}</p>
                     </div>
                 </div>
+                @if(App\Http\Controllers\Auth_Role_PersonneController::IsAuthentificated())
+                <div style="margin-top: -19%;">
+                    @if(DB::table('sauvegarde_logement')->where('sauvegarde_logement.client_',session()->get('userObject')->id_client)->where('sauvegarde_logement.logement_',$logement->id_logement)->exists())
+                    <input id="heart{{$logement->id_logement}}" class="heart" type="checkbox"
+                        onclick="AddToFavorite({{$logement->id_logement}})" checked />
+                    @else
+                    <input id="heart{{$logement->id_logement}}" class="heart" type="checkbox"
+                        onclick="AddToFavorite({{$logement->id_logement}})" />
+					@endif
+					<label for="heart{{$logement->id_logement}}" class="label_heart">❤</label>
+                </div>
+                @endif
             </div>
             @endforeach
 
@@ -81,6 +95,32 @@
      var divs = document.getElementsByClassName('carte__description');
     for (i = 0; i < divs.length; i++) {
         divs[i].innerHTML = divs[i].innerHTML.substring(0, 110) + '....<a href="{{url('detailRecherche ')}}" style="color: orangered;">plus de détail !</a>';
+    }
+</script>
+<script>
+    function AddToFavorite(id_logement) {
+        var checkBox = document.getElementById("heart" + id_logement);
+        if (checkBox.checked == true) {
+            console.log("checked !");
+            $.ajax({
+                url: "{{route('PagesController.NonFavorit')}}",
+                method: "GET",
+                data: {
+                    ID: id_logement
+                },
+                dataType: 'json',
+                success: function (text) {
+                    $.notify(text.nomLogement + " : suprimé des favoris !", {
+                        className: "error",
+                        showDuration: 800,
+                        hideDuration: 800,
+                        autoHideDelay: 8000,
+                        position: "top right",
+                        arrowShow: true,
+                    });
+                }
+            });
+        }
     }
 </script>
 @endsection

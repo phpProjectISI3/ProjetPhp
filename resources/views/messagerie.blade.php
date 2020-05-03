@@ -114,6 +114,7 @@
                                                         <table class="table">
                                                             <tbody>
                                                                 @foreach($recepteur as $rec)
+                                                                
                                                                 <tr class="read">
                                                                     <td>
                                                                         <div class="check-star">
