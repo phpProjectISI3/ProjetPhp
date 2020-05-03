@@ -15,9 +15,11 @@ class FacturationController extends Controller
             //envoyer sms
             // au numero de telephone
 
+            $request->session()->put("code","Co-" . rand(99,1000)."-".rand(99,1000));
+            $request->session()->put("telephone" ,$numero_telephone);
 
             $success = array(
-                'feedback' => 'cool',
+                'code' => session()->get('code'),
             );
 		    echo json_encode($success);
         }
@@ -27,26 +29,24 @@ class FacturationController extends Controller
 		if($request->ajax()){
             $code = $request->get("code");
 
-            //envoyer code
-            // au numero de telephone
-
-
+            if($code == session()->get('code'))
+                $verification = true;
+            else 
+                $verification = false;
             $success = array(
-                'feedback' => 'cool',
+                'feedback' => $verification
             );
-		    echo json_encode($code);
+		    echo json_encode($success);
         }
     }
     
     public function verifiePaiyement(Request $request){
 		if($request->ajax()){
-            $code = $request->get("code");
 
             if(true){
                 $data = array(
-                    'feedback' => 'cool',
-                    'valid' => true,
-                    'numero_telephone_confirme' => '06 66201740'
+                    'feedback' => true,
+                    'numero_telephone_confirme' =>  session()->get('telephone'),
                 );
             }
             else{

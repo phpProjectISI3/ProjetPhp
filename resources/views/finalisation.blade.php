@@ -213,7 +213,7 @@
                                 <div id="#CodeConfirmation" style="margin-top: 7%;">
                                     <h3 style="margin: 7px 0px -9px 150px;font-size:15px;"> &nbsp;Saisissez le code que
                                         vous avez reçue. </h3>
-                                    <input type="text" name="" style="margin-bottom: 55px;" id="Phone"
+                                    <input type="text" name="codeVerification" style="margin-bottom: 55px;" id="Phone"
                                         placeholder="                Co-222-444" required />
                                 </div>
                                 <small style="margin-left:35%;">
@@ -396,11 +396,11 @@
                                                                         url: "{{route('FacturationController.verifierNumero') }}",
                                                                         method: "GET",
                                                                         data: {
-                                                                            numero : '+212 0666201740'
+                                                                            numero :  $("input[name='tel']").val(),
                                                                         },
                                                                         dataType: 'json',
                                                                         success: function (success) {
-                                                                            console.log(success.feedback);
+                                                                            console.log("code : "+ success.code);
                                                                         }
                                                                     });
                                                                     phone = true;
@@ -412,11 +412,11 @@
                                                                         url: "{{route('FacturationController.verifierCode') }}",
                                                                         method: "GET",
                                                                         data: {
-                                                                            code : 'Co-585-985'
+                                                                            code : $("input[name='codeVerification']").val(),
                                                                         },
                                                                         dataType: 'json',
                                                                         success: function (success) {
-                                                                            console.log(success);
+                                                                            console.log("valid : "+ success.feedback);
                                                                         }
                                                                     });
                                                                     securite = true;
@@ -425,10 +425,10 @@
                                                             case 3:
                                                                 if (!payement) {
                                                                     $.ajax({
-                                                                        url: "{{route('FacturationController.verifierCode') }}",
+                                                                        url: "{{route('FacturationController.verifiePaiyement') }}",
                                                                         method: "GET",
                                                                         data: {
-                                                                            code : 'Co-585-985'
+                                                                           info_bankaire : ''
                                                                         },
                                                                         dataType: 'json',
                                                                         success: function (success) {
