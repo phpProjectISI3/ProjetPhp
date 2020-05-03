@@ -67,7 +67,10 @@ Route::get('verifieNum','FacturationController@verifierNumero')->name('Facturati
 Route::get('verifieCode','FacturationController@verifierCode')->name('FacturationController.verifierCode');
 Route::get('verifiePaiyement','FacturationController@infoPaiyement')->name('FacturationController.infoPaiyement');
 
-Route::get('favories','Auth_Role_PersonneController@favories');
+Route::get('favories','Auth_Role_PersonneController@favories')->name('favories');
+
+Route::get('messagerie','Auth_Role_PersonneController@messagerie')->name('messagerie');
+
 // static
 Route::get('blog', 'PagesController@blog');
 Route::get('service', 'PagesController@service');

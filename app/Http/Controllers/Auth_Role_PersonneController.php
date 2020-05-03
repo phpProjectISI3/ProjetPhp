@@ -6,6 +6,7 @@ use DB;
 use Illuminate\Http\Request;
 use App\Auth_role_personne;
 use App\Personne;
+use App\Sauvegarde_Logement;
 
 
 class Auth_Role_PersonneController extends Controller
@@ -54,9 +55,35 @@ class Auth_Role_PersonneController extends Controller
             return \redirect("/");
     }
 
-    public function favories(){
+    public function favories(Request $request){
         
-        return view('favories');
+        if(Auth_Role_PersonneController::IsAuthentificated())
+        {
+            $userId = $request->session()->get('userObject')->id_client;
+            $logements = DB::select('select logement.*, detail_logement.* from logement join detail_logement on logement.detail_logement_ = detail_logement.id_detail where id_logement in (select sauvegarde_logement.logement_ from sauvegarde_logement join personne on sauvegarde_logement.client_ = personne.id_client where id_client ='. $userId . ')');
+
+            return \view("favories",compact('logements'))->withUser(session()->get('userObject'));
+        }
+        else
+            return \redirect("/");
+    }
+
+    public function messagerie(Request $request){
+        if(Auth_Role_PersonneController::IsAuthentificated())
+        {
+            $userId = $request->session()->get('userObject')->id_client;
+            $emetteur = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.emetteur_ = $userId ");
+
+            $firstLetter = $emetteur[0]->nom[0];
+
+            $recepteur = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId ");
+
+            return \view("messagerie",compact('emetteur','recepteur'))->withUser(session()->get('userObject'))
+            ->with('firstLetter',$firstLetter);
+        }
+        else
+            return \redirect("/");
+        
     }
 
     public function LogOut()

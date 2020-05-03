@@ -36,12 +36,12 @@ class PagesController extends Controller
         $datefin = $request->session()->get('datefin');
 
         // test si l'option n'est pas selectionner
-        if($optionValue == -1){
+        if($optionValue == -1 ){
             $logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail ');
         }
         else{
             // test pour verifier si le client a saisi des dates
-            if($datedebut == '' && $datefin == ''){
+            if($datedebut == getdate() && $datefin == getdate()){
 
                 $logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail where detail_logement.type_logement_ = ' . $optionValue);
             }else{

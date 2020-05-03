@@ -89,14 +89,14 @@
                     <div class="a-col alternate">
                         <div class="input-field">
                             <label for="date-start">Date Arrivée</label>
-                            <input type="text" name="date-start" value="2000-01-01" class="form-control"
+                            <input type="text" name="date-start"  class="form-control"
                                 id="date-start" />
                         </div>
                     </div>
                     <div class="a-col alternate">
                         <div class="input-field">
                             <label for="date-end">Date Sortie</label>
-                            <input type="text" name="date-end" value="2000-01-01" class="form-control" id="date-end" />
+                            <input type="text" name="date-end"  class="form-control" id="date-end" />
                         </div>
                     </div>
                     <div class="a-col action">

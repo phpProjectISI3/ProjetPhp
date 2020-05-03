@@ -3,10 +3,6 @@
 @section('title','Détails')
 
 @section('linkcss')
-<link rel="stylesheet" href="../css/detailrecherche.css" />
-<link rel="stylesheet" href="../css/review.css" />
-<script src="https://kit.fontawesome.com/4f2d779e50.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="../css/designRadioBtn.css" />
 
 <style>
     #valeurRadioBtn {

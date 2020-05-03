@@ -157,9 +157,9 @@
                                                     Profil</a></li>
                                             <li><a href="#"><i class="fas fa-umbrella-beach"></i> &nbsp; Séjours</a>
                                             </li>
-                                            <li><a href="#"><i class="far fa-envelope"></i> &nbsp; Messagerie</a>
+                                            <li><a href="/messagerie"><i class="far fa-envelope"></i> &nbsp; Messagerie</a>
                                             </li>
-                                            <li><a href="#"><i class="far fa-heart"></i> &nbsp; Favoris</a></li>
+                                            <li><a href="{{ route('favories')}}"><i class="far fa-heart"></i> &nbsp; Favoris</a></li>
                                             <li><a href="{{route('logout')}}"><i class="fas fa-power-off"></i> &nbsp; Se
                                                     déconncter</a>
                                             </li>
