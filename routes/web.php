@@ -40,6 +40,8 @@ Route::post('loginAndRedirectReview','Auth_Role_PersonneController@loginAndRedir
 
 Route::post('loginAndRedirectProfil','Auth_Role_PersonneController@loginAndRedirectProfil')->name("loginAndRedirectProfil");
 
+Route::post('editPerrsonnal','PersonneController@editPerrsonnal');
+
 //Front Office
 Route::get('/', 'PagesController@welcome');
 
@@ -65,6 +67,7 @@ Route::get('verifieNum','FacturationController@verifierNumero')->name('Facturati
 Route::get('verifieCode','FacturationController@verifierCode')->name('FacturationController.verifierCode');
 Route::get('verifiePaiyement','FacturationController@infoPaiyement')->name('FacturationController.infoPaiyement');
 
+Route::get('favories','Auth_Role_PersonneController@favories');
 // static
 Route::get('blog', 'PagesController@blog');
 Route::get('service', 'PagesController@service');
