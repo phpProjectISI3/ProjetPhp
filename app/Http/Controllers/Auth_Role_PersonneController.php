@@ -110,6 +110,9 @@ class Auth_Role_PersonneController extends Controller
             return \redirect("/");
     }
 
+    public function sejours(){
+        return \view("sejour");
+    }
     // public function CurrentUser(){
     //     if(Auth_Role_PersonneController::IsAuthentificated()){
     //         return session()->get('userObject');

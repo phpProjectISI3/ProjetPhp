@@ -300,7 +300,7 @@
     @section('scripts')
     @show
     <script src="/js/main.js"></script>
-    @if(Route::current()->getName() != 'about')
+    @if(Route::current()->getName() != 'about' && Route::current()->getName() != 'sejour')
     <script src="/js/jquery-2.1.4.min.js"></script>
     @endif
     <!-- Dropdown Menu -->

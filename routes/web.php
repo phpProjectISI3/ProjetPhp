@@ -71,6 +71,8 @@ Route::get('favories','Auth_Role_PersonneController@favories')->name('favories')
 
 Route::get('messagerie','Auth_Role_PersonneController@messagerie')->name('messagerie');
 
+Route::get('sejours','Auth_Role_PersonneController@sejours')->name('sejours');
+
 // static
 Route::get('blog', 'PagesController@blog');
 Route::get('service', 'PagesController@service');
