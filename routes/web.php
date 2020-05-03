@@ -58,6 +58,13 @@ Route::get('review/{id}', 'PagesController@review');
 
 Route::post('store', 'DemandeReservationClientController@store')->name('saveDemande');
 
+Route::get('favorit', 'PagesController@favorit')->name('PagesController.favorit');	
+Route::get('NonFavorit', 'PagesController@NonFavorit')->name('PagesController.NonFavorit');	
+
+Route::get('verifieNum','FacturationController@verifierNumero')->name('FacturationController.verifierNumero');
+Route::get('verifieCode','FacturationController@verifierCode')->name('FacturationController.verifierCode');
+Route::get('verifiePaiyement','FacturationController@infoPaiyement')->name('FacturationController.infoPaiyement');
+
 // static
 Route::get('blog', 'PagesController@blog');
 Route::get('service', 'PagesController@service');

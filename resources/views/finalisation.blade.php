@@ -272,10 +272,12 @@
                             <div class="inner">
                                 <h3 style="margin-left:180px;font-size: 26px;">Bonnes Vacances !</h3>
                                 <p>
+                                @if(App\Http\Controllers\Auth_Role_PersonneController::IsAuthentificated())
                                     <h4>
                                         <img src="images/checkmark.png" style="width:25px;" alt="" /> &nbsp; identité
-                                        vérifiée : Mr Hicham O-Sfh
+                                        vérifiée : {{session()->get('userObject')->prenom . ' ' . session()->get('userObject')->nom }}
                                     </h4>
+                                @endif
                                     <h4>
                                         <img src="images/checkmark.png" style="width:25px;" alt="" /> &nbsp; Numéro de
                                         téléphone vérifié : +212-0666201740
@@ -390,24 +392,50 @@
                                                         switch (etape) {
                                                             case 1:
                                                                 if (!phone) {
-																	
-
-
-
+                                                                    $.ajax({
+                                                                        url: "{{route('FacturationController.verifierNumero') }}",
+                                                                        method: "GET",
+                                                                        data: {
+                                                                            numero : '+212 0666201740'
+                                                                        },
+                                                                        dataType: 'json',
+                                                                        success: function (success) {
+                                                                            console.log(success.feedback);
+                                                                        }
+                                                                    });
                                                                     phone = true;
                                                                 }
                                                                 break;
                                                             case 2:
                                                                 if (!securite) {
-                                                                    text = "securite";
-                                                                    alert(text);
+                                                                    $.ajax({
+                                                                        url: "{{route('FacturationController.verifierCode') }}",
+                                                                        method: "GET",
+                                                                        data: {
+                                                                            code : 'Co-585-985'
+                                                                        },
+                                                                        dataType: 'json',
+                                                                        success: function (success) {
+                                                                            console.log(success);
+                                                                        }
+                                                                    });
                                                                     securite = true;
                                                                 }
                                                                 break;
                                                             case 3:
                                                                 if (!payement) {
-                                                                    text = "Payement";
-                                                                    alert(text);
+                                                                    $.ajax({
+                                                                        url: "{{route('FacturationController.verifierCode') }}",
+                                                                        method: "GET",
+                                                                        data: {
+                                                                            code : 'Co-585-985'
+                                                                        },
+                                                                        dataType: 'json',
+                                                                        success: function (success) {
+                                                                            console.log(success);
+                                                                        }
+                                                                    });
+                                                                    
                                                                     payement = true;
                                                                 }
                                                                 break;

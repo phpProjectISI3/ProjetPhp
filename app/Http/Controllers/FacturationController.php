@@ -7,79 +7,56 @@ use App\Facturation;
 
 class FacturationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function verifierNumero(Request $request){
+		if($request->ajax()){
+
+            $numero_telephone = $request->get("numero");
+
+            //envoyer sms
+            // au numero de telephone
+
+
+            $success = array(
+                'feedback' => 'cool',
+            );
+		    echo json_encode($success);
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function verifierCode(Request $request){
+		if($request->ajax()){
+            $code = $request->get("code");
+
+            //envoyer code
+            // au numero de telephone
+
+
+            $success = array(
+                'feedback' => 'cool',
+            );
+		    echo json_encode($code);
+        }
+    }
+    
+    public function verifiePaiyement(Request $request){
+		if($request->ajax()){
+            $code = $request->get("code");
+
+            if(true){
+                $data = array(
+                    'feedback' => 'cool',
+                    'valid' => true,
+                    'numero_telephone_confirme' => '06 66201740'
+                );
+            }
+            else{
+                $data = array(
+                    'feedback' => 'pas cool',
+                    'valid' => false,
+                );
+            }
+		    echo json_encode($data);
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
