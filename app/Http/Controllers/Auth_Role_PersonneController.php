@@ -127,11 +127,12 @@ class Auth_Role_PersonneController extends Controller
 
     }
 
-    public function sendMessage(Request $request){
-        $userid = $request->session()->get('userObject')->id_client;
-        $to = $request->input('to');
+    public function read_email(Request $request){
+
+        return view('email_read');
 
     }
+
 
     public function LogOut()
     {

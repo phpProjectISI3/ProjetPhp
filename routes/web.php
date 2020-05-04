@@ -75,6 +75,8 @@ Route::get('email_compose','Auth_Role_PersonneController@email_compose')->name('
 Route::post('sendMessage','Auth_Role_PersonneController@sendMessage')->name('sendMessage');
 Route::get('sejours','Auth_Role_PersonneController@sejours')->name('sejours');
 
+Route::get('read_email','Auth_Role_PersonneController@read_email')->name('read_email');
+
 // static
 Route::get('blog', 'PagesController@blog');
 Route::get('service', 'PagesController@service');

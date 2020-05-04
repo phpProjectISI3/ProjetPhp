@@ -110,8 +110,8 @@
                                                                         <div class="check-star">
                                                                         </div>
                                                                     </td>
-                                                                    <td><a href="email_read.html" class="email-name waves-effect">{{$rec->nom . ' ' . $rec->prenom }}</a></td>
-                                                                    <td><a href="email_read.html" class="email-name waves-effect">{{$rec->message_ecrit}}</a>
+                                                                    <td><a href="{{route('read_email')}}" class="email-name waves-effect">{{$rec->nom . ' ' . $rec->prenom }}</a></td>
+                                                                    <td><a href="{{route('read_email')}}" class="email-name waves-effect">{{$rec->message_ecrit}}</a>
                                                                     </td>
                                                                 </tr>
                                                                 @else 
