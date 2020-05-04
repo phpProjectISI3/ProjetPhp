@@ -205,7 +205,8 @@ create table MESSAGE_CONTACT
     recepteur_ int,
     foreign key (recepteur_) references PERSONNE(id_client)
 );
-select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = 1013 
+select * from message_contact where recepteur_ = 1013
+
 CREATE OR REPLACE FUNCTION AJOUT_POINTS()
   RETURNS trigger AS
 $PERSONNE$

@@ -71,6 +71,9 @@ Route::get('favories','Auth_Role_PersonneController@favories')->name('favories')
 
 Route::get('messagerie','Auth_Role_PersonneController@messagerie')->name('messagerie');
 
+Route::get('email_compose','Auth_Role_PersonneController@email_compose')->name('email_compose');
+Route::post('sendMessage','Auth_Role_PersonneController@sendMessage')->name('sendMessage');
+
 // static
 Route::get('blog', 'PagesController@blog');
 Route::get('service', 'PagesController@service');

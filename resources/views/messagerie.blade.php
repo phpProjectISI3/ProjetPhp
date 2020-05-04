@@ -64,23 +64,25 @@
                                 <!-- [ inbox-left section ] start -->
                                 <div class="col-xl-2 col-md-3">
                                     <div class="mb-3">
-                                        <a href="email_compose.html" class="btn waves-effect waves-light btn-rounded btn-outline-primary">+ Compose</a>
+                                        <a href="/email_compose" class="btn waves-effect waves-light btn-rounded btn-outline-primary">+ Compose</a>
                                     </div>
                                     <ul class="mb-2 nav nav-tab flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                         <li class="nav-item mail-section">
                                             <a class="nav-link text-left active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="false">
                                                 <span><i class="feather icon-inbox"></i> Inbox</span>
-                                                <span class="float-right">6</span>
+                                                <span class="float-right">{{$totalMessage}}</span>
                                             </a>
                                         </li>
                                         <li class="nav-item mail-section">
                                             <a class="nav-link text-left" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-mail" role="tab">
                                                 <span><i class="feather icon-navigation"></i> Lu</span>
+                                                <span class="float-right">{{$totalLu}}</span>
                                             </a>
                                         </li>
                                         <li class="nav-item mail-section">
                                             <a class="nav-link text-left" id="v-pills-Trash-tab" data-toggle="pill" href="#v-pills-Trash" role="tab">
                                                 <span><i class="feather icon-valid"></i> Non Lu</span>
+                                                <span class="float-right">{{$totalnonLu}}</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -88,9 +90,6 @@
                                 <!-- [ inbox-left section ] end -->
                                 <!-- [ inbox-right section ] start -->
                                 <div class="col-xl-10 col-md-9 inbox-right">
-                                    <div class="email-btn"> 
-                                        <button type="button" class="btn waves-effect waves-light btn-icon btn-rounded btn-outline-secondary mb-2"><i class="feather icon-trash-2"></i></button>
-                                    </div>
                                     <div class="tab-content p-0" id="v-pills-tabContent">
                                         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                             <ul class="nav nav-pills nav-fill mb-0" id="pills-tab" role="tablist">
@@ -105,7 +104,7 @@
                                                         <table class="table">
                                                             <tbody>
                                                                 @foreach($recepteur as $rec)
-                                                                
+                                                                @if($rec->vu)
                                                                 <tr class="read">
                                                                     <td>
                                                                         <div class="check-star">
@@ -115,6 +114,18 @@
                                                                     <td><a href="email_read.html" class="email-name waves-effect">{{$rec->message_ecrit}}</a>
                                                                     </td>
                                                                 </tr>
+                                                                @else 
+                                                                    <tr class="unread">
+                                                                        <td>
+                                                                            <div class="check-star">
+                                                                            </div>
+                                                                        </td>
+                                                                        <td><a href="email_read.html" class="email-name waves-effect">{{$rec->nom . ' ' . $rec->prenom }}</a></td>
+                                                                        <td><a href="email_read.html" class="email-name waves-effect">{{$rec->message_ecrit}}</a>
+                                                                        </td>
+                                                                    </tr>
+
+                                                                @endif
                                                                 @endforeach
                                                             </tbody>
                                                         </table>
@@ -127,110 +138,17 @@
                                             <div class="mail-body-content table-responsive">
                                                 <table class="table">
                                                     <tbody>
-                                                        <tr class="unread">
-                                                            <td>
-                                                                <div class="check-star">
-                                                                    <div class="form-group d-inline">
-                                                                        <div class="checkbox checkbox-primary checkbox-fill d-inline">
-                                                                            <input type="checkbox" name="checkbox-s-in-49" id="checkbox-s-infill-49">
-                                                                            <label for="checkbox-s-infill-49" class="cr"></label>
-                                                                        </div>
+                                                        @foreach($Lu as $lu)
+                                                            <tr class="read">
+                                                                <td>
+                                                                    <div class="check-star">
                                                                     </div>
-                                                                    <a href="#"><i class="feather icon-star-on text-c-yellow ml-2"></i></a>
-                                                                </div>
-                                                            </td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">Sara Soudein</a></td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">SVG new updates comes for you</a></td>
-                                                            <td class="email-time">00:05 AM</td>
-                                                        </tr>
-                                                        <tr class="read">
-                                                            <td>
-                                                                <div class="check-star">
-                                                                    <div class="form-group d-inline">
-                                                                        <div class="checkbox checkbox-primary checkbox-fill d-inline">
-                                                                            <input type="checkbox" name="checkbox-s-in-50" id="checkbox-s-infill-50">
-                                                                            <label for="checkbox-s-infill-50" class="cr"></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <a href="#"><i class="feather icon-star ml-2"></i></a>
-                                                                </div>
-                                                            </td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">Hanry Joseph</a></td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">SCSS current working for new updates</a></td>
-                                                            <td class="email-time">12:01 PM</td>
-                                                        </tr>
-                                                        <tr class="unread">
-                                                            <td>
-                                                                <div class="check-star">
-                                                                    <div class="form-group d-inline">
-                                                                        <div class="checkbox checkbox-primary checkbox-fill d-inline">
-                                                                            <input type="checkbox" name="checkbox-s-in-51" id="checkbox-s-infill-51">
-                                                                            <label for="checkbox-s-infill-51" class="cr"></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <a href="#"><i class="feather icon-star ml-2"></i></a>
-                                                                </div>
-                                                            </td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">John Doe</a></td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">Coming Up Next Week</a></td>
-                                                            <td class="email-time">13:02 PM</td>
-                                                        </tr>
-                                                        <tr class="unread">
-                                                            <td>
-                                                                <div class="check-star">
-                                                                    <div class="form-group d-inline">
-                                                                        <div class="checkbox checkbox-primary checkbox-fill d-inline">
-                                                                            <input type="checkbox" name="checkbox-s-in-52" id="checkbox-s-infill-52">
-                                                                            <label for="checkbox-s-infill-52" class="cr"></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <a href="#"><i class="feather icon-star-on text-c-yellow ml-2"></i></a>
-                                                                </div>
-                                                            </td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">Google Inc</a></td>
-                                                            <td>
-                                                                <a href="email_read.html" class="email-name waves-effect">Lorem ipsum dolor sit amet, consectetuer</a>
-                                                                <div><a href="#!" class="mail-attach"><i class="feather icon-image mr-2"></i>user.png</a>
-                                                                    <a href="#!" class="mail-attach ml-2"><i class="feather icon-file-text mr-2"></i>file.doc</a>
-                                                                </div>
-                                                            </td>
-
-                                                            <td class="email-time">12:01 AM</td>
-                                                        </tr>
-                                                        <tr class="read">
-                                                            <td>
-                                                                <div class="check-star">
-                                                                    <div class="form-group d-inline">
-                                                                        <div class="checkbox checkbox-primary checkbox-fill d-inline">
-                                                                            <input type="checkbox" name="checkbox-s-in-53" id="checkbox-s-infill-53">
-                                                                            <label for="checkbox-s-infill-53" class="cr"></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <a href="#"><i class="feather icon-star ml-2"></i></a>
-                                                                </div>
-                                                            </td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">Liu Koi Yan</a></td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">Charts waiting for you</a>
-                                                                <div><a href="#!" class="mail-attach"><i class="feather icon-film mr-2"></i>video</a></div>
-                                                            </td>
-                                                            <td class="email-time">07:15 AM</td>
-                                                        </tr>
-                                                        <tr class="read">
-                                                            <td>
-                                                                <div class="check-star">
-                                                                    <div class="form-group d-inline">
-                                                                        <div class="checkbox checkbox-primary checkbox-fill d-inline">
-                                                                            <input type="checkbox" name="checkbox-s-in-54" id="checkbox-s-infill-54">
-                                                                            <label for="checkbox-s-infill-54" class="cr"></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <a href="#"><i class="feather icon-star-on text-c-yellow ml-2"></i></a>
-                                                                </div>
-                                                            </td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">Google Inc</a></td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</a></td>
-                                                            <td class="email-time">08:01 AM</td>
-                                                        </tr>
+                                                                </td>
+                                                                <td><a href="email_read.html" class="email-name waves-effect">{{$lu->nom . ' ' . $lu->prenom }}</a></td>
+                                                                <td><a href="email_read.html" class="email-name waves-effect">{{$lu->message_ecrit}}</a>
+                                                                </td>
+                                                            </tr> 
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -239,109 +157,17 @@
                                             <div class="mail-body-content table-responsive">
                                                 <table class="table">
                                                     <tbody>
-                                                        <tr class="unread">
-                                                            <td>
-                                                                <div class="check-star">
-                                                                    <div class="form-group d-inline">
-                                                                        <div class="checkbox checkbox-primary checkbox-fill d-inline">
-                                                                            <input type="checkbox" name="checkbox-s-in-55" id="checkbox-s-infill-55">
-                                                                            <label for="checkbox-s-infill-55" class="cr"></label>
-                                                                        </div>
+                                                        @foreach($nonLu as $nonLlu)
+                                                            <tr class="unread">
+                                                                <td>
+                                                                    <div class="check-star">
                                                                     </div>
-                                                                    <a href="#"><i class="feather icon-star ml-2"></i></a>
-                                                                </div>
-                                                            </td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">Liu Koi Yan</a></td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">Charts waiting for you</a>
-                                                                <div><a href="#!" class="mail-attach"><i class="feather icon-film mr-2"></i>video</a></div>
-                                                            </td>
-                                                            <td class="email-time">07:15 AM</td>
-                                                        </tr>
-                                                        <tr class="unread">
-                                                            <td>
-                                                                <div class="check-star">
-                                                                    <div class="form-group d-inline">
-                                                                        <div class="checkbox checkbox-primary checkbox-fill d-inline">
-                                                                            <input type="checkbox" name="checkbox-s-in-56" id="checkbox-s-infill-56">
-                                                                            <label for="checkbox-s-infill-56" class="cr"></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <a href="#"><i class="feather icon-star-on text-c-yellow ml-2"></i></a>
-                                                                </div>
-                                                            </td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">Google Inc</a></td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">Lorem ipsum dolor sit amet, consectetuer adipiscing elit</a></td>
-                                                            <td class="email-time">08:01 AM</td>
-                                                        </tr>
-                                                        <tr class="unread">
-                                                            <td>
-                                                                <div class="check-star">
-                                                                    <div class="form-group d-inline">
-                                                                        <div class="checkbox checkbox-primary checkbox-fill d-inline">
-                                                                            <input type="checkbox" name="checkbox-s-in-57" id="checkbox-s-infill-57">
-                                                                            <label for="checkbox-s-infill-57" class="cr"></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <a href="#"><i class="feather icon-star-on text-c-yellow ml-2"></i></a>
-                                                                </div>
-                                                            </td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">Sara Soudein</a></td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">SVG new updates comes for you</a></td>
-                                                            <td class="email-time">00:05 AM</td>
-                                                        </tr>
-                                                        <tr class="read">
-                                                            <td>
-                                                                <div class="check-star">
-                                                                    <div class="form-group d-inline">
-                                                                        <div class="checkbox checkbox-primary checkbox-fill d-inline">
-                                                                            <input type="checkbox" name="checkbox-s-in-58" id="checkbox-s-infill-58">
-                                                                            <label for="checkbox-s-infill-58" class="cr"></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <a href="#"><i class="feather icon-star ml-2"></i></a>
-                                                                </div>
-                                                            </td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">Hanry Joseph</a></td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">SCSS current working for new updates</a></td>
-                                                            <td class="email-time">12:01 PM</td>
-                                                        </tr>
-                                                        <tr class="read">
-                                                            <td>
-                                                                <div class="check-star">
-                                                                    <div class="form-group d-inline">
-                                                                        <div class="checkbox checkbox-primary checkbox-fill d-inline">
-                                                                            <input type="checkbox" name="checkbox-s-in-59" id="checkbox-s-infill-59">
-                                                                            <label for="checkbox-s-infill-59" class="cr"></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <a href="#"><i class="feather icon-star ml-2"></i></a>
-                                                                </div>
-                                                            </td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">John Doe</a></td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">Coming Up Next Week</a></td>
-                                                            <td class="email-time">13:02 PM</td>
-                                                        </tr>
-                                                        <tr class="read">
-                                                            <td>
-                                                                <div class="check-star">
-                                                                    <div class="form-group d-inline">
-                                                                        <div class="checkbox checkbox-primary checkbox-fill d-inline">
-                                                                            <input type="checkbox" name="checkbox-s-in-60" id="checkbox-s-infill-60">
-                                                                            <label for="checkbox-s-infill-60" class="cr"></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <a href="#"><i class="feather icon-star-on text-c-yellow ml-2"></i></a>
-                                                                </div>
-                                                            </td>
-                                                            <td><a href="email_read.html" class="email-name waves-effect">Google Inc</a></td>
-                                                            <td>
-                                                                <a href="email_read.html" class="email-name waves-effect">Lorem ipsum dolor sit amet, consectetuer</a>
-                                                                <div><a href="#!" class="mail-attach"><i class="feather icon-image mr-2"></i>user.png</a>
-                                                                    <a href="#!" class="mail-attach ml-2"><i class="feather icon-file-text mr-2"></i>file.doc</a>
-                                                                </div>
-                                                            </td>
-                                                            <td class="email-time">12:01 AM</td>
-                                                        </tr>
+                                                                </td>
+                                                                <td><a href="email_read.html" class="email-name waves-effect">{{$nonLlu->nom . ' ' . $nonLlu->prenom }}</a></td>
+                                                                <td><a href="email_read.html" class="email-name waves-effect">{{$nonLlu->message_ecrit}}</a>
+                                                                </td>
+                                                            </tr> 
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>

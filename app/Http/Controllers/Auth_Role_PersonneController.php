@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Auth_role_personne;
 use App\Personne;
 use App\Sauvegarde_Logement;
+use App\Message_contact;
 
 
 class Auth_Role_PersonneController extends Controller
@@ -78,12 +79,56 @@ class Auth_Role_PersonneController extends Controller
 
             $recepteur = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId ");
 
-            return \view("messagerie",compact('emetteur','recepteur'))->withUser(session()->get('userObject'))
-            ->with('firstLetter',$firstLetter);
+            $Lu = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId and message_contact.vu = true");
+
+            $nonLu = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId and message_contact.vu = false");
+
+            $totalMessage = Message_contact::count();
+            $totalLu = Message_contact::where('vu','true')->count();
+            $totalNonLu = Message_contact::where('vu','false')->count();
+            
+            return \view("messagerie",compact('emetteur','recepteur','Lu','nonLu'))->withUser(session()->get('userObject'))
+            ->with('firstLetter',$firstLetter)
+            ->with('totalMessage',$totalMessage)
+            ->with('totalLu',$totalLu)
+            ->with('totalnonLu',$totalNonLu);
         }
         else
             return \redirect("/");
         
+    }
+
+    public function email_compose(Request $request){
+                if(Auth_Role_PersonneController::IsAuthentificated())
+        {
+            $userId = $request->session()->get('userObject')->id_client;
+            $emetteur = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.emetteur_ = $userId ");
+
+            $firstLetter =session()->get('userObject')->nom[0];
+
+            $recepteur = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId ");
+
+            $Lu = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId and message_contact.vu = true");
+
+            $nonLu = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId and message_contact.vu = false");
+
+            $totalMessage = Message_contact::count();
+            $totalLu = Message_contact::where('vu','true')->count();
+            $totalNonLu = Message_contact::where('vu','false')->count();
+            
+            return \view("email_compose",compact('emetteur','recepteur','Lu','nonLu'))->withUser(session()->get('userObject'))
+            ->with('firstLetter',$firstLetter)
+            ->with('totalMessage',$totalMessage)
+            ->with('totalLu',$totalLu)
+            ->with('totalnonLu',$totalNonLu);
+        }
+        else
+            return \redirect("/");
+
+    }
+
+    public function sendMessage(Request $request){
+
     }
 
     public function LogOut()
