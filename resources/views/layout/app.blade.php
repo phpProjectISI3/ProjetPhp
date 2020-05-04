@@ -155,7 +155,7 @@
                                         <ul class="fh5co-sub-menu" style="margin-top: -20px;min-width: 0px;">
                                             <li><a href="{{ route('profil') }}"><i class="far fa-user"></i> &nbsp;
                                                     Profil</a></li>
-                                            <li><a href="#"><i class="fas fa-umbrella-beach"></i> &nbsp; Séjours</a>
+                                            <li><a href="{{ route('sejours')}}"><i class="fas fa-umbrella-beach"></i> &nbsp; Séjours</a>
                                             </li>
                                             <li><a href="/messagerie"><i class="far fa-envelope"></i> &nbsp; Messagerie</a>
                                             </li>
@@ -300,7 +300,7 @@
     @section('scripts')
     @show
     <script src="/js/main.js"></script>
-    @if(Route::current()->getName() != 'about' && Route::current()->getName() != 'sejour')
+    @if(Route::current()->getName() != 'about' && Route::current()->getName() != 'sejours')
     <script src="/js/jquery-2.1.4.min.js"></script>
     @endif
     <!-- Dropdown Menu -->

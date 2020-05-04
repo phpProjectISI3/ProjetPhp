@@ -21,6 +21,6 @@ class DemandeReservationClientController extends Controller
         $demande_reservation->date_fin = $request->get("InDateSortie");
 
         $demande_reservation->save();
-        return \redirect("/");
+        return \redirect("/sejours");
     }
 }
