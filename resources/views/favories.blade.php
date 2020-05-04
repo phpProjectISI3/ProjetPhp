@@ -102,7 +102,8 @@
         var checkBox = document.getElementById("heart" + id_logement);
         if (checkBox.checked == true) {
             console.log("checked !");
-            $.ajax({
+        
+             $.ajax({
                 url: "{{route('PagesController.NonFavorit')}}",
                 method: "GET",
                 data: {
@@ -122,5 +123,6 @@
             });
         }
     }
+
 </script>
 @endsection

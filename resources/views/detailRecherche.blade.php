@@ -160,8 +160,6 @@
             $(document).ready(function () {
                 $("a.active").removeClass();
                 $("#PageActuel").val(window.location);
-                // var id = < ? php echo $logement - > id_logement ? > ;
-                // $('#MyForm').attr('action', 'review/'+id);
             });
 
         </script>
@@ -170,7 +168,6 @@
             var images = [];
 
             images = <?php echo json_encode($photo_logement); ?> ;
-            // console.log(images);
 
 
             function next() {
@@ -195,7 +192,6 @@
             }
 
             document.slide.src = images[0].chemin_photo;
-            // console.log(chemin_photos);
 
         </script>
         @endsection

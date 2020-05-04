@@ -1,10 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
 <html class="no-js">
-<!--<![endif]-->
 
 <head>
     <meta charset="utf-8" />
@@ -16,20 +11,6 @@
     <meta name="author" content="FREEHTML5.CO" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="icon" href="">
-
-    <!-- 
-	//////////////////////////////////////////////////////
-
-	FREE HTML5 TEMPLATE 
-	DESIGNED & DEVELOPED by FREEHTML5.CO
-		
-	Website: 		http://freehtml5.co/
-	Email: 			info@freehtml5.co
-	Twitter: 		http://twitter.com/fh5co
-	Facebook: 		https://www.facebook.com/fh5co
-
-	//////////////////////////////////////////////////////
-	 -->
 
     <!-- Facebook and Twitter integration -->
     <meta property="og:title" content="" />
@@ -44,14 +25,12 @@
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <link rel="shortcut icon" href="../images/LogoIliass.png" />
-    <!-- <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700italic,900,700,900italic' rel='stylesheet' type='text/css'> -->
+
 
     <!-- Stylesheets -->
     <!-- Dropdown Menu -->
     <link rel="stylesheet" href="/css/superfish.css" />
     <!-- Owl Slider -->
-    <!-- <link rel="stylesheet" href="css/owl.carousel.css"> -->
-    <!-- <link rel="stylesheet" href="css/owl.theme.default.min.css"> -->
     <!-- Date Picker -->
     <link rel="stylesheet" href="/css/bootstrap-datepicker.min.css" />
     <!-- CS Select -->
@@ -77,10 +56,7 @@
 
     <!-- Modernizr JS -->
     <script src="/js/modernizr-2.6.2.min.js"></script>
-    <!-- FOR IE9 below -->
-    <!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
+    
     <style>
         #linkLogin {
             font-weight: bold;
