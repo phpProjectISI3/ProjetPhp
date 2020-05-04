@@ -64,7 +64,7 @@
                                 <!-- [ inbox-left section ] start -->
                                 <div class="col-xl-2 col-md-3">
                                     <div class="mb-3">
-                                        <a href="/email_compose" class="btn waves-effect waves-light btn-rounded btn-outline-primary">+ Compose</a>
+                                        <a href="contact" class="btn waves-effect waves-light btn-rounded btn-outline-primary">+ Compose</a>
                                     </div>
                                     <ul class="mb-2 nav nav-tab flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                         <li class="nav-item mail-section">
