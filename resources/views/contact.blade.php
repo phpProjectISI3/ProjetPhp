@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title','Nos Services')
+@section('title','Contact')
 <link rel="stylesheet" href="css/notifStyle.css" />
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>

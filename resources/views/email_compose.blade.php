@@ -89,13 +89,13 @@
                                         </li>
                                         <li class="nav-item mail-section">
                                             <a class="nav-link text-left" href="email_inbox.html">
-                                                <span><i class="feather icon-navigation"></i> Lu</span>
+                                                <span><i class="fas fa-eye"></i> Lu</span>
                                                 <span class="float-right">{{$totalLu}}</span>
                                             </a>
                                         </li>
                                         <li class="nav-item mail-section">
                                             <a class="nav-link text-left" href="email_inbox.html">
-                                                <span><i class="feather icon-trash-2"></i> Non Lu</span>
+                                                <span><i class="fas fa-eye-slash"></i> Non Lu</span>
                                                 <span class="float-right">{{$totalnonLu}}</span>
                                             </a>
                                         </li>
@@ -109,7 +109,7 @@
                                             <form action='sendMessage' method="POST">
                                                 <div class="form-group mb-3">
                         							<label class="floating-label" for="To">To</label>
-                        							<input type="text" class="form-control" id="To" Required>
+                        							<input type="text" class="form-control" id="To" name="to" Required>
                         						</div>
                                                 <div class="form-group">
                                                     <div class="row">

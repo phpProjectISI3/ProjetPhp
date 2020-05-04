@@ -128,6 +128,8 @@ class Auth_Role_PersonneController extends Controller
     }
 
     public function sendMessage(Request $request){
+        $userid = $request->session()-->get('userObject')->id_client;
+        $to = $request->input('to');
 
     }
 

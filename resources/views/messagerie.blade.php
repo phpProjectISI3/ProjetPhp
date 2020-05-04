@@ -75,13 +75,13 @@
                                         </li>
                                         <li class="nav-item mail-section">
                                             <a class="nav-link text-left" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-mail" role="tab">
-                                                <span><i class="feather icon-navigation"></i> Lu</span>
+                                                <span><i class="fas fa-eye"></i> Lu</span>
                                                 <span class="float-right">{{$totalLu}}</span>
                                             </a>
                                         </li>
                                         <li class="nav-item mail-section">
                                             <a class="nav-link text-left" id="v-pills-Trash-tab" data-toggle="pill" href="#v-pills-Trash" role="tab">
-                                                <span><i class="feather icon-valid"></i> Non Lu</span>
+                                                <span><i class="fas fa-eye-slash"></i> Non Lu</span>
                                                 <span class="float-right">{{$totalnonLu}}</span>
                                             </a>
                                         </li>
