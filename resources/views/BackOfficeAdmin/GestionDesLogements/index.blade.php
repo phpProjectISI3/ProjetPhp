@@ -66,7 +66,8 @@
 	<article class="carte">
 		<header class="carte__thumb">
 			<a href="#">
-				<img id="imgLogement" src="{{DB::table('photo_logement')->join('logement','photo_logement.logement_','=','logement.id_logement')->select('photo_logement.chemin_photo')->where('logement.id_logement',$logement->id_logement)->value('chemin_photo')}}" />
+				<img id="imgLogement" 
+				src="{{DB::table('photo_logement')->join('logement','photo_logement.logement_','=','logement.id_logement')->select('photo_logement.chemin_photo')->where('logement.id_logement',$logement->id_logement)->value('chemin_photo')}}" />
 			</a>
 		</header>
 		<div class="carte__date">
