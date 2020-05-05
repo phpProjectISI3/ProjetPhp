@@ -8173,6 +8173,7 @@ button.bg-dark:focus {
 .mb-1,
 .my-1 {
     margin-bottom: 0.25rem !important;
+    font-size:25px;
 }
 
 .ml-1,
@@ -8197,6 +8198,7 @@ button.bg-dark:focus {
 .mb-2,
 .my-2 {
     margin-bottom: 0.5rem !important;
+    font-size: 15px;
 }
 
 .ml-2,
