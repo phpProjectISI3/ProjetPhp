@@ -29,6 +29,7 @@ create table GRADE
     id_grade int primary key,
     libelle_grade varchar(15)
 );
+
 create sequence PERSONNE_seq
 start 1000;
 create table PERSONNE
@@ -137,8 +138,8 @@ create table PLANNING_LOGEMENT
     logement_ int,
     foreign key(logement_) references LOGEMENT(id_logement),
     est_disponible boolean,--status du logement (en travaux/disponible) <false/true>
-    date_debut date,-- pas du tous obligatoires ... juste au cas au la maison est en etat de reparation ...
-    date_fin date-- pas du tous obligatoires ... juste au cas au la maison est en etat de reparation ...
+    date_debut date,
+    date_fin date
 
 );
 
@@ -155,9 +156,9 @@ create table DEMANDE_RESERVATION
     date_debut date,
     date_fin date,
     refuse_par_admin boolean default 'false',
-    date_refus date default CURRENT_DATE,
+    date_refus date,
     annule_par_client boolean default 'false',
-    date_annulation date default CURRENT_DATE
+    date_annulation date
 );
 
 create sequence RESERVATION_LOGEMENT_seq
@@ -202,7 +203,6 @@ create table MESSAGE_CONTACT
     recepteur_ int,
     foreign key (recepteur_) references PERSONNE(id_client)
 );
-select * from message_contact where recepteur_ = 1013
 
 CREATE OR REPLACE FUNCTION AJOUT_POINTS()
   RETURNS trigger AS
@@ -399,11 +399,23 @@ VALUES
 (28, 'https://a0.muscache.com/im/pictures/dce3f89f-679e-45bd-ae1b-d0bc9685c9fa.jpg?aki_policy=xx_large', 10),
 (29, 'https://a0.muscache.com/im/pictures/cbdd4593-ef20-4d5c-acfa-3fb2fb5a6d6a.jpg?aki_policy=xx_large', 11);
 
+--insert DEMANDE_RESERVATION
+INSERT INTO public.demande_reservation (date_demande, personne_, logement_, date_debut, date_fin) 
+VALUES 
+('2020-05-01',1000,1,'2020-05-18','2020-05-25'),
+('2019-01-02',1000,2,'2019-02-01','2019-02-08'),
+('2019-04-15',1000,5,'2020-05-06','2020-05-12'),
+('2019-03-12',1000,7,'2020-06-15','2020-06-22'),
+('2020-04-09',1003,1,'2020-05-20','2020-05-25'),
+('2020-05-01',1003,1,'2020-05-28','2020-06-04');
 
+--insert RESERVATION_LOGEMENT
+INSERT INTO public.reservation_logement (demande_reservation_) 
+VALUES
+(2), (3), (4), (5);
 
 ------------------------ TODO :-----------------------------
 -- Trigger : Attribution des demande & des réservation !!!
---insert PLANNING
 --insert DEMANDE
 --insert RESERVATION
 --insert FACTURATION

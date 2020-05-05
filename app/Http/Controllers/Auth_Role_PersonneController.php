@@ -187,9 +187,11 @@ class Auth_Role_PersonneController extends Controller
     }
 
     public function sejours(){
-        // $demandes = DB::statement('drop table users')
-        return \view("sejour");
+    $demandes = DB::select("select demande_reservation.date_demande , demande_reservation.date_debut, demande_reservation.date_fin , logement.nom_logement from demande_reservation inner join logement on demande_reservation.logement_ = logement.id_logement where personne_ = " . session()->get('userObject')->id_client);
+    // $demandes;
+    return \view("sejour",\compact('demandes'));
     }
+    
     // public function CurrentUser(){
     //     if(Auth_Role_PersonneController::IsAuthentificated()){
     //         return session()->get('userObject');
