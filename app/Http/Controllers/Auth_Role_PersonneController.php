@@ -83,9 +83,9 @@ class Auth_Role_PersonneController extends Controller
 
             $nonLu = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId and message_contact.vu = false");
 
-            $totalMessage = Message_contact::count();
-            $totalLu = Message_contact::where('vu','true')->count();
-            $totalNonLu = Message_contact::where('vu','false')->count();
+            $totalMessage = Message_contact::where('message_contact.recepteur_',$userId)->count();
+            $totalLu = Message_contact::where('message_contact.recepteur_',$userId)->where('vu','true')->count();
+            $totalNonLu = Message_contact::where('message_contact.recepteur_',$userId)->where('vu','false')->count();
             
             return \view("messagerie",compact('emetteur','recepteur','Lu','nonLu'))->withUser(session()->get('userObject'))
             ->with('firstLetter',$firstLetter)
