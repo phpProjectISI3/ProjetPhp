@@ -338,8 +338,12 @@
         $("a.active").removeClass();
         $("#PageActuel").val(window.location);
         $("#InDateEntree").val($("#DateEntree").text());
-        $("#InDateSortie").val($("#DateSortie").text());
-    });
+		$("#InDateSortie").val($("#DateSortie").text());
+		$("#profile-tab").click()
+		// $("#profile").modal('toggle');
+		// $('.modal-backdrop').remove();
+	});
+</script>
 </script>
 <script>
     document.getElementById('footer').style.display="none";
