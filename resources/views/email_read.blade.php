@@ -28,6 +28,12 @@
 <!-- [ Main Content ] start -->
 <section class="pcoded-main-container">
     <div class="pcoded-content">
+    <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                </div>
+            </div>
+        </div>
         <!-- [ Main Content ] start -->
         <div class="row">
             <div class="col-sm-12">
