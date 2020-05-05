@@ -139,8 +139,8 @@
                                                                     <div class="check-star">
                                                                     </div>
                                                                 </td>
-                                                                <td><a href="email_read.html" class="email-name waves-effect">{{$lu->nom . ' ' . $lu->prenom }}</a></td>
-                                                                <td><a href="email_read.html" class="email-name waves-effect">{{$lu->message_ecrit}}</a>
+                                                                <td><a href="{{url('read_email',[ $rec->emetteur_])}}" class="email-name waves-effect">{{$lu->nom . ' ' . $lu->prenom }}</a></td>
+                                                                <td><a href="{{url('read_email',[ $rec->emetteur_])}}" class="email-name waves-effect">{{$lu->message_ecrit}}</a>
                                                                 </td>
                                                             </tr> 
                                                         @endforeach
@@ -158,8 +158,8 @@
                                                                     <div class="check-star">
                                                                     </div>
                                                                 </td>
-                                                                <td><a href="email_read.html" class="email-name waves-effect">{{$nonLlu->nom . ' ' . $nonLlu->prenom }}</a></td>
-                                                                <td><a href="email_read.html" class="email-name waves-effect">{{$nonLlu->message_ecrit}}</a>
+                                                                <td><a href="{{url('read_email',[ $rec->emetteur_])}}" class="email-name waves-effect">{{$nonLlu->nom . ' ' . $nonLlu->prenom }}</a></td>
+                                                                <td><a href="{{url('read_email',[ $rec->emetteur_])}}" class="email-name waves-effect">{{$nonLlu->message_ecrit}}</a>
                                                                 </td>
                                                             </tr> 
                                                         @endforeach
