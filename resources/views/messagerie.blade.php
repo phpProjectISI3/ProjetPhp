@@ -199,6 +199,9 @@
         $("#PageActuel").val(window.location);
         $("#InDateEntree").val($("#DateEntree").text());
         $("#InDateSortie").val($("#DateSortie").text());
+        $("#v-pills-home-tab").click()
+        $("#pills-primary-tab").click()
+
     });
 
      var divs = document.getElementsByClassName('carte__description');

@@ -340,8 +340,6 @@
         $("#InDateEntree").val($("#DateEntree").text());
 		$("#InDateSortie").val($("#DateSortie").text());
 		$("#profile-tab").click()
-		// $("#profile").modal('toggle');
-		// $('.modal-backdrop').remove();
 	});
 </script>
 </script>
