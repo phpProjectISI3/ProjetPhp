@@ -6,13 +6,6 @@
     <!-- vendor css -->
     <link rel="stylesheet" href="/assets/css/style.css">
     
-    
-
-    <!-- ekko-lightbox css -->
-    <link rel="stylesheet" href="/assets/plugins/ekko-lightbox/css/ekko-lightbox.min.css">
-    <link rel="stylesheet" href="/assets/plugins/lightbox2-master/css/lightbox.min.css">
-    <!-- page css -->
-    <link rel="stylesheet" href="/assets/css/pages/pages.css">
 @endsection
 
 
@@ -99,10 +92,10 @@
                                                 <div class="photo-table m-r-10">
                                                 </div>
                                                 <div style="margin-left:3.2em;">
-                                                    <a href="#">
+                                                    <a>
                                                         <p class="user-name text-dark mb-1"><strong>{{$recepteur[0]->nom . ' ' . $recepteur[0]->prenom}}</strong></p>
                                                     </a>
-                                                    <a class="user-mail txt-muted" href="#">
+                                                    <a class="user-mail txt-muted" >
                                                         <p class="user-name text-dark mb-1"><strong>From:{{$recepteur[0]->username_email}}</strong></p>
                                                     </a>
                                                 </div>
@@ -130,52 +123,6 @@
     </div>
 </section>
 <!-- [ Main Content ] end -->
-    <!-- Warning Section start -->
-    <!-- Older IE warning message -->
-    <!--[if lt IE 11]>
-        <div class="ie-warning">
-            <h1>Warning!!</h1>
-            <p>You are using an outdated version of Internet Explorer, please upgrade
-               <br/>to any of the following web browsers to access this website.
-            </p>
-            <div class="iew-container">
-                <ul class="iew-download">
-                    <li>
-                        <a href="http://www.google.com/chrome/">
-                            <img src="assets/images/browser/chrome.png" alt="Chrome">
-                            <div>Chrome</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.mozilla.org/en-US/firefox/new/">
-                            <img src="assets/images/browser/firefox.png" alt="Firefox">
-                            <div>Firefox</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://www.opera.com">
-                            <img src="assets/images/browser/opera.png" alt="Opera">
-                            <div>Opera</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.apple.com/safari/">
-                            <img src="assets/images/browser/safari.png" alt="Safari">
-                            <div>Safari</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                            <img src="assets/images/browser/ie.png" alt="">
-                            <div>IE (11 & above)</div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <p>Sorry for the inconvenience!</p>
-        </div>
-    <![endif]-->
-    <!-- Warning Section Ends -->
 
     
     
@@ -187,11 +134,7 @@
     <script src="/assets/js/plugins/bootstrap.min.js"></script>
     <script src="/assets/js/ripple.js"></script>
     <script src="/assets/js/pcoded.min.js"></script>
-	<script src="/assets/js/menu-setting.min.js"></script>
 
-<!-- ekko-lightbox Js -->
-<script src="/assets/plugins/ekko-lightbox/js/ekko-lightbox.min.js"></script>
-<script src="/assets/plugins/lightbox2-master/js/lightbox.min.js"></script>
 <script>
     $(document).ready(function() {
         $(document).on('click', '[data-toggle="lightbox"]', function(event) {
