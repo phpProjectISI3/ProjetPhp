@@ -156,7 +156,5 @@
 <script>
     document.getElementById('footer').style.display="none";
 </script>
-<script>
-    document.getElementById('footer').style.display="none";
-</script>
+
 @endsection

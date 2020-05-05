@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.app')
 
-<head>
-	<title>ISI3 &mdash; Profile</title>
+@section('title','Profile')
 
-	<!-- Favicon icon -->
-	<!-- ekko-lightbox css -->
+@section('linkcss')
 	<link rel="stylesheet" href="/assets/css/plugins/ekko-lightbox.css">
 	<link rel="stylesheet" href="/assets/css/plugins/lightbox.min.css">
 	<!-- vendor css -->
 	<link rel="stylesheet" href="/assets/css/style.css">
-	
-	
+@endsection
 
-</head>
-<body class="">
+@section('body')
 	<!-- [ Pre-loader ] start -->
 	<div class="loader-bg">
 		<div class="loader-track">
@@ -23,6 +18,8 @@
 	</div>
 	<!-- [ Pre-loader ] End -->
 	
+	 <header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
+	</header>
 
 <!-- [ Main Content ] start -->
 <div class="pcoded-main-container">
@@ -322,6 +319,8 @@
 </div>
 
 
+@endsection
+@section('scripts')
     <!-- Required Js -->
     <script src="../assets/js/vendor-all.min.js"></script>
     <script src="/assets/js/plugins/bootstrap.min.js"></script>
@@ -332,8 +331,18 @@
 
 <!-- ekko-lightbox Js -->
 <script src="/assets/js/plugins/ekko-lightbox.min.js"></script>
-<script src="/assets/js/plugins/lightbox.min.js"></script>
 <script src="/assets/js/pages/ac-lightbox.js"></script>
-</body>
+<script>
+    $(document).ready(function () {
+        $('#fh5co-header-section').css('background-image', 'url("/images/2.jpg")');
+        $("a.active").removeClass();
+        $("#PageActuel").val(window.location);
+        $("#InDateEntree").val($("#DateEntree").text());
+        $("#InDateSortie").val($("#DateSortie").text());
+    });
+</script>
+<script>
+    document.getElementById('footer').style.display="none";
+</script>
 
-</html>
+@endsection
