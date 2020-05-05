@@ -18,8 +18,8 @@
 	</div>
 	<!-- [ Pre-loader ] End -->
 	
-	 <header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
-	</header>
+	 <!-- <header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
+	</header> -->
 
 <!-- [ Main Content ] start -->
 <div class="pcoded-main-container">

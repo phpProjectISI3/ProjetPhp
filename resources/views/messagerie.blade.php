@@ -15,14 +15,9 @@
 		</div>
 	</div>
 	<!-- [ Pre-loader ] End -->
-	<!-- [ navigation menu ] start -->
-	
-	<!-- [ navigation menu ] end -->
 	<!-- [ Header ] start -->
-	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
-				
-			
-	</header>
+	<!-- <header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue">
+	</header> -->
 	<!-- [ Header ] end -->
 	
 	
