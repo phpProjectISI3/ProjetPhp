@@ -53,7 +53,7 @@
      @endif
 		<!-- profile body start -->
 		<div class="row">
-			<div class="col-md-8 order-md-2">
+			<div class="col-md-8 order-md-2" style="margin-left: 18%;">
 				<div class="tab-content" id="myTabContent">
 					<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 						<div class="card">
