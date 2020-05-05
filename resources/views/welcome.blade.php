@@ -90,13 +90,13 @@
                         <div class="input-field">
                             <label for="date-start">Date Arrivée</label>
                             <input type="text" name="date-start"  class="form-control"
-                                id="date-start" />
+                                id="date-start" Required />
                         </div>
                     </div>
                     <div class="a-col alternate">
                         <div class="input-field">
                             <label for="date-end">Date Sortie</label>
-                            <input type="text" name="date-end"  class="form-control" id="date-end" />
+                            <input type="text" name="date-end"  class="form-control" id="date-end" Required/>
                         </div>
                     </div>
                     <div class="a-col action">
@@ -489,17 +489,19 @@
 @endsection
 
 @section('scripts')
+<script src="/js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript">
-    var now = new Date();
+    // var now = new Date();
 
-    var day = 01;
-    var month = 01;
+    // var day = 01;
+    // var month = 01;
 
-    var today = 2000 + month + day;
+    // var today = 2000 + month + day;
 
-    $('#date-start').val(today);
-    $('#date-end').val(today);
+    $('#date-start').val(getdate());
+    $('#date-end').val(getdate());
 
 </script>
+
 
 @endsection
