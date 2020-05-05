@@ -187,6 +187,7 @@ class Auth_Role_PersonneController extends Controller
     }
 
     public function sejours(){
+        // $demandes = DB::statement('drop table users')
         return \view("sejour");
     }
     // public function CurrentUser(){

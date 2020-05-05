@@ -154,8 +154,10 @@ create table DEMANDE_RESERVATION
     foreign key(logement_) references LOGEMENT(id_logement),
     date_debut date,
     date_fin date,
+    refuse_par_admin boolean default 'false',
+    date_refus date default CURRENT_DATE,
     annule_par_client boolean default 'false',
-    date_annulation date
+    date_annulation date default CURRENT_DATE
 );
 
 create sequence RESERVATION_LOGEMENT_seq

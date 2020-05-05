@@ -73,6 +73,7 @@ Route::get('messagerie','Auth_Role_PersonneController@messagerie')->name('messag
 
 Route::get('email_compose','Auth_Role_PersonneController@email_compose')->name('email_compose');
 Route::post('sendMessage','Auth_Role_PersonneController@sendMessage')->name('sendMessage');
+
 Route::get('sejours','Auth_Role_PersonneController@sejours')->name('sejours');
 
 Route::get('read_email/{id}','Auth_Role_PersonneController@read_email');

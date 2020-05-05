@@ -40,6 +40,7 @@ crossorigin="anonymous">
             </tr>
         </thead>
         <tbody>
+	    @foreach($logements as $logement)
             <tr>
             <th scope="row" style="font-weight: bold;text-decoration: underline;">11/juin/2020</th>
             <td><p style="max-width: 250px;overflow-wrap: anywhere;">Villa Authentique Medina</p></td>
@@ -57,6 +58,7 @@ crossorigin="anonymous">
             </a>
             </td>
             </tr>
+        @endforeach
 
             <tr>
             <th scope="row" style="font-weight: bold;text-decoration: underline;">11/juin/2020</th>

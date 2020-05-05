@@ -18,6 +18,9 @@ class CreateDemandeReservationTable extends Migration
             $table->date('date_demande');
             $table->date('date_debut');
             $table->date('date_fin');
+            $table->boolean('refuse_par_admin')
+                ->default(false);  
+            $table->date('date_refus');
             $table->boolean('annuler_par_client')
                 ->default(false);
             $table->date('date_annulation');
