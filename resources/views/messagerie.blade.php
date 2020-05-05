@@ -191,14 +191,13 @@
 @endsection
 
 @section('scripts')
-<script src="../js/jquery.js"></script>
 <script src="../js/notification/notify.min.js"></script>
     <!-- Required Js -->
-    <script src="assets/js/vendor-all.min.js"></script>
-    <script src="assets/js/plugins/bootstrap.min.js"></script>
-    <script src="assets/js/ripple.js"></script>
-    <script src="assets/js/pcoded.min.js"></script>
-	<script src="assets/js/menu-setting.min.js"></script>
+    <script src="/assets/js/vendor-all.min.js"></script>
+    <script src="/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="/assets/js/ripple.js"></script>
+    <script src="/assets/js/pcoded.min.js"></script>
+	<script src="/assets/js/menu-setting.min.js"></script>
 
 <script>
     $(document).ready(function () {

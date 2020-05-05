@@ -110,6 +110,7 @@ class Auth_Role_PersonneController extends Controller
             $Lu = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId and message_contact.vu = true");
 
             $nonLu = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId and message_contact.vu = false");
+        
 
             $totalMessage = Message_contact::count();
             $totalLu = Message_contact::where('vu','true')->count();
