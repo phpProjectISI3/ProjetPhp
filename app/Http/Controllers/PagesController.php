@@ -167,7 +167,7 @@ class PagesController extends Controller
 			 ->select('*')
 			 ->where('logement.id_logement',1)// todo :id logement doit etre parametrable
              ->first();
-        $interval = (strtotime(Carbon::parse(Session()->get('datedebut'))->format('Y-m-d')) - strtotime(Carbon::parse(Session()->get('datefin'))->format('Y-m-d')))/(60*60*24);
+        $interval = (strtotime(Carbon::parse(Session()->get('datedefin'))->format('Y-m-d')) - strtotime(Carbon::parse(Session()->get('datedebut'))->format('Y-m-d')))/(60*60*24);
         $tarif_bs = $logement->tarif_par_nuit_bs * $interval;
         $tarif_hs = $logement->tarif_par_nuit_hs * $interval;
 

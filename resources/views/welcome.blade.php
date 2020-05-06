@@ -72,7 +72,6 @@
                     <div class="a-col">
                         <section>
                             <select name="type" id="type" class="cs-select cs-skin-border">
-                                <option value="-1" disabled selected>Type </option>
                                 @foreach($types as $type)
                                 <option value="{{ $type->id_type_logement }}">{{ $type->libelle_type_logement }}
                                 </option>
