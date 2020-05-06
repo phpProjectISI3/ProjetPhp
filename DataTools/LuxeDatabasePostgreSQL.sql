@@ -402,8 +402,8 @@ VALUES
 --insert DEMANDE_RESERVATION
 INSERT INTO public.demande_reservation (date_demande, personne_, logement_, date_debut, date_fin, refuse_par_admin, date_refus, annule_par_client, date_annulation) 
 VALUES 
-('2020-05-02',1005,6,'2020-06-08','2020-06-13',false,NULL,false,NULL),/* meme logement meme date mais refuser par admin*/
-('2020-05-06',1002, 6,'2020-06-08','2020-06-13',false,NULL,false,NULL),/* meme logement meme date mais refuser par admin*/
+('2020-05-02',1005,6,'2020-06-08','2020-06-13',true,'2020-06-01',false,NULL),/* meme logement meme date mais refuser par admin*/
+('2020-05-06',1002, 6,'2020-06-08','2020-06-13',true,'2020-06-01',false,NULL),/* meme logement meme date mais refuser par admin*/
 ('2020-05-25',1000,6,'2020-06-08','2020-06-13',false,NULL,false,NULL),/* meme logement meme date mais accepte*/
 ('2019-02-02', 1000, 3, '2019-02-15', '2019-02-21', false, NULL, false, NULL),/*en attente*/
 ('2019-02-02', 1000, 4, '2019-03-15', '2019-03-21', false, NULL, false, NULL),/*en attente*/
@@ -417,12 +417,12 @@ VALUES
 --insert RESERVATION_LOGEMENT
 INSERT INTO public.reservation_logement (demande_reservation_)
 VALUES 
-(12);
+(45);
 
 --insert facturation
 INSERT INTO public.facturation (id_facture, reservation_logement_, note_client, commentaire_client) 
 VALUES
-(1, 7, NULL, '');
+(1, 9, NULL, '');
 
 ------------------------ TODO :-----------------------------
 -- Trigger : Attribution des demande & des réservation !!!
