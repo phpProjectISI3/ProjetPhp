@@ -22,6 +22,7 @@ crossorigin="anonymous">
     font-size: 15px;
     border-radius: 12px;
 }
+
 #badgePayement{
     display: inline-block;
     padding: .25em .4em;
@@ -35,6 +36,21 @@ crossorigin="anonymous">
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     color: #fff;
     background-color: #007bff;
+}
+
+#badgeAnnulation{
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    color: #fff;
+    background-color: #DC3551;
 }
 </style>
 @endsection
@@ -64,8 +80,8 @@ crossorigin="anonymous">
                 @if($dmd->refuse_par_admin)
                 <span class="" style="color: red;font-weight: bold;text-decoration: underline;">Refusée</span>
 
-                @elseif(!$dmd->annule_par_client)
-                <span class="badge badge-danger" id="badgePayement">Annulée</span>
+                @elseif($dmd->annule_par_client)
+                <span class="badge badge-danger" id="badgeAnnulation">Annulée</span>
 
                 @elseif(DB::table('facturation')->join('reservation_logement','facturation.reservation_logement_','=','reservation_logement.id_reservation')->join('demande_reservation','demande_reservation.id_demande','=','reservation_logement.id_reservation')->where('demande_reservation.id_demande',$dmd->id_demande)->exists())
                 <span class="badge badge-primary" id="badgePayement">Payée</span>
@@ -78,15 +94,26 @@ crossorigin="anonymous">
 
                 @endif
             </td>
+
             <td style="width: 30%;">
-            @if(DB::table('facturation')->join('reservation_logement','facturation.reservation_logement_','=','reservation_logement.id_reservation')->join('demande_reservation','demande_reservation.id_demande','=','reservation_logement.id_reservation')->where('demande_reservation.id_demande',$dmd->id_demande)->exists())
-            <div class="alert alert-success" role="alert">
-                Ce séjours est passé avec succés , bsa7tkom !
+            @if($dmd->refuse_par_admin)
+            <div class="alert alert-secondary" role="alert">
+            <i class="far fa-frown"></i>&nbsp;
+                Votre demande n'a malheureusement pas été selectionnée ...
             </div>
-            @elseif(!$dmd->annule_par_client)
-            <div class="alert alert-danger" role="alert">
+
+            @elseif($dmd->annule_par_client)
+            <div class="alert alert-danger" role="alert" style="font-size: 15px;">
+            <i class="fas fa-ban"></i>&nbsp;
                 Vous avez annulé cette demande le {{$dmd->date_annulation}} 
             </div>
+
+            @elseif(DB::table('facturation')->join('reservation_logement','facturation.reservation_logement_','=','reservation_logement.id_reservation')->join('demande_reservation','demande_reservation.id_demande','=','reservation_logement.id_reservation')->where('demande_reservation.id_demande',$dmd->id_demande)->exists())
+            <div class="alert alert-primary" role="alert">&nbsp;
+            <img src="images/money_blue.png" style="width: 30px;" />
+                Séjour passé et payé, bsa7tkom !
+            </div>
+
             @else
             <button type="button" class="btn btn-warning" style="border:0px;padding:0px;font-weight: bold;width: 120px;background-color: #ffc107;border-color: #ffc107;border-radius: 20px;">
             <img src="images/interdit.png" style="width:25px;" />
@@ -96,12 +123,13 @@ crossorigin="anonymous">
             <img src="images/money.png" style="width:30px;" />
             Payer !
             </a>
+
             @endif
             </td>
             </tr>
         @endforeach
 
-            <tr>
+            <!-- <tr>
             <th scope="row" style="font-weight: bold;text-decoration: underline;">11/juin/2020</th>
             <td><p style="max-width: 250px;overflow-wrap: anywhere;">Appartement panoramique</p></td>
             <td>11/juin/2020</td>
@@ -135,7 +163,7 @@ crossorigin="anonymous">
             Payer !
             </button>
             </td>
-            </tr>
+            </tr> -->
            
         </tbody>
         </table>
