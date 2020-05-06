@@ -399,30 +399,30 @@ VALUES
 (28, 'https://a0.muscache.com/im/pictures/dce3f89f-679e-45bd-ae1b-d0bc9685c9fa.jpg?aki_policy=xx_large', 10),
 (29, 'https://a0.muscache.com/im/pictures/cbdd4593-ef20-4d5c-acfa-3fb2fb5a6d6a.jpg?aki_policy=xx_large', 11);
 
-
 --insert DEMANDE_RESERVATION
 INSERT INTO public.demande_reservation (date_demande, personne_, logement_, date_debut, date_fin, refuse_par_admin, date_refus, annule_par_client, date_annulation) 
 VALUES 
-('2019-03-12', 1000, 7, '2020-06-15', '2020-06-22', false, NULL, false, NULL),
-('2020-05-01', 1000, 1, '2020-05-18', '2020-05-25', true, '2020-05-05', false, NULL),
-('2019-04-15', 1000, 5, '2020-05-06', '2020-05-12', true, '2019-04-20', false, NULL),
-('2020-05-01', 1003, 1, '2020-05-28', '2020-06-04', true, '2020-05-05', false, NULL),
-('2019-01-02', 1000, 2, '2019-02-01', '2019-02-08', false, NULL, true, '2019-01-15'),
-('2020-04-09', 1003, 1, '2020-05-20', '2020-05-25', false, NULL, true, '2020-04-30');
+('2020-05-02',1005,6,'2020-06-08','2020-06-13',false,NULL,false,NULL),/* meme logement meme date mais refuser par admin*/
+('2020-05-06',1002, 6,'2020-06-08','2020-06-13',false,NULL,false,NULL),/* meme logement meme date mais refuser par admin*/
+('2020-05-25',1000,6,'2020-06-08','2020-06-13',false,NULL,false,NULL),/* meme logement meme date mais accepte*/
+('2019-02-02', 1000, 3, '2019-02-15', '2019-02-21', false, NULL, false, NULL),/*en attente*/
+('2019-02-02', 1000, 4, '2019-03-15', '2019-03-21', false, NULL, false, NULL),/*en attente*/
+('2019-03-12', 1000, 7, '2020-06-15', '2020-06-22', false, NULL, false, NULL),/*en attente*/
+('2020-05-01', 1000, 1, '2020-05-18', '2020-05-25', true, '2020-05-05', false, NULL),/*refuser par admin*/
+('2019-04-15', 1000, 5, '2020-05-06', '2020-05-12', true, '2019-04-20', false, NULL),/*refuser par admin*/
+('2020-05-01', 1003, 1, '2020-05-28', '2020-06-04', true, '2020-05-05', false, NULL),/*refuser par admin*/
+('2019-01-02', 1000, 2, '2019-02-01', '2019-02-08', false, NULL, true, '2019-01-15'),/*refuser par client*/
+('2020-04-09', 1003, 1, '2020-05-20', '2020-05-25', false, NULL, true, '2020-04-30');/*refuserpar client*/
 
 --insert RESERVATION_LOGEMENT
 INSERT INTO public.reservation_logement (demande_reservation_)
 VALUES 
-(2),
-(3),
-(4),
-(5);
+(12);
 
 --insert facturation
 INSERT INTO public.facturation (id_facture, reservation_logement_, note_client, commentaire_client) 
 VALUES
-(1, 2, NULL, ''),
-(2, 4, NULL, NULL);
+(1, 7, NULL, '');
 
 ------------------------ TODO :-----------------------------
 -- Trigger : Attribution des demande & des réservation !!!
