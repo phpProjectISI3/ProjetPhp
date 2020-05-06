@@ -2,7 +2,6 @@
 -- En cas de problm .. ou si vous voulez supprimer la base de donnée mn serveur Postgre ..
 -- 1-- selectionnez "postgre" f DropDownList dyl Aure data studio ^
 -- 2- executez had les 3 requéte une par une.
-
 select *
 from pg_stat_activity
 where datname = 'pgluxedatabase';
@@ -237,7 +236,6 @@ CREATE trigger TRIGGER_AJOUT_POINTS
   FOR EACH ROW
   EXECUTE PROCEDURE AJOUT_POINTS();
 
-
 -- insert AUTH_ROLE
 INSERT into AUTH_ROLE (id_role, description_role, libelle_role) 
 VALUES 
@@ -311,6 +309,7 @@ VALUES
 (1012, N'Bonjour soyez le bienvenue', FALSE, 1010),
 (1014, N'Bonjour soyez le bienvenue', FALSE, 1011);
 
+
 -- insert TYPE_LOGEMENT
 INSERT into TYPE_LOGEMENT (id_type_logement, libelle_type_logement)
 VALUES 
@@ -348,9 +347,10 @@ VALUES
 --insert planning_logement
 INSERT INTO planning_logement (logement_, est_disponible, date_debut, date_fin) 
 VALUES 
-(1, NULL, '2020-05-01', '2020-06-01'),
-(1, NULL, '2020-07-15', '2020-07-24'),
-(1, NULL, '2020-07-30', '2020-07-08');
+(1, NULL, CAST(N'2020-05-01' AS Date),CAST(N'2020-06-01' AS Date)),
+(1, NULL, CAST(N'2020-07-15' AS Date), CAST(N'2020-07-24' AS Date)),
+(3, NULL, CAST(N'2020-05-01' AS Date), CAST(N'2020-06-01' AS Date)),
+(1, NULL, CAST(N'2020-07-30' AS Date), CAST(N'2020-07-08' AS Date));
 
 -- insert REMARQUE_CLIENT
 INSERT into REMARQUE_CLIENT (id_remarque, personne_id, description_remarque) 
@@ -399,20 +399,30 @@ VALUES
 (28, 'https://a0.muscache.com/im/pictures/dce3f89f-679e-45bd-ae1b-d0bc9685c9fa.jpg?aki_policy=xx_large', 10),
 (29, 'https://a0.muscache.com/im/pictures/cbdd4593-ef20-4d5c-acfa-3fb2fb5a6d6a.jpg?aki_policy=xx_large', 11);
 
+
 --insert DEMANDE_RESERVATION
-INSERT INTO public.demande_reservation (date_demande, personne_, logement_, date_debut, date_fin) 
+INSERT INTO public.demande_reservation (date_demande, personne_, logement_, date_debut, date_fin, refuse_par_admin, date_refus, annule_par_client, date_annulation) 
 VALUES 
-('2020-05-01',1000,1,'2020-05-18','2020-05-25'),
-('2019-01-02',1000,2,'2019-02-01','2019-02-08'),
-('2019-04-15',1000,5,'2020-05-06','2020-05-12'),
-('2019-03-12',1000,7,'2020-06-15','2020-06-22'),
-('2020-04-09',1003,1,'2020-05-20','2020-05-25'),
-('2020-05-01',1003,1,'2020-05-28','2020-06-04');
+('2019-03-12', 1000, 7, '2020-06-15', '2020-06-22', false, NULL, false, NULL),
+('2020-05-01', 1000, 1, '2020-05-18', '2020-05-25', true, '2020-05-05', false, NULL),
+('2019-04-15', 1000, 5, '2020-05-06', '2020-05-12', true, '2019-04-20', false, NULL),
+('2020-05-01', 1003, 1, '2020-05-28', '2020-06-04', true, '2020-05-05', false, NULL),
+('2019-01-02', 1000, 2, '2019-02-01', '2019-02-08', false, NULL, true, '2019-01-15'),
+('2020-04-09', 1003, 1, '2020-05-20', '2020-05-25', false, NULL, true, '2020-04-30');
 
 --insert RESERVATION_LOGEMENT
-INSERT INTO public.reservation_logement (demande_reservation_) 
+INSERT INTO public.reservation_logement (demande_reservation_)
+VALUES 
+(2),
+(3),
+(4),
+(5);
+
+--insert facturation
+INSERT INTO public.facturation (id_facture, reservation_logement_, note_client, commentaire_client) 
 VALUES
-(2), (3), (4), (5);
+(1, 2, NULL, ''),
+(2, 4, NULL, NULL);
 
 ------------------------ TODO :-----------------------------
 -- Trigger : Attribution des demande & des réservation !!!
