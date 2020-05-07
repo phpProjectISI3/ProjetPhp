@@ -83,7 +83,7 @@ crossorigin="anonymous">
                 @elseif($dmd->annule_par_client)
                 <span class="badge badge-danger" id="badgeAnnulation">Annulée</span>
 
-                @elseif(DB::table('facturation')->join('reservation_logement','facturation.reservation_logement_','=','reservation_logement.id_reservation')->join('demande_reservation','demande_reservation.id_demande','=','reservation_logement.id_reservation')->where('demande_reservation.id_demande',$dmd->id_demande)->exists())
+                @elseif(DB::table('facturation')->join('reservation_logement','facturation.reservation_logement_','=','reservation_logement.id_reservation')->join('demande_reservation','demande_reservation.id_demande','=','reservation_logement.demande_reservation_')->where('demande_reservation.id_demande',$dmd->id_demande)->exists())
                 <span class="badge badge-primary" id="badgePayement">Payée</span>
                 
                 @elseif(DB::table('reservation_logement')->where('demande_reservation_',$dmd->id_demande)->exists())
@@ -108,13 +108,13 @@ crossorigin="anonymous">
                 Vous avez annulé cette demande le {{$dmd->date_annulation}} 
             </div>
 
-            @elseif(DB::table('facturation')->join('reservation_logement','facturation.reservation_logement_','=','reservation_logement.id_reservation')->join('demande_reservation','demande_reservation.id_demande','=','reservation_logement.id_reservation')->where('demande_reservation.id_demande',$dmd->id_demande)->exists())
+            @elseif(DB::table('facturation')->join('reservation_logement','facturation.reservation_logement_','=','reservation_logement.id_reservation')->join('demande_reservation','demande_reservation.id_demande','=','reservation_logement.demande_reservation_')->where('demande_reservation.id_demande',$dmd->id_demande)->exists())
             <div class="alert alert-primary" role="alert">&nbsp;
             <img src="images/money_blue.png" style="width: 30px;" />
                 Séjour passé et payé, bsa7tkom !
             </div>
 
-            @else
+            @elseif(DB::table('reservation_logement')->where('demande_reservation_',$dmd->id_demande)->exists())
             <button type="button" class="btn btn-warning" style="border:0px;padding:0px;font-weight: bold;width: 120px;background-color: #ffc107;border-color: #ffc107;border-radius: 20px;">
             <img src="images/interdit.png" style="width:25px;" />
             Annuler
@@ -124,11 +124,21 @@ crossorigin="anonymous">
             Payer !
             </a>
 
+            @else
+            <button type="button" class="btn btn-warning" style="border:0px;padding:0px;font-weight: bold;width: 120px;background-color: #ffc107;border-color: #ffc107;border-radius: 20px;" >
+            <img src="images/interdit.png" style="width:25px;" />
+            Annuler
+            </button>
+            <a href="/Finalisation" class="btn btn-primary" style="border:0px;padding: 5px;font-weight: bold;width: 120px;background-color: #007bff;border-color: #007bff;border-radius: 20px;" disabled>
+            <img src="images/money.png" style="width:30px;" />
+            Payer !
+            </a>
+
             @endif
             </td>
             </tr>
         @endforeach
-
+       
             <!-- <tr>
             <th scope="row" style="font-weight: bold;text-decoration: underline;">11/juin/2020</th>
             <td><p style="max-width: 250px;overflow-wrap: anywhere;">Appartement panoramique</p></td>
