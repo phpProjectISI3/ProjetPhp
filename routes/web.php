@@ -63,6 +63,8 @@ Route::post('store', 'DemandeReservationClientController@store')->name('saveDema
 Route::get('favorit', 'PagesController@favorit')->name('PagesController.favorit');	
 Route::get('NonFavorit', 'PagesController@NonFavorit')->name('PagesController.NonFavorit');	
 
+Route::get('selectType','PagesController@selectType')->name('PagesController.selectType');
+
 Route::get('verifieNum','FacturationController@verifierNumero')->name('FacturationController.verifierNumero');
 Route::get('verifieCode','FacturationController@verifierCode')->name('FacturationController.verifierCode');
 Route::get('verifiePaiyement','FacturationController@verifiePaiyement')->name('FacturationController.verifiePaiyement');
