@@ -49,11 +49,12 @@ class PagesController extends Controller
     }
 
     public function selectType(Request $request){
-        if($request->ajax()){
-            $logements = DB::select(DB::raw("select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail
-                join planning_logement on logement.id_logement = planning_logement.logement_ where detail_logement.type_logement_ = $request->get('ID')"));
-        }
-        return view('about',compact('logements'));
+           if($request->ajax()){
+               $data = $request->id;
+               $logemets = DB::select(DB::raw("select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail
+                join planning_logement on logement.id_logement = planning_logement.logement_ where detail_logement.type_logement_ = $data"));
+           }
+           return view('about',compact('logements'));
     }
     public function about($id){
         if($id == -1)

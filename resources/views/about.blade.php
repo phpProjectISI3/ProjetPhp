@@ -32,7 +32,7 @@
             <div id="SearchZone">
                 <div class="a-col selets">
                     <section>
-                        <select class="cs-select cs-skin-border selectManual">
+                        <select id="typeid" name="typeid" class="cs-select cs-skin-border selectManual types">
                             @foreach($types as $type)
                                 <option value="{{ $type->id_type_logement }}">{{ $type->libelle_type_logement }}
                                 </option>
@@ -134,9 +134,9 @@
         }
     });
 
-    function typeSelect(id_logement){
-        var select = document.getElementById("")
-    }
+    $('select.types').change(function(){
+        alert($('select.types option:selected').val());
+    })
 
     function AddToFavorite(id_logement) {
         var checkBox = document.getElementById("heart" + id_logement);
