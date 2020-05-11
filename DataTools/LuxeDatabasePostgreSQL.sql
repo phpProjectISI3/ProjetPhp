@@ -80,7 +80,7 @@ create table TYPE_LOGEMENT
     id_type_logement int primary key,
     libelle_type_logement varchar(50)
 );
-
+select * from type_logement
 create sequence DETAIL_LOGEMENT_seq
 start 1;
 create table DETAIL_LOGEMENT
@@ -332,8 +332,8 @@ VALUES
 -- insert LOGEMENT
 INSERT INTO logement (nom_logement, detail_logement_, adress_logement, localisation_logement) 
 VALUES 
-('Hotel Tildi', 1, 'Rue Hubert Giraud, Ville Nouvelle - 80000 Agadir', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3440.4389929673735!2d-9.608750185015307!3d30.423655007513922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b6eb8109e6bf%3A0xad42a94b990584be!2sTildi%20H%C3%B4tel%20Agadir%20%26%20SPA!5e0!3m2!1sfr!2sma!4v1587334240445!5m2!1sfr!2sma'),
-('Hotel Tildi', 1, 'Rue Hubert Giraud, Ville Nouvelle - 80000 Agadir', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3440.4389929673735!2d-9.608750185015307!3d30.423655007513922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b6eb8109e6bf%3A0xad42a94b990584be!2sTildi%20H%C3%B4tel%20Agadir%20%26%20SPA!5e0!3m2!1sfr!2sma!4v1587334240445!5m2!1sfr!2sma'),
+('Hotel Tildi', 1, 'Agadir, Rue Hubert Giraud, Ville Nouvelle', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3440.4389929673735!2d-9.608750185015307!3d30.423655007513922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b6eb8109e6bf%3A0xad42a94b990584be!2sTildi%20H%C3%B4tel%20Agadir%20%26%20SPA!5e0!3m2!1sfr!2sma!4v1587334240445!5m2!1sfr!2sma'),
+('Hotel Tildi', 1, 'Agadir, Rue Hubert Giraud, Ville Nouvelle', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3440.4389929673735!2d-9.608750185015307!3d30.423655007513922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b6eb8109e6bf%3A0xad42a94b990584be!2sTildi%20H%C3%B4tel%20Agadir%20%26%20SPA!5e0!3m2!1sfr!2sma!4v1587334240445!5m2!1sfr!2sma'),
 ('Dar Itrane - Superbe maison berbère', 3, 'Tagadirt, Marrakech-Tensift-Al Haouz, Maroc', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3413.5001445159774!2d-8.926176984999138!3d31.179143021031695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb1e67f9cf6de1f%3A0x11e05a07f71d7a98!2sTagadirt!5e0!3m2!1sfr!2sma!4v1587334309771!5m2!1sfr!2sma'),
 ('Villa Authentique Medina', 2, 'Marrakech, Tensift, Maroc', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3413.5001445159774!2d-8.926176984999138!3d31.179143021031695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb1e67f9cf6de1f%3A0x11e05a07f71d7a98!2sTagadirt!5e0!3m2!1sfr!2sma!4v1587334309771!5m2!1sfr!2sma'),
 ('Villa Authentique Medina', 2, 'Marrakech, El Haouz, Maroc', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3413.5001445159774!2d-8.926176984999138!3d31.179143021031695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb1e67f9cf6de1f%3A0x11e05a07f71d7a98!2sTagadirt!5e0!3m2!1sfr!2sma!4v1587334309771!5m2!1sfr!2sma'),

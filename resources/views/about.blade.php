@@ -33,40 +33,31 @@
                 <div class="a-col selets">
                     <section>
                         <select class="cs-select cs-skin-border selectManual">
-                            <option value="" disabled selected>Type </option>
-                            <option value="email">Villa</option>
-                            <option value="twitter">Maison</option>
-                            <option value="linkedin">Appartement</option>
+                            @foreach($types as $type)
+                                <option value="{{ $type->id_type_logement }}">{{ $type->libelle_type_logement }}
+                                </option>
+                            @endforeach
                         </select>
                     </section>
                 </div>
                 <div class="a-col selets">
                     <section>
                         <select class="cs-select cs-skin-border selectManual">
-                            <option value="" disabled selected>Nombre des Chambres </option>
-                            <option value="email">2</option>
-                            <option value="twitter">2 à 4</option>
-                            <option value="linkedin">+4</option>
+                            @foreach($CapacitePersonne as $capacite)
+                                <option value="{{ $capacite->capacite_personne_max }}">{{ $capacite->capacite_personne_max }}
+                                </option>
+                            @endforeach
                         </select>
                     </section>
                 </div>
                 <div class="a-col selets">
                     <section>
                         <select class="cs-select cs-skin-border selectManual">
-                            <option value="" disabled selected>Nombre des Personnes </option>
-                            <option value="email">2</option>
-                            <option value="twitter">2 à 4</option>
-                            <option value="linkedin">+4</option>
-                        </select>
-                    </section>
-                </div>
-                <div class="a-col selets">
-                    <section>
-                        <select class="cs-select cs-skin-border selectManual">
-                            <option value="" disabled selected>Ville </option>
-                            <option value="Oujda">Oujda</option>
-                            <option value="Meknes">Meknes</option>
-                            <option value="Rabat">Rabat</option>
+                            @foreach(explode(',',$villes->adress_logement) as $ville)
+                                <option value="{{ $ville }}">
+                                    {{ $ville }}
+                                </option>
+                            @endforeach
                         </select>
                     </section>
                 </div>
@@ -142,6 +133,10 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
+    function typeSelect(id_logement){
+        var select = document.getElementById("")
+    }
 
     function AddToFavorite(id_logement) {
         var checkBox = document.getElementById("heart" + id_logement);

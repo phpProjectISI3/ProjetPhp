@@ -48,12 +48,38 @@ class PagesController extends Controller
         return view('about', ['logements'=>$logements]);
     }
 
+    public function searchType(Request $request){
+        if($request->ajax()){
+            $logements = DB::select(DB::raw("select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail
+                join planning_logement on logement.id_logement = planning_logement.logement_ where detail_logement.type_logement_ = $optionValue and planning_logement.date_debut <= ' $datedebut ' and planning_logement.date_fin >= ' $datefin'"));
+        }
+    }
     public function about($id){
         if($id == -1)
+        {
+            //select tous les types
+            $types = TypeLogement::All();
+            //select toutes les capacites des personnes
+            $CapacitePersonne = DB::table('detail_logement')->select(DB::raw('detail_logement.capacite_personne_max'))->get();
+            //select les logement
             $logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail ');
+
+            $villes = DB::select('select logement.adress_logement from logement');
+
+        }
         else
-			$logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail where detail_logement.type_logement_ = ' . $id);
-        return view('about', ['logements'=>$logements]);
+        {
+            //select tous les types
+            $types = TypeLogement::All();
+            //select toutes les capacites des personnes
+            $CapacitePersonne = DB::select('select detail_logement.capacite_personne_max from detail_logement group by detail_logement.capacite_personne_max  order by detail_logement.capacite_personne_max asc');
+            //select les logement
+            $logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail where detail_logement.type_logement_ = ' . $id);
+
+            $villes = DB::select('select logement.adress_logement from logement');
+
+        }
+            return view('about', ['logements'=>$logements,'types'=>$types,'CapacitePersonne'=>$CapacitePersonne,'villes'=>$villes]);
     }
 
     public function blog(){ // reparer les gifs

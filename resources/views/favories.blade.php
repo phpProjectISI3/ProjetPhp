@@ -100,9 +100,9 @@
 <script>
     function AddToFavorite(id_logement) {
         var checkBox = document.getElementById("heart" + id_logement);
-        if (checkBox.checked == true) {
+        if (checkBox.checked == false) {
             console.log("checked !");
-        
+
              $.ajax({
                 url: "{{route('PagesController.NonFavorit')}}",
                 method: "GET",
@@ -111,6 +111,7 @@
                 },
                 dataType: 'json',
                 success: function (text) {
+                    location.reload(true);
                     $.notify(text.nomLogement + " : suprimé des favoris !", {
                         className: "error",
                         showDuration: 800,

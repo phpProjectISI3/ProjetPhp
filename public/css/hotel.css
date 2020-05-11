@@ -16,7 +16,7 @@
 }
 
 .container #SearchBtn .SearchZoneStyle{
-  width: 100%;
+  width: 80%;
   height: 10em;
   background-color: orangered;
   /* margin-bottom: 3em; */
@@ -58,7 +58,7 @@
 }
 
 .alternate .input-field:first-child{
-  margin-left: 10em;
+  /* margin-left: 10em; */
 }
 
 .sameHeight{
