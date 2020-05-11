@@ -53,9 +53,9 @@
                 <div class="a-col selets">
                     <section>
                         <select class="cs-select cs-skin-border selectManual">
-                            @foreach(explode(',',$villes->adress_logement) as $ville)
-                                <option value="{{ $ville }}">
-                                    {{ $ville }}
+                            @foreach($villes as $ville)
+                                <option value="{{ $ville->adress_logement }}">
+                                    {{ $ville->adress_logement }}
                                 </option>
                             @endforeach
                         </select>

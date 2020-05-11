@@ -76,7 +76,7 @@ class PagesController extends Controller
             //select les logement
             $logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail where detail_logement.type_logement_ = ' . $id);
 
-            $villes = DB::select('select logement.adress_logement from logement');
+            $villes = DB::select('select logement.adress_logement from logement group by logement.adress_logement');
 
         }
             return view('about', ['logements'=>$logements,'types'=>$types,'CapacitePersonne'=>$CapacitePersonne,'villes'=>$villes]);
