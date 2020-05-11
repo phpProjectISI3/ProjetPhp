@@ -119,7 +119,7 @@
                             <img src="images/interdit.png" style="width:25px;" />
                             Annuler
                         </button>
-                        <a href="/Finalisation" class="btn btn-primary" style="border:0px;padding: 5px;font-weight: bold;width: 120px;background-color: #007bff;border-color: #007bff;border-radius: 20px;">
+                        <a href="/Finalisation/{{ $dmd->id_demande }}" class="btn btn-primary" style="border:0px;padding: 5px;font-weight: bold;width: 120px;background-color: #007bff;border-color: #007bff;border-radius: 20px;">
                             <img src="images/money.png" style="width:30px;" />
                             Payer !
                         </a>
@@ -129,7 +129,7 @@
                             <img src="images/interdit.png" style="width:25px;" />
                             Annuler
                         </button>
-                        <a href="/Finalisation" class="btn btn-primary" style="border:0px;padding: 5px;font-weight: bold;width: 120px;background-color: #007bff;border-color: #007bff;border-radius: 20px;" disabled>
+                        <a href="/Finalisation/{{ $dmd->id_demande }}" class="btn btn-primary" style="border:0px;padding: 5px;font-weight: bold;width: 120px;background-color: #007bff;border-color: #007bff;border-radius: 20px;" disabled>
                             <img src="images/money.png" style="width:30px;" />
                             Payer !
                         </a>
@@ -148,21 +148,26 @@
                     <div class="modal-header">
                         <h3 class="modal-title">
                             <img src="images/warning.png" style="width: 30px;">
-                            &nbsp; 
-                            Avertissement 
+                            &nbsp;
+                            Avertissement
                         </h3>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body" id="employee_detail">
                         <h4 style="margin: 0px;"><i class="far fa-frown"></i>&nbsp; Voulez vous vraiment annuler ?!</h4>
-                        <h4 id="nom_logement" style="margin: 20px 0 15px 0;">-Hotel tildi-</h4>
-                        <img id="photo_logement" src="http://unsplash.it/460/250">
+                        <h4 class="nom_logement" style="margin: 20px 0 15px 0;">-Hotel tildi-</h4>
+                        <img id="photo_logement">
                         <br>
                         <br>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita ipsum repellat quibusdam omnis sapiente odit tempora velit recusandae ut provident!</p>
+                        <p style="font-size: 13px;">
+                            En annulant votre demande, vos points se diminueront de <span style="color: red;text-decoration: underline; ">-1</span> et il est fort possible que des frais d'annulation soit appliqué selon le logement , veuillez visiter la page de
+                            <a id="linkLogement" href="" target="_blank"> <span style="text-decoration: underline;" class="nom_logement"></span> </a>
+                        </p>
+                        <small><a href="">Lire notre politique d'annulation !</a></small>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal" style="border-radius: 10px;">Retour</button>
+                        <a id="btnConfirmer" href="" class="btn btn-danger" style="border-radius: 10px;">Confirmer l'annulation</a>
                     </div>
                 </div>
             </div>
@@ -205,20 +210,24 @@ crossorigin="anonymous"></script> -->
         });
 
         $('.btnAnnuler').click(function() {
-            var demande_id = $(this).attr("id");
+            id = $(this).attr("id");
             $.ajax({
-                url: "select.php",
-                method: "post",
+                url: "{{ route('DemandeReservationClientController.InfoAnnulationDemande') }}",
+                method: "GET",
                 data: {
-                    employee_id: employee_id
+                    id_demande: id
                 },
+                dataType: 'json',
                 success: function(data) {
-                    $('#employee_detail').html(data);
+                    $('.nom_logement').html('-' + data.nom_logement + '-');
+                    $('#photo_logement').attr("src", data.photo_logement);
+                    $('#photo_logement').css("width", "460px");
+                    $('#photo_logement').css("height", "250px");
+                    $('#linkLogement').attr("href", "review/" + data.id_logement);
+                    $('#btnConfirmer').attr("href", "AnnulationDemande/" + id);
                     $('#dataModal').modal("show");
                 }
             });
-            $('#dataModal').modal("show");
-
         });
     });
 </script>
