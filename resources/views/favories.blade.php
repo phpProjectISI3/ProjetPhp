@@ -16,20 +16,6 @@
         display: inline;
         width: 600px;
     }
-
-    #rightside {
-        position: fixed;
-        width: 25%;
-        height: 32em;
-        background-color: #f5f5f5 !important;
-        box-shadow: 0 0 7px rgb(207, 207, 207);
-        border-radius: 10px;
-        z-index: 50;
-        padding: 2em;
-        top: 11em;
-        right: -7%;
-        transform: translate(-50%, 0);
-    }
 </style>
 
 @endsection
@@ -38,6 +24,12 @@
 
 <div id="fh5co-hotel-section">
     <div class="container">
+        <h2 style="text-align: center;">
+            <input id="FirstHeart" class="heart" type="checkbox" checked />
+            <label for="FirstHeart" class="label_heart" style="margin: 0px;font-size: 30px;animation: none;">❤ Mes Logements favories</label>
+        </h2>
+        <br>
+        <br>
         <div class="row">
             @foreach($logements as $logement)
             <div class="col-md-4">
@@ -48,7 +40,11 @@
                     </div>
                     <div class="desc sameHeight" id="carte">
                         <h3><a href="/detailRecherche/{{$logement->id_logement}}">{{$logement->nom_logement}} </a></h3>
-                        <p class="carte__description">{{$logement->description_logement}}</p>
+                        <p id="description{{ $logement->id_logement }}" class="carte__description">{{$logement->description_logement}}</p>
+                        <script>
+                            var description = document.getElementById('description{{ $logement->id_logement }}');
+                            description.innerHTML = description.innerHTML.substring(0, 110) + '....<a href="/detailRecherche/{{$logement->id_logement}}" style="color: orangered;">plus de détail !</a>';
+                        </script>
                     </div>
                 </div>
                 @if(App\Http\Controllers\Auth_Role_PersonneController::IsAuthentificated())
@@ -63,11 +59,7 @@
                 @endif
             </div>
             @endforeach
-
-            {{-- <script src="../js/jquery.js"></script> --}}
-
         </div>
-
     </div>
 </div>
 </div>
@@ -82,21 +74,12 @@
     $(document).ready(function() {
         $('#fh5co-header-section').css('background-image', 'url("/images/2.jpg")');
         $("a.active").removeClass();
-        $("#PageActuel").val(window.location);
-        $("#InDateEntree").val($("#DateEntree").text());
-        $("#InDateSortie").val($("#DateSortie").text());
     });
-
-    var divs = document.getElementsByClassName('carte__description');
-    for (i = 0; i < divs.length; i++) {
-        divs[i].innerHTML = divs[i].innerHTML.substring(0, 110) + '....<a href="/detailRecherche/{{$logement->id_logement}}" style="color: orangered;">plus de détail !</a>';
-    }
 </script>
 <script>
     function AddToFavorite(id_logement) {
         var checkBox = document.getElementById("heart" + id_logement);
         if (checkBox.checked == false) {
-            console.log("checked !");
 
             $.ajax({
                 url: "{{route('PagesController.NonFavorit')}}",
@@ -107,14 +90,6 @@
                 dataType: 'json',
                 success: function(text) {
                     location.reload(true);
-                    $.notify(text.nomLogement + " : suprimé des favoris !", {
-                        className: "error",
-                        showDuration: 800,
-                        hideDuration: 800,
-                        autoHideDelay: 8000,
-                        position: "top right",
-                        arrowShow: true,
-                    });
                 }
             });
         }
