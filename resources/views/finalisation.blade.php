@@ -146,11 +146,14 @@
         }
 
         #rightside .dates #showdates {
-            width: 94%;
+            /* width: 94%; */
+            width: 334px;
+            margin-left: -7px;
             height: 3em;
             border: 2px solid rgb(194, 192, 192);
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            /* grid-template-columns: 1fr 1fr 1fr; */
+            grid-template-columns: 2fr 1fr 2fr;
             padding: .5em;
         }
 
@@ -402,11 +405,11 @@
             <div class="dates">
                 <span>Dates</span>
                 <div id="showdates">
-                    <label id="DateEntree" class="labelDate" style="font-size: 10px;">{{ $datedebut }}</label>
+                    <label id="DateEntree" class="labelDate" style="font-size: 13px;">{{ $datedebut }}</label>
                     <span id="spanFleche">
                         <i class="fas fa-angle-double-right"></i>
                     </span>
-                    <label id="DateSortie" class="labelDate" style="font-size: 10px;">{{$datefin}}</label>
+                    <label id="DateSortie" class="labelDate" style="font-size: 13px;">{{$datefin}}</label>
                 </div>
             </div>
             <div class="dates">
