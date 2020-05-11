@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />    
     <title>Finalisation</title>
     <!-- Mobile Specific Metas -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<meta name="csrf-token" content="{{ csrf_token() }}" />
-	
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
     <!-- Font-->
-    <link rel="stylesheet" type="text/css" href="css/opensans-font.css">
-    <link rel="stylesheet" type="text/css" href="css/roboto-font.css">
-    <link rel="stylesheet" type="text/css" href="vendor\mdi-font\css\material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/opensans-font.css">
+    <link rel="stylesheet" type="text/css" href="../css/roboto-font.css">
+    <link rel="stylesheet" type="text/css" href="..\vendor\mdi-font\css\material-design-iconic-font.min.css">
     <!--	<link rel="stylesheet" type="text/css" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">-->
     <!-- datepicker -->
-    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css">
     <!-- Main Style Css -->
-    <link rel="stylesheet" href="css/styleFinalisation.css" />
-    <link rel="stylesheet" href="css/detailrecherche.css" />
+    <link rel="stylesheet" href="../css/styleFinalisation.css" />
+    <link rel="stylesheet" href="../css/detailrecherche.css" />
     <script src="https://kit.fontawesome.com/4f2d779e50.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="css/confirmation.css">
+    <link rel="stylesheet" href="../css/confirmation.css">
 
 
     <style>
@@ -127,6 +127,7 @@
         }
 
         .labelDate {
+            font-size: 15px;
             font-family: "Open Sans", Arial, serif;
             font-weight: bold;
             color: #848484;
@@ -158,53 +159,105 @@
             color: forestgreen;
             font-family: "Open Sans", Arial, serif;
         }
-        
-        * { box-sizing: border-box; }
-.video-background {
-  background: #000;
-  position: fixed;
-  top: 0; right: 0; bottom: 0; left: 0;
-  z-index: -99;
-}
-.video-foreground,
-.video-background iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-#vidtop-content {
-	top: 0;
-	color: #fff;
-}
-.vid-info { position: absolute; top: 0; right: 0; width: 33%; background: rgba(0,0,0,0.3); color: #fff; padding: 1rem; font-family: Avenir, Helvetica, sans-serif; }
-.vid-info h1 { font-size: 2rem; font-weight: 700; margin-top: 0; line-height: 1.2; }
-.vid-info a { display: block; color: #fff; text-decoration: none; background: rgba(0,0,0,0.5); transition: .6s background; border-bottom: none; margin: 1rem auto; text-align: center; }
-@media (min-aspect-ratio: 16/9) {
-  .video-foreground { height: 300%; top: -100%; }
-}
-@media (max-aspect-ratio: 16/9) {
-  .video-foreground { width: 300%; left: -100%; }
-}
-@media all and (max-width: 600px) {
-.vid-info { width: 50%; padding: .5rem; }
-.vid-info h1 { margin-bottom: .2rem; }
-}
-@media all and (max-width: 500px) {
-.vid-info .acronym { display: none; }
-}
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .video-background {
+            background: #000;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: -99;
+        }
+
+        .video-foreground,
+        .video-background iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        #vidtop-content {
+            top: 0;
+            color: #fff;
+        }
+
+        .vid-info {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 33%;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            padding: 1rem;
+            font-family: Avenir, Helvetica, sans-serif;
+        }
+
+        .vid-info h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 0;
+            line-height: 1.2;
+        }
+
+        .vid-info a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            background: rgba(0, 0, 0, 0.5);
+            transition: .6s background;
+            border-bottom: none;
+            margin: 1rem auto;
+            text-align: center;
+        }
+
+        @media (min-aspect-ratio: 16/9) {
+            .video-foreground {
+                height: 300%;
+                top: -100%;
+            }
+        }
+
+        @media (max-aspect-ratio: 16/9) {
+            .video-foreground {
+                width: 300%;
+                left: -100%;
+            }
+        }
+
+        @media all and (max-width: 600px) {
+            .vid-info {
+                width: 50%;
+                padding: .5rem;
+            }
+
+            .vid-info h1 {
+                margin-bottom: .2rem;
+            }
+        }
+
+        @media all and (max-width: 500px) {
+            .vid-info .acronym {
+                display: none;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <div class="page-content" style="">
-    <div class="video-background">
-    <div class="video-foreground">
-      <iframe src="https://www.youtube.com/embed/C9QCuIONyuk?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1&playlist=C9QCuIONyuk" frameborder="0" allowfullscreen></iframe>
-    </div>
-  </div>
+    <div class="page-content">
+        <div class="video-background">
+            <div class="video-foreground">
+                <iframe src="https://www.youtube.com/embed/C9QCuIONyuk?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1&playlist=C9QCuIONyuk" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
 
         <div class="wizard-v4-content">
             <div class="wizard-form">
@@ -227,8 +280,7 @@
 
                             <h3 style="margin: 7px 0px 5px 178px;">Avez-vous des questions ?</h3>
                             <div id="division">
-                                <textarea name="direqlqchose" id="Question" cols="70" rows="4"
-                                    style="margin-bottom: 1em;" placeholder="Facultatif ..."></textarea>
+                                <textarea name="direqlqchose" id="Question" cols="70" rows="4" style="margin-bottom: 1em;" placeholder="Facultatif ..."></textarea>
                             </div>
                         </section>
                         <!-- SECTION 2 -->
@@ -255,8 +307,7 @@
                                 <div id="#CodeConfirmation" style="margin-top: 7%;">
                                     <h3 style="margin: 7px 0px -9px 150px;font-size:15px;"> &nbsp;Saisissez le code que
                                         vous avez reçue. </h3>
-                                    <input type="text" name="codeVerification" style="margin-bottom: 55px;" id="Phone"
-                                        placeholder="                Co-222-444" required />
+                                    <input type="text" name="codeVerification" style="margin-bottom: 55px;" id="Phone" placeholder="                Co-222-444" required />
                                 </div>
                                 <small style="margin-left:35%;">
                                     status :
@@ -276,23 +327,18 @@
                                 <div id="acceptedcards">
                                     <h3>Les cartes acceptées :</h3>
                                     <div id="cards">
-                                        <img src="images/visa.png" alt="" /> &nbsp; &nbsp; &nbsp;
-                                        <img src="images/MasterCard_Logosvg.png" alt="" />
+                                        <img src="../images/visa.png" alt="" /> &nbsp; &nbsp; &nbsp;
+                                        <img src="../images/MasterCard_Logosvg.png" alt="" />
                                     </div>
                                 </div>
                                 <hr />
                                 <div id="CardInfo">
                                     <h3>Informations de la carte</h3>
-                                    <input type="text" name="cardnumber"
-                                        placeholder="                                           Numéro de la carte"
-                                        id="Phone" style="margin-left: 14px;width: 82%;" />
+                                    <input type="text" name="cardnumber" placeholder="                                           Numéro de la carte" id="Phone" style="margin-left: 14px;width: 82%;" />
                                     <div>
-                                        <input type="text" name="expiration" placeholder="   Date d'expiration"
-                                            id="Phone" style="margin-left: 14px;width: 22%;" />
-                                        <input type="text" name="CVV" placeholder="        Code CVV" id="Phone"
-                                            style="margin-left: 14px;width: 22%;" />
-                                        <input type="text" name="zipCode" placeholder="       Zip Code" id="Phone"
-                                            style="margin-left: 14px;width: 22%;" />
+                                        <input type="text" name="expiration" placeholder="   Date d'expiration" id="Phone" style="margin-left: 14px;width: 22%;" />
+                                        <input type="text" name="CVV" placeholder="        Code CVV" id="Phone" style="margin-left: 14px;width: 22%;" />
+                                        <input type="text" name="zipCode" placeholder="       Zip Code" id="Phone" style="margin-left: 14px;width: 22%;" />
                                     </div>
                                     <hr />
                                     <h5>
@@ -314,18 +360,18 @@
                             <div class="inner">
                                 <h3 style="margin-left:180px;font-size: 26px;">Bonnes Vacances !</h3>
                                 <p>
-                                @if(App\Http\Controllers\Auth_Role_PersonneController::IsAuthentificated())
+                                    @if(App\Http\Controllers\Auth_Role_PersonneController::IsAuthentificated())
                                     <h4>
-                                        <img src="images/checkmark.png" style="width:25px;" alt="" /> &nbsp; identité
+                                        <img src="../images/checkmark.png" style="width:25px;" alt="" /> &nbsp; identité
                                         vérifiée : {{session()->get('userObject')->prenom . ' ' . session()->get('userObject')->nom }}
                                     </h4>
-                                @endif
+                                    @endif
                                     <h4>
-                                        <img src="images/checkmark.png" style="width:25px;" alt="" /> &nbsp; Numéro de
+                                        <img src="../images/checkmark.png" style="width:25px;" alt="" /> &nbsp; Numéro de
                                         téléphone vérifié : +212-0666201740
                                     </h4>
                                     <h4>
-                                        <img src="images/checkmark.png" style="width:25px;" alt="" /> &nbsp; Payement
+                                        <img src="../images/checkmark.png" style="width:25px;" alt="" /> &nbsp; Payement
                                         par : Carte Bankaire Visa
                                     </h4>
                                     <br />
@@ -347,20 +393,20 @@
         </div>
     </div>
     <div id="rightside" style="padding-top: 0em;">
-        <h2>
-            @if((int)Carbon\Carbon::now()->format('m')< 6) {{$logement->tarif_par_nuit_bs}} @else
-                {{$logement->tarif_par_nuit_hs}} @endif <span> Dhs/nuit</span>
+        <h2 style="margin: 10px;">
+            @if((int)Carbon\Carbon::now()->format('m')< 6) {{$logement->tarif_par_nuit_bs}} @else {{$logement->tarif_par_nuit_hs}} @endif <span> Dhs/nuit</span>
         </h2>
+        <h4 style='margin: 0px;font-family: "Open Sans", Arial, serif;font-size: 12px;'>{{$logement->nom_logement}}</h4>
         <hr size="30" />
         <div>
             <div class="dates">
                 <span>Dates</span>
                 <div id="showdates">
-                    <label id="DateEntree" class="labelDate">{{$datedebut}}</label>
+                    <label id="DateEntree" class="labelDate" style="font-size: 10px;">{{ $datedebut }}</label>
                     <span id="spanFleche">
                         <i class="fas fa-angle-double-right"></i>
                     </span>
-                    <label id="DateSortie" class="labelDate">{{$datefin}}</label>
+                    <label id="DateSortie" class="labelDate" style="font-size: 10px;">{{$datefin}}</label>
                 </div>
             </div>
             <div class="dates">
@@ -377,18 +423,15 @@
                     </span>
                     <span id="totalnuit" class="labelDate">
                         @if((int)Carbon\Carbon::now()->format('m')
-                        < 6) {{$logement->tarif_par_nuit_bs}} @else {{$logement->tarif_par_nuit_hs}} @endif Dhs </span>
-                            </div> <hr class="scndhr" />
+                        < 6) {{$logement->tarif_par_nuit_bs}} @else {{$logement->tarif_par_nuit_hs}} @endif Dhs </span> </div> <hr class="scndhr" />
                         <div class="dates">
                             <span id="total" class="black">Total :</span>
                             <span id="totalnuit" class="labelDate" style="color: forestgreen;margin-left: 15%;">
-                                @if((int)Carbon\Carbon::now()->format('m') < 6) {{$tarif_bs}} @else {{$tarif_hs}} @endif
-                                    Dhs (TTC)</span> </div> </div> </div> </div> </div> <script
-                                    src="js/jquery-3.3.1.min.js">
+                                @if((int)Carbon\Carbon::now()->format('m') < 6) {{$tarif_bs}} @else {{$tarif_hs}} @endif Dhs (TTC)</span> </div> </div> </div> </div> </div> <script src="../js/jquery-3.3.1.min.js">
                                     </script>
-                                    <script src="js/jquery.steps.js"></script>
-                                    <script src="js/jquery-ui.min.js"></script>
-                                    <script src="js/mainFinalisation.js"></script>
+                                    <script src="../js/jquery.steps.js"></script>
+                                    <script src="../js/jquery-ui.min.js"></script>
+                                    <script src="../js/mainFinalisation.js"></script>
                                     <script src="../js/notification/notify.min.js"></script>
 
                                     <script>
@@ -403,7 +446,6 @@
                                                 var divParent = document.getElementsByClassName('actions clearfix');
                                                 var ulNode = $(divParent).children('ul')[0];
                                                 var finalLiNode = $(ulNode).children('li')[2];
-                                                //  $(finalLiNode).empty();
                                                 finalLiNode.innerHTML =
                                                     '<a href="#finish" role="menuitem"><button id="BtnIntegre">Valider !</button></a>';
                                                 $("#BtnIntegre").click(
@@ -416,7 +458,7 @@
                                                             position: "top right",
                                                             arrowShow: false,
                                                         });
-                                                        setTimeout(function () {
+                                                        setTimeout(function() {
                                                             window.location.href = "/";
                                                         }, 3000);
 
@@ -438,11 +480,11 @@
                                                                         url: "{{route('FacturationController.verifierNumero') }}",
                                                                         method: "GET",
                                                                         data: {
-                                                                            numero :  $("input[name='tel']").val(),
+                                                                            numero: $("input[name='tel']").val(),
                                                                         },
                                                                         dataType: 'json',
-                                                                        success: function (success) {
-                                                                            console.log("code : "+ success.code);
+                                                                        success: function(success) {
+                                                                            console.log("code : " + success.code);
                                                                         }
                                                                     });
                                                                     phone = true;
@@ -454,11 +496,11 @@
                                                                         url: "{{route('FacturationController.verifierCode') }}",
                                                                         method: "GET",
                                                                         data: {
-                                                                            code : $("input[name='codeVerification']").val(),
+                                                                            code: $("input[name='codeVerification']").val(),
                                                                         },
                                                                         dataType: 'json',
-                                                                        success: function (success) {
-                                                                            console.log("valid : "+ success.feedback);
+                                                                        success: function(success) {
+                                                                            console.log("valid : " + success.feedback);
                                                                         }
                                                                     });
                                                                     securite = true;
@@ -470,14 +512,14 @@
                                                                         url: "{{route('FacturationController.verifiePaiyement') }}",
                                                                         method: "GET",
                                                                         data: {
-                                                                           info_bankaire : ''
+                                                                            info_bankaire: ''
                                                                         },
                                                                         dataType: 'json',
-                                                                        success: function (success) {
+                                                                        success: function(success) {
                                                                             console.log(success);
                                                                         }
                                                                     });
-                                                                    
+
                                                                     payement = true;
                                                                 }
                                                                 break;
@@ -486,7 +528,7 @@
                                                     }
                                                 );
 
-
+                                             
                                                 // var firstNextLiNode = $(ulNode).children('li')[1];
                                                 // //  $(firstNextLiNode).empty();
                                                 // // firstNextLiNode.innerHTML =
@@ -495,7 +537,6 @@
                                                 // console.log(anode);
 
                                             });
-
                                     </script>
 </body>
 

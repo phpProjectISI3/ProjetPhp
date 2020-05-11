@@ -186,23 +186,30 @@ class PagesController extends Controller
 				->with('datefin', Carbon::parse(Session()->get('datefin'))->format('Y-m-d'));
     }
 
-    public function finalisation()
+    public function finalisation($demande_reservation)
 	{
-		$logement = DB::table('logement')
+		$data = DB::table('logement')
+			 ->join('demande_reservation', 'logement.id_logement', '=', 'demande_reservation.logement_')
 			 ->join('detail_logement', 'logement.detail_logement_', '=', 'detail_logement.id_detail')
-			 ->select('*')
-			 ->where('logement.id_logement',1)// todo :id logement doit etre parametrable
+             ->select('*')
+			 ->where('demande_reservation.id_demande',$demande_reservation)
              ->first();
-        $interval = (strtotime(Carbon::parse(Session()->get('datedefin'))->format('Y-m-d')) - strtotime(Carbon::parse(Session()->get('datedebut'))->format('Y-m-d')))/(60*60*24);
-        $tarif_bs = $logement->tarif_par_nuit_bs * $interval;
-        $tarif_hs = $logement->tarif_par_nuit_hs * $interval;
+             setlocale(LC_TIME, 'French');
+        $datedebut = Carbon::parse($data->date_debut)->formatLocalized('%d %B %Y');
+        $date_fin = Carbon::parse($data->date_fin)->formatLocalized('%d %B %Y');
+
+        $interval = (strtotime(Carbon::parse($data->date_fin)->format('Y-m-d')) - strtotime(Carbon::parse($data->date_debut)
+                    ->format('Y-m-d')))
+                    /(60*60*24);
+        $tarif_bs = $data->tarif_par_nuit_bs * $interval;
+        $tarif_hs = $data->tarif_par_nuit_hs * $interval;
 
 		return view('finalisation')
-                ->with('logement',$logement)
+                ->with('logement',$data)
                 ->with('interval',$interval)
                 ->with('tarif_bs',$tarif_bs)
                 ->with('tarif_hs',$tarif_hs)
-				->with('datedebut',Carbon::parse(Session()->get('datedebut'))->format('Y-m-d'))
-				->with('datefin',Carbon::parse(Session()->get('datefin'))->format('Y-m-d'));
+				->with('datedebut',utf8_encode($datedebut))
+				->with('datefin',utf8_encode($date_fin));
 	}
 }

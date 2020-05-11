@@ -51,7 +51,7 @@ Route::get('multipleabout', 'PagesController@multipleabout');
 
 Route::get('detailRecherche/{id}', 'PagesController@detailRecherche');
 
-Route::get('Finalisation', 'PagesController@finalisation');
+Route::get('Finalisation/{id}', 'PagesController@finalisation');
 
 Route::get('contact', 'PagesController@contact');
 Route::post('contact', 'PagesController@EnvoyerMessage');
@@ -75,6 +75,9 @@ Route::get('email_compose','Auth_Role_PersonneController@email_compose')->name('
 Route::post('sendMessage','Auth_Role_PersonneController@sendMessage')->name('sendMessage');
 
 Route::get('sejours','Auth_Role_PersonneController@sejours')->name('sejours');
+
+Route::get('InfoAnnulationDemande','DemandeReservationClientController@InfoAnnulationDemande')->name('DemandeReservationClientController.InfoAnnulationDemande');
+Route::get('AnnulationDemande/{id}','DemandeReservationClientController@AnnulationDemande')->name('DemandeReservationClientController.AnnulationDemande');
 
 Route::get('read_email/{id}','Auth_Role_PersonneController@read_email');
 
