@@ -62,11 +62,11 @@ class PagesController extends Controller
             //select tous les types
             $types = TypeLogement::All();
             //select toutes les capacites des personnes
-            $CapacitePersonne = DB::table('detail_logement')->select(DB::raw('detail_logement.capacite_personne_max'))->get();
+            $CapacitePersonne = DB::table('detail_logement')->select(DB::raw('detail_logement.capacite_personne_max'))->groupBy('detail_logement.capacite_personne_max')->get();
             //select les logement
             $logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail ');
 
-            $villes = DB::select('select logement.adress_logement from logement');
+            $villes = DB::select("select split_part(logement.adress_logement,',',1) as adress_logement from logement group by split_part(logement.adress_logement,',',1)");
         } else {
             //select tous les types
             $types = TypeLogement::All();

@@ -115,6 +115,7 @@ create table LOGEMENT
     adress_logement varchar(100),
     localisation_logement varchar(1500)
 );
+select split_part(logement.adress_logement,',',1) from logement group by split_part(logement.adress_logement,',',1)
 
 create sequence PHOTO_LOGEMENT_seq
 start 1;

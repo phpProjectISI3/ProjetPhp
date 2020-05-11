@@ -208,8 +208,12 @@
         $("#InDateEntree").val($("#DateEntree").text());
         $("#InDateSortie").val($("#DateSortie").text());
     });
-
 </script>
 <!-- END fh5co-page -->
 
+@endsection
+@section('scripts')
+<script>
+    document.getElementById('footer').style.display="none";
+</script>
 @endsection
