@@ -31,11 +31,11 @@
             <div id="SearchZone">
                 <form action="{{route('PagesController.selectType')}}" method="GET">
                     <div class="a-col selets">
-                        <section>
-                            <select id="typeid" name="typeid" class="cs-select cs-skin-border selectManual types">
+                        <section >
+                            <select  id="typeid" name="typeid" class="cs-select cs-skin-border selectManual types" >
                             <!-- <option value=""  >Type</option> -->
                                 @foreach($types as $type)
-                                <option value="{{ $type->id_type_logement }}">       {{ $type->libelle_type_logement }}
+                                <option value="{{ $type->id_type_logement }}" >       {{ $type->libelle_type_logement }}
                                 </option>
                                 @endforeach
                             </select>
