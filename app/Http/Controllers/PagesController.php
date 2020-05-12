@@ -58,7 +58,7 @@ class PagesController extends Controller
             return view('about', ['logements' => $logements, 'types' => $types, 'CapacitePersonne' => $CapacitePersonne, 'villes' => $villes]);    }
 
     public function selectType(Request $request){
-        $types = TypeLogement::All();
+            $types = TypeLogement::All();
             //select toutes les capacites des personnes
             $CapacitePersonne = DB::table('detail_logement')->select(DB::raw('detail_logement.capacite_personne_max'))->groupBy('detail_logement.capacite_personne_max')->get();
             //select villes
@@ -81,8 +81,8 @@ class PagesController extends Controller
                     $dateStart = $request->session()->get('datedebut');
             }
             else {
-                $request->session()>put($request->input('date-start'), 'datedeut');
-                $dateEnd = $request->session()->get('datedebut'); 
+                $request->session()->put($request->input('date-start'), 'datedeut');
+                $dateStart = $request->session()->get('datedebut'); 
             }
 
             if(Session()->has('datefin'))
@@ -90,19 +90,19 @@ class PagesController extends Controller
                 if($request->input('date-end') != null){
 
                     $request->session()->put($request->input('date-end'),'datefin');
-                    $dateStart = $request->session()->get('datefin');
+                    $dateEnd = $request->session()->get('datefin');
                 }
                 else 
-                    $dateStart = $request->session()->get('datefin');
+                    $dateEnd = $request->session()->get('datefin');
             }
             else {
-                $request->session()>put($request->input('date-end'), 'datefin');
+                $request->session()->put($request->input('date-end'), 'datefin');
                 $dateEnd = $request->session()->get('datefin'); 
             }
 
             //test si tous les inputs ne sont pas null
-            if($type != null && $capacitePersonne != null && $ville != null && $dateStart != null ){
-                $logements = DB::select(DB::raw("select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail join planning_logement on logement.id_logement = planning_logement.logement_ where detail_logement.type_logement_ = $type and detail_logement.capacite_personne_max = $capacitePersonne and split_part(logement.adress_logement,',',1) = '$ville' and planning_logement.date_debut >= '$dateStart'"));
+            if($type != null && $capacitePersonne != null && $ville != null && $dateStart != null && $dateEnd != null){
+                $logements = DB::select(DB::raw("select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail join planning_logement on logement.id_logement = planning_logement.logement_ where detail_logement.type_logement_ = $type and detail_logement.capacite_personne_max = $capacitePersonne and split_part(logement.adress_logement,',',1) = '$ville' and planning_logement.date_debut >= '$dateStart' and planning_logement.date_fin <= '$dateEnd'"));
             }
             else  {
             //select les logement
