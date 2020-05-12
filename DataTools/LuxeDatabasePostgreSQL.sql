@@ -104,7 +104,6 @@ create table DETAIL_LOGEMENT
     massage_disponible BOOLEAN
 );
 
-
 create sequence LOGEMENT_seq
 start 1;
 create table LOGEMENT
