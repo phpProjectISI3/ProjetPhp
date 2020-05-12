@@ -9,6 +9,15 @@
     #FormMultiCritere {
         visibility: hidden;
     }
+
+    .MysubmitSearch {
+        width: 200px !important;
+        margin-top: .8em;
+        margin-left: 9em;
+        background-color: #FF6347 !important;
+        box-shadow: 0 0 5px rgb(253, 207, 190) !important;
+        color: black !important;
+    }
 </style>
 
 @endsection
@@ -30,15 +39,16 @@
 <div id="fh5co-hotel-section">
     <div class="container">
         <div id="SearchBtn">
-            <button id="Search"> Filtrer
-                <i class="glyphicon glyphicon-search" style="padding-left:  1em;"></i>
+            <button id="Search" style="border-radius: 20px 0px 20px 0px;">
+                <i class="glyphicon glyphicon-filter"></i>
+                Filtrer
             </button>
-            <div id="SearchZone">
-                <form id="FormMultiCritere" action="{{route('PagesController.selectType')}}" method="GET">
+            <div id="SearchZone" style="border-radius: 0px 20px 20px 20px;">
+                <form id="FormMultiCritere" action="{{route('PagesController.selectType')}}" method="GET" autocomplete="off">
                     <div class="a-col selets">
                         <section>
                             <select id="typeid" name="typeid" class="cs-select cs-skin-border selectManual types">
-                                <option value=""  >Type</option>
+                                <option disabled selected>Type</option>
                                 @foreach($types as $type)
                                 <option value="{{ $type->id_type_logement }}"> {{ $type->libelle_type_logement }}
                                 </option>
@@ -49,7 +59,7 @@
                     <div class="a-col selets">
                         <section>
                             <select name="capacitepersonne" class="cs-select cs-skin-border selectManual">
-                                <option value="">Nombre de personnes</option>
+                                <option disabled selected>Nombre de personnes</option>
                                 @foreach($CapacitePersonne as $capacite)
                                 <option value="{{ $capacite->capacite_personne_max }}">{{ $capacite->capacite_personne_max }}
                                 </option>
@@ -60,7 +70,7 @@
                     <div class="a-col selets">
                         <section>
                             <select name="ville" class="cs-select cs-skin-border selectManual">
-                                <option value="">Ville</option>
+                                <option disabled selected>Ville</option>
                                 @foreach($villes as $ville)
                                 <option value="{{ $ville->adress_logement }}">
                                     {{ $ville->adress_logement }}
@@ -72,26 +82,26 @@
                     <div class="alternates">
                         <div class="a-col alternate selets">
                             <div class="input-field">
-                                <label for="date-start">Date Arrivée</label>
+                                <label for="date-start" style="width: 111px;">à partir de</label>
                                 @if(Session()->has('datedebut') && Session()->has('datefin') )
-                                <input type="text" class="form-control" id="date-start" name="date-start" />
+                                <input type="text" placeholder="Mois/Jour/Année" class="form-control" id="date-start" name="date-start" style="margin-left: 10px;" />
                                 @else
-                                <input type="text" class="form-control" id="date-start" name="date-start" Required />
+                                <input type="text" placeholder="Mois/Jour/Année" class="form-control" id="date-start" name="date-start" Required style="margin-left: 10px;" />
                                 @endif
                             </div>
                         </div>
                         <div class="a-col alternate selets">
                             <div class="input-field">
-                                <label for="date-end">Date Sortie</label>
+                                <label for="date-end">Jusqu'au &nbsp; </label>
                                 @if(Session()->has('datefin'))
-                                <input type="text" class="form-control" id="date-end" name="date-end" />
+                                <input type="text" placeholder="Mois/Jour/Année" class="form-control" id="date-end" name="date-end" style="margin-left: 10px;" />
                                 @else
-                                <input type="text" class="form-control" id="date-end" name="date-end" Required />
+                                <input type="text" placeholder="Mois/Jour/Année" class="form-control" id="date-end" name="date-end" Required style="margin-left: 10px;" />
                                 @endif
                             </div>
                         </div>
                     </div>
-                    <input type="submit" value="Rechercher" class="submitSearch alternate">
+                    <input type="submit" value="Rechercher" class="MysubmitSearch alternate">
                 </form>
             </div>
         </div>
