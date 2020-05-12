@@ -56,7 +56,7 @@
 
     <!-- Modernizr JS -->
     <script src="/js/modernizr-2.6.2.min.js"></script>
-    
+
     <style>
         #linkLogin {
             font-weight: bold;
@@ -85,7 +85,6 @@
             border-radius: 8px;
             box-shadow: 0 0 5px rgb(107, 99, 92);
         }
-
     </style>
 </head>
 
@@ -143,8 +142,7 @@
                                         </ul>
                                         @else {{-- non authentifié  --}}
                                         <strong>
-                                            <a class="fh5co-sub-ddown" id="linkLogin" data-toggle="modal"
-                                                data-target="#login-modal">Login &nbsp;</a>
+                                            <a class="fh5co-sub-ddown" id="linkLogin" data-toggle="modal" data-target="#login-modal">Login &nbsp;</a>
                                         </strong>
                                         @endif
                                     </li>
@@ -153,8 +151,7 @@
                         </div>
                     </div>
                 </header>
-                <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                    aria-hidden="true" style="display: none;">
+                <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                     <div class="modal-dialog">
                         <div class="loginmodal-container">
                             <h1>Se connecter pour réserver</h1>
@@ -162,8 +159,7 @@
                             <form action="/loginAndRedirectProfil" method="POST">
                                 @csrf
                                 <input type="text" name="email" placeholder="Pseudo" value="mail1@gmail.com" />
-                                <input type="password" name="motdepasse" placeholder="Mot de passe"
-                                    value="MotDePasse1" />
+                                <input type="password" name="motdepasse" placeholder="Mot de passe" value="MotDePasse1" />
                                 <input type="submit" class="login loginmodal-submit" value="Login" />
                             </form>
                             <div class="login-help">
@@ -236,9 +232,12 @@
                                 <div class="col-md-6">
                                     <h3>Abbonés vous !</h3>
                                     <p>Recevez toutes nos nouveautés et promotions par email.</p>
-                                    <form action="#" id="form-subscribe">
+                                    <form action="" id="form-subscribe">
                                         <div class="form-field">
-                                            <input type="email" placeholder="Email@mail.com" id="email" />
+                                            <input type="email" placeholder="Email@mail.com" style="border-radius: 8px;" id="email" />
+                                        </div>
+                                        <br>
+                                        <div class="form-field">
                                             <input type="submit" id="submit" value="Envoyer !" />
                                         </div>
                                     </form>
@@ -277,7 +276,7 @@
     @section('scripts')
     @show
     <script src="/js/main.js"></script>
-    @if(Route::current()->getName() != 'welcome' && Route::current()->getName() != 'about' && Route::current()->getName() != 'sejours')
+    @if(Route::current()->getName() != 'welcome' && Route::current()->getName() != 'about' && Route::current()->getName() != 'PagesController.selectType' && Route::current()->getName() != 'sejours')
     <script src="/js/jquery-2.1.4.min.js"></script>
     @endif
     <!-- Dropdown Menu -->
