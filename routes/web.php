@@ -82,7 +82,7 @@ Route::get('InfoAnnulationDemande','DemandeReservationClientController@InfoAnnul
 Route::get('AnnulationDemande/{id}','DemandeReservationClientController@AnnulationDemande')->name('DemandeReservationClientController.AnnulationDemande');
 
 Route::get('read_email/{id}','Auth_Role_PersonneController@read_email');
-
+//test commit
 // static
 Route::get('blog', 'PagesController@blog');
 Route::get('service', 'PagesController@service');
