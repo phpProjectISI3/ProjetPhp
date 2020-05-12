@@ -209,7 +209,7 @@ crossorigin="anonymous"></script> -->
             div.innerHTML = text;
         });
 
-        $('.btnAnnuler').click(function() {
+        $('.btnAnnuler').click(function MyClickEvent() {
             id = $(this).attr("id");
             $.ajax({
                 url: "{{ route('DemandeReservationClientController.InfoAnnulationDemande') }}",
