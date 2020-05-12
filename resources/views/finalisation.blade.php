@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />    
+    <meta charset="utf-8" />
     <title>Finalisation</title>
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -531,7 +531,7 @@
                                                     }
                                                 );
 
-                                             
+
                                                 // var firstNextLiNode = $(ulNode).children('li')[1];
                                                 // //  $(firstNextLiNode).empty();
                                                 // // firstNextLiNode.innerHTML =
