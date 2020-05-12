@@ -35,7 +35,7 @@
                             <select id="typeid" name="typeid" class="cs-select cs-skin-border selectManual types">
                             <!-- <option value=""  >Type</option> -->
                                 @foreach($types as $type)
-                                <option value="{{ $type->id_type_logement }}">{{ $type->libelle_type_logement }}
+                                <option value="{{ $type->id_type_logement }}">       {{ $type->libelle_type_logement }}
                                 </option>
                                 @endforeach
                             </select>
@@ -132,6 +132,7 @@
 @section('scripts')
 {{-- <script src="/js/jquery.js"></script> --}}
 <script src="/js/jquery.js"></script>
+<script src="/js/jquery-2.1.4.min.js"></script>
 <script src="/js/search.js"></script>
 <script src="/js/notification/notify.min.js"></script>
 <script>
