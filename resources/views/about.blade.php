@@ -68,7 +68,7 @@
                         <div class="a-col alternate selets">
                             <div class="input-field">
                                 <label for="date-start">Date Arrivée</label>
-                                @if(Session()->has('datedebut') )
+                                @if(Session()->has('datedebut') && Session()->has('datefin') )
                                     <input type="text" class="form-control" id="date-start" name="date-start"  />
                                 @else 
                                     <input type="text" class="form-control" id="date-start" name="date-start"  Required />

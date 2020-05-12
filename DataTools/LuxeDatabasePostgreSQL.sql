@@ -104,7 +104,7 @@ create table DETAIL_LOGEMENT
     massage_disponible BOOLEAN
 );
 
-select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail join planning_logement on logement.id_logement = planning_logement.logement_ where detail_logement.type_logement_ = 5 and detail_logement.capacite_personne_max = 3 and split_part(logement.adress_logement,',',1) = 'Agadir' and planning_logement.date_debut <= '2020-05-01' and planning_logement.date_fin >= '2020-05-06'
+select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail join planning_logement on logement.id_logement = planning_logement.logement_ where detail_logement.type_logement_ = 5 and detail_logement.capacite_personne_max = 3 and split_part(logement.adress_logement,',',1) = 'Agadir' and planning_logement.date_debut <= '2020-05-01' and planning_logement.date_fin >= '2020-05-31'
 
 create sequence LOGEMENT_seq
 start 1;
