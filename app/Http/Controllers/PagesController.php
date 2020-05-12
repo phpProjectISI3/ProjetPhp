@@ -39,23 +39,68 @@ class PagesController extends Controller
 
         // test si l'option n'est pas selectionner
         if ($optionValue == -1) {
+            //select tous les types
+            $types = TypeLogement::All();
+            //select toutes les capacites des personnes
+            $CapacitePersonne = DB::table('detail_logement')->select(DB::raw('detail_logement.capacite_personne_max'))->groupBy('detail_logement.capacite_personne_max')->get();
             $logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail ');
+            $villes = DB::select("select split_part(logement.adress_logement,',',1) as adress_logement from logement group by split_part(logement.adress_logement,',',1)");
         } else {
+            //select tous les types
+            $types = TypeLogement::All();
+            //select toutes les capacites des personnes
+            $CapacitePersonne = DB::table('detail_logement')->select(DB::raw('detail_logement.capacite_personne_max'))->groupBy('detail_logement.capacite_personne_max')->get();
             // test pour verifier si le client a saisi des dates
             $logements = DB::select(DB::raw("select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail
                 join planning_logement on logement.id_logement = planning_logement.logement_ where detail_logement.type_logement_ = $optionValue and planning_logement.date_debut <= ' $datedebut ' and planning_logement.date_fin >= ' $datefin'"));
+                $villes = DB::select("select split_part(logement.adress_logement,',',1) as adress_logement from logement group by split_part(logement.adress_logement,',',1)");
         }
-        return view('about', ['logements' => $logements]);
-    }
+            return view('about', ['logements' => $logements, 'types' => $types, 'CapacitePersonne' => $CapacitePersonne, 'villes' => $villes]);    }
 
     public function selectType(Request $request){
-           if($request->ajax()){
-               $data = $request->id;
-               $logemets = DB::select(DB::raw("select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail
-                join planning_logement on logement.id_logement = planning_logement.logement_ where detail_logement.type_logement_ = $data"));
-           }
-           return view('about',compact('logements'));
+        $types = TypeLogement::All();
+            //select toutes les capacites des personnes
+            $CapacitePersonne = DB::table('detail_logement')->select(DB::raw('detail_logement.capacite_personne_max'))->groupBy('detail_logement.capacite_personne_max')->get();
+            //select villes
+            $villes = DB::select("select split_part(logement.adress_logement,',',1) as adress_logement from logement group by split_part(logement.adress_logement,',',1)");
+            //prend la valeur de type selectionné
+            $type = $request->input('typeid');
+            //prend la valeur de nombre de personnes selectionné
+            $capacitePersonne = $request->input('capacitepersonne');
+            //prend la valeur de la ville selectionné
+            $ville = $request->input('ville');
+            //si la session est  définie on l'affecte 
+            if(Session()->has('datedebut'))
+            {
+                    $dateStart = $request->session()->get('datedebut');
+            }
+            else {
+                $request->session()>put($request->input('date-start'), 'datedeut');
+                $dateEnd = $request->session()->get('datedebut'); 
+            }
+
+            if(Session()->has('datefin'))
+            {
+                    $dateEnd = $request->session()->get('datefin');
+            }
+            else {
+                $request->session()>put($request->input('date-end'), 'datefin');
+                $dateEnd = $request->session()->get('datefin'); 
+            } 
+
+            //test si tous les inputs ne sont pas null
+            if($type != null && $capacitePersonne != null && $ville != null && $dateStart != null ){
+                $logements = DB::select(DB::raw("select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail join planning_logement on logement.id_logement = planning_logement.logement_ where detail_logement.type_logement_ = $type and detail_logement.capacite_personne_max = $capacitePersonne and split_part(logement.adress_logement,',',1) = '$ville' and planning_logement.date_debut >= '$dateStart' and planning_logement.date_fin <= '$dateEnd'"));
+            }
+            else  {
+            //select les logement
+            $logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail ');
+
+            }
+            
+            return view('about', ['logements'=>$logements, 'types' => $types, 'CapacitePersonne' => $CapacitePersonne, 'villes' => $villes]);    
     }
+
     public function about($id)
     {
         if ($id == -1) {

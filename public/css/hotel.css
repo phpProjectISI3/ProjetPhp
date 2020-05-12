@@ -16,7 +16,7 @@
 }
 
 .container #SearchBtn .SearchZoneStyle{
-  width: 80%;
+  width: 100%;
   height: 10em;
   background-color: orangered;
   /* margin-bottom: 3em; */
@@ -42,7 +42,7 @@
 }
 
 .selets .cs-select{
-  width: 15em;
+  width: 17em;
   /* float: left; */
 }
 
@@ -63,4 +63,13 @@
 
 .sameHeight{
   height: 15em;
+}
+
+.submitSearch{
+  width: 21% !important;
+  margin-top: .8em;
+  margin-left: 9em;
+  background-color: #FF6347 !important;
+  box-shadow: 0 0 5px rgb(253, 207, 190) !important;
+  color:black !important;
 }

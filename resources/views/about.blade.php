@@ -29,51 +29,65 @@
                 <i class="glyphicon glyphicon-search" style="padding-left:  1em;"></i>
             </button>
             <div id="SearchZone">
-                <div class="a-col selets">
-                    <section>
-                        <select id="typeid" name="typeid" class="cs-select cs-skin-border selectManual types">
-                            @foreach($types as $type)
-                            <option value="{{ $type->id_type_logement }}">{{ $type->libelle_type_logement }}
-                            </option>
-                            @endforeach
-                        </select>
-                    </section>
-                </div>
-                <div class="a-col selets">
-                    <section>
-                        <select class="cs-select cs-skin-border selectManual">
-                            @foreach($CapacitePersonne as $capacite)
-                            <option value="{{ $capacite->capacite_personne_max }}">{{ $capacite->capacite_personne_max }}
-                            </option>
-                            @endforeach
-                        </select>
-                    </section>
-                </div>
-                <div class="a-col selets">
-                    <section>
-                        <select class="cs-select cs-skin-border selectManual">
-                            @foreach($villes as $ville)
-                            <option value="{{ $ville->adress_logement }}">
-                                {{ $ville->adress_logement }}
-                            </option>
-                            @endforeach
-                        </select>
-                    </section>
-                </div>
-                <div class="alternates">
-                    <div class="a-col alternate selets">
-                        <div class="input-field">
-                            <label for="date-start">Date Arrivée</label>
-                            <input type="text" class="form-control" id="date-start" />
+                <form action="{{route('PagesController.selectType')}}" method="GET">
+                    <div class="a-col selets">
+                        <section>
+                            <select id="typeid" name="typeid" class="cs-select cs-skin-border selectManual types">
+                            <!-- <option value=""  >Type</option> -->
+                                @foreach($types as $type)
+                                <option value="{{ $type->id_type_logement }}">{{ $type->libelle_type_logement }}
+                                </option>
+                                @endforeach
+                            </select>
+                        </section>
+                    </div>
+                    <div class="a-col selets">
+                        <section>
+                            <select name="capacitepersonne" class="cs-select cs-skin-border selectManual">
+                                <!-- <option value="">Nombre de personnes</option> -->
+                                @foreach($CapacitePersonne as $capacite)
+                                <option value="{{ $capacite->capacite_personne_max }}">{{ $capacite->capacite_personne_max }}
+                                </option>
+                                @endforeach
+                            </select>
+                        </section>
+                    </div>
+                    <div class="a-col selets">
+                        <section>
+                            <select name="ville" class="cs-select cs-skin-border selectManual">
+                                <!-- <option value="">Ville</option> -->
+                                @foreach($villes as $ville)
+                                <option value="{{ $ville->adress_logement }}">
+                                    {{ $ville->adress_logement }}
+                                </option>
+                                @endforeach
+                            </select>
+                        </section>
+                    </div>
+                    <div class="alternates">
+                        <div class="a-col alternate selets">
+                            <div class="input-field">
+                                <label for="date-start">Date Arrivée</label>
+                                @if(Session()->has('datedebut') )
+                                    <input type="text" class="form-control" id="date-start" name="date-start"  />
+                                @else 
+                                    <input type="text" class="form-control" id="date-start" name="date-start"  Required />
+                                @endif
+                            </div>
+                        </div>
+                        <div class="a-col alternate selets">
+                            <div class="input-field">
+                                <label for="date-end">Date Sortie</label>
+                                @if(Session()->has('datefin'))
+                                <input type="text" class="form-control" id="date-end" name="date-end" />
+                                @else 
+                                <input type="text" class="form-control" id="date-end" name="date-end" Required/>
+                                @endif
+                            </div>
                         </div>
                     </div>
-                    <div class="a-col alternate selets">
-                        <div class="input-field">
-                            <label for="date-end">Date Sortie</label>
-                            <input type="text" class="form-control" id="date-end" />
-                        </div>
-                    </div>
-                </div>
+                    <input type="submit" value="Rechercher" class="submitSearch alternate">
+                </form>
             </div>
         </div>
         <div class="row">
@@ -106,7 +120,6 @@
             </div>
             @endforeach
 
-            {{-- <script src="../js/jquery.js"></script> --}}
 
         </div>
 
@@ -117,9 +130,10 @@
 @endsection
 
 @section('scripts')
+{{-- <script src="/js/jquery.js"></script> --}}
+<script src="/js/jquery.js"></script>
 <script src="/js/search.js"></script>
-<script src="../js/jquery.js"></script>
-<script src="../js/notification/notify.min.js"></script>
+<script src="/js/notification/notify.min.js"></script>
 <script>
     $.ajaxSetup({
         headers: {
@@ -127,9 +141,7 @@
         }
     });
 
-    $('select.types').change(function(){
-        alert($('select.types option:selected').val());
-    })
+     
 
     function AddToFavorite(id_logement) {
         var checkBox = document.getElementById("heart" + id_logement);
