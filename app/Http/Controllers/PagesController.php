@@ -73,15 +73,16 @@ class PagesController extends Controller
             if(Session()->has('datedebut'))
             {
                 if($request->input('date-start') != null){
-
-                    $request->session()->put('datedebut',$request->input('date-start'));
+                    // creer une varibale de session contien la date_debut saisi par le client
+                    $request->session()->put('datedebut', Carbon::parse($request->input('date-start'))->format('Y-m-d'));
                     $dateStart = $request->session()->get('datedebut');
                 }
                 else 
                     $dateStart = $request->session()->get('datedebut');
             }
             else {
-                $request->session()->put('datedebut',$request->input('date-start'));
+                // creer une varibale de session contien la date_debut saisi par le client
+                $request->session()->put('datedebut', Carbon::parse($request->input('date-start'))->format('Y-m-d'));
                 $dateStart = $request->session()->get('datedebut'); 
             }
 
@@ -89,14 +90,16 @@ class PagesController extends Controller
             {
                 if($request->input('date-end') != null){
 
-                    $request->session()->put('datefin',$request->input('date-end'));
+                    // creer une varibale de session contien la date_fin saisi par le client
+                    $request->session()->put('datefin', Carbon::parse($request->input('date-end'))->format('Y-m-d'));
                     $dateEnd = $request->session()->get('datefin');
                 }
                 else 
                     $dateEnd = $request->session()->get('datefin');
             }
             else {
-                $request->session()->put('datefin',$request->input('date-end'));
+                // creer une varibale de session contien la date_fin saisi par le client
+                $request->session()->put('datefin', Carbon::parse($request->input('date-end'))->format('Y-m-d'));
                 $dateEnd = $request->session()->get('datefin'); 
             }
 
@@ -108,7 +111,6 @@ class PagesController extends Controller
             else  {
                 //select les logement
                 $logements = DB::select('select logement.id_logement, logement.adress_logement, logement.nom_logement, detail_logement.tarif_par_nuit_hs, detail_logement.description_logement from logement join  detail_logement on logement.detail_logement_= detail_logement.id_detail ');
-                echo ("hello bitch");
                 
             }
             

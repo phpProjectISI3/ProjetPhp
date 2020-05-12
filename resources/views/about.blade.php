@@ -38,7 +38,7 @@
                     <div class="a-col selets">
                         <section>
                             <select id="typeid" name="typeid" class="cs-select cs-skin-border selectManual types">
-                                <!-- <option value=""  >Type</option> -->
+                                <option value=""  >Type</option>
                                 @foreach($types as $type)
                                 <option value="{{ $type->id_type_logement }}"> {{ $type->libelle_type_logement }}
                                 </option>
@@ -49,7 +49,7 @@
                     <div class="a-col selets">
                         <section>
                             <select name="capacitepersonne" class="cs-select cs-skin-border selectManual">
-                                <!-- <option value="">Nombre de personnes</option> -->
+                                <option value="">Nombre de personnes</option>
                                 @foreach($CapacitePersonne as $capacite)
                                 <option value="{{ $capacite->capacite_personne_max }}">{{ $capacite->capacite_personne_max }}
                                 </option>
@@ -60,7 +60,7 @@
                     <div class="a-col selets">
                         <section>
                             <select name="ville" class="cs-select cs-skin-border selectManual">
-                                <!-- <option value="">Ville</option> -->
+                                <option value="">Ville</option>
                                 @foreach($villes as $ville)
                                 <option value="{{ $ville->adress_logement }}">
                                     {{ $ville->adress_logement }}
