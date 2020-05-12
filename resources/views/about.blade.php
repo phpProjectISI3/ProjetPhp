@@ -5,6 +5,11 @@
 @section('linkcss')
 <link rel="stylesheet" href="../css/hotel.css">
 <link rel="stylesheet" href="../css/btnHeart.css">
+<style>
+    #FormMultiCritere {
+        visibility: hidden;
+    }
+</style>
 
 @endsection
 @section('body')
@@ -25,17 +30,17 @@
 <div id="fh5co-hotel-section">
     <div class="container">
         <div id="SearchBtn">
-            <button id="Search"> Search
+            <button id="Search"> Filtrer
                 <i class="glyphicon glyphicon-search" style="padding-left:  1em;"></i>
             </button>
             <div id="SearchZone">
-                <form action="{{route('PagesController.selectType')}}" method="GET">
+                <form id="FormMultiCritere" action="{{route('PagesController.selectType')}}" method="GET">
                     <div class="a-col selets">
                         <section>
                             <select id="typeid" name="typeid" class="cs-select cs-skin-border selectManual types">
-                            <!-- <option value=""  >Type</option> -->
+                                <!-- <option value=""  >Type</option> -->
                                 @foreach($types as $type)
-                                <option value="{{ $type->id_type_logement }}">       {{ $type->libelle_type_logement }}
+                                <option value="{{ $type->id_type_logement }}"> {{ $type->libelle_type_logement }}
                                 </option>
                                 @endforeach
                             </select>
@@ -69,9 +74,9 @@
                             <div class="input-field">
                                 <label for="date-start">Date Arrivée</label>
                                 @if(Session()->has('datedebut') && Session()->has('datefin') )
-                                    <input type="text" class="form-control" id="date-start" name="date-start"  />
-                                @else 
-                                    <input type="text" class="form-control" id="date-start" name="date-start"  Required />
+                                <input type="text" class="form-control" id="date-start" name="date-start" />
+                                @else
+                                <input type="text" class="form-control" id="date-start" name="date-start" Required />
                                 @endif
                             </div>
                         </div>
@@ -80,8 +85,8 @@
                                 <label for="date-end">Date Sortie</label>
                                 @if(Session()->has('datefin'))
                                 <input type="text" class="form-control" id="date-end" name="date-end" />
-                                @else 
-                                <input type="text" class="form-control" id="date-end" name="date-end" Required/>
+                                @else
+                                <input type="text" class="form-control" id="date-end" name="date-end" Required />
                                 @endif
                             </div>
                         </div>
@@ -142,8 +147,6 @@
         }
     });
 
-     
-
     function AddToFavorite(id_logement) {
         var checkBox = document.getElementById("heart" + id_logement);
         if (checkBox.checked == true) {
@@ -186,11 +189,16 @@
             });
         }
     }
-</script>
-<script>
+
     $(document).ready(function() {
         $("a.active").removeClass();
         $("a#linkNosOffres").addClass('active');
+    });
+
+    var filtreDiv_is_visible = false;
+    $("#Search").click(function() {
+        filtreDiv_is_visible = !filtreDiv_is_visible;
+        !filtreDiv_is_visible ? $("#FormMultiCritere").css("visibility", "hidden") : $("#FormMultiCritere").css("visibility", "visible");
     });
 </script>
 @endsection
