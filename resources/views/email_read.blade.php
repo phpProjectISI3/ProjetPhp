@@ -39,7 +39,7 @@
                             <div class="row align-items-center">
                                 <!-- [ email-left section ] start -->
                                 <div class="col-xl-2 col-md-3">
-                                    <a href="index.html" class="b-brand">
+                                    <a href class="b-brand">
                                         <div class="b-bg">
                                             {{$firstLetter}}
                                         </div>
