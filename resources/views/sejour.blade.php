@@ -51,9 +51,9 @@
         background-color: #DC3551;
     }
 
-    /* .dataTables_wrapper .dataTables_paginate .paginate_button{
+    .paginate_button {
         background: blueviolet;
-    } */
+    }
 </style>
 @endsection
 
@@ -133,7 +133,7 @@
                             <img src="images/interdit.png" style="width:25px;" />
                             Annuler
                         </button>
-                        <a href="/Finalisation/{{ $dmd->id_demande }}" class="btn btn-primary" style="border:0px;padding: 5px;font-weight: bold;width: 120px;background-color: #007bff;border-color: #007bff;border-radius: 20px;" disabled>
+                        <a href="/Finalisation/{{ $dmd->id_demande }}" class="btn btn-primary disabled" style="border:0px;padding: 5px;font-weight: bold;width: 120px;background-color: #007bff;border-color: #007bff;border-radius: 20px;"  role="button" aria-disabled="true">
                             <img src="images/money.png" style="width:30px;" />
                             Payer !
                         </a>
@@ -198,8 +198,7 @@ crossorigin="anonymous"></script> -->
             "oLanguage": {
                 "sSearch": "Rechercher"
             },
-            // scrollY: 300,
-            // scrollX: 0,
+            "pageLength": 25,
             "language": {
                 "paginate": {
                     "first": "1",
@@ -207,31 +206,20 @@ crossorigin="anonymous"></script> -->
                     "next": "Suivant",
                     "previous": "Précedent"
                 },
-                // buttons: {
-                //     buttons: [{
-                //             extend: 'copy',
-                //             className: 'copyButton'
-                //         },
-                //         {
-                //             extend: 'excel',
-                //             className: 'excelButton'
-                //         }
-                //     ]
-                // },
                 "zeroRecords": "Aucune demande.",
                 "processing": "En cours de recherche",
-                "info": "",
                 "emptyTable": "Vous n'avez réalisez aucune demande pour l'instant? <a href='about/-1'>Profiter de NOS OFFRES !</a>",
+                "info": "",
             },
         });
 
         function reglerAffichageParPage() {
             var div = document.getElementById("myTable_info");
-            var text = '<label>Afficher <select name="myTable_length" aria-controls="myTable" class=""><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> par pages.</label>';
+            var text = '<label>Afficher <select name="myTable_length" aria-controls="myTable" class=""><option value="10">10</option><option value="25" selected>25</option><option value="50">50</option><option value="100">100</option></select> par pages.</label>';
             div.innerHTML = text;
         }
         reglerAffichageParPage();
-        $("#myTable").click(function() {
+        $("#myTable").click(function() { // todo : eviter redendance d'eevent
             reglerAffichageParPage();
             $('.btnAnnuler').click(function MyClickEvent() {
                 id = $(this).attr("id");
