@@ -106,7 +106,7 @@ class PersonneController extends Controller
                 'mot_de_passe'=>$password]);
             }
             
-            return \view("Profile",compact('personnes'))->withUser(session()->get('userObject'));
+            return back()->withUser(session()->get('userObject'));
         }
         else
             return \redirect()->action('Auth_Role_PersonneController@Profile')-withUser(session()->get('userObject'));
