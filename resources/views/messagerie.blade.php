@@ -91,8 +91,6 @@
                                                                 @if($rec->vu)
                                                                     <tr class="read">
                                                                         <td>
-                                                                            <?php echo $rec->emetteur_ ?>
-                                                                            <?php echo $rec->id_message ?>
                                                                             <div class="check-star">
                                                                             </div>
                                                                         </td>
@@ -104,8 +102,6 @@
                                                                 @else 
                                                                     <tr class="unread">
                                                                         <td>
-                                                                        <?php echo $rec->emetteur_ ?>
-                                                                        <?php echo $rec->id_message ?>
                                                                             <div class="check-star">
                                                                             </div>
                                                                         </td>
