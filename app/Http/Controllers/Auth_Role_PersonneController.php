@@ -67,10 +67,11 @@ class Auth_Role_PersonneController extends Controller
             return \redirect("/");
     }
 
-    public function messagerie(Request $request)
+    public function messagerie()
     {
         if (Auth_Role_PersonneController::IsAuthentificated()) {
-            $userId = $request->session()->get('userObject')->id_client;
+            $userId = session()->get('userObject')->id_client;
+            
             $emetteur = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.emetteur_ = $userId ");
 
             $firstLetter = session()->get('userObject')->nom[0];
@@ -94,15 +95,15 @@ class Auth_Role_PersonneController extends Controller
             return \redirect("/");
     }
 
-    public function read_email(Request $request, $idclient, $imessage)
+    public function read_email($imessage)
     {
         
         if (Auth_Role_PersonneController::IsAuthentificated()) {
-            $userId = $request->session()->get('userObject')->id_client;
+            $userId = session()->get('userObject')->id_client;
             
             $firstLetter = session()->get('userObject')->nom[0];
             
-            $recepteur = DB::select("select message_contact.*,personne.*, auth_role_personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client join auth_role_personne on message_contact.emetteur_ = auth_role_personne.personne_role_ where message_contact.recepteur_ = $userId and  message_contact.emetteur_ = $idclient");
+            $recepteur = DB::select("select message_contact.*,personne.*, auth_role_personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client join auth_role_personne on message_contact.emetteur_ = auth_role_personne.personne_role_ where message_contact.recepteur_ = $userId and  message_contact.id_message = $imessage");
             
             $Lu = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId and message_contact.vu = true");
             
