@@ -94,22 +94,26 @@ class Auth_Role_PersonneController extends Controller
             return \redirect("/");
     }
 
-    public function read_email(Request $request, $id)
+    public function read_email(Request $request, $idclient, $imessage)
     {
+        
         if (Auth_Role_PersonneController::IsAuthentificated()) {
             $userId = $request->session()->get('userObject')->id_client;
-
+            
             $firstLetter = session()->get('userObject')->nom[0];
-
-            $recepteur = DB::select("select message_contact.*,personne.*, auth_role_personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client join auth_role_personne on message_contact.emetteur_ = auth_role_personne.personne_role_ where message_contact.recepteur_ = $userId and  message_contact.emetteur_ = $id");
-
+            
+            $recepteur = DB::select("select message_contact.*,personne.*, auth_role_personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client join auth_role_personne on message_contact.emetteur_ = auth_role_personne.personne_role_ where message_contact.recepteur_ = $userId and  message_contact.emetteur_ = $idclient");
+            
             $Lu = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId and message_contact.vu = true");
-
+            
             $nonLu = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId and message_contact.vu = false");
+            echo($idclient. '<br>');
+            echo($imessage . '<br>');
 
 
             DB::table('message_contact')
-                ->where('emetteur_', $id)
+                ->where('emetteur_', $idclient)
+                ->where('id_message',$imessage)
                 ->update(['vu' => "true"]);
 
 

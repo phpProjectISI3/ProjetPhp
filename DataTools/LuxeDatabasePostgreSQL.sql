@@ -159,6 +159,7 @@ create table DEMANDE_RESERVATION
     annule_par_client boolean default 'false',
     date_annulation date
 );
+select * from MESSAGE_CONTACT where recepteur_ = 1013
 
 create sequence RESERVATION_LOGEMENT_seq
 start 1;

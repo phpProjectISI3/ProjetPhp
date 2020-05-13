@@ -102,21 +102,26 @@
                                                                 @if($rec->vu)
                                                                 <tr class="read">
                                                                     <td>
+                                                                        <?php echo $rec->emetteur_ ?>
+                                                                        <?php echo $rec->id_message ?>
                                                                         <div class="check-star">
                                                                         </div>
                                                                     </td>
-                                                                    <td><a href="{{url('read_email',[ $rec->emetteur_])}}" class="email-name waves-effect">{{$rec->nom . ' ' . $rec->prenom }}</a></td>
-                                                                    <td><a href="{{url('read_email',[ $rec->emetteur_])}}" class="email-name waves-effect">{{$rec->message_ecrit}}</a>
+                                                                    <td><a href="{{route('Auth_Role_PersonneController.read_email',[ $rec->emetteur_,$rec->id_message])}}" class="email-name waves-effect">{{$rec->nom . ' ' . $rec->prenom }}</a></td>
+                                                                    <td><a href="{{route('Auth_Role_PersonneController.read_email',[ $rec->emetteur_,$rec->id_message])}}" class="email-name waves-effect">{{$rec->message_ecrit}}</a>
+
                                                                     </td>
                                                                 </tr>
                                                                 @else 
                                                                     <tr class="unread">
                                                                         <td>
+                                                                        <?php echo $rec->emetteur_ ?>
+                                                                        <?php echo $rec->id_message ?>
                                                                             <div class="check-star">
                                                                             </div>
                                                                         </td>
-                                                                        <td><a href="{{url('read_email',[ $rec->emetteur_])}}" class="email-name waves-effect">{{$rec->nom . ' ' . $rec->prenom }}</a></td>
-                                                                        <td><a href="{{url('read_email',[ $rec->emetteur_])}}" class="email-name waves-effect">{{$rec->message_ecrit}}</a>
+                                                                        <td><a href="{{route('Auth_Role_PersonneController.read_email',[ $rec->emetteur_,$rec->id_message])}}" class="email-name waves-effect">{{$rec->nom . ' ' . $rec->prenom }}</a></td>
+                                                                        <td><a href="{{route('Auth_Role_PersonneController.read_email',[ $rec->emetteur_,$rec->id_message])}}" class="email-name waves-effect">{{$rec->message_ecrit}}</a>
                                                                         </td>
                                                                     </tr>
 
@@ -158,9 +163,8 @@
                                                                     <div class="check-star">
                                                                     </div>
                                                                 </td>
-                                                                <td><a href="{{url('read_email',[ $rec->emetteur_])}}" class="email-name waves-effect">{{$nonLlu->nom . ' ' . $nonLlu->prenom }}</a></td>
-                                                                <td><a href="{{url('read_email',[ $rec->emetteur_])}}" class="email-name waves-effect">{{$nonLlu->message_ecrit}}</a>
-                                                                </td>
+                                                                <td><a href="{{route('Auth_Role_PersonneController.read_email',[[ $rec->emetteur_],[$rec->id_message]])}}" class="email-name waves-effect">{{$nonLlu->nom . ' ' . $nonLlu->prenom }}</a></td>
+                                                                <td><a href="{{route('Auth_Role_PersonneController.read_email',[ $rec->emetteur_,$rec->id_message])}}" class="email-name waves-effect">{{$nonLlu->message_ecrit}}</a></td>
                                                             </tr> 
                                                         @endforeach
                                                     </tbody>
