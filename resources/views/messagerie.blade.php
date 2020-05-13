@@ -97,7 +97,7 @@
                                                                             </div>
                                                                         </td>
                                                                         <td><a href="{{route('Auth_Role_PersonneController.read_email',[ $rec->id_message])}}" class="email-name waves-effect">{{$rec->nom . ' ' . $rec->prenom }}</a></td>
-                                                                        <td><a href="{{route('Auth_Role_PersonneController.read_email',[ $rec->id_message])}}" class="email-name waves-effect">{{$rec->message_ecrit}}</a>
+                                                                        <td><a href="{{route('Auth_Role_PersonneController.read_email',[ $rec->id_message])}}" class="email-name waves-effect carte__description">{{$rec->message_ecrit}}</a>
 
                                                                         </td>
                                                                     </tr>
@@ -110,7 +110,7 @@
                                                                             </div>
                                                                         </td>
                                                                         <td><a href="{{route('Auth_Role_PersonneController.read_email',[ $rec->id_message])}}" class="email-name waves-effect">{{$rec->nom . ' ' . $rec->prenom }}</a></td>
-                                                                        <td><a href="{{route('Auth_Role_PersonneController.read_email',[ $rec->id_message])}}" class="email-name waves-effect">{{$rec->message_ecrit}}</a>
+                                                                        <td><a href="{{route('Auth_Role_PersonneController.read_email',[ $rec->id_message])}}" class="email-name waves-effect carte__description">{{$rec->message_ecrit}}</a>
                                                                         </td>
                                                                     </tr>
 
@@ -163,7 +163,7 @@
 
      var divs = document.getElementsByClassName('carte__description');
     for (i = 0; i < divs.length; i++) {
-        divs[i].innerHTML = divs[i].innerHTML.substring(0, 110) + '....<a href="{{url('detailRecherche ')}}" style="color: orangered;">plus de détail !</a>';
+        divs[i].innerHTML = divs[i].innerHTML.substring(0, 117) + '....';
     }
 </script>
 <script>
