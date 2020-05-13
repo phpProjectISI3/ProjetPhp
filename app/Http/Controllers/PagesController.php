@@ -153,7 +153,7 @@ class PagesController extends Controller
         $message->recepteur_ = 1013;
         $message->save();
 
-        return response()->json(['success' => 'Form is successfully submitted!']);
+        return response()->json(['success' => 'submitted !']);
     }
 
     public function detailRecherche(Request $request, $id)
@@ -176,11 +176,14 @@ class PagesController extends Controller
         // calcule l'interval entre les dates (nombre de jours)
         $interval = (strtotime($datefin) - strtotime($datedebut)) / (60 * 60 * 24);
 
+        //reformater la date sous format par exemple : 15 juillet 2020
+        setlocale(LC_TIME, 'French');
+        $datedebut = Carbon::parse($request->session()->get('datedebut'))->formatLocalized('%d %B %Y');
+        $datefin = Carbon::parse($request->session()->get('datefin'))->formatLocalized('%d %B %Y');
+
         // calcule tarif par saison
         $tarif_bs = $logement->tarif_par_nuit_bs * $interval;
         $tarif_hs = $logement->tarif_par_nuit_hs * $interval;
-
-
 
         return view('detailRecherche', compact('logement', 'photo_logement'))
             ->with('datedebut', $datedebut)
@@ -218,13 +221,9 @@ class PagesController extends Controller
             $sauvegarde = DB::table('sauvegarde_logement')
                 ->where('sauvegarde_logement.client_', session()->get('userObject')->id_client)
                 ->where('sauvegarde_logement.logement_', $request->get("ID"));
-            // $obj = $sauvegarde->first();
             $sauvegarde->delete();
 
             $nomLogement = Logement::find($request->get("ID"))->nom_logement;
-            // $exist = DB::table('sauvegarde_logement')
-            //         ->where('sauvegarde_logement.client_',session()->get('userObject')->id_client)
-            //         ->where('sauvegarde_logement.logement_',$request->get("ID"))->exists();
 
             $suprime = array(
                 'nomLogement' => $nomLogement,
@@ -240,10 +239,28 @@ class PagesController extends Controller
             ->select('*')
             ->where('logement.id_logement', $id_logement)
             ->first();
+
+        // calcule l'interval entre les dates (nombre de jours)
+        $datedebutNoFormat = Carbon::parse(session()->get('datedebut'))->format('Y-m-d');
+        $datefinNoFormat = Carbon::parse(session()->get('datefin'))->format('Y-m-d');
+        $interval = (strtotime($datefinNoFormat) - strtotime($datedebutNoFormat)) / (60 * 60 * 24);
+
+        //reformater la date sous format par exemple : 15 juillet 2020
+        setlocale(LC_TIME, 'French');
+
+        // calcule tarif par saison
+        $tarif_bs = $logement->tarif_par_nuit_bs * $interval;
+        $tarif_hs = $logement->tarif_par_nuit_hs * $interval;
+
         return view('review')
             ->with('logement', $logement)
-            ->with('datedebut', Carbon::parse(Session()->get('datedebut'))->format('Y-m-d'))
-            ->with('datefin', Carbon::parse(Session()->get('datefin'))->format('Y-m-d'));
+            ->with('datedebut', Carbon::parse(session()->get('datedebut'))->formatLocalized('%d %B %Y'))
+            ->with('datefin', Carbon::parse(session()->get('datefin'))->formatLocalized('%d %B %Y'))
+            ->with('datedebutNoFormat', $datedebutNoFormat)
+            ->with('datefinNoFormat', $datefinNoFormat)
+            ->with('interval', $interval)
+            ->with('tarif_bs', $tarif_bs)
+            ->with('tarif_hs', $tarif_hs);
     }
 
     public function finalisation($demande_reservation)

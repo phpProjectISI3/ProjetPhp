@@ -1,9 +1,9 @@
 @extends('layout.app')
 
 @section('title','Détails')
-<link rel="stylesheet" href="../css/detailrecherche.css" />	
-<link rel="stylesheet" href="../css/review.css" />	
-<script src="https://kit.fontawesome.com/4f2d779e50.js" crossorigin="anonymous"></script>	
+<link rel="stylesheet" href="../css/detailrecherche.css" />
+<link rel="stylesheet" href="../css/review.css" />
+<script src="https://kit.fontawesome.com/4f2d779e50.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="../css/designRadioBtn.css" />
 @section('linkcss')
 
@@ -30,7 +30,6 @@
         right: -7%;
         transform: translate(-50%, 0);
     }
-
 </style>
 @endsection
 
@@ -157,11 +156,11 @@
                     <div class="dates">
                         <span>Dates</span>
                         <div id="showdates">
-                            <label id="DateEntree" name="DateEntree">{{$datedebut}}</label>
-                            <span>
+                            <label id="DateEntree" name="DateEntree" style="font-size: 13px;">{{$datedebut}}</label>
+                            <span style="padding-left: 30%;padding-top: 15%;">
                                 <i class="fas fa-angle-double-right"></i>
                             </span>
-                            <label id="DateSortie">{{$datefin}}</label>
+                            <label id="DateSortie" style="font-size: 13px;">{{$datefin}}</label>
 
                             <input type="text" id="InDateEntree" name="InDateEntree" hidden />
                             <input type="text" id="InDateSortie" name="InDateSortie" hidden />
@@ -173,7 +172,7 @@
                             <span>
                                 Séjour :
                             </span>
-                            <span id="totalnuit">5 nuits</span>
+                            <span id="totalnuit">{{$interval}} nuit</span>
                         </div>
                         <hr class="scndhr" />
                         <div class="dates">
@@ -182,17 +181,15 @@
                             </span>
                             <span id="totalnuit">
                                 @if((int)Carbon\Carbon::now()->format('m')
-                                < 6) {{$logement->tarif_par_nuit_bs}} @else {{$logement->tarif_par_nuit_hs}} @endif Dhs
-                                    (TTC) </span> </div> <hr class="scndhr" />
+                                < 6) {{$logement->tarif_par_nuit_bs}} @else {{$logement->tarif_par_nuit_hs}} @endif Dhs</span> </div> <hr class="scndhr" />
                                 <div class="dates">
                                     <span id="total" class="black">Total </span>
-                                    <span id="totalnuit" class="black">MAD 2.916</span>
+                                    <span id="totalnuit" class="black" style="margin-left: 0%;">
+                                        @if((int)Carbon\Carbon::now()->format('m')
+                                        < 6) {{$tarif_bs}} @else {{$tarif_hs}} @endif Dhs (TTC) </span> </div> </div> <div id="reserver">
+                                            <input type="submit" value="Demander une réservation !" />
                                 </div>
                         </div>
-                        <div id="reserver">
-                            <input type="submit" value="Demander une réservation !" />
-                        </div>
-                    </div>
             </form>
         </div>
     </div>
@@ -201,12 +198,12 @@
 <script src="../js/jquery.js"></script>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#fh5co-header-section').css('background-image', 'url("/images/2.jpg")');
         $("a.active").removeClass();
         $("#PageActuel").val(window.location);
-        $("#InDateEntree").val($("#DateEntree").text());
-        $("#InDateSortie").val($("#DateSortie").text());
+        $("#InDateEntree").val("{{$datedebutNoFormat}}");
+        $("#InDateSortie").val("{{$datefinNoFormat}}");
     });
 </script>
 <!-- END fh5co-page -->
@@ -214,6 +211,6 @@
 @endsection
 @section('scripts')
 <script>
-    document.getElementById('footer').style.display="none";
+    document.getElementById('footer').style.display = "none";
 </script>
 @endsection

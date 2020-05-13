@@ -87,11 +87,11 @@
                 <div class="dates">
                     <span>Dates</span>
                     <div id="showdates">
-                        <label id="DateEntree">{{$datedebut}}</label>
+                        <label id="DateEntree" style="font-size: 13px;">{{$datedebut}}</label>
                         <span>
                             <i class="fas fa-angle-double-right"></i>
                         </span>
-                        <label id="DateSortie">{{$datefin}}</label>
+                        <label id="DateSortie" style="font-size: 13px;">{{$datefin}}</label>
                     </div>
                 </div>
                 <div class="dates">

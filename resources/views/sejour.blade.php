@@ -50,6 +50,10 @@
         color: #fff;
         background-color: #DC3551;
     }
+
+    /* .dataTables_wrapper .dataTables_paginate .paginate_button{
+        background: blueviolet;
+    } */
 </style>
 @endsection
 
@@ -193,42 +197,94 @@ crossorigin="anonymous"></script> -->
         $('#myTable').DataTable({
             "oLanguage": {
                 "sSearch": "Rechercher"
-            }
+            },
+            // scrollY: 300,
+            // scrollX: 0,
+            "language": {
+                "paginate": {
+                    "first": "1",
+                    "last": "Dernier",
+                    "next": "Suivant",
+                    "previous": "Précedent"
+                },
+                // buttons: {
+                //     buttons: [{
+                //             extend: 'copy',
+                //             className: 'copyButton'
+                //         },
+                //         {
+                //             extend: 'excel',
+                //             className: 'excelButton'
+                //         }
+                //     ]
+                // },
+                "zeroRecords": "Aucune demande.",
+                "processing": "En cours de recherche",
+                "info": "",
+                "emptyTable": "Vous n'avez réalisez aucune demande pour l'instant? <a href='about/-1'>Profiter de NOS OFFRES !</a>",
+            },
         });
 
-        var div = document.getElementById("myTable_info");
-        var text = '<label>Afficher <select name="myTable_length" aria-controls="myTable" class=""><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> par pages.</label>';
-        div.innerHTML = text;
-        $("#myTable_length").remove();
-        $("#myTable_paginate").remove();
-        var label = $("#myTable_filter").children('label')[0];
-        $("input[type='search']").addClass("MyInputs");
-        $("input[type='search']").keyup(function() {
+        function reglerAffichageParPage() {
             var div = document.getElementById("myTable_info");
             var text = '<label>Afficher <select name="myTable_length" aria-controls="myTable" class=""><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> par pages.</label>';
             div.innerHTML = text;
-        });
-
-        $('.btnAnnuler').click(function MyClickEvent() {
-            id = $(this).attr("id");
-            $.ajax({
-                url: "{{ route('DemandeReservationClientController.InfoAnnulationDemande') }}",
-                method: "GET",
-                data: {
-                    id_demande: id
-                },
-                dataType: 'json',
-                success: function(data) {
-                    $('.nom_logement').html('-' + data.nom_logement + '-');
-                    $('#photo_logement').attr("src", data.photo_logement);
-                    $('#photo_logement').css("width", "460px");
-                    $('#photo_logement').css("height", "250px");
-                    $('#linkLogement').attr("href", "review/" + data.id_logement);
-                    $('#btnConfirmer').attr("href", "AnnulationDemande/" + id);
-                    $('#dataModal').modal("show");
-                }
+        }
+        reglerAffichageParPage();
+        $("#myTable").click(function() {
+            reglerAffichageParPage();
+            $('.btnAnnuler').click(function MyClickEvent() {
+                id = $(this).attr("id");
+                $.ajax({
+                    url: "{{ route('DemandeReservationClientController.InfoAnnulationDemande') }}",
+                    method: "GET",
+                    data: {
+                        id_demande: id
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        $('.nom_logement').html('-' + data.nom_logement + '-');
+                        $('#photo_logement').attr("src", data.photo_logement);
+                        $('#photo_logement').css("width", "460px");
+                        $('#photo_logement').css("height", "250px");
+                        $('#linkLogement').attr("href", "review/" + data.id_logement);
+                        $('#btnConfirmer').attr("href", "AnnulationDemande/" + id);
+                        $('#dataModal').modal("show");
+                    }
+                });
             });
         });
+        $("#myTable_length").remove();
+        // $("#myTable_paginate").remove();
+        var label = $("#myTable_filter").children('label')[0];
+        $("input[type='search']").addClass("MyInputs");
+        $("input[type='search']").keyup(function() {
+            reglerAffichageParPage();
+        });
+        $("th[scope='col']")[0].click();
+
+        // premiereColonne.click();
+
+        // $('.btnAnnuler').click(function MyClickEvent() {
+        //     id = $(this).attr("id");
+        //     $.ajax({
+        //         url: "{{ route('DemandeReservationClientController.InfoAnnulationDemande') }}",
+        //         method: "GET",
+        //         data: {
+        //             id_demande: id
+        //         },
+        //         dataType: 'json',
+        //         success: function(data) {
+        //             $('.nom_logement').html('-' + data.nom_logement + '-');
+        //             $('#photo_logement').attr("src", data.photo_logement);
+        //             $('#photo_logement').css("width", "460px");
+        //             $('#photo_logement').css("height", "250px");
+        //             $('#linkLogement').attr("href", "review/" + data.id_logement);
+        //             $('#btnConfirmer').attr("href", "AnnulationDemande/" + id);
+        //             $('#dataModal').modal("show");
+        //         }
+        //     });
+        // });
     });
 </script>
 @endsection
