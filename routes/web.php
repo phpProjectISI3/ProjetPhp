@@ -81,7 +81,7 @@ Route::get('sejours','Auth_Role_PersonneController@sejours')->name('sejours');
 Route::get('InfoAnnulationDemande','DemandeReservationClientController@InfoAnnulationDemande')->name('DemandeReservationClientController.InfoAnnulationDemande');
 Route::get('AnnulationDemande/{id}','DemandeReservationClientController@AnnulationDemande')->name('DemandeReservationClientController.AnnulationDemande');
 
-Route::get('read_email/{id}-{idmessage}','Auth_Role_PersonneController@read_email')->name('Auth_Role_PersonneController.read_email');
+Route::get('read_email/{idmessage}','Auth_Role_PersonneController@read_email')->name('Auth_Role_PersonneController.read_email');
 //test commit
 // static
 Route::get('blog', 'PagesController@blog');

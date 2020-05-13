@@ -68,18 +68,7 @@
                                                 <span class="float-right">{{$totalMessage}}</span>
                                             </a>
                                         </li>
-                                        <li class="nav-item mail-section">
-                                            <a class="nav-link text-left" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-mail" role="tab">
-                                                <span><i class="fas fa-eye"></i> Lu</span>
-                                                <span class="float-right">{{$totalLu}}</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item mail-section">
-                                            <a class="nav-link text-left" id="v-pills-Trash-tab" data-toggle="pill" href="#v-pills-Trash" role="tab">
-                                                <span><i class="fas fa-eye-slash"></i> Non Lu</span>
-                                                <span class="float-right">{{$totalnonLu}}</span>
-                                            </a>
-                                        </li>
+                                        <!--  -->
                                     </ul>
                                 </div>
                                 <!-- [ inbox-left section ] end -->
@@ -100,18 +89,18 @@
                                                             <tbody>
                                                                 @foreach($recepteur as $rec)
                                                                 @if($rec->vu)
-                                                                <tr class="read">
-                                                                    <td>
-                                                                        <?php echo $rec->emetteur_ ?>
-                                                                        <?php echo $rec->id_message ?>
-                                                                        <div class="check-star">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td><a href="{{route('Auth_Role_PersonneController.read_email',[ $rec->emetteur_,$rec->id_message])}}" class="email-name waves-effect">{{$rec->nom . ' ' . $rec->prenom }}</a></td>
-                                                                    <td><a href="{{route('Auth_Role_PersonneController.read_email',[ $rec->emetteur_,$rec->id_message])}}" class="email-name waves-effect">{{$rec->message_ecrit}}</a>
+                                                                    <tr class="read">
+                                                                        <td>
+                                                                            <?php echo $rec->emetteur_ ?>
+                                                                            <?php echo $rec->id_message ?>
+                                                                            <div class="check-star">
+                                                                            </div>
+                                                                        </td>
+                                                                        <td><a href="{{route('Auth_Role_PersonneController.read_email',[ $rec->id_message])}}" class="email-name waves-effect">{{$rec->nom . ' ' . $rec->prenom }}</a></td>
+                                                                        <td><a href="{{route('Auth_Role_PersonneController.read_email',[ $rec->id_message])}}" class="email-name waves-effect">{{$rec->message_ecrit}}</a>
 
-                                                                    </td>
-                                                                </tr>
+                                                                        </td>
+                                                                    </tr>
                                                                 @else 
                                                                     <tr class="unread">
                                                                         <td>
@@ -120,8 +109,8 @@
                                                                             <div class="check-star">
                                                                             </div>
                                                                         </td>
-                                                                        <td><a href="{{route('Auth_Role_PersonneController.read_email',[ $rec->emetteur_,$rec->id_message])}}" class="email-name waves-effect">{{$rec->nom . ' ' . $rec->prenom }}</a></td>
-                                                                        <td><a href="{{route('Auth_Role_PersonneController.read_email',[ $rec->emetteur_,$rec->id_message])}}" class="email-name waves-effect">{{$rec->message_ecrit}}</a>
+                                                                        <td><a href="{{route('Auth_Role_PersonneController.read_email',[ $rec->id_message])}}" class="email-name waves-effect">{{$rec->nom . ' ' . $rec->prenom }}</a></td>
+                                                                        <td><a href="{{route('Auth_Role_PersonneController.read_email',[ $rec->id_message])}}" class="email-name waves-effect">{{$rec->message_ecrit}}</a>
                                                                         </td>
                                                                     </tr>
 
@@ -134,43 +123,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade" id="v-pills-mail" role="tabpanel">
-                                            <div class="mail-body-content table-responsive">
-                                                <table class="table">
-                                                    <tbody>
-                                                        @foreach($Lu as $lu)
-                                                            <tr class="read">
-                                                                <td>
-                                                                    <div class="check-star">
-                                                                    </div>
-                                                                </td>
-                                                                <td><a href="{{url('read_email',[ $rec->emetteur_])}}" class="email-name waves-effect">{{$lu->nom . ' ' . $lu->prenom }}</a></td>
-                                                                <td><a href="{{url('read_email',[ $rec->emetteur_])}}" class="email-name waves-effect">{{$lu->message_ecrit}}</a>
-                                                                </td>
-                                                            </tr> 
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade" id="v-pills-Trash" role="tabpanel">
-                                            <div class="mail-body-content table-responsive">
-                                                <table class="table">
-                                                    <tbody>
-                                                        @foreach($nonLu as $nonLlu)
-                                                            <tr class="unread">
-                                                                <td>
-                                                                    <div class="check-star">
-                                                                    </div>
-                                                                </td>
-                                                                <td><a href="{{route('Auth_Role_PersonneController.read_email',[[ $rec->emetteur_],[$rec->id_message]])}}" class="email-name waves-effect">{{$nonLlu->nom . ' ' . $nonLlu->prenom }}</a></td>
-                                                                <td><a href="{{route('Auth_Role_PersonneController.read_email',[ $rec->emetteur_,$rec->id_message])}}" class="email-name waves-effect">{{$nonLlu->message_ecrit}}</a></td>
-                                                            </tr> 
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                                 <!-- [ inbox-right section ] end -->

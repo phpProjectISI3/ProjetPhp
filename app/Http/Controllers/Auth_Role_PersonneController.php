@@ -78,19 +78,17 @@ class Auth_Role_PersonneController extends Controller
 
             $recepteur = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId ");
 
-            $Lu = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId and message_contact.vu = true");
+            // $Lu = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId and message_contact.vu = true");
 
-            $nonLu = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId and message_contact.vu = false");
+            // $nonLu = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId and message_contact.vu = false");
 
             $totalMessage = Message_contact::where('message_contact.recepteur_', $userId)->count();
-            $totalLu = Message_contact::where('message_contact.recepteur_', $userId)->where('vu', 'true')->count();
-            $totalNonLu = Message_contact::where('message_contact.recepteur_', $userId)->where('vu', 'false')->count();
+            // $totalLu = Message_contact::where('message_contact.recepteur_', $userId)->where('vu', 'true')->count();
+            // $totalNonLu = Message_contact::where('message_contact.recepteur_', $userId)->where('vu', 'false')->count();
 
-            return \view("messagerie", compact('emetteur', 'recepteur', 'Lu', 'nonLu'))->withUser(session()->get('userObject'))
+            return \view("messagerie", compact('emetteur', 'recepteur'))->withUser(session()->get('userObject'))
                 ->with('firstLetter', $firstLetter)
-                ->with('totalMessage', $totalMessage)
-                ->with('totalLu', $totalLu)
-                ->with('totalnonLu', $totalNonLu);
+                ->with('totalMessage',$totalMessage);
         } else
             return \redirect("/");
     }
@@ -105,28 +103,26 @@ class Auth_Role_PersonneController extends Controller
             
             $recepteur = DB::select("select message_contact.*,personne.*, auth_role_personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client join auth_role_personne on message_contact.emetteur_ = auth_role_personne.personne_role_ where message_contact.recepteur_ = $userId and  message_contact.id_message = $imessage");
             
+            $emetteur = DB::select("select message_contact.emetteur_ from message_contact where message_contact.id_message = $imessage");
+
             $Lu = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId and message_contact.vu = true");
             
             $nonLu = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId and message_contact.vu = false");
-            echo($idclient. '<br>');
+            
             echo($imessage . '<br>');
 
 
-            DB::table('message_contact')
-                ->where('emetteur_', $idclient)
-                ->where('id_message',$imessage)
-                ->update(['vu' => "true"]);
+            $messages = Message_contact::Find($imessage);
+            $messages->vu = 'true';
+            $messages->save();
 
 
             $totalMessage = Message_contact::where('message_contact.recepteur_', $userId)->count();
-            $totalLu = Message_contact::where('message_contact.recepteur_', $userId)->where('vu', 'true')->count();
-            $totalNonLu = Message_contact::where('message_contact.recepteur_', $userId)->where('vu', 'false')->count();
 
-            return \view("email_read", compact('recepteur', 'Lu', 'nonLu'))->withUser(session()->get('userObject'))
+            return \view("email_read", compact('recepteur'))
+                ->withUser(session()->get('userObject'))
                 ->with('firstLetter', $firstLetter)
-                ->with('totalMessage', $totalMessage)
-                ->with('totalLu', $totalLu)
-                ->with('totalnonLu', $totalNonLu);
+                ->with('totalMessage', $totalMessage);
         } else
             return \redirect("/");
     }
