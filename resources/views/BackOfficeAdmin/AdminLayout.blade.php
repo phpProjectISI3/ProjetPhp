@@ -1,5 +1,6 @@
-<!DOCTYPE html>	
+<!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,13 +9,13 @@
 	<link rel="stylesheet" href="{{ asset('../css/app.css') }}" />
 	<link rel="stylesheet" href="../css/styleSidebarAdmin.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
-	
+
 	<title>@yield('title')</title>
 </head>
+
 <body>
-	<div class="container d-flex align-items-stretch" >
-		<nav id="sidebar" class="img"
-			style="top: 0px;position: fixed;left: 0px;background-image: url(../images/bg_1.jpg);height: 100%;">
+	<div class="container d-flex align-items-stretch">
+		<nav id="sidebar" class="img" style="top: 0px;position: fixed;left: 0px;background-image: url(../images/bg_1.jpg);height: 100%;">
 			<div class="p-4">
 				<h1>
 					<a href="index.html" class="logo">
@@ -38,7 +39,7 @@
 						</a>
 					</li>
 					<li id="demandeLink">
-						<a href="{{url('/Demandes')}}">
+						<a href="{{url('/')}}">
 							<span class="fas fa-scroll mr-3"></span> Demandes
 						</a>
 					</li>
@@ -57,8 +58,8 @@
 							<span class="fas fa-chart-line mr-3"></span> Statistiques
 						</a>
 					</li>
-					<li>
-						<a href="#">
+					<li id="historiqueLink">
+						<a href="{{url('/Historique')}}">
 							<span class="fas fa-history mr-3"></span> Historique
 						</a>
 					</li>
@@ -69,7 +70,9 @@
 						&nbsp;&nbsp;&nbsp;Isi3
 						<a href="#" target="_blank">Grp N&ordm;2</a>.
 						<br />Copyright &copy;
-						<script>document.write(new Date().getFullYear());</script> All rights reserved
+						<script>
+							document.write(new Date().getFullYear());
+						</script> All rights reserved
 					</p>
 				</div>
 			</div>
@@ -81,11 +84,13 @@
 	</div>
 	<script src="{{ asset('../js/app.js') }}"></script>
 
-	<<script src="../js/jquery.js"></script>
-	<script src="../js/popper.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/mainSidebarAdmin.js"></script>
+	<<script src="../js/jquery.js">
+		</script>
+		<script src="../js/popper.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/mainSidebarAdmin.js"></script>
 
 
 </body>
+
 </html>
