@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\DemandeReservation;
+use App\Personne;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -38,12 +39,17 @@ class DemandeReservationClientController extends Controller
         }
     }
 
-    public function AnnulationDemande($id_demande){
+    public function AnnulationDemande($id_demande)
+    {
+        Personne::where('id_client', session()->get('userObject')->id_client)
+            ->update(['point_personne' => (Personne::find(session()->get('userObject')->id_client)->point_personne - 1)]);
+
         DemandeReservation::where('id_demande', $id_demande)
-                            ->update(['annule_par_client' => "true"]);
+            ->update(['annule_par_client' => "true"]);
+
         DemandeReservation::where('id_demande', $id_demande)
-                            ->update(['date_annulation' => Carbon::now()]);
+            ->update(['date_annulation' => Carbon::now()]);
 
         return \redirect("/sejours");
-    } 
+    }
 }

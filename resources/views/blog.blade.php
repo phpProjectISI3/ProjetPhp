@@ -10,7 +10,7 @@
             <div class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
                 <div class="fh5co-intro fh5co-table-cell">
                     <h1 class="text-center">S'informer plus &aacute; propos de nous !</h1>
-                    <p>Des offres exceptionneles vous attendent à <a href="{{url('/about')}}">Nos offres</a></p>
+                    <p>Des offres exceptionneles vous attendent à <a href="{{url('/about/-1')}}">Nos offres</a></p>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="blog-grid" style="background-image: url(/images/gifs/overView.gif);">
+                <div class="blog-grid" style="background-image: url('https://birthdaycake24.com/uploads/worigin/2019/06/18/bd-gif5d0840a2bdea0_503e82571271c49db4e4f645e4cacdae.gif')">
                     <div class="date text-center">
                         <span>01</span>
                         <small>Juillet</small>
@@ -55,7 +55,8 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="blog-grid" style="background-image: url(/images/gifs/hotelDemo.gif);">
+
+                <div class="blog-grid" style="background-image: url('https://media.giphy.com/media/SsaWuR3owjU7a0G8z1/giphy.gif')">
                     <div class="date text-center">
                         <span>14</span>
                         <small>Avril</small>
@@ -77,7 +78,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="blog-grid" style="background-image: url(/images/gifs/restaurantGif.gif);">
+                <div class="blog-grid" style="background-image: url('https://media.giphy.com/media/5SCQo4wceBlpbjC1o5/giphy.gif');">
                     <div class="date text-center">
                         <span>29</span>
                         <small>Sept</small>

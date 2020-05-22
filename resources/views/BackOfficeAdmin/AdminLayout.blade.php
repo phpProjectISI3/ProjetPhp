@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>	
 <html>
 <head>
 	<meta charset="utf-8" />
@@ -8,10 +8,7 @@
 	<link rel="stylesheet" href="{{ asset('../css/app.css') }}" />
 	<link rel="stylesheet" href="../css/styleSidebarAdmin.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
-<!--	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-		rel="stylesheet"
-		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
-		crossorigin="anonymous" />-->
+	
 	<title>@yield('title')</title>
 </head>
 <body>
@@ -41,7 +38,7 @@
 						</a>
 					</li>
 					<li id="demandeLink">
-						<a href="{{url('/demandereservation')}}">
+						<a href="{{url('/Demandes')}}">
 							<span class="fas fa-scroll mr-3"></span> Demandes
 						</a>
 					</li>
@@ -67,9 +64,6 @@
 					</li>
 				</ul>
 
-				
-			
-				
 				<div class="footer" style="position: absolute;  bottom: 0px;">
 					<p>
 						&nbsp;&nbsp;&nbsp;Isi3

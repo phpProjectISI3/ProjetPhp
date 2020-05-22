@@ -31,7 +31,7 @@
         #rightside {
             position: fixed;
             width: 25%;
-            height: 18em;
+            height: 20em;
             background-color: #f5f5f5;
             box-shadow: 0 0 7px rgb(207, 207, 207);
             border-radius: 31px;

@@ -276,7 +276,7 @@
     @section('scripts')
     @show
     <script src="/js/main.js"></script>
-    @if(Route::current()->getName() != 'welcome' && Route::current()->getName() != 'about' && Route::current()->getName() != 'PagesController.selectType' && Route::current()->getName() != 'sejours')
+    @if(Route::current()->getName() != 'welcome' && Route::current()->getName() != 'about' && Route::current()->getName() != 'PagesController.selectType' && Route::current()->getName() != 'sejours' )
     <script src="/js/jquery-2.1.4.min.js"></script>
     @endif
     <!-- Dropdown Menu -->

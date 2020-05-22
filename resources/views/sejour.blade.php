@@ -50,10 +50,6 @@
         color: #fff;
         background-color: #DC3551;
     }
-
-    .paginate_button {
-        background: blueviolet;
-    }
 </style>
 @endsection
 
@@ -133,7 +129,7 @@
                             <img src="images/interdit.png" style="width:25px;" />
                             Annuler
                         </button>
-                        <a href="/Finalisation/{{ $dmd->id_demande }}" class="btn btn-primary disabled" style="border:0px;padding: 5px;font-weight: bold;width: 120px;background-color: #007bff;border-color: #007bff;border-radius: 20px;"  role="button" aria-disabled="true">
+                        <a class="btn btn-primary disabled" style="border:0px;padding: 5px;font-weight: bold;width: 120px;background-color: #007bff;border-color: #007bff;border-radius: 20px;" role="button" aria-disabled="true">
                             <img src="images/money.png" style="width:30px;" />
                             Payer !
                         </a>
@@ -219,28 +215,57 @@ crossorigin="anonymous"></script> -->
             div.innerHTML = text;
         }
         reglerAffichageParPage();
+        $('.btnAnnuler').click(function MyClickEvent() {
+            id = $(this).attr("id");
+            $.ajax({
+                url: "{{ route('DemandeReservationClientController.InfoAnnulationDemande') }}",
+                method: "GET",
+                data: {
+                    id_demande: id
+                },
+                dataType: 'json',
+                success: function(data) {
+                    $('.nom_logement').html('-' + data.nom_logement + '-');
+                    $('#photo_logement').attr("src", data.photo_logement);
+                    $('#photo_logement').css("width", "460px");
+                    $('#photo_logement').css("height", "250px");
+                    $('#linkLogement').attr("href", "review/" + data.id_logement);
+                    $('#btnConfirmer').attr("href", "AnnulationDemande/" + id);
+                    $('#dataModal').modal("show");
+                }
+            });
+        });
         $("#myTable").click(function() { // todo : eviter redendance d'eevent
             reglerAffichageParPage();
-            $('.btnAnnuler').click(function MyClickEvent() {
-                id = $(this).attr("id");
-                $.ajax({
-                    url: "{{ route('DemandeReservationClientController.InfoAnnulationDemande') }}",
-                    method: "GET",
-                    data: {
-                        id_demande: id
-                    },
-                    dataType: 'json',
-                    success: function(data) {
-                        $('.nom_logement').html('-' + data.nom_logement + '-');
-                        $('#photo_logement').attr("src", data.photo_logement);
-                        $('#photo_logement').css("width", "460px");
-                        $('#photo_logement').css("height", "250px");
-                        $('#linkLogement').attr("href", "review/" + data.id_logement);
-                        $('#btnConfirmer').attr("href", "AnnulationDemande/" + id);
-                        $('#dataModal').modal("show");
-                    }
-                });
-            });
+
+            // function MyClickEvent() {
+            //     id = $(this).attr("id");
+            //     $.ajax({
+            //         url: "{{ route('DemandeReservationClientController.InfoAnnulationDemande') }}",
+            //         method: "GET",
+            //         data: {
+            //             id_demande: id
+            //         },
+            //         dataType: 'json',
+            //         success: function(data) {
+            //             $('.nom_logement').html('-' + data.nom_logement + '-');
+            //             $('#photo_logement').attr("src", data.photo_logement);
+            //             $('#photo_logement').css("width", "460px");
+            //             $('#photo_logement').css("height", "250px");
+            //             $('#linkLogement').attr("href", "review/" + data.id_logement);
+            //             $('#btnConfirmer').attr("href", "AnnulationDemande/" + id);
+            //             $('#dataModal').modal("show");
+            //         }
+            //     });
+            // }
+            try {
+                $(".btnAnnuler").unbind("click", MyClickEvent);
+            } catch (erreur) {
+                // console.log(erreur);
+            } finally {
+                console.log("block finaly !")
+                // $('.btnAnnuler').bind("click", MyClickEvent);
+            }
         });
         $("#myTable_length").remove();
         // $("#myTable_paginate").remove();
@@ -250,29 +275,6 @@ crossorigin="anonymous"></script> -->
             reglerAffichageParPage();
         });
         $("th[scope='col']")[0].click();
-
-        // premiereColonne.click();
-
-        // $('.btnAnnuler').click(function MyClickEvent() {
-        //     id = $(this).attr("id");
-        //     $.ajax({
-        //         url: "{{ route('DemandeReservationClientController.InfoAnnulationDemande') }}",
-        //         method: "GET",
-        //         data: {
-        //             id_demande: id
-        //         },
-        //         dataType: 'json',
-        //         success: function(data) {
-        //             $('.nom_logement').html('-' + data.nom_logement + '-');
-        //             $('#photo_logement').attr("src", data.photo_logement);
-        //             $('#photo_logement').css("width", "460px");
-        //             $('#photo_logement').css("height", "250px");
-        //             $('#linkLogement').attr("href", "review/" + data.id_logement);
-        //             $('#btnConfirmer').attr("href", "AnnulationDemande/" + id);
-        //             $('#dataModal').modal("show");
-        //         }
-        //     });
-        // });
     });
 </script>
 @endsection

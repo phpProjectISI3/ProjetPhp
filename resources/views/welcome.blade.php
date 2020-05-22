@@ -67,7 +67,7 @@
     <div class="container">
         <div class="row">
             <div id="availability" style="z-index: 80;">
-                <form action="multipleabout" method="GET">
+                <form action="multipleabout" method="GET" autocomplete="off">
                     <!-- @csrf -->
                     <div class="a-col">
                         <section>
@@ -88,14 +88,14 @@
                     <div class="a-col alternate">
                         <div class="input-field">
                             <label for="date-start">Date Arrivée</label>
-                            <input type="text" name="date-start"  class="form-control"
+                            <input type="text" name="date-start"  class="form-control" placeholder="Mois/Jour/Année"
                                 id="date-start" Required />
                         </div>
                     </div>
                     <div class="a-col alternate">
                         <div class="input-field">
                             <label for="date-end">Date Sortie</label>
-                            <input type="text" name="date-end"  class="form-control" id="date-end" Required/>
+                            <input type="text" name="date-end"  class="form-control" placeholder="Mois/Jour/Année" id="date-end" Required/>
                         </div>
                     </div>
                     <div class="a-col action">

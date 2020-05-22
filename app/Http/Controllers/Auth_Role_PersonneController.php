@@ -14,7 +14,9 @@ class Auth_Role_PersonneController extends Controller
 {
     public function VerifyCredentials(Request $request)
     {
-        $user = collect(DB::select("select id_client, nom, prenom, libelle_sexe, est_marie, nbr_enfant_scolarise, nbr_enfant_non_scolarise, libelle_grade, date_naissance, point_personne, username_email, mot_de_passe,description_role,libelle_role from sexe inner join personne on sexe.id_sexe = personne.sexe_ inner join grade on grade.id_grade = personne.grade_ inner join auth_role_personne on personne.id_client = auth_role_personne.personne_role_ inner join auth_role on auth_role_personne.auth_role_ = auth_role.id_role where username_email = '" . $request->get('email') . "' and mot_de_passe = '" . $request->get('motdepasse') . "'"))
+        $user = collect(DB::select("select id_client, nom, prenom, libelle_sexe, est_marie, nbr_enfant_scolarise, nbr_enfant_non_scolarise, libelle_grade, date_naissance, point_personne, username_email, mot_de_passe,description_role,libelle_role
+        from sexe inner join personne on sexe.id_sexe = personne.sexe_ inner join grade on grade.id_grade = personne.grade_ inner join auth_role_personne on personne.id_client = auth_role_personne.personne_role_ inner join auth_role on auth_role_personne.auth_role_ = auth_role.id_role 
+        where username_email = '" . $request->get('email') . "' and mot_de_passe = '" . $request->get('motdepasse') . "'"))
             ->first();
         if (isset($user) == true) {
             $request->session()->put('userObject', $user);
@@ -71,7 +73,7 @@ class Auth_Role_PersonneController extends Controller
     {
         if (Auth_Role_PersonneController::IsAuthentificated()) {
             $userId = session()->get('userObject')->id_client;
-            
+
             $emetteur = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.emetteur_ = $userId ");
 
             $firstLetter = session()->get('userObject')->nom[0];
@@ -84,25 +86,25 @@ class Auth_Role_PersonneController extends Controller
 
             return \view("messagerie", compact('emetteur', 'recepteur'))->withUser(session()->get('userObject'))
                 ->with('firstLetter', $firstLetter)
-                ->with('totalMessage',$totalMessage);
+                ->with('totalMessage', $totalMessage);
         } else
             return \redirect("/");
     }
 
     public function read_email($imessage)
     {
-        
+
         if (Auth_Role_PersonneController::IsAuthentificated()) {
             $userId = session()->get('userObject')->id_client;
-            
+
             $firstLetter = session()->get('userObject')->nom[0];
-            
+
             $recepteur = DB::select("select message_contact.*,personne.*, auth_role_personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client join auth_role_personne on message_contact.emetteur_ = auth_role_personne.personne_role_ where message_contact.recepteur_ = $userId and  message_contact.id_message = $imessage");
-            
+
             $Lu = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId and message_contact.vu = true");
-            
+
             $nonLu = DB::select("select message_contact.*,personne.* from message_contact join personne on message_contact.emetteur_ = personne.id_client where message_contact.recepteur_ = $userId and message_contact.vu = false");
-            
+
 
 
             $messages = Message_contact::Find($imessage);
@@ -141,15 +143,20 @@ class Auth_Role_PersonneController extends Controller
 
     public function loginAndRedirectProfil(Request $request)
     {
-        if ($this->VerifyCredentials($request))
+        if ($this->VerifyCredentials($request)) {
+            if (session()->get('userObject')->libelle_grade == 'Administratif')
+                return Auth_Role_PersonneController::AuthentificatedGoingToPage("Logements");
             return Auth_Role_PersonneController::AuthentificatedGoingToPage("profilUser");
-        else
+        } else
             return \redirect("/");
     }
 
     public function sejours()
     {
-        $demandes = DB::select("select demande_reservation.id_demande, demande_reservation.date_demande , demande_reservation.date_debut, demande_reservation.date_fin , logement.nom_logement , demande_reservation.refuse_par_admin, demande_reservation.annule_par_client, demande_reservation.date_annulation from demande_reservation inner join logement on demande_reservation.logement_ = logement.id_logement where personne_ = " . session()->get('userObject')->id_client);
-        return \view("sejour", \compact('demandes'));
+        if (Auth_Role_PersonneController::IsAuthentificated()) {
+            $demandes = DB::select("select demande_reservation.id_demande, demande_reservation.date_demande , demande_reservation.date_debut, demande_reservation.date_fin , logement.nom_logement , demande_reservation.refuse_par_admin, demande_reservation.annule_par_client, demande_reservation.date_annulation from demande_reservation inner join logement on demande_reservation.logement_ = logement.id_logement where personne_ = " . session()->get('userObject')->id_client);
+            return \view("sejour", \compact('demandes'));
+        } else
+            return \redirect("/");
     }
 }

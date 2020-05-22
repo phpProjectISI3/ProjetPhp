@@ -150,7 +150,25 @@ class PagesController extends Controller
         $message = new Message_contact();
         $message->emetteur_ = $request->emeteur;
         $message->message_ecrit = $request->message;
+        $message->recepteur_ = 1012;
+        $message->save();
+
+        $message = new Message_contact();
+        $message->emetteur_ = $request->emeteur;
+        $message->message_ecrit = $request->message;
         $message->recepteur_ = 1013;
+        $message->save();
+
+        $message = new Message_contact();
+        $message->emetteur_ = $request->emeteur;
+        $message->message_ecrit = $request->message;
+        $message->recepteur_ = 1014;
+        $message->save();
+
+        $message = new Message_contact();
+        $message->emetteur_ = $request->emeteur;
+        $message->message_ecrit = $request->message;
+        $message->recepteur_ = 1015;
         $message->save();
 
         return response()->json(['success' => 'submitted !']);

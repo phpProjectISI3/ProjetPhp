@@ -83,10 +83,10 @@
                                                 </div>
                                                 <div style="margin-left:3.2em;">
                                                     <a>
-                                                        <p class="user-name text-dark mb-1"><strong>{{$recepteur[0]->nom . ' ' . $recepteur[0]->prenom}}</strong></p>
+                                                        <p class="user-name text-dark mb-1"><strong>De la part de : {{$recepteur[0]->nom . ' ' . $recepteur[0]->prenom}}</strong></p>
                                                     </a>
                                                     <a class="user-mail txt-muted" >
-                                                        <p class="user-name text-dark mb-1"><strong>From:{{$recepteur[0]->username_email}}</strong></p>
+                                                        <p class="user-name text-dark mb-1"><strong>&lt; {{$recepteur[0]->username_email}} &gt; </strong></p>
                                                     </a>
                                                 </div>
                                             </div>

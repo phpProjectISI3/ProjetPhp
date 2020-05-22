@@ -92,5 +92,5 @@ Route::get('service', 'PagesController@service');
 Route::resource('Logements', 'LogementController');
 Route::get('/Logements/import_categories', 'LogementController@import_categories')->name('LogementController.import_categories');
 
-Route::resource('demandereservation', 'DemandeReservationController')->only('index');
+Route::get('Demandes', 'DemandeReservationController@index');
 

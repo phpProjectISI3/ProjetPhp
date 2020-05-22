@@ -68,7 +68,7 @@
 					<form id="contactForm">
 						<div class="col-md-6">
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Nom Complet (facultatif..)" />
+								<input type="text" id="text_nom" class="form-control" placeholder="Nom Complet (facultatif..)" />
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -83,7 +83,7 @@
 						</div>
 						<div class="col-md-12">
 							<div class="form-group">
-								<input id="BtnEnvoyer" type="submit" value="Envoyer" class="btn btn-primary" />
+								<input id="BtnEnvoyer" type="submit" value="Envoyer" class="btn btn-primary" style="height: unset;width:unset;" />
 
 								<div class="notifAlert hide">
 									<span class="fas fa-envelope-open-text"></span>
@@ -143,7 +143,10 @@
                     setTimeout(function () {
                         $('.notifAlert').removeClass("show");
                         $('.notifAlert').addClass("hide");
-                    }, 5000);
+					}, 5000);
+					$("#id_client").val("");
+					$("#message_ecrit").val("");
+					$("#text_nom").val("");
                 }
             });
         });
