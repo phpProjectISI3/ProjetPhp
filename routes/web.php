@@ -94,6 +94,8 @@ Route::get('/Logements/import_categories', 'LogementController@import_categories
 
 Route::get('Admin/Historique', 'DemandeReservationController@historique');
 Route::get('Admin/Facturation', 'DemandeReservationController@Facturation');
+Route::get('Admin/Clients', 'PersonneController@Clients');
+Route::get('Admin/Clients/Ajouter-Nouveau', 'PersonneController@AjouterClients')->name("Clients.create");
 
 Route::post('RefuserDemande', 'DemandeReservationController@RefuserDemande')->name("RefuserDemande");
 Route::post('AccepterDemande', 'DemandeReservationController@AccepterDemande')->name("AccepterDemande");

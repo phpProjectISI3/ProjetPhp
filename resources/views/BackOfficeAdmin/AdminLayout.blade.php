@@ -33,8 +33,8 @@
 							<span class="fas fa-building mr-3"></span> Logements
 						</a>
 					</li>
-					<li>
-						<a href="#">
+					<li id="clientLink">
+						<a href="{{url('Admin/Clients')}}">
 							<span class="fas fa-users mr-3"></span> Clients
 						</a>
 					</li>
