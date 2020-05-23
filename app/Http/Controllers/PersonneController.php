@@ -72,6 +72,12 @@ class PersonneController extends Controller
 
     public function AjouterClients()
     {
+        return view("BackOfficeAdmin.GestionDesClients.AjouterClient");
+    }
 
+    public function EnregistrerClient(Request $request)
+    {
+
+        return \redirect('Admin/Clients');
     }
 }

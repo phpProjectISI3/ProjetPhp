@@ -28,7 +28,7 @@
 
 @section('content')
 
-<a href="{{route('Clients.create')}}" style="color: white;margin-left: 2%;">
+<a style="color: white;margin-left: 2%;" data-toggle="modal" data-target="#dataModal">
     <button class=" monbtn">
         <i class="fa fa-plus" aria-hidden="true"></i>
         <strong>Nouveau Client</strong>
@@ -110,39 +110,108 @@
             @endforeach
         </tbody>
     </table>
-</div>
 
-<script src="/js/modernizr-2.6.2.min.js"></script>
-<script src="../js/jquery.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" defer></script>
-<script>
-    $(document).ready(function() {
-        $("#sidebar ul li.active").removeClass();
-        $("#clientLink").addClass('active');
-        $('#MyTable').DataTable({
-            "order": [],
-            "oLanguage": {
-                "sSearch": "Rechercher"
-            },
-            "pageLength": 25,
-            "language": {
-                "sLengthMenu": "Afficher _MENU_ lignes",
-                "paginate": {
-                    "first": "1",
-                    "last": "Dernier",
-                    "next": "Suivant",
-                    "previous": "Précedent"
+    <div id="dataModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">
+                        <img src="{{url('images/Add_user.png')}}" style="width: 50px;">
+                        &nbsp;
+                        Ajouter nouveau client
+                    </h3>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body" id="employee_detail">
+                    <form action="{{ route('EnregistrerClient') }}" method="post">
+                        @csrf
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="InputNom">Nom</label>
+                                <input type="text" style="border:solid;color: black;" class="form-control" name="InputNom" id="InputNom" placeholder="Nom">
+
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="InputPrenom">Prénom</label>
+                                <input type="text" style="border:solid;color: black;" name="InputPrenom" class="form-control" id="InputPrenom" placeholder="Prénom">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="InputEnfant_sco">Enfant scolarisé</label>
+                                <input type="number" style="border:solid;color: black;" class="form-control" name="InputEnfant_sco" id="InputEnfant_sco">
+
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="InputEnfant_non_sco">Enfant non scolarisé</label>
+                                <input type="number" style="border:solid;color: black;" class="form-control" id="InputEnfant_non_sco" name="InputEnfant_non_sco">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="InputSexe">Sexe</label>
+                                <select style="border:solid;color: black;" class="form-control" name="sexe" id="InputSexe">
+                                    <option value="1" selected>Homme</option>
+                                    <option value="2">Femme</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="InputGrade">Grade</label>
+                                <select style="border:solid;color: black;" class="form-control" id="InputGrade" name="InputGrade" aria-describedby="emailHelp" placeholder="Enter email">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="InputSituation">Situation</label>
+                                <select style="border:solid;color: black;" class="form-control" id="InputSituation" name="InputSituation">
+                                    <option selected>Choose...</option>
+                                    <option>...</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="InputDateN">Date de naissance</label>
+                            <input type="date" style="border:solid;color: black;" class="form-control" id="InputDateN" name="InputDateN">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="margin-left: 80%;">Ajouter</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/modernizr-2.6.2.min.js"></script>
+    <script src="../js/jquery.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" defer></script>
+    <script>
+        $(document).ready(function() {
+            $("#sidebar ul li.active").removeClass();
+            $("#clientLink").addClass('active');
+            $('#MyTable').DataTable({
+                "order": [],
+                "oLanguage": {
+                    "sSearch": "Rechercher"
                 },
-                "zeroRecords": "Aucune Clients.",
-                "processing": "En cours de recherche",
-                "emptyTable": "Aucun Clients.",
-                "info": "",
-            },
+                "pageLength": 25,
+                "language": {
+                    "sLengthMenu": "Afficher _MENU_ lignes",
+                    "paginate": {
+                        "first": "1",
+                        "last": "Dernier",
+                        "next": "Suivant",
+                        "previous": "Précedent"
+                    },
+                    "zeroRecords": "Aucune Clients.",
+                    "processing": "En cours de recherche",
+                    "emptyTable": "Aucun Clients.",
+                    "info": "",
+                },
+            });
+
         });
-
-    });
-</script>
-
-@endsection
+    </script>
+    @endsection

@@ -82,7 +82,7 @@ Route::get('InfoAnnulationDemande', 'DemandeReservationClientController@InfoAnnu
 Route::get('AnnulationDemande/{id}', 'DemandeReservationClientController@AnnulationDemande')->name('DemandeReservationClientController.AnnulationDemande');
 
 Route::get('read_email/{idmessage}', 'Auth_Role_PersonneController@read_email')->name('Auth_Role_PersonneController.read_email');
-//test commit
+
 // static
 Route::get('blog', 'PagesController@blog');
 Route::get('service', 'PagesController@service');
@@ -99,3 +99,5 @@ Route::get('Admin/Clients/Ajouter-Nouveau', 'PersonneController@AjouterClients')
 
 Route::post('RefuserDemande', 'DemandeReservationController@RefuserDemande')->name("RefuserDemande");
 Route::post('AccepterDemande', 'DemandeReservationController@AccepterDemande')->name("AccepterDemande");
+
+Route::post('EnregistrerClient', 'PersonneController@EnregistrerClient')->name("EnregistrerClient");

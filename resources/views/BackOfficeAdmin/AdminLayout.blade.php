@@ -7,7 +7,7 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}" />
 
 	<link rel="stylesheet" href="{{ asset('../css/app.css') }}" />
-	<link rel="stylesheet" href="../css/styleSidebarAdmin.css" />
+	<link rel="stylesheet" href="{{ url('../css/styleSidebarAdmin.css')}}" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
 
 	<title>@yield('title')</title>
@@ -15,11 +15,11 @@
 
 <body>
 	<div class="container d-flex align-items-stretch">
-		<nav id="sidebar" class="img" style="top: 0px;position: fixed;left: 0px;background-image: url(../images/bg_1.jpg);height: 100%;">
+		<nav id="sidebar" class="img" style="top: 0px;position: fixed;left: 0px;background-image: url({{ url('../images/bg_1.jpg')}});height: 100%;">
 			<div class="p-4">
 				<h1>
 					<a href="index.html" class="logo">
-						<img src="../images/LogoIliass.png" alt="Agence de réservations" style="width: 150px;margin-left:30px;" />
+						<img src="{{ url('../images/LogoIliass.png')}}" alt="Agence de réservations" style="width: 150px;margin-left:30px;" />
 					</a>
 				</h1>
 				<ul class="list-unstyled components mb-5">
@@ -84,11 +84,11 @@
 	</div>
 	<script src="{{ asset('../js/app.js') }}"></script>
 
-	<<script src="../js/jquery.js">
-		</script>
-		<script src="../js/popper.js"></script>
-		<script src="../js/bootstrap.min.js"></script>
-		<script src="../js/mainSidebarAdmin.js"></script>
+	<script src="{{ url('../js/jquery.js')}}">
+	</script>
+	<script src="{{ url('../js/popper.js')}}"></script>
+	<script src="{{ url('../js/bootstrap.min.js')}}"></script>
+	<script src="{{ url('../js/mainSidebarAdmin.js')}}"></script>
 
 
 </body>

@@ -11674,7 +11674,7 @@ a[data-toggle="collapse"] {
 .form-control {
     height: 40px !important;
     background: #fff;
-    color: #fff !important;
+    color: #fff;
     font-size: 13px;
     border-radius: 4px;
     -webkit-box-shadow: none !important;
