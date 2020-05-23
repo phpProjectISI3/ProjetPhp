@@ -12,18 +12,6 @@
     }
 </style>
 
-<!-- <div class="fh5co-parallax" data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-center fh5co-table">
-                <div class="fh5co-intro fh5co-table-cell">
-                    <h1 class="text-center" style="margin-top: 5%;background-color:aqua;">Demandes Reservations</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 <script src="../js/jquery.js"></script>
 <script>
     function Refuser(id) {
@@ -180,13 +168,13 @@
 
                     @elseif(DB::table('facturation')->join('reservation_logement','facturation.reservation_logement_','=','reservation_logement.id_reservation')->join('demande_reservation','demande_reservation.id_demande','=','reservation_logement.demande_reservation_')->where('demande_reservation.id_demande',$row->id_demande)->exists())
                     <div class="alert alert-primary" role="alert">
-                        <img src="images/money_blue.png" style="width: 25px;" />
+                        <img src="{{url('images/money_blue.png')}}" style="width: 25px;" />
                         Séjour passé et payé.
                     </div>
 
                     @elseif(DB::table('reservation_logement')->where('demande_reservation_',$row->id_demande)->exists())
                     <div class="alert alert-success" role="alert">
-                        <img src="images/accorder.png" style="width: 25px;" />
+                        <img src="{{url('images/accorder.png')}}" style="width: 25px;" />
                         Par un ADMIN
                     </div>
 
@@ -204,7 +192,7 @@
                     </div>
                     <div id="div-dmd-accepte-{{$row->id_demande}}" style="display: none;">
                         <div class="alert alert-success" role="alert">
-                            <img src="images/accorder.png" style="width: 25px;" />
+                            <img src="{{url('images/accorder.png')}}" style="width: 25px;" />
                             Par un ADMIN
                         </div>
                     </div>
@@ -225,11 +213,6 @@
         </tbody>
     </table>
 </div>
-<!-- <script src="/js/jquery-2.1.4.min.js"></script> -->
-<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
-integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" 
-crossorigin="anonymous"></script> -->
-
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -239,11 +222,13 @@ crossorigin="anonymous"></script> -->
         $("#sidebar ul li.active").removeClass();
         $("#historiqueLink").addClass('active');
         $('#MyTable').DataTable({
+            "order": [],
             "oLanguage": {
                 "sSearch": "Rechercher"
             },
             "pageLength": 25,
             "language": {
+                "sLengthMenu": "Afficher _MENU_ lignes",
                 "paginate": {
                     "first": "1",
                     "last": "Dernier",
@@ -252,14 +237,10 @@ crossorigin="anonymous"></script> -->
                 },
                 "zeroRecords": "Aucune demande.",
                 "processing": "En cours de recherche",
-                "emptyTable": "Vous n'avez réalisez aucune demande pour l'instant, <a href='about/-1'>Profiter de NOS OFFRES !</a>",
                 "info": "",
             },
         });
 
-        function Refuser(id) {
-            alert(id);
-        }
     });
 </script>
 

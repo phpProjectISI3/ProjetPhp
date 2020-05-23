@@ -48,8 +48,8 @@
 							<span class="fas fa-edit mr-3"></span> Réservations
 						</a>
 					</li>
-					<li>
-						<a href="#">
+					<li id="FacturationLink">
+						<a href="{{url('Admin/Facturation')}}">
 							<span class="fas fa-file-invoice-dollar mr-3"></span> Facturations
 						</a>
 					</li>
@@ -59,7 +59,7 @@
 						</a>
 					</li>
 					<li id="historiqueLink">
-						<a href="{{url('/Historique')}}">
+						<a href="{{url('Admin/Historique')}}">
 							<span class="fas fa-history mr-3"></span> Historique
 						</a>
 					</li>

@@ -407,7 +407,7 @@ VALUES
 ('2020-05-25',1000,6,'2020-06-08','2020-06-13',false,NULL,false,NULL),/* meme logement meme date mais accepte et payé ! */
 
 ('2019-02-02', 1000, 3, '2019-02-15', '2019-02-21', false, NULL, false, NULL),/*en attente*/
-('2019-02-02', 1000, 4, '2019-03-15', '2019-03-21', false, NULL, false, NULL),/*en attente*/
+('2019-02-02', 1000, 4, '2019-02-20', '2019-03-21', false, NULL, false, NULL),/*en attente*/
 ('2019-03-12', 1000, 7, '2020-06-15', '2020-06-22', false, NULL, false, NULL),/*accepté ! */
 
 ('2020-05-01', 1000, 1, '2020-05-18', '2020-05-25', true, '2020-05-05', false, NULL),/*refuser par admin*/
@@ -415,7 +415,11 @@ VALUES
 ('2020-05-01', 1003, 1, '2020-05-28', '2020-06-04', true, '2020-05-05', false, NULL),/*refuser par admin*/
 
 ('2019-01-02', 1000, 2, '2019-02-01', '2019-02-08', false, NULL, true, '2019-01-15'),/*annule par client*/
-('2020-04-09', 1003, 1, '2020-05-20', '2020-05-25', false, NULL, true, '2020-04-30');/*annule par client*/
+('2020-04-09', 1003, 1, '2020-05-20', '2020-05-25', false, NULL, true, '2020-04-30'),/*annule par client*/
+
+('2020-05-02',1005,6,'2020-06-26','2020-07-31',false,NULL,false,NULL),/* meme logement meme date et en attente !*/
+('2020-05-06',1002, 6,'2020-06-26','2020-07-31',false,NULL,false,NULL),/* meme logement meme date et en attente !*/
+('2020-05-25',1000,6,'2020-06-26','2020-07-31',false,NULL,false,NULL);/* meme logement meme date et en attente ! */
 
 --insert RESERVATION_LOGEMENT
 INSERT INTO public.reservation_logement (demande_reservation_)

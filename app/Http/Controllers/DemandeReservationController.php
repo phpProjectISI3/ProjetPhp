@@ -9,12 +9,23 @@ use Illuminate\Support\Facades\DB;
 
 class DemandeReservationController extends Controller
 {
+    public function Facturation()
+    {
+        $demandes_payees = DB::select("select personne.id_client, concat(personne.prenom , ' ' , personne.nom) as nom_complet , personne.point_personne , demande_reservation.id_demande, demande_reservation.date_demande , demande_reservation.date_debut, demande_reservation.date_fin , logement.nom_logement 
+        from facturation inner join reservation_logement on facturation.reservation_logement_ = reservation_logement.id_reservation
+                         inner join demande_reservation on demande_reservation.id_demande = reservation_logement.demande_reservation_
+                         inner join personne on personne.id_client = demande_reservation.personne_
+                         inner join logement on logement.id_logement = demande_reservation.logement_");
+        return view("BackOfficeAdmin.Facturation", compact('demandes_payees'));
+    }
+
     public function historique()
     {
         $demandes = \DB::select("select personne.id_client, concat(personne.prenom , ' ' , personne.nom) as nom_complet  , personne.point_personne , demande_reservation.id_demande, demande_reservation.date_demande , demande_reservation.date_debut, demande_reservation.date_fin , logement.nom_logement , demande_reservation.refuse_par_admin,  demande_reservation.date_refus ,demande_reservation.annule_par_client, demande_reservation.date_annulation 
         from demande_reservation inner join logement on demande_reservation.logement_ = logement.id_logement 
-                                 inner join personne on personne.id_client = demande_reservation.personne_");
-        return view('Historique', compact('demandes'));
+                                 inner join personne on personne.id_client = demande_reservation.personne_
+        order by logement.nom_logement, demande_reservation.date_debut, personne.point_personne asc");
+        return view('BackOfficeAdmin.Historique', compact('demandes'));
     }
 
     public function RefuserDemande(Request $request)
@@ -50,32 +61,32 @@ class DemandeReservationController extends Controller
                                              where demande_reservation.date_debut BETWEEN  '$date_debutt' and '$date_finn' 
                                              or demande_reservation.date_fin BETWEEN '$date_debutt' and '$date_finn'");
 
-            // DB::select(DB::raw("
-            // update demande_reservation
-            // set refuse_par_admin = true, date_refus = CURRENT_DATE
-            // where id_demande in (
-            //     select demande_reservation.id_demande 
-            //     from demande_reservation
-            //     where demande_reservation.date_debut BETWEEN  '$date_debutt' and '$date_finn' 
-            //         or demande_reservation.date_fin BETWEEN '$date_debutt' and '$date_finn' 
-            // )"));
+            DB::select(DB::raw("
+            update demande_reservation
+            set refuse_par_admin = true, date_refus = CURRENT_DATE
+            where id_demande in (
+                select demande_reservation.id_demande 
+                from demande_reservation
+                where demande_reservation.date_debut BETWEEN  '$date_debutt' and '$date_finn' 
+                    or demande_reservation.date_fin BETWEEN '$date_debutt' and '$date_finn' 
+            )"));
 
-            // DB::select(DB::raw("
-            // update demande_reservation
-            // set refuse_par_admin = true, date_refus = CURRENT_DATE
-            // where id_demande in (
-            //     select demande_reservation.id_demande 
-            //     from demande_reservation
-            //     where '$date_debutt' BETWEEN demande_reservation.date_debut and demande_reservation.date_fin
-            //     and '$date_finn' BETWEEN demande_reservation.date_debut and demande_reservation.date_fin 
-            // )"));
+            DB::select(DB::raw("
+            update demande_reservation
+            set refuse_par_admin = true, date_refus = CURRENT_DATE
+            where id_demande in (
+                select demande_reservation.id_demande 
+                from demande_reservation
+                where '$date_debutt' BETWEEN demande_reservation.date_debut and demande_reservation.date_fin
+                and '$date_finn' BETWEEN demande_reservation.date_debut and demande_reservation.date_fin 
+            )"));
 
-            // \App\DemandeReservation::where('id_demande', $id_demande)
-            //     ->update(['refuse_par_admin' => false, 'date_refus' => NULL]);
+            \App\DemandeReservation::where('id_demande', $id_demande)
+                ->update(['refuse_par_admin' => false, 'date_refus' => NULL]);
 
-            // $reservation = new ReservationLogement;
-            // $reservation->demande_reservation_ = $id_demande;
-            // $reservation->save();
+            $reservation = new ReservationLogement;
+            $reservation->demande_reservation_ = $id_demande;
+            $reservation->save();
 
             $dmd_refusees = array(
                 'premier_tableau' => $premier_tableau_dmd_refuse,
