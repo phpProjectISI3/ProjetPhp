@@ -24,7 +24,7 @@
         </div>
     </div>
 </div> -->
-
+<script src="../js/jquery.js"></script>
 <script>
     function Refuser(id) {
         $.ajaxSetup({
@@ -41,6 +41,65 @@
             dataType: 'json',
             success: function(data) {
                 console.log(data);
+                $("#rep-att-" + id).fadeOut(2000);
+                $("#div-dmd-" + id).fadeOut(2000);
+
+                setTimeout(function() {
+                    $("#div-dmd-refuse-" + id).fadeIn(2000);
+                    $("#rep-refus-" + id).fadeIn(2000);
+                }, 2000);
+            }
+        });
+    }
+
+    function Accepter(id) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: "{{ route('AccepterDemande') }}",
+            method: "POST",
+            data: {
+                id_demande: id
+            },
+            dataType: 'json',
+            success: function(demande_refusees) {
+
+                demande_refusees.premier_tableau.forEach(function(id_dmd) {
+                    console.log(id_dmd.id_demande);
+                    if (id_dmd.id_demande != demande_refusees.dmd_exception) {
+
+                        $("#rep-att-" + id_dmd.id_demande).fadeOut(2000);
+                        $("#div-dmd-" + id_dmd.id_demande).fadeOut(2000);
+
+                        setTimeout(function() {
+                            $("#div-dmd-refuse-" + id_dmd.id_demande).fadeIn(2000);
+                            $("#rep-refus-" + id_dmd.id_demande).fadeIn(2000);
+                        }, 2000);
+                    }
+                })
+
+                demande_refusees.deuxieme_tableau.forEach(function(id_dmd) {
+
+                    if (id_dmd.id_demande != demande_refusees.dmd_exception) {
+                        $("#rep-att-" + id_dmd.id_demande).fadeOut(2000);
+                        $("#div-dmd-" + id_dmd.id_demande).fadeOut(2000);
+
+                        setTimeout(function() {
+                            $("#div-dmd-refuse-" + id_dmd.id_demande).fadeIn(2000);
+                            $("#rep-refus-" + id_dmd.id_demande).fadeIn(2000);
+                        }, 2000);
+                    }
+                })
+
+                $("#rep-att-" + id).fadeOut(2000);
+                $("#div-dmd-" + id).fadeOut(2000);
+                setTimeout(function() {
+                    $("#div-dmd-accepte-" + id).fadeIn(2000);
+                    $("#rep-accpt-" + id).fadeIn(2000);
+                }, 2000);
             }
         });
     }
@@ -93,11 +152,18 @@
 
                     @elseif(DB::table('reservation_logement')->where('demande_reservation_',$row->id_demande)->exists())
                     <span class="badge badge-success">
-                        <abbr title="15 janvier 2020">Accordée</abbr>
+                        Accordée
                     </span>
 
                     @else
-                    <span class="" style="color: dodgerblue;font-weight: bold;text-decoration: underline;">En attente</span>
+                    <span class="" style="color: dodgerblue;font-weight: bold;text-decoration: underline;" id="rep-att-{{$row->id_demande}}">En attente</span>
+                    <span style="color: red;font-weight: bold;text-decoration: underline;display:none;" id="rep-refus-{{$row->id_demande}}">
+                        <abbr title="Aujourd'hui">Refusée</abbr>
+                    </span>
+                    <span class="badge badge-success" style="display:none;" id="rep-accpt-{{$row->id_demande}}">
+                        Accordée
+                    </span>
+
 
                     @endif
                 </td>
@@ -125,14 +191,28 @@
                     </div>
 
                     @else
-                    <a class="btn btn-danger" onclick='Refuser({{$row->id_demande}})'>
-                        <i class="fas fa-user-slash"></i>
-                        Refuser
-                    </a>
-                    <a class="btn btn-success">
-                        <i class="fas fa-clipboard-check"></i>
-                        Accorder
-                    </a>
+                    <div id="div-dmd-{{$row->id_demande}}">
+                        <a class="btn btn-danger" onclick='Refuser({{$row->id_demande}})'>
+                            <i class="fas fa-user-slash"></i>
+                            Refuser
+                        </a>
+                        <a class="btn btn-success" onclick='Accepter({{$row->id_demande}})'>
+                            <i class="fas fa-clipboard-check"></i>
+                            Accorder
+                        </a>
+
+                    </div>
+                    <div id="div-dmd-accepte-{{$row->id_demande}}" style="display: none;">
+                        <div class="alert alert-success" role="alert">
+                            <img src="images/accorder.png" style="width: 25px;" />
+                            Par un ADMIN
+                        </div>
+                    </div>
+                    <div id="div-dmd-refuse-{{$row->id_demande}}" style="display:none;">
+                        <div class="alert alert-info" style="text-align: center;" role="alert">
+                            Refusée aujourd'hui
+                        </div>
+                    </div>
 
                     @endif
 
@@ -145,7 +225,6 @@
         </tbody>
     </table>
 </div>
-<script src="../js/jquery.js"></script>
 <!-- <script src="/js/jquery-2.1.4.min.js"></script> -->
 <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" 
 integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" 

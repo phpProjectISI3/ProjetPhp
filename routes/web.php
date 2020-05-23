@@ -95,3 +95,4 @@ Route::get('/Logements/import_categories', 'LogementController@import_categories
 Route::get('Historique', 'DemandeReservationController@historique');
 
 Route::post('RefuserDemande', 'DemandeReservationController@RefuserDemande')->name("RefuserDemande");
+Route::post('AccepterDemande', 'DemandeReservationController@AccepterDemande')->name("AccepterDemande");

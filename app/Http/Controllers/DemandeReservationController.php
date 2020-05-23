@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Demandereservation;
+use App\ReservationLogement;
+use Illuminate\Support\Facades\DB;
 
 class DemandeReservationController extends Controller
 {
@@ -19,13 +21,69 @@ class DemandeReservationController extends Controller
     {
         if ($request->ajax()) {
             $id_demande = $request->get('id_demande');
-            // $per =  \App\DemandeReservation::find($id_demande)->personne_;
             \App\DemandeReservation::where('id_demande', $id_demande)
                 ->update(["refuse_par_admin" => true, "date_refus" => \Carbon\Carbon::now()->format('Y-m-d')]);
-
-            // DemandeReservation::where('id_demande', $id_demande)
-            // ->update(['annule_par_client' => "true"]);
             echo json_encode("cool");
+        }
+    }
+
+    public function AccepterDemande(Request $request)
+    {
+        if ($request->ajax()) {
+            $id_demande = $request->get('id_demande');
+
+            $date_debutt =  DB::table("demande_reservation")
+                ->where('id_demande', '=', $id_demande)
+                ->first()
+                ->date_debut;
+            $date_finn =  DB::table("demande_reservation")
+                ->where('id_demande', '=', $id_demande)
+                ->first()
+                ->date_fin;
+
+            $premier_tableau_dmd_refuse = DB::select("select demande_reservation.id_demande 
+                                             from demande_reservation
+                                             where demande_reservation.date_debut BETWEEN  '$date_debutt' and '$date_finn' 
+                                             or demande_reservation.date_fin BETWEEN '$date_debutt' and '$date_finn'");
+            $deuxieme_tableau_dmd_refuse = DB::select("select demande_reservation.id_demande 
+                                             from demande_reservation
+                                             where demande_reservation.date_debut BETWEEN  '$date_debutt' and '$date_finn' 
+                                             or demande_reservation.date_fin BETWEEN '$date_debutt' and '$date_finn'");
+
+            // DB::select(DB::raw("
+            // update demande_reservation
+            // set refuse_par_admin = true, date_refus = CURRENT_DATE
+            // where id_demande in (
+            //     select demande_reservation.id_demande 
+            //     from demande_reservation
+            //     where demande_reservation.date_debut BETWEEN  '$date_debutt' and '$date_finn' 
+            //         or demande_reservation.date_fin BETWEEN '$date_debutt' and '$date_finn' 
+            // )"));
+
+            // DB::select(DB::raw("
+            // update demande_reservation
+            // set refuse_par_admin = true, date_refus = CURRENT_DATE
+            // where id_demande in (
+            //     select demande_reservation.id_demande 
+            //     from demande_reservation
+            //     where '$date_debutt' BETWEEN demande_reservation.date_debut and demande_reservation.date_fin
+            //     and '$date_finn' BETWEEN demande_reservation.date_debut and demande_reservation.date_fin 
+            // )"));
+
+            // \App\DemandeReservation::where('id_demande', $id_demande)
+            //     ->update(['refuse_par_admin' => false, 'date_refus' => NULL]);
+
+            // $reservation = new ReservationLogement;
+            // $reservation->demande_reservation_ = $id_demande;
+            // $reservation->save();
+
+            $dmd_refusees = array(
+                'premier_tableau' => $premier_tableau_dmd_refuse,
+                'deuxieme_tableau' => $deuxieme_tableau_dmd_refuse,
+                'dmd_exception' => $id_demande
+            );
+
+            echo json_encode($dmd_refusees);
         }
     }
 }
