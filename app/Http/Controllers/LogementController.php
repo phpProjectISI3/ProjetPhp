@@ -102,4 +102,10 @@ class LogementController extends Controller
 
 		return $this->index(true);
 	}
+
+	public function Statistiques()
+	{
+
+		return view('BackOfficeAdmin.Statistiques');
+	}
 }

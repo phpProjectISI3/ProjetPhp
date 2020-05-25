@@ -53,8 +53,8 @@
 							<span class="fas fa-file-invoice-dollar mr-3"></span> Facturations
 						</a>
 					</li>
-					<li>
-						<a href="#">
+					<li id="StatistiqueLink">
+						<a href="{{url('Admin/Statistiques')}}">
 							<span class="fas fa-chart-line mr-3"></span> Statistiques
 						</a>
 					</li>

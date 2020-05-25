@@ -12,8 +12,6 @@ class PersonneController extends Controller
 {
     public function editPerrsonnal(Request $request)
     {
-        //
-
         if (Auth_Role_PersonneController::IsAuthentificated()) {
             $userId = $request->session()->get('userObject')->id_client;
             $personnes = DB::select('select personne.*,sexe.libelle_sexe, grade.libelle_grade, auth_role_personne.username_email,auth_role_personne.mot_de_passe from personne 
@@ -59,7 +57,7 @@ class PersonneController extends Controller
 
             return back()->withUser(session()->get('userObject'));
         } else
-            return \redirect()->action('Auth_Role_PersonneController@Profile') - withUser(session()->get('userObject'));
+            return \redirect()->action('Auth_Role_PersonneController@Profile')->withUser(session()->get('userObject'));
     }
 
     public function Clients()
@@ -70,14 +68,22 @@ class PersonneController extends Controller
         return view("BackOfficeAdmin.GestionDesClients.Clients", compact("clients"));
     }
 
-    public function AjouterClients()
-    {
-        return view("BackOfficeAdmin.GestionDesClients.AjouterClient");
-    }
-
     public function EnregistrerClient(Request $request)
     {
-
+        $client = new Personne;
+        $client->id_client = collect(DB::select("select id_client
+                                                from personne
+                                                order by id_client desc
+                                                limit 1;"))->first()->id_client + 1;
+        $client->nom = $request->get('InputNom');
+        $client->prenom = $request->get('InputPrenom');
+        $client->nbr_enfant_scolarise = $request->get('InputEnfant_sco');
+        $client->nbr_enfant_non_scolarise = $request->get('InputEnfant_non_sco');
+        $client->sexe_ = $request->get('InputSexe');
+        $client->grade_ = $request->get('InputGrade');
+        $client->est_marie = $request->get('InputSituation');
+        $client->date_naissance = $request->get('InputDateN');
+        $client->save();
         return \redirect('Admin/Clients');
     }
 }

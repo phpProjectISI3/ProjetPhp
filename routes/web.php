@@ -92,6 +92,7 @@ Route::get('service', 'PagesController@service');
 Route::resource('Logements', 'LogementController');
 Route::get('/Logements/import_categories', 'LogementController@import_categories')->name('LogementController.import_categories');
 
+Route::get('Admin/Statistiques', 'LogementController@Statistiques');
 Route::get('Admin/Historique', 'DemandeReservationController@historique');
 Route::get('Admin/Facturation', 'DemandeReservationController@Facturation');
 Route::get('Admin/Clients', 'PersonneController@Clients');

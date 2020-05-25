@@ -66,14 +66,13 @@
 	<article class="carte">
 		<header class="carte__thumb">
 			<a href="#">
-				<img id="imgLogement" 
-				src="{{DB::table('photo_logement')->join('logement','photo_logement.logement_','=','logement.id_logement')->select('photo_logement.chemin_photo')->where('logement.id_logement',$logement->id_logement)->value('chemin_photo')}}" />
+				<img id="imgLogement" src="{{DB::table('photo_logement')->join('logement','photo_logement.logement_','=','logement.id_logement')->select('photo_logement.chemin_photo')->where('logement.id_logement',$logement->id_logement)->value('chemin_photo')}}" />
 			</a>
 		</header>
-		<div class="carte__date">
+		<!-- <div class="carte__date">
 			<span class="carte__date__day">12</span>
 			<span class="carte__date__month">Mai</span>
-		</div>
+		</div> -->
 		<div class="carte__body">
 			<h2 class="carte__title">
 				<a href="{{route('Logements.show',$logement->id_logement)}}" style="text-decoration:underline">{{$logement->nom_logement}}</a>
@@ -85,12 +84,12 @@
 
 			</p>
 		</div>
-		<footer class="carte__footer">
+		<!-- <footer class="carte__footer">
 			<span class="fa fa-star"></span> 5
                 &nbsp;&nbsp;&nbsp;
 			<span class="fa fa-commenting-o"></span>
 			<a href="#">39 comments</a>
-		</footer>
+		</footer> -->
 	</article>
 	@endforeach
 	<script>
@@ -130,10 +129,9 @@
 	@endif
 </div>
 <script>
-    $(document).ready(function () {
-        $("#sidebar ul li.active").removeClass();
-        $("#logementLink").addClass('active');
-    }
-    );
+	$(document).ready(function() {
+		$("#sidebar ul li.active").removeClass();
+		$("#logementLink").addClass('active');
+	});
 </script>
 @endsection

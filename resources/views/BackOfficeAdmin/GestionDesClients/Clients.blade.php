@@ -123,56 +123,61 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body" id="employee_detail">
-                    <form action="{{ route('EnregistrerClient') }}" method="post">
+                    <form action="{{ route('EnregistrerClient') }}" method="post" autocomplete="off">
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="InputNom">Nom</label>
-                                <input type="text" style="border:solid;color: black;" class="form-control" name="InputNom" id="InputNom" placeholder="Nom">
+                                <input type="text" style="border:solid;color: black;" class="form-control" name="InputNom" id="InputNom" placeholder="Nom" required>
 
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="InputPrenom">Prénom</label>
-                                <input type="text" style="border:solid;color: black;" name="InputPrenom" class="form-control" id="InputPrenom" placeholder="Prénom">
+                                <input type="text" style="border:solid;color: black;" name="InputPrenom" class="form-control" id="InputPrenom" placeholder="Prénom" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="InputEnfant_sco">Enfant scolarisé</label>
-                                <input type="number" style="border:solid;color: black;" class="form-control" name="InputEnfant_sco" id="InputEnfant_sco">
+                                <input type="number" style="border:solid;color: black;" class="form-control" name="InputEnfant_sco" id="InputEnfant_sco" min="0" max="5" required>
 
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="InputEnfant_non_sco">Enfant non scolarisé</label>
-                                <input type="number" style="border:solid;color: black;" class="form-control" id="InputEnfant_non_sco" name="InputEnfant_non_sco">
+                                <input type="number" style="border:solid;color: black;" class="form-control" id="InputEnfant_non_sco" name="InputEnfant_non_sco" min="0" max="5" required>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="InputSexe">Sexe</label>
-                                <select style="border:solid;color: black;" class="form-control" name="sexe" id="InputSexe">
-                                    <option value="1" selected>Homme</option>
+                                <select style="border:solid;color: black;" class="form-control" name="InputSexe" id="InputSexe" required>
+                                    <option value="" selected disabled>-Choisir-</option>
+                                    <option value="1">Homme</option>
                                     <option value="2">Femme</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="InputGrade">Grade</label>
-                                <select style="border:solid;color: black;" class="form-control" id="InputGrade" name="InputGrade" aria-describedby="emailHelp" placeholder="Enter email">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
+                                <select style="border:solid;color: black;" class="form-control" id="InputGrade" name="InputGrade" aria-describedby="emailHelp" placeholder="Enter email" required>
+                                    <option value="" selected disabled>-Choisir-</option>
+                                    <option value="0">Administratif</option>
+                                    <option value="1">Directeur</option>
+                                    <option value="2">Employé/cadre</option>
+                                    <option value="3">Retraité</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="InputSituation">Situation</label>
-                                <select style="border:solid;color: black;" class="form-control" id="InputSituation" name="InputSituation">
-                                    <option selected>Choose...</option>
-                                    <option>...</option>
+                                <select style="border:solid;color: black;" class="form-control" id="InputSituation" name="InputSituation" required>
+                                    <option value="" selected disabled>-Choisir-</option>
+                                    <option value="true">Marié(e)</option>
+                                    <option value="false">Célibataire</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="InputDateN">Date de naissance</label>
-                            <input type="date" style="border:solid;color: black;" class="form-control" id="InputDateN" name="InputDateN">
+                            <input type="date" style="border:solid;color: black;" class="form-control" id="InputDateN" name="InputDateN" required>
                         </div>
 
                         <button type="submit" class="btn btn-primary" style="margin-left: 80%;">Ajouter</button>
