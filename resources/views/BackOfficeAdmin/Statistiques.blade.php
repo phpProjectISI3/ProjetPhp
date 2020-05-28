@@ -7,9 +7,9 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 <script src="/js/modernizr-2.6.2.min.js"></script>
 <style>
-    canvas {
+    /* canvas {
         background: #161619;
-    }
+    } */
 
     .card {
         width: 350px;
@@ -29,19 +29,102 @@
         font-size: 1.8rem;
         padding: 10px 0;
     }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto;
+        /* background-color: #2196F3; */
+        padding: 10px;
+    }
+
+    .grid-itemm {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        /* padding: 20px; */
+        /* font-size: 30px; */
+        /* text-align: center; */
+    }
+
+    #containerChart2,
+    #containerStats {
+        width: 100%;
+        border-radius: 20px;
+        margin: 3%;
+        margin-top: 0%;
+        border-radius: 20px;
+    }
+
+    #containerStats {
+        margin: 0px 0px 0px 3px;
+    }
+
+    .tableCell {
+        width: 400px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
 </style>
 
 @section('content')
-<div class='' style="margin-top: 5%;">
-    <div class="card">
-        <!-- <header style="text-align: center">Top Languages</header> -->
-        <!-- <div class="container"> -->
-        <canvas width="330" height="500" id="myChart"></canvas>
-        <!-- </div> -->
-        </>
+<div class='' style="margin-top: 3%;">
+    <div class="grid-container">
+        <div class="card shadow-lg p-3 mb-5 bg-white grid-itemm" style="border-radius: 20px;">
+            <header style="text-align: center">Demandes logements</header>
+            <canvas width="330" height="400" id="myChart"></canvas>
+        </div>
+
+
+        <div class="card shadow-lg p-3 mb-5 bg-white grid-itemm" id="containerChart2">
+            <canvas width="800" height="450" id="line-chart"> </canvas>
+        </div>
     </div>
 
-
+    <div class="shadow-lg p-3 mb-5 bg-white" id="containerStats">
+        <table>
+            <tr>
+                <td class="tableCell">
+                    Annulée aprées accordation : <span style="text-decoration: underline; font-weight: 900;font-style: italic;">13</span>
+                </td>
+                <td class="tableCell">
+                    Clients en total : <span style="text-decoration: underline; font-weight: 900;font-style: italic;">15</span>
+                </td>
+                <td class="tableCell">
+                    Demandes en total : <span style="text-decoration: underline; font-weight: 900;font-style: italic;">21</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="tableCell">
+                    Derniére accordation : <span style="text-decoration: underline; font-weight: 900;font-style: italic;">26 Mai 2020</span>
+                </td>
+                <td class="tableCell">
+                    Logements en total : <span style="text-decoration: underline; font-weight: 900;font-style: italic;">10</span>
+                </td>
+                <td class="tableCell">
+                    Paiyements : <span style="text-decoration: underline; font-weight: 900;font-style: italic;"> 1</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="tableCell">
+                    Derniére annulation : <span style="text-decoration: underline; font-weight: 900;font-style: italic;">10 Mai 2020</span>
+                </td>
+                <td class="tableCell">
+                    Logement en VRAC : <span style="text-decoration: underline; font-weight: 900;font-style: italic;">Studio charifa <br>double vue mer</span>
+                </td>
+                <td class="tableCell">
+                    Admin : <span style="text-decoration: underline; font-weight: 900;font-style: italic;"> 4</span>
+                </td>
+            </tr>
+            <tr>
+                <td class="tableCell">
+                    Derniére demande : <span style="text-decoration: underline; font-weight: 900;font-style: italic;"> 14 Mai 2020</span>
+                </td>
+                <td class="tableCell">
+                </td>
+                <td class="tableCell">
+                </td>
+            </tr>
+        </table>
+    </div>
 
     <script src="{{ url('../js/jquery.js')}}">
     </script>
@@ -55,12 +138,33 @@
         });
     </script>
     <script>
+        new Chart(document.getElementById("line-chart"), {
+            type: 'line',
+            data: {
+                labels: [0, "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Oktober", "November", "Décembre"],
+                datasets: [{
+                    data: [0, 1000, 800, 760, 870, 900, 950, 1000, 900, 532, 1100, 1250, 1400],
+                    label: "en Dirhams",
+                    borderColor: "#3e95cd",
+                    fill: false
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: "Gains d'argent (par mois)",
+                    fontSize: 15,
+                }
+            }
+        });
+    </script>
+    <script>
         let ctx = document.getElementById("myChart").getContext("2d");
 
         Chart.defaults.global.defaultFontColor = "#888";
         Chart.defaults.global.maintainAspectRatio = true;
 
-        let t = "0.55";
+        let t = "0.8";
 
         let myChart = new Chart(ctx, {
             plugins: [{
@@ -73,27 +177,25 @@
             type: "pie",
 
             data: {
-                labels: ["Python", "C#", "Objective-C", "Java", "Others", "CSS"],
+                labels: ["En attente", "Accordées", "Refusées", "Annulées", "Payées"],
                 datasets: [{
-                    label: "languages",
+                    label: "Demandes",
                     backgroundColor: [
                         `rgba(241, 224, 90, ${t})`,
-                        `rgb(86, 61, 124, ${t})`,
                         `rgb(227, 76, 38, ${t})`,
-                        `rgb(44, 62, 80, ${t})`,
-                        `rgb(43, 116, 137, ${t})`,
-                        `rgb(86, 61, 124, ${t})`
+                        "#F57C70",
+                        "#FF0000",
+                        "#803CBE"
                     ],
                     borderColor: [
                         "#f1e05a",
-                        "#563d7c",
                         "#e34c26",
-                        "#2c3e50",
-                        "#2b7489",
-                        "#563d7c"
+                        "#F57C70",
+                        "#FF0000",
+                        "#803CBE"
                     ],
                     borderWidth: 2.4,
-                    data: [6, 6, 4, 3, 3, 2],
+                    data: [20, 10, 50, 5, 5],
                     barThickness: 30
                 }]
             },
@@ -111,7 +213,7 @@
                 // },
                 legend: {
                     display: true,
-                    position: "top",
+                    position: "bottom",
                     align: "center",
                     labels: {
                         boxWidth: 7,

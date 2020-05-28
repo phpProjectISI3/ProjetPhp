@@ -29,11 +29,12 @@
 @section('content')
 
 <a style="color: white;margin-left: 2%;" data-toggle="modal" data-target="#dataModal">
-    <button class=" monbtn">
+    <button class="monbtn">
         <i class="fa fa-plus" aria-hidden="true"></i>
         <strong>Nouveau Client</strong>
     </button>
 </a>
+
 <div style="margin-top: 5%;">
     <table class='table table-hover display' id="MyTable">
         <thead>
@@ -51,7 +52,7 @@
             @foreach($clients as $cl)
             <tr style="text-align: center;">
                 <td title="ID{{$cl->id_client}}" style="vertical-align: middle;">
-                    <strong style="text-decoration: underline;">
+                    <strong style="text-decoration: underline;cursor: default;">
                         {{$cl->nom_complet}}
                     </strong>
                 </td>
@@ -186,37 +187,38 @@
             </div>
         </div>
     </div>
+</div>
 
-    <script src="/js/modernizr-2.6.2.min.js"></script>
-    <script src="../js/jquery.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" defer></script>
-    <script>
-        $(document).ready(function() {
-            $("#sidebar ul li.active").removeClass();
-            $("#clientLink").addClass('active');
-            $('#MyTable').DataTable({
-                "order": [],
-                "oLanguage": {
-                    "sSearch": "Rechercher"
+<script src="/js/modernizr-2.6.2.min.js"></script>
+<script src="../js/jquery.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" defer></script>
+<script>
+    $(document).ready(function() {
+        $("#sidebar ul li.active").removeClass();
+        $("#clientLink").addClass('active');
+        $('#MyTable').DataTable({
+            "order": [],
+            "oLanguage": {
+                "sSearch": "Rechercher"
+            },
+            "pageLength": 25,
+            "language": {
+                "sLengthMenu": "Afficher _MENU_ lignes",
+                "paginate": {
+                    "first": "1",
+                    "last": "Dernier",
+                    "next": "Suivant",
+                    "previous": "Précedent"
                 },
-                "pageLength": 25,
-                "language": {
-                    "sLengthMenu": "Afficher _MENU_ lignes",
-                    "paginate": {
-                        "first": "1",
-                        "last": "Dernier",
-                        "next": "Suivant",
-                        "previous": "Précedent"
-                    },
-                    "zeroRecords": "Aucune Clients.",
-                    "processing": "En cours de recherche",
-                    "emptyTable": "Aucun Clients.",
-                    "info": "",
-                },
-            });
-
+                "zeroRecords": "Aucune Clients.",
+                "processing": "En cours de recherche",
+                "emptyTable": "Aucun Clients.",
+                "info": "",
+            },
         });
-    </script>
-    @endsection
+
+    });
+</script>
+@endsection

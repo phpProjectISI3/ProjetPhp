@@ -24,8 +24,8 @@
 				</h1>
 				<ul class="list-unstyled components mb-5">
 					<li>
-						<a href="#">
-							<span class="fas fa-house-user mr-3"></span> Accueil
+						<a href="/">
+							<span class="fas fa-house-user mr-3"></span> Accueil clientél
 						</a>
 					</li>
 					<li id="logementLink" class="active">
@@ -39,12 +39,12 @@
 						</a>
 					</li>
 					<li id="demandeLink">
-						<a href="{{url('/')}}">
+						<a href="{{url('Admin/Demandes')}}">
 							<span class="fas fa-scroll mr-3"></span> Demandes
 						</a>
 					</li>
-					<li>
-						<a href="#">
+					<li id="reservationLink">
+						<a href="{{url('Admin/Reservation')}}">
 							<span class="fas fa-edit mr-3"></span> Réservations
 						</a>
 					</li>

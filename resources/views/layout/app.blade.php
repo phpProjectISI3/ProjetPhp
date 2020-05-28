@@ -136,8 +136,11 @@
                                             <li><a href="/messagerie"><i class="far fa-envelope"></i> &nbsp; Messagerie</a>
                                             </li>
                                             <li><a href="{{ route('favories')}}"><i class="far fa-heart"></i> &nbsp; Favoris</a></li>
+                                            @if (session()->get('userObject')->libelle_grade == 'Administratif')
+                                            <li><a href="{{ url('Admin/Statistiques')}}"> <i class="fas fa-chart-line mr-3"></i> &nbsp; Administration</a></li>
+                                            @endif
                                             <li><a href="{{route('logout')}}"><i class="fas fa-power-off"></i> &nbsp; Se
-                                                    déconncter</a>
+                                                    déconnecter</a>
                                             </li>
                                         </ul>
                                         @else {{-- non authentifié  --}}
@@ -156,7 +159,7 @@
                         <div class="loginmodal-container">
                             <h1>Se connecter pour réserver</h1>
                             <br />
-                            <form action="/loginAndRedirectProfil" method="POST">
+                            <form action="/loginAndRedirectProfil" method="POST" autocomplete="off">
                                 @csrf
                                 <input type="text" name="email" placeholder="Pseudo" value="mail1@gmail.com" />
                                 <input type="password" name="motdepasse" placeholder="Mot de passe" value="MotDePasse1" />
