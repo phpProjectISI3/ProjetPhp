@@ -62,10 +62,17 @@ class PersonneController extends Controller
 
     public function Clients()
     {
-        $clients =  DB::select("select personne.id_client, concat(personne.prenom , ' ' , personne.nom) as nom_complet , personne.point_personne , grade.libelle_grade
+        if (Auth_Role_PersonneController::IsAuthentificated()) {
+
+            if (session()->get('userObject')->libelle_grade == 'Administratif') {
+
+                $clients =  DB::select("select personne.id_client, concat(personne.prenom , ' ' , personne.nom) as nom_complet , personne.point_personne , grade.libelle_grade
         from personne inner join grade on personne.grade_ = grade.id_grade
         where personne.id_client not in (1012, 1013, 1014, 1015)");
-        return view("BackOfficeAdmin.GestionDesClients.Clients", compact("clients"));
+                return view("BackOfficeAdmin.GestionDesClients.Clients", compact("clients"));
+            }
+        } else
+            return \redirect("/");
     }
 
     public function EnregistrerClient(Request $request)

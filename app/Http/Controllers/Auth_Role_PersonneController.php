@@ -122,9 +122,6 @@ class Auth_Role_PersonneController extends Controller
             return \redirect("/");
     }
 
-
-
-
     public function LogOut()
     {
         \Auth::logout();

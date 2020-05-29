@@ -13,28 +13,42 @@ class LogementController extends Controller
 {
 	public function index($var = false)
 	{
-		$logements = Logement::All();
-		return view(
-			'BackOfficeAdmin.GestionDesLogements.index',
-			['var' => $var],
-			compact('logements')
-		);
+		if (Auth_Role_PersonneController::IsAuthentificated()) {
+
+			if (session()->get('userObject')->libelle_grade == 'Administratif') {
+
+				$logements = Logement::All();
+				return view(
+					'BackOfficeAdmin.GestionDesLogements.index',
+					['var' => $var],
+					compact('logements')
+				);
+			}
+		} else
+			return \redirect("/");
 	}
 
 	public function create()
 	{
-		$listeCategories = DB::select("select detail_logement.id_detail as id , concat(type_logement.libelle_type_logement,' ',detail_logement.id_detail) as libelle
+		if (Auth_Role_PersonneController::IsAuthentificated()) {
+
+			if (session()->get('userObject')->libelle_grade == 'Administratif') {
+
+				$listeCategories = DB::select("select detail_logement.id_detail as id , concat(type_logement.libelle_type_logement,' ',detail_logement.id_detail) as libelle
                                        from  detail_logement inner join type_logement on detail_logement.type_logement_ = type_logement.id_type_logement
                                        where detail_logement.est_categorie = true;
                                        ");
 
-		$listeTypes = TypeLogement::select('id_type_logement', 'libelle_type_logement')
-			->get();
+				$listeTypes = TypeLogement::select('id_type_logement', 'libelle_type_logement')
+					->get();
 
-		$success = 'ajouté avec succé !';
-		return view('BackOfficeAdmin.GestionDesLogements.create')
-			->with('listeCategories', $listeCategories)
-			->with('listeTypes', $listeTypes);
+				$success = 'ajouté avec succé !';
+				return view('BackOfficeAdmin.GestionDesLogements.create')
+					->with('listeCategories', $listeCategories)
+					->with('listeTypes', $listeTypes);
+			}
+		} else
+			return \redirect("/");
 	}
 
 	public function import_categories(Request $request)
@@ -105,7 +119,13 @@ class LogementController extends Controller
 
 	public function Statistiques()
 	{
+		if (Auth_Role_PersonneController::IsAuthentificated()) {
 
-		return view('BackOfficeAdmin.Statistiques');
+			if (session()->get('userObject')->libelle_grade == 'Administratif') {
+
+				return view('BackOfficeAdmin.Statistiques');
+			}
+		} else
+			return \redirect("/");
 	}
 }

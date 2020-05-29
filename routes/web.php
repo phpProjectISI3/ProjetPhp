@@ -13,22 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-// Route::get('about', function(){
-//     $bitfumes = ['this', 'is', 'Bitfumes'];
-//     // first methode to send data to a view
-//     // return view('about',['bitfums'=>$bitfumes]);
-
-//     // send methode is
-//     // return view('about',)->with(['bitfumes'=>$bitfumes]);
-
-//     // the 3rd is with + the name of variable contain data
-//     // return view('about')->withBitfumes($bitfumes);
-
-//     // 4th methode is
-//         return view('about',compact('bitfumes'));
-// });
-
-
 // Login & Auth
 Route::post('login', 'Auth_Role_PersonneController@VerifyCredentials')->name('login');
 
@@ -98,8 +82,6 @@ Route::get('Admin/Facturation', 'DemandeReservationController@Facturation');
 Route::get('Admin/Demandes', 'DemandeReservationController@Demandes');
 Route::get('Admin/Reservation', 'DemandeReservationController@Reservation');
 Route::get('Admin/Clients', 'PersonneController@Clients');
-
-Route::get('Admin/Clients/Ajouter-Nouveau', 'PersonneController@AjouterClients')->name("Clients.create");
 
 Route::post('RefuserDemande', 'DemandeReservationController@RefuserDemande')->name("RefuserDemande");
 Route::post('AccepterDemande', 'DemandeReservationController@AccepterDemande')->name("AccepterDemande");
