@@ -5,6 +5,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<link href="{{ url('css/main.css') }}" rel="stylesheet" media="all" />
 
 
 @section('content')
@@ -61,6 +62,13 @@
         });
     }
 </script>
+
+<a href="" style="color: white;margin-left: 2%;" class="testt">
+    <button class="monbtn" style="width: 95%;background-color : #20bf55;background-image : linear-gradient(315deg, #20bf55 0%, #01baef 74%);">
+        <strong>selectionner automatiquement ! (B&ecirc;ta) </strong>
+    </button>
+</a>
+
 <div style="margin-top: 5%;">
     <table class='table table-hover display' id="MyTable">
         <thead>

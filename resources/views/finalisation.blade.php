@@ -269,6 +269,7 @@
                     <p>Veuillez complétez les données nécessaires.</p>
                 </div>
                 <form class="form-register" action="#" method="post">
+                    @csrf
                     <div id="form-total">
                         <!-- SECTION 1 -->
                         <h2>
@@ -375,7 +376,7 @@
                                     </h4>
                                     <h4>
                                         <img src="../images/checkmark.png" style="width:25px;" alt="" /> &nbsp; Payement
-                                        par : Carte Bankaire Visa
+                                        par : Carte Banckaire Visa
                                     </h4>
                                     <br />
                                     <br />

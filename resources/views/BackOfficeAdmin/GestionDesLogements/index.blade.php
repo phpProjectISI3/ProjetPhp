@@ -25,7 +25,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
 
 <a href="{{route('Logements.create')}}" style="color: white;margin-left: 2%;" class="testt">
-	<button class=" monbtn">
+	<button class="monbtn">
 		<i class="fa fa-plus" aria-hidden="true"></i>
 		<strong>Nouveau Logement</strong>
 	</button>

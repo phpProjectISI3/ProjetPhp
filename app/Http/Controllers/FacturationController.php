@@ -13,17 +13,17 @@ class FacturationController extends Controller
 
             $numero_telephone = $request->get("numero");
 
+            $request->session()->put("code", "Co-" . rand(99, 1000) . "-" . rand(99, 1000));
+            $request->session()->put("telephone", $numero_telephone);
+
             $basic  = new \Nexmo\Client\Credentials\Basic('08cfc43b', 'LKJg86mrJhdR9EWs');
             $client = new \Nexmo\Client($basic);
 
-            $message = $client->message()->send([
-                'to' => '212666201740',
-                'from' => 'Vonage APIs',
-                'text' => 'Hello from Vonage SMS API'
-            ]);
-
-            $request->session()->put("code", "Co-" . rand(99, 1000) . "-" . rand(99, 1000));
-            $request->session()->put("telephone", $numero_telephone);
+            // $message = $client->message()->send([
+            //     'to' => '212666201740',
+            //     'from' => 'isi3 grp2',
+            //     'text' => 'Voici votre code de confirmation :  ' . session()->get('code'),
+            // ]);
 
             $success = array(
                 'code' => session()->get('code'),
