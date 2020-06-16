@@ -114,7 +114,15 @@ class LogementController extends Controller
 		$logement->detail_logement_ = $valeur_selectione;
 		$logement->save();
 
-		return $this->index(true);
+		// if($request->ajax()){
+		// 	$path = $request->get('path');
+		// 	$input = $path;
+		// 	$destinationPath = 'images'; // path to save to, has to exist and be writeable
+		// 	$filename = $path; // original name that it was uploaded with
+		// 	// $input->store($destinationPath,$fileName);		
+		// 	$request->images->store('images');
+		// }
+			return $this->index(true);
 	}
 
 	public function Statistiques()

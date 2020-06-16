@@ -82,7 +82,7 @@
 </script>
 <div class="MultiStep" style="height: 80%;margin-top: 3%;">
     <h2 class="H2Creation" style="text-transform:inherit">Cr&eacute;ation d'un nouveau logement</h2>
-    <form method="POST" id="signup-form" class="signup-form" action="{{route('Logements.store') }}">
+    <form method="POST" action="{{route('Logements.store') }}" id="signup-form" enctype="multipart/form-data" class="signup-form">
         <h3>
             <span class="title_text">Informations de base</span>
         </h3>
@@ -125,7 +125,6 @@
                 </div>
             </div>
         </fieldset>
-
         <h3>
             <span class="title_text">Détails</span>
         </h3>
@@ -362,5 +361,24 @@
             }
         });
 </script>
+<!-- <script>
+    document.querySelector('#images').addEventListener('change',function(){
+        console.log(document.getElementById('images').value);
+        let paths = document.getElementById('images').value;
+        console.log(paths);
+                console.log(paths.split('\\'));
+            let path = paths.split('\\');
+        let finalPATH = path[path.length - 1];
+        console.log(finalPATH);
+        $.ajax(
+            url:"Logements.store",
+            type: "GET",
+            data: {path : finalPATH},
+            dataType: 'json',
+            success: function(){
 
+            }
+        )
+    });
+</script> -->
 @endsection

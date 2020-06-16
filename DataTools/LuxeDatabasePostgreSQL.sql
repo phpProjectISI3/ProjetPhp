@@ -12,7 +12,6 @@ where pg_stat_activity.datname = 'pgluxedatabase';
 -- suprime avec succes = true
 drop database PgLuxeDatabase
 
-
 -- Creer la BD 
 create database PgLuxeDatabase
 -- !!! ==> selectionnez "PgLuxeDatabase" f DropDownList dyl Aure data studio ^
@@ -115,6 +114,7 @@ create table LOGEMENT
     adress_logement varchar(100),
     localisation_logement varchar(1500)
 );
+
 
 create sequence PHOTO_LOGEMENT_seq
 start 1;
@@ -357,12 +357,12 @@ INSERT INTO logement
 VALUES
     ('Hotel Tildi', 1, 'Agadir, Rue Hubert Giraud, Ville Nouvelle', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3440.4389929673735!2d-9.608750185015307!3d30.423655007513922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b6eb8109e6bf%3A0xad42a94b990584be!2sTildi%20H%C3%B4tel%20Agadir%20%26%20SPA!5e0!3m2!1sfr!2sma!4v1587334240445!5m2!1sfr!2sma'),
     ('Hotel Tildi', 1, 'Agadir, Rue Hubert Giraud, Ville Nouvelle', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3440.4389929673735!2d-9.608750185015307!3d30.423655007513922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb3b6eb8109e6bf%3A0xad42a94b990584be!2sTildi%20H%C3%B4tel%20Agadir%20%26%20SPA!5e0!3m2!1sfr!2sma!4v1587334240445!5m2!1sfr!2sma'),
-    ('Dar Itrane - Superbe maison berbère', 3, 'Tagadirt, Marrakech-Tensift-Al Haouz, Maroc', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3413.5001445159774!2d-8.926176984999138!3d31.179143021031695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb1e67f9cf6de1f%3A0x11e05a07f71d7a98!2sTagadirt!5e0!3m2!1sfr!2sma!4v1587334309771!5m2!1sfr!2sma'),
-    ('Villa Authentique Medina', 2, 'Marrakech, Tensift, Maroc', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3413.5001445159774!2d-8.926176984999138!3d31.179143021031695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb1e67f9cf6de1f%3A0x11e05a07f71d7a98!2sTagadirt!5e0!3m2!1sfr!2sma!4v1587334309771!5m2!1sfr!2sma'),
-    ('Villa Authentique Medina', 2, 'Marrakech, El Haouz, Maroc', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3413.5001445159774!2d-8.926176984999138!3d31.179143021031695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb1e67f9cf6de1f%3A0x11e05a07f71d7a98!2sTagadirt!5e0!3m2!1sfr!2sma!4v1587334309771!5m2!1sfr!2sma'),
+    ('Dar Itrane - Superbe maison berbère', 2, 'Tagadirt, Marrakech-Tensift-Al Haouz, Maroc', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3413.5001445159774!2d-8.926176984999138!3d31.179143021031695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb1e67f9cf6de1f%3A0x11e05a07f71d7a98!2sTagadirt!5e0!3m2!1sfr!2sma!4v1587334309771!5m2!1sfr!2sma'),
+    ('Villa Authentique Medina', 3, 'Marrakech, Tensift, Maroc', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3413.5001445159774!2d-8.926176984999138!3d31.179143021031695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb1e67f9cf6de1f%3A0x11e05a07f71d7a98!2sTagadirt!5e0!3m2!1sfr!2sma!4v1587334309771!5m2!1sfr!2sma'),
+    ('Villa Authentique Medina', 3, 'Marrakech, El Haouz, Maroc', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3413.5001445159774!2d-8.926176984999138!3d31.179143021031695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdb1e67f9cf6de1f%3A0x11e05a07f71d7a98!2sTagadirt!5e0!3m2!1sfr!2sma!4v1587334309771!5m2!1sfr!2sma'),
     ('Appartement panoramique', 4, 'Marrakech, entre Tensift et El Haouz, Maroc', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1736306.2546897426!2d-9.53658258776723!3d31.79166768479669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafb63e1068fa4d%3A0xb8db0d2bbe8e616!2sMarrakech-Tensift-Al%20Haouz!5e0!3m2!1sfr!2sma!4v1587334666432!5m2!1sfr!2sma'),
     ('Appartement panoramique', 4, 'Marrakech, entre Tensift et El Haouz, Maroc', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1736306.2546897426!2d-9.53658258776723!3d31.79166768479669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafb63e1068fa4d%3A0xb8db0d2bbe8e616!2sMarrakech-Tensift-Al%20Haouz!5e0!3m2!1sfr!2sma!4v1587334666432!5m2!1sfr!2sma'),
-    ('Appartement panoramique', 4, 'Marrakech, entre Tensift et El Haouz, Maroc', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1736306.2546897426!2d-9.53658258776723!3d31.79166768479669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafb63e1068fa4d%3A0xb8db0d2bbe8e616!2sMarrakech-Tensift-Al%20Haouz!5e0!3m2!1sfr!2sma!4v1587334666432!5m2!1sfr!2sma'),
+    ('Appartement panoramique', 5, 'Marrakech, entre Tensift et El Haouz, Maroc', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1736306.2546897426!2d-9.53658258776723!3d31.79166768479669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafb63e1068fa4d%3A0xb8db0d2bbe8e616!2sMarrakech-Tensift-Al%20Haouz!5e0!3m2!1sfr!2sma!4v1587334666432!5m2!1sfr!2sma'),
     ('Appartement paisible ', 5, 'Essaouira, Marrakech-Safi, Maroc', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27211.838586174523!2d-9.780051766383684!3d31.510978945210496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdad9a4e9f588ccf%3A0x57421a176d5d7d30!2sEssaouira!5e0!3m2!1sfr!2sma!4v1587334695072!5m2!1sfr!2sma'),
     ('Studio charifa', 6, 'Fes, Boulvard Asslat, Maroc', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1704327.2032885654!2d-5.2656814032804915!3d33.45545279192627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd9fa4608762a383%3A0xb32d64f9c27479c7!2sF%C3%A8s-Boulemane!5e0!3m2!1sfr!2sma!4v1587334715834!5m2!1sfr!2sma'),
     ('Studio charifa double vue mer', 6, 'Fes, environs de quartier El Mouahidine, Maroc', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1704327.2032885654!2d-5.2656814032804915!3d33.45545279192627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd9fa4608762a383%3A0xb32d64f9c27479c7!2sF%C3%A8s-Boulemane!5e0!3m2!1sfr!2sma!4v1587334715834!5m2!1sfr!2sma');
@@ -478,9 +478,5 @@ VALUES
 -----------------------------------------------------------------------------------------------------------
 
 ----------------------- Documentation -----------------------------------------------------------------
-
-
-
-
 
 -----------------------------------------------------------------------------------------------------------
