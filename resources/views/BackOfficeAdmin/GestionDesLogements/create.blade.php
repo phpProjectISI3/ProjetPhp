@@ -82,7 +82,8 @@
 </script>
 <div class="MultiStep" style="height: 80%;margin-top: 3%;">
     <h2 class="H2Creation" style="text-transform:inherit">Cr&eacute;ation d'un nouveau logement</h2>
-    <form method="POST" id="signup-form" class="signup-form" action="{{route('Logements.store') }}">
+    <form method="POST" id="signup-form" class="signup-form" action="{{route('Logements.store') }}" autocomplete="off">
+        @csrf
         <h3>
             <span class="title_text">Informations de base</span>
         </h3>
