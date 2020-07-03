@@ -126,7 +126,6 @@
                 </div>
             </div>
         </fieldset>
-
         <h3>
             <span class="title_text">Détails</span>
         </h3>
@@ -363,5 +362,24 @@
             }
         });
 </script>
+<!-- <script>
+    document.querySelector('#images').addEventListener('change',function(){
+        console.log(document.getElementById('images').value);
+        let paths = document.getElementById('images').value;
+        console.log(paths);
+                console.log(paths.split('\\'));
+            let path = paths.split('\\');
+        let finalPATH = path[path.length - 1];
+        console.log(finalPATH);
+        $.ajax(
+            url:"Logements.store",
+            type: "GET",
+            data: {path : finalPATH},
+            dataType: 'json',
+            success: function(){
 
+            }
+        )
+    });
+</script> -->
 @endsection

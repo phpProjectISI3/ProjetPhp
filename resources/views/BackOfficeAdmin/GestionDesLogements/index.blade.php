@@ -31,7 +31,7 @@
 	</button>
 </a>
 
-<div class="cardCodePen cardCodePen-7 " style="margin-top:50px;">
+<!-- <div class="cardCodePen cardCodePen-7 " style="margin-top:50px;">
 	<div class="cardCodePen-body">
 		<form class="form" method="POST" action="#">
 			<div class="input-groupCodePen input--large">
@@ -59,7 +59,7 @@
 			<button class="btn-submit" type="submit">Rechercher !</button>
 		</form>
 	</div>
-</div>
+</div> -->
 
 <div class="MonContainer">
 	@foreach($logements as $logement)
@@ -75,7 +75,7 @@
 		</div> -->
 		<div class="carte__body">
 			<h2 class="carte__title">
-				<a href="{{route('Logements.show',$logement->id_logement)}}" style="text-decoration:underline">{{$logement->nom_logement}}</a>
+				<a href="../../detailRecherche/{{$logement->id_logement}}" style="text-decoration:underline">{{$logement->nom_logement}}</a>
 			</h2>
 
 			<div class="carte__subtitle">{{$logement->adress_logement}}</div>
