@@ -31,7 +31,7 @@
 	</button>
 </a>
 
-<!-- <div class="cardCodePen cardCodePen-7 " style="margin-top:50px;">
+<div class="cardCodePen cardCodePen-7 " style="margin-top:50px;">
 	<div class="cardCodePen-body">
 		<form class="form" method="POST" action="#">
 			<div class="input-groupCodePen input--large">
@@ -59,7 +59,7 @@
 			<button class="btn-submit" type="submit">Rechercher !</button>
 		</form>
 	</div>
-</div> -->
+</div>
 
 <div class="MonContainer">
 	@foreach($logements as $logement)
