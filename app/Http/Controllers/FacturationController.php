@@ -19,11 +19,11 @@ class FacturationController extends Controller
             $basic  = new \Nexmo\Client\Credentials\Basic('08cfc43b', 'LKJg86mrJhdR9EWs');
             $client = new \Nexmo\Client($basic);
 
-            // $message = $client->message()->send([
-            //     'to' => '212666201740',
-            //     'from' => 'isi3 grp2',
-            //     'text' => 'Voici votre code de confirmation :  ' . session()->get('code'),
-            // ]);
+            $message = $client->message()->send([
+                'to' => '212666201740',
+                'from' => 'isi3 grp2',
+                'text' => 'Voici votre code de confirmation :  ' . session()->get('code'),
+            ]);
 
             $success = array(
                 'code' => session()->get('code'),
