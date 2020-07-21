@@ -113,7 +113,6 @@
             color: orangered;
         }
 
-        #BtnIntegre,
         #premierBtnNext,
         #BtnRetour {
             background: transparent;
@@ -451,8 +450,8 @@
                                                 var ulNode = $(divParent).children('ul')[0];
                                                 var finalLiNode = $(ulNode).children('li')[2];
                                                 finalLiNode.innerHTML =
-                                                    '<a href="#finish" role="menuitem"><button id="BtnIntegre">Valider !</button></a>';
-                                                $("#BtnIntegre").click(
+                                                    '<a href="#finish" role="menuitem" id="btnFinalisation">Valider !</a>';
+                                                $("#btnFinalisation").click(
                                                     function notification() {
                                                         $.notify(" Payement effectué avec succés !", {
                                                             className: "success",
@@ -463,7 +462,7 @@
                                                             arrowShow: false,
                                                         });
                                                         setTimeout(function() {
-                                                            window.location.href = "/";
+                                                            window.location.href = "{{ route('sejours') }}";
                                                         }, 3000);
 
                                                     });
