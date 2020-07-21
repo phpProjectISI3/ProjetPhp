@@ -251,7 +251,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-6">
-                                <img src="/images/restaurant.jpg" class="img-responsive" alt="Image">
+                                <img src="{{url('/images/restaurant.jpg')}}" class="img-responsive" alt="Image">
                             </div>
                             <div class="col-md-6">
                                 <span class="super-heading-sm">World Class</span>
