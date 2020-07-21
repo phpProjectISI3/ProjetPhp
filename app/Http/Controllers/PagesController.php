@@ -267,7 +267,7 @@ class PagesController extends Controller
             //reformater la date sous format par exemple : 15 juillet 2020
             setlocale(LC_TIME, 'French');
 
-            // calcule tarif par saison
+            // calcul tarif par saison
             $tarif_bs = $logement->tarif_par_nuit_bs * $interval;
             $tarif_hs = $logement->tarif_par_nuit_hs * $interval;
 
