@@ -174,7 +174,7 @@ create table FACTURATION
     id_facture int primary key,
     reservation_logement_ int,
     foreign key(reservation_logement_) references RESERVATION_LOGEMENT(id_reservation),
-    note_client int,-- L’echelle de satisfaction du collaborateur (0-5 etoile)
+    note_client int,-- L`echelle de satisfaction du collaborateur (0-5 etoile)
     check(note_client >=0 and note_client <=5),
     commentaire_client varchar(250)
 );
@@ -348,7 +348,7 @@ VALUES
     (false, 3, 300, 4, 6, 1000, 700, 'Faites une expérience hors du temps, dans cette magnifique maison marocaine traditionnelle avec sa piscine et ses jardins privatifs. Idéale pour une famille ou des amis, elle vous permettra de vous détendre dans un cadre élégant et épuré.', 3, 500, 10, true, true, true, false),
     (true, 1, 200, 4, 5, 1570, 1150, 'Un lieu exceptionnel idéalement situé. Tout se fait facilement à pieds. Une chambre magnifique, une terrasse des plus agréables, une piscine chauffée. La nourriture succulente ! Et quel accueil ! Une équipe aux petits soins qui prend le temps de tout vous expliquer et vous conseiller. Le hammam, un bonheur. Bref, tout était plus que parfait.', 50, 450, 31, true, true, true, true),
     (true, 2, 150, 3, 4, 600, 470, 'Appartement panoramique Medina', 10, 200, 10, false, true, true, true),
-    (false, 2, 270, 4, 6, 680, 550, 'Notre maison cosy, colorée et confortable, située dans une très vieille maison traditionnelle de la médina, est disponible pour tous ceux qui souhaitent approfondir la sensation de fraîcheur d’Essaouira et retrouver la tranquillité d’esprit en cette période de forte activité. Vous avez votre espace totalement privé comprenant une chambre avec lit double, un salon, une petite cuisine, une salle de bain et un grand hall ressemblant à un patio, mais nous sommes prêts à socialiser si vous le souhaitez!', 15, 700, 15, true, false, true, false),
+    (false, 2, 270, 4, 6, 680, 550, 'Notre maison cosy, colorée et confortable, située dans une très vieille maison traditionnelle de la médina, est disponible pour tous ceux qui souhaitent approfondir la sensation de fraîcheur d`Essaouira et retrouver la tranquillité d`esprit en cette période de forte activité. Vous avez votre espace totalement privé comprenant une chambre avec lit double, un salon, une petite cuisine, une salle de bain et un grand hall ressemblant à un patio, mais nous sommes prêts à socialiser si vous le souhaitez!', 15, 700, 15, true, false, true, false),
     (true, 4, 180, 3, 2, 1100, 980, 'Studio charifa une chambre dans riad diamant blanc au 2 eme étage la chambre a une vue sur mer et le jardin .', 0, 600, 7, true, true, true, true);
 
 -- insert LOGEMENT
