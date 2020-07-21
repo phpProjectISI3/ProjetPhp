@@ -1,10 +1,10 @@
 @extends('layout.app')
 
 @section('title','Détails')
-<link rel="stylesheet" href="../css/detailrecherche.css" />
-<link rel="stylesheet" href="../css/review.css" />
+<link rel="stylesheet" href="{{ url('../css/detailrecherche.css') }}" />
+<link rel="stylesheet" href="{{ url('../css/review.css') }}" />
 <script src="https://kit.fontawesome.com/4f2d779e50.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="../css/designRadioBtn.css" />
+<link rel="stylesheet" href="{{ url('../css/designRadioBtn.css') }}" />
 @section('linkcss')
 
 <style>
