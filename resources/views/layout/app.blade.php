@@ -96,7 +96,7 @@
                 <header id="fh5co-header-section">
                     <div class="container" id="MonHeader">
                         <div class="nav-header">
-                            <a href="{{url('/')}}" class="js-fh5co-nav-toggle fh5co-nav-toggle">
+                            <a class="js-fh5co-nav-toggle fh5co-nav-toggle">
                                 <i></i>
                             </a>
                             <h1 id="fh5co-logo">
